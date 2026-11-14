@@ -13,7 +13,7 @@ English for every file this repository maintains. Translate before landing; do n
 
 ## Citation
 
-Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not cite section numbers; they rot when a page is reordered.
+Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not cite section numbers; they rot when a page is reordered. Number section headings only when the number is part of a cited artifact: a legal clause, a fixed contract section, or a numbered procedure. Otherwise leave them unnumbered.
 
 ## The five discriminations
 
@@ -47,7 +47,8 @@ Measure volume with `tr -d '[:space:]' < FILE | wc -m` (Bash) or `(([IO.File]::R
 
 ## Document discipline
 
-- **Record method, not measurement.** A count, duration, or coverage number is written as the command that produces it. (Review criterion.)
+- **Record method, not measurement.** A count, duration, coverage number, resolved version, or benchmark result is written as the command that produces it. (Review criterion.)
+- **A named set's cardinality is part of its name.** Changing "four layers" to five is a spec change, not a count update. Do not confuse it with a current inventory count.
 - **Never copy a value that has an owner.** Cite the config file or the CLI's `--help`.
 - **One fact, one home.** A parent links to a child's conclusion; it does not restate it.
 - **Generated files declare their command** on the first line.

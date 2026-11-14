@@ -65,7 +65,7 @@ A commit message cites `uv run python tools/gate.py`, never `pytest` alone.
 - **`wc -w` does not count Chinese.** A 5,891-character Chinese document reports about 1,000 words. Budgets use non-whitespace characters.
 - **`ruff target-version` below the runtime hides syntax.** Raise it when ruff supports the interpreter in `.python-version`.
 
-Verified against uv 0.13.1, Python 3.15.0, ruff 0.17.5, pytest 9.2.0.
+Verified 2026-11-14 (for-the-record): uv 0.13.1, Python 3.15.0, ruff 0.17.5, pytest 9.2.0.
 
 ## C8 — upgrade
 

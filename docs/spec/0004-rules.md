@@ -12,13 +12,13 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 | R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.py` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
 | R3 | Change surface: spec → template → skill in the same or next commit | weak | Review against the `AGENTS.md` table |
 | R4a | Volume budgets are measured in non-whitespace characters | strong | `scripts/check.py` measures every budgeted file |
-| R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the four index tables that carry a limit |
+| R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the index tables that carry a limit |
 | R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.py` role-path map; an unmapped path fails |
 | R6 | No empty directories | strong | `scripts/check.py` fails on a directory with no files |
 | R7 | Files under a generated path carry the generated header | strong | `scripts/check.py` scans `dist/` and any file whose first line self-declares generated |
 | R8 | English for repository-maintained markdown | strong | `scripts/check.py` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
 | R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package leaves the tasks index |
-| R10 | Record method, not measurement | weak | Review: a number without a command is a finding |
+| R10 | Record method, not measurement | weak | Review: a count, duration, coverage number, resolved version, benchmark, or size that can drift is written as the command that produces it, or dated `for-the-record` |
 | R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for spec pages, ADRs, and backlog names |
 
 ## Naming and citation
@@ -27,6 +27,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 - Numbered files use four digits: spec page `0001`, ADR `ADR-0001`, backlog `B-0001`. Spec ordinals are fixed; record IDs start at `0001`. A migrated series keeps its width and is never renumbered.
 - Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, and YAML keep their line breaks.
 - Cite a file plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers.
+- Section headings are unnumbered by default. Number them only when the number is part of the artifact a consumer cites: a legal clause, a fixed contract section, or a numbered procedure. A number added for visual order becomes wrong when the section moves.
 
 Naming is gated by `scripts/check.py`; the other bullets are review criteria.
 
@@ -37,7 +38,7 @@ Two units, never interchangeable:
 - **Volume** — non-whitespace characters. Measures reading cost.
 - **Entry** — table rows. Measures scannability.
 
-Lines are not a volume unit. The source documents measured between 41 and 167 characters per line; the same budget expressed in lines gives opposite verdicts for documents of similar size. Word count is not a volume unit either: it splits on whitespace, so a Chinese paragraph of 5,891 non-whitespace characters reports about 1,000 words. See `docs/decisions/ADR-0003-volume-budget-unit.md`.
+Lines are not a volume unit: the same budget expressed in lines gives opposite verdicts for documents of similar size. Word count is not a volume unit either: it splits on whitespace, so a Chinese paragraph reports far fewer words than characters. See `docs/decisions/ADR-0003-volume-budget-unit.md` for the measured samples.
 
 ## Budgets
 

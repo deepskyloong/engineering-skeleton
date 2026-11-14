@@ -34,6 +34,8 @@
 
 ## Per-repository notes
 
+The notes below are observations from 2026-11-14, for-the-record; they describe the source state, not a current inventory.
+
 **bun-toolkit** — a TypeScript monorepo with a 305-line `AGENTS.md`, five ADRs, and a third-party tracker suite under `docs/agents/`. The `AGENTS.md` splits by reader: red lines and the gate stay, architecture moves to `docs/structure.md`, and the measured values become commands. The tracker suite is an adapter row, not a docs subdirectory.
 
 **gearset** — a TypeScript library with twelve ADRs and twenty-plus trigger-loaded docs. Its module form (`src/<module>/` with README, docs, and `AGENTS.md`) is the richest sample of the module level, and the reason the module-`AGENTS.md` threshold is deferred rather than guessed. Migrate its ADRs first; they are the part with real cost.

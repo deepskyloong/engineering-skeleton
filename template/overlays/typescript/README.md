@@ -71,7 +71,7 @@ A commit message cites `bun run gate`, never a single stage.
 - **CRLF breaks a shebang.** Add `*.ts text=lf` to `.gitattributes` if a script starts with `#!`.
 - **`composite` conflicts with `noEmit`.** Keep it out of the base config; add it only to a build config that emits.
 
-Verified against bun 1.4.3, oxlint 1.93.0, oxfmt 0.78.0, typescript 7.0.2.
+Verified 2026-11-14 (for-the-record): bun 1.4.3, oxlint 1.93.0, oxfmt 0.78.0, typescript 7.0.2.
 
 ## C8 — upgrade
 

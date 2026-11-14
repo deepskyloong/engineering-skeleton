@@ -14,7 +14,7 @@ English for every file this repository maintains: prose, templates, commit messa
 
 ## Citation
 
-Cite a file name plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number.
+Cite a file name plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number. Number section headings only when the number is part of a cited artifact: a legal clause, a fixed contract section, or a numbered procedure. Otherwise leave them unnumbered.
 
 ## The five discriminations
 
@@ -30,7 +30,8 @@ A generated repository copies the full five into its own `docs/conventions.md`; 
 
 ## Document discipline
 
-- **Record method, not measurement.** A count, duration, coverage number, or node count is written as the command that produces it. A historical value survives only when the value itself is the fact, marked with a date and `for-the-record`.
+- **Record method, not measurement.** A count, duration, coverage number, node count, resolved version, or benchmark result is written as the command that produces it. A historical value survives only when the value itself is the fact, marked with a date and `for-the-record`.
+- **A named set's cardinality is part of its name.** "Four layers" or "five discriminations" defines a set; changing the number is a spec change, not a count to update in place. Do not confuse this with a current inventory count.
 - **Never copy a value that has an owner.** Cite `pyproject.toml`, `package.json`, CLI `--help`, or a type signature instead of restating its content.
 - **One fact, one home.** A parent page links to a child's conclusion; it does not restate it.
 - **A test does not justify deleting prose.** Prose is the fast path; tests are the verification net. What is removable is the same prose written twice.
