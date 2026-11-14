@@ -33,7 +33,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 
 ## Reading order
 
-For a person: this file → `docs/charter.md` → `docs/spec/01-foundations.md` → `docs/spec/02-roles.md`.
+For a person: this file → `docs/charter.md` → `docs/spec/0001-foundations.md` → `docs/spec/0002-roles.md`.
 
 For an agent: `AGENTS.md` → the routing table there → the one spec page the task needs.
 

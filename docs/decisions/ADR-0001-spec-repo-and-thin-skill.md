@@ -1,4 +1,4 @@
-# 0001 — The specification lives in a standalone repository; the skill is a thin entry point
+# ADR-0001 — The specification lives in a standalone repository; the skill is a thin entry point
 
 Status: Accepted (2026-11-14)
 

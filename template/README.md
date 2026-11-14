@@ -1,6 +1,6 @@
 # Template
 
-Copyable starting points for a repository that adopts the skeleton. Read `docs/spec/02-roles.md` first: the template is a consequence of the roles, and copying it without them produces files nobody can place later.
+Copyable starting points for a repository that adopts the skeleton. Read `docs/spec/0002-roles.md` first: the template is a consequence of the roles, and copying it without them produces files nobody can place later.
 
 ## Copy order
 

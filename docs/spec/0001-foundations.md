@@ -1,4 +1,4 @@
-# 01 — Foundations
+# 0001 — Foundations
 
 ## What the skeleton is
 
@@ -61,6 +61,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 ```
 
 A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`, each member carrying its own `README.md`, `src/`, `tests/`, `AGENTS.md` (when it earns one), and docs. The root keeps only the four always-read files: `README.md`, `AGENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md` when needed, plus `docs/` and `tasks/`.
+
 
 ## Single-package degeneration
 

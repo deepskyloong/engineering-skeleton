@@ -1,4 +1,4 @@
-# 0003 — Volume budgets measure non-whitespace characters, not lines or words
+# ADR-0003 — Volume budgets measure non-whitespace characters, not lines or words
 
 Status: Accepted (2026-11-14)
 
@@ -30,7 +30,7 @@ English and Chinese get separate volume limits: EN 16,000 and ZH 8,000 for a roo
 
 ## Consequences
 
-- The gate needs a character counter, not a line counter. The command is stated in `docs/spec/04-rules.md` and repeated in the template's conventions page.
+- The gate needs a character counter, not a line counter. The command is stated in `docs/spec/0004-rules.md` and repeated in the template's conventions page.
 - Line counts survive only where the line is the entry. A budget stated without a unit and a command is treated as a finding.
 - The ZH/EN split has to be restated wherever a limit is published, or the two limits will be confused.
 - A document whose prose is mostly tables will read as expensive per character. That is correct: tables are scanned, not read, and a table-heavy document is usually an index that belongs under an entry budget instead.

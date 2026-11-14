@@ -1,4 +1,4 @@
-# 05 — Overlays
+# 0005 — Overlays
 
 The core is language-agnostic. Everything a language decides lives in one overlay, activated by choosing exactly one. An overlay ships **files, not code blocks**: after copying it and installing dependencies, the repository reaches a green gate without transcription.
 

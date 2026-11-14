@@ -1,4 +1,4 @@
-# 0002 — The skill is manually invoked, not description-triggered
+# ADR-0002 — The skill is manually invoked, not description-triggered
 
 Status: Accepted (2026-11-14)
 

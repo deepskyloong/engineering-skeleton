@@ -7,7 +7,7 @@
 ## Evidence
 
 - The template's `AGENTS.md` states budgets and the change-surface rule with no command behind them.
-- Four of the twelve rules in `docs/spec/04-rules.md` are `weak` and would remain weak even with a checker; the strong rules are only enforced inside this repository.
+- Four of the twelve rules in `docs/spec/0004-rules.md` are `weak` and would remain weak even with a checker; the strong rules are only enforced inside this repository.
 - A portable checker needs a small config: repository root, overlay, optional roles present, language.
 - The rollout order is tracked in `B-0005`; a checker is worth extracting only after the second repository exists.
 

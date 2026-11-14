@@ -11,7 +11,7 @@
 
 ## Plan
 
-1. Audit all five repositories against `docs/spec/02-roles.md`; record one report per repository.
+1. Audit all five repositories against `docs/spec/0002-roles.md`; record one report per repository.
 2. Migrate oshi first: its backlog is the reference shape, and the cost of a wrong call is lowest.
 3. Migrate bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.
 4. Migrate python-toolkit: the layout page and the index autonomy rule get their test.

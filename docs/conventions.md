@@ -6,19 +6,19 @@ English for every file this repository maintains: prose, templates, commit messa
 
 ## Naming
 
-- Files: `kebab-case.md`, with `NNNN-slug.md` for ADRs and `B-<nnnn>-slug.md` for backlog items.
-- Numbered files use four digits: ADR `0001`, backlog `B-0001`. New repositories start at `0001`; a migrated series keeps its width and is never renumbered.
+- Files: `kebab-case.md`, with `NNNN-slug.md` for spec pages, `ADR-<nnnn>-slug.md` for ADRs, and `B-<nnnn>-slug.md` for backlog items.
+- Numbered files use four digits: spec `0001`, ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated series keeps its width and is never renumbered.
 - All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
 - Template placeholders: `<angle-bracket>` form, one placeholder per value, listed in `template/README.md`.
 - Prose is not hard-wrapped. A paragraph is one line; the editor soft-wraps. Code fences, tables, and YAML keep their line breaks.
 
 ## Citation
 
-Cite a file name plus a section name (`docs/spec/02-roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number.
+Cite a file name plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number.
 
 ## The five discriminations
 
-Normative definitions live in `docs/spec/02-roles.md` ("Five discriminations"); this page does not restate them. What each means for this repository:
+Normative definitions live in `docs/spec/0002-roles.md` ("Five discriminations"); this page does not restate them. What each means for this repository:
 
 - A choice with rejected alternatives goes to `docs/decisions/`, not into a README or a status page.
 - "The spec" is ambiguous here too: always write "work-package spec" or "contract".
@@ -38,4 +38,4 @@ A generated repository copies the full five into its own `docs/conventions.md`; 
 
 ## Budget units
 
-Defined once in `docs/spec/04-rules.md`; not restated here. The short form: volume is measured in non-whitespace characters (`tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.
+Defined once in `docs/spec/0004-rules.md`; not restated here. The short form: volume is measured in non-whitespace characters (`tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.

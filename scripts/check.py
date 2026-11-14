@@ -55,8 +55,8 @@ DOC_ROLE_PATHS = [
     re.compile(r"docs/README\.md"),
     re.compile(r"docs/(charter|structure|conventions|committing|governance|workflow)\.md"),
     re.compile(r"docs/adapters\.md"),
-    re.compile(r"docs/spec/(README|0[1-6]-[a-z0-9-]+)\.md"),
-    re.compile(r"docs/decisions/(README|\d{4}-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/spec/(README|\d{4}-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/decisions/(README|ADR-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/backlog/(README|B-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/contracts/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/operations/(README|[a-z0-9-]+)\.md"),
@@ -191,14 +191,20 @@ def check_index_autonomy(files: list[Path]) -> None:
 def check_naming(files: list[Path]) -> None:
     for path in files:
         name = path.name
+        key = rel(path).replace("\\", "/")
+        route = "/" + key
         if name in ROLE_NAMES:
             continue
-        if re.fullmatch(r"\d{4}-[a-z0-9-]+\.md", name):
-            continue
-        if re.fullmatch(r"B-\d{4}-[a-z0-9-]+\.md", name):
-            continue
-        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*\.md", name):
-            fail(f"file name is not kebab-case: {rel(path)}")
+        if "/docs/spec/" in route:
+            pattern = r"\d{4}-[a-z0-9-]+\.md"
+        elif "/docs/decisions/" in route:
+            pattern = r"ADR-\d{4}-[a-z0-9-]+\.md"
+        elif "/docs/backlog/" in route:
+            pattern = r"B-\d{4}-[a-z0-9-]+\.md"
+        else:
+            pattern = r"[a-z0-9][a-z0-9-]*\.md"
+        if not re.fullmatch(pattern, name):
+            fail(f"file name does not match its role: {key}")
 
 
 def check_role_paths(files: list[Path]) -> None:
@@ -242,12 +248,12 @@ def check_required_files() -> None:
         if not (ROOT / name).exists():
             fail(f"missing required file: {name}")
     for page in (
-        "docs/spec/01-foundations.md",
-        "docs/spec/02-roles.md",
-        "docs/spec/03-flow.md",
-        "docs/spec/04-rules.md",
-        "docs/spec/05-overlays.md",
-        "docs/spec/06-migration.md",
+        "docs/spec/0001-foundations.md",
+        "docs/spec/0002-roles.md",
+        "docs/spec/0003-flow.md",
+        "docs/spec/0004-rules.md",
+        "docs/spec/0005-overlays.md",
+        "docs/spec/0006-migration.md",
     ):
         if not (ROOT / page).exists():
             fail(f"missing spec page: {page}")

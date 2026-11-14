@@ -1,4 +1,4 @@
-# 06 — Migration
+# 0006 — Migration
 
 ## Six execution rules
 

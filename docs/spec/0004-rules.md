@@ -1,8 +1,8 @@
-# 04 — Rules, budgets, retirement
+# 0004 — Rules, budgets, retirement
 
 ## Scope and strength
 
-This table covers cross-role rules. The steps in `03-flow.md` and `06-migration.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
+This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migration.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
 
 ## Rules
 
@@ -19,16 +19,16 @@ This table covers cross-role rules. The steps in `03-flow.md` and `06-migration.
 | R8 | English for repository-maintained markdown | strong | `scripts/check.py` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
 | R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package leaves the tasks index |
 | R10 | Record method, not measurement | weak | Review: a number without a command is a finding |
-| R11 | File naming follows the convention | strong | `scripts/check.py` kebab-case check, with explicit exceptions for ADR and backlog names |
+| R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for spec pages, ADRs, and backlog names |
 
 ## Naming and citation
 
-- Files: `kebab-case.md`; ADRs `NNNN-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
-- Auto-increment IDs use four digits: ADR `0001`, backlog `B-0001`. A new repository starts at `0001`; a migrated series keeps its width and is never renumbered.
+- Files: `kebab-case.md`; the skeleton's spec pages `NNNN-slug.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
+- Numbered files use four digits: spec page `0001`, ADR `ADR-0001`, backlog `B-0001`. Spec ordinals are fixed; record IDs start at `0001`. A migrated series keeps its width and is never renumbered.
 - Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, and YAML keep their line breaks.
-- Cite a file plus a section name (`docs/spec/02-roles.md`, "Five discriminations"). Do not cite section numbers.
+- Cite a file plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers.
 
-Only the kebab-case rule is gated. The others are review criteria until a checker exists.
+Naming is gated by `scripts/check.py`; the other bullets are review criteria.
 
 ## Budget units
 
@@ -37,7 +37,7 @@ Two units, never interchangeable:
 - **Volume** — non-whitespace characters. Measures reading cost.
 - **Entry** — table rows. Measures scannability.
 
-Lines are not a volume unit. The source documents measured between 41 and 167 characters per line; the same budget expressed in lines gives opposite verdicts for documents of similar size. Word count is not a volume unit either: it splits on whitespace, so a Chinese paragraph of 5,891 non-whitespace characters reports about 1,000 words. See `docs/decisions/0003-volume-budget-unit.md`.
+Lines are not a volume unit. The source documents measured between 41 and 167 characters per line; the same budget expressed in lines gives opposite verdicts for documents of similar size. Word count is not a volume unit either: it splits on whitespace, so a Chinese paragraph of 5,891 non-whitespace characters reports about 1,000 words. See `docs/decisions/ADR-0003-volume-budget-unit.md`.
 
 ## Budgets
 

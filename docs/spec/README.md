@@ -4,12 +4,12 @@ Normative specification, `spec v1`. Read in order.
 
 | Page | Question it answers |
 |---|---|
-| [01-foundations.md](01-foundations.md) | What the skeleton is, which principles bind it, which layers exist |
-| [02-roles.md](02-roles.md) | Which document roles exist, where each lives, what may enter and leave |
-| [03-flow.md](03-flow.md) | Which level owns a file, how work moves from idea to closeout |
-| [04-rules.md](04-rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
-| [05-overlays.md](05-overlays.md) | What the language-agnostic core promises, what each overlay supplies |
-| [06-migration.md](06-migration.md) | How an existing repository moves onto this skeleton |
+| [0001-foundations.md](0001-foundations.md) | What the skeleton is, which principles bind it, which layers exist |
+| [0002-roles.md](0002-roles.md) | Which document roles exist, where each lives, what may enter and leave |
+| [0003-flow.md](0003-flow.md) | Which level owns a file, how work moves from idea to closeout |
+| [0004-rules.md](0004-rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
+| [0005-overlays.md](0005-overlays.md) | What the language-agnostic core promises, what each overlay supplies |
+| [0006-migration.md](0006-migration.md) | How an existing repository moves onto this skeleton |
 
 ## Status
 
@@ -17,4 +17,4 @@ Normative specification, `spec v1`. Read in order.
 
 ## Reading rule
 
-A page is normative only for the question in its row. Do not read 04-rules to learn where an ADR lives, and do not read 02-roles to learn how a work package closes. When a page needs another page's definition, it links; it does not restate. Duplication between spec pages is a blocker, not a style issue.
+A page is normative only for the question in its row. Do not read `0004-rules.md` to learn where an ADR lives, and do not read `0002-roles.md` to learn how a work package closes. When a page needs another page's definition, it links; it does not restate. Duplication between spec pages is a blocker, not a style issue.

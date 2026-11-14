@@ -6,7 +6,7 @@
 - **What goes here**: a document whose reader is a maintainer of the skeleton. A document whose reader is a user of a generated repository belongs in `template/`.
 - **What does not go here**: project-specific business documentation, language tutorials, copies of values owned by `template/` or `scripts/`.
 - **Structure**: each topic gets its own file. A new subdirectory gets its own README before it gets a second file. The top-level index lists subdirectories in one row each and does not repeat their file lists.
-- **Naming**: `kebab-case.md`; ADRs use `NNNN-slug.md`; backlog items use `B-<nnnn>-slug.md`.
+- **Naming**: `kebab-case.md`; spec pages use `NNNN-slug.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
 - **Change flow**: a normative change lands in `docs/spec/` first; supporting pages follow in the same commit; `template/` follows in the same commit or in the next one with a pointer left behind.
 
 ## Index

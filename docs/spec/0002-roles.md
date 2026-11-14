@@ -1,4 +1,4 @@
-# 02 — Roles
+# 0002 — Roles
 
 One row per role. `Home` is the single authoritative path; a second path is a tombstone or a legacy path registered in `docs/adapters.md`, never a second home. `Admission` says what may be filed there. `Exit` says what happens when it stops being true. `Authority` says how far its statements bind.
 
@@ -23,7 +23,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 
 | Role | Home | Admission | Exit | Authority |
 |---|---|---|---|---|
-| Decision record (ADR) | `/docs/decisions/NNNN-slug.md` | A choice with rejected alternatives that a future maintainer would otherwise relitigate | Marked `Superseded` and linked; never deleted | Binds the choice until superseded |
+| Decision record (ADR) | `/docs/decisions/ADR-<nnnn>-slug.md` | A choice with rejected alternatives that a future maintainer would otherwise relitigate | Marked `Superseded` and linked; never deleted | Binds the choice until superseded |
 | Backlog item | `/docs/backlog/B-<nnnn>-slug.md` | A deferred idea with a revisit trigger and evidence | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue |
 | Backlog index | `/docs/backlog/README.md` | One row per item, including closed; `Status` is `open`, `active`, or `closed` | — | Binds the queue's order and state |
 | Operating modes | `/docs/workflow.md` | The forge / audit / migrate steps, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes | Binds how an effort is run and closed |

@@ -6,8 +6,8 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 
 | ADR | Decision | Status |
 |---|---|---|
-| [0001](0001-first-decision.md) | First decision | Accepted |
+| [ADR-0001](ADR-0001-first-decision.md) | First decision | Accepted |
 
 ## Format
 
-`NNNN-slug.md`, with `Status`, `Context`, `Decision`, `Options considered`, `Consequences`. At least one rejected alternative and why it lost; an ADR without one is a note, not a decision.
+`ADR-<nnnn>-slug.md`, with `Status`, `Context`, `Decision`, `Options considered`, `Consequences`. At least one rejected alternative and why it lost; an ADR without one is a note, not a decision.
