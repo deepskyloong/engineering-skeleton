@@ -1,23 +1,14 @@
 # Structure and placement
 
-## Tree
+## Levels
 
-```text
-<project-name>/
-├── README.md
-├── AGENTS.md
-├── docs/
-│   ├── README.md
-│   ├── charter.md
-│   ├── structure.md
-│   ├── conventions.md
-│   └── committing.md
-├── src/
-├── tests/
-└── <overlay files>
-```
+A repository has three levels: root, member, module. The root holds the always-read files (`README.md`, `AGENTS.md`, `CONTEXT.md`), the shared `docs/` and `tasks/` trees, and the code boundary. A member is a package or app with its own `README.md`, `src/`, `tests/`, and docs when it has member-specific facts. A module is a boundary inside a member; it earns its own `AGENTS.md` only when it has rules that would be wrong at member level.
 
-A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`; each member carries its own `README.md`, `src/`, `tests/`, and `docs/` when it has member-specific facts. A single-package repository keeps `src/` and `tests/` at the root and does not fake a member level.
+This template starts as a single-package repository: `src/` and `tests/` sit at the root. A monorepo replaces them with `apps/` and `packages/`; a single-package repository does not fake a member level.
+
+## Directory ownership
+
+Each directory's `README.md` lists its direct children. `docs/README.md` lists the docs subdirectories; subdirectory READMEs list their own pages. A parent lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
 
 ## Placement rules
 
@@ -28,6 +19,8 @@ A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`; each membe
 5. Is it deferred? → `docs/backlog/`.
 6. Is it a lesson that changes future behavior? → `docs/knowledge/`.
 7. Is it configuration for a tool? → beside the code it configures.
+
+The chosen home's `README.md` is the membership list. Do not add a row here.
 
 ## Artifact tiers
 

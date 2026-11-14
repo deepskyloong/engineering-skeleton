@@ -10,6 +10,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0002](ADR-0002-manual-skill-invocation.md) | The skill is manually invoked, not description-triggered | Accepted |
 | [ADR-0003](ADR-0003-volume-budget-unit.md) | Volume budgets measure non-whitespace characters, not lines or words | Accepted |
 | [ADR-0004](ADR-0004-numbered-file-prefixes.md) | Numbered files use four digits; citable records carry a type prefix | Accepted |
+| [ADR-0005](ADR-0005-directory-inventories.md) | Directory inventories belong to directory READMEs, not to `structure.md` | Accepted |
 
 ## Format
 

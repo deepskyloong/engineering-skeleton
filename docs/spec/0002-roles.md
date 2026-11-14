@@ -12,7 +12,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Instruction layer | `/AGENTS.md` | Red lines, the gate, the routing table, the anti-regrowth clause | Edited when a rule's strength changes | Binds every turn of every agent and person |
 | Domains doc index | `/docs/README.md` | Governance of the docs tree, one row per subdirectory | — | Binds where a document may be placed |
 | Charter | `/docs/charter.md` | Scope, non-goals, hard constraints, success criteria | A non-goal is removed only by an ADR | Binds scope; a request outside it is refused |
-| Structure | `/docs/structure.md` | The tree, placement rules, artifact tiers | Updated with every layout change | Binds what "where does this go" means |
+| Structure | `/docs/structure.md` | Levels (root / member / module), placement rules, artifact tiers; membership lives in each directory README | Updated when a level or placement rule changes, not when a file is added | Binds what "where does this go" means |
 | Conventions | `/docs/conventions.md` | Language, naming, citation, the five discriminations | Updated when a convention changes | Binds how a document is written |
 | Committing | `/docs/committing.md` | Commit message shape, allowed types and scopes, and deviations from an external base | Rewritten when the convention changes; never deleted | Binds how a commit message is written; a project may add types and scopes, never weaken the header, the why-body, or one logical change |
 | Governance | `/docs/governance.md` | Versioning, change surface, ownership, review, retirement | Updated when the review flow changes | Binds who may change what |

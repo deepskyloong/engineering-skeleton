@@ -12,7 +12,7 @@ The skeleton is language-agnostic in its core and language-specific in its overl
 
 **P2 — Least per-turn tax.** Only `AGENTS.md` is loaded on every turn. Everything else is read on demand, through a routing table. A rule that costs context on every turn must be a red line, a gate, or a pointer — not an explanation.
 
-**P3 — Index autonomy.** Index files state membership, not totals. No "currently 18 documents", no "12 ADRs". The count goes stale and the structure block that carries it rots with it. Each directory's README lists its own children; the parent lists directories, not files.
+**P3 — Index autonomy.** Index files state membership, not totals. No "currently 18 documents", no "12 ADRs". The count goes stale and the structure block that carries it rots with it. Each directory's README lists its own children; the parent lists directories, not files. A structure page that lists files is a second index, not structure.
 
 **P4 — A rule without enforcement is a slogan.** Every rule declares its strength: `strong` (a command or the gate fails), `weak` (a review criterion, checked by a person or an agent), `none` (a recommendation, explicitly labeled). Do not dress a `none` as a `strong`.
 
@@ -62,6 +62,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 
 A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`, each member carrying its own `README.md`, `src/`, `tests/`, `AGENTS.md` (when it earns one), and docs. The root keeps only the four always-read files: `README.md`, `AGENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md` when needed, plus `docs/` and `tasks/`.
 
+The tree is the role set, not a snapshot. Optional roles appear only when their trigger does, and each directory's `README.md` lists its current children.
 
 ## Single-package degeneration
 

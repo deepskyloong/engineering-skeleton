@@ -13,6 +13,6 @@
 | File | Content |
 |---|---|
 | [charter.md](charter.md) | Scope, non-goals, constraints, success criteria |
-| [structure.md](structure.md) | Layout, placement rules, artifact tiers |
+| [structure.md](structure.md) | Levels, placement rules, artifact tiers |
 | [conventions.md](conventions.md) | Language, naming, citation, five discriminators |
 | [committing.md](committing.md) | Commit message shape, types, and deviations from a base |

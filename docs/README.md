@@ -14,7 +14,7 @@
 | File / directory | Content |
 |---|---|
 | [charter.md](charter.md) | Scope, non-goals, hard constraints, success criteria |
-| [structure.md](structure.md) | Repository layout and placement rules |
+| [structure.md](structure.md) | Levels, placement rules, artifact tiers |
 | [conventions.md](conventions.md) | Language, naming, citation, five role discriminations |
 | [committing.md](committing.md) | Commit message convention, based on an external base, plus deviations |
 | [governance.md](governance.md) | Versioning, change surface, review, ownership |

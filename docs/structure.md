@@ -1,33 +1,14 @@
 # Structure and placement
 
-## This repository
+## Levels
 
-```text
-engineering-skeleton/
-├── README.md                  # storefront: what, why, quick start
-├── AGENTS.md                  # rule layer: invariants, gate, routing table
-├── CONTEXT.md                 # vocabulary with avoided synonyms
-├── docs/
-│   ├── README.md              # index + governance of this tree
-│   ├── charter.md             # scope and non-goals
-│   ├── structure.md           # this page
-│   ├── conventions.md         # writing and budget conventions
-│   ├── committing.md          # commit messages, base and deviations
-│   ├── governance.md          # versioning and change surface
-│   ├── workflow.md            # forge / audit / migrate
-│   ├── spec/                  # normative specification
-│   ├── decisions/             # ADRs
-│   ├── backlog/               # deferred items
-│   └── knowledge/             # guides, cases, notes (created on demand)
-├── template/
-│   ├── README.md              # how to copy, placeholder list, copy order
-│   ├── core/                  # files for day one
-│   ├── first-use/             # first ADR, first backlog item, first glossary
-│   ├── effort/                # first work package, workflow, governance
-│   └── overlays/              # typescript/, python/
-└── scripts/
-    └── check.py               # repository gate
-```
+A repository has three levels: root, member, module. The root holds the always-read files (`README.md`, `AGENTS.md`, `CONTEXT.md`), the shared `docs/` and `tasks/` trees, and the code boundary. A member is a package or app with its own `README.md`, `src/`, `tests/`, and docs when it has member-specific facts. A module is a boundary inside a member; it earns its own `AGENTS.md` only under the threshold in `docs/spec/0002-roles.md`.
+
+This repository has no members. Its root is the whole repository: `docs/` holds the specification and supporting policy, `template/` holds copyable starting points, and `scripts/` holds the gate. A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`; a single-package repository keeps them at the root.
+
+## Directory ownership
+
+Each directory's `README.md` lists its direct children. `docs/README.md` lists the docs subdirectories; `docs/spec/README.md`, `docs/decisions/README.md`, and `docs/backlog/README.md` list their own pages. A parent lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
 
 ## The relationship between the three layers
 
@@ -48,6 +29,8 @@ The direction is always spec → template → skill. A template rule that the sp
 5. Is it a deferred idea? → `docs/backlog/`.
 6. Is it a lesson that will change what a maintainer does next time? → `docs/knowledge/`.
 7. Is it executable and run on every change? → `scripts/`.
+
+The chosen home's `README.md` is the membership list. Do not add a row here.
 
 ## Artifact tiers
 
