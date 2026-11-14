@@ -1,0 +1,18 @@
+{
+  "name": "<project-name>",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format:check": "oxfmt --check src tests",
+    "lint": "oxlint src tests",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "build": "tsc -p tsconfig.build.json",
+    "gate": "bun run format:check && bun run lint && bun run typecheck && bun run test && bun run build"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
+    "typescript": "^7.0.2"
+  }
+}

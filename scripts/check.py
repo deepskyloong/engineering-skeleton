@@ -1,0 +1,283 @@
+#!/usr/bin/env python3
+"""Gate for the engineering-skeleton repository.
+
+Checks what can be checked mechanically. Prose quality and cross-file
+semantic duplication are review criteria, not a gate.
+"""
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+FAILURES: list[str] = []
+
+
+def rel(path: Path) -> str:
+    return path.relative_to(ROOT).as_posix()
+
+
+def fail(message: str) -> None:
+    FAILURES.append(message)
+
+
+def markdown_files() -> list[Path]:
+    return [
+        p
+        for p in ROOT.rglob("*.md")
+        if ".git" not in p.parts and "__pycache__" not in p.parts
+    ]
+
+
+def volume(text: str) -> int:
+    return len(re.sub(r"\s", "", text))
+
+
+def table_entries(text: str) -> int:
+    rows = [line for line in text.splitlines() if line.startswith("|")]
+    rows = [line for line in rows if not re.fullmatch(r"\|[\s:|-]+\|", line)]
+    return max(len(rows) - 1, 0)
+
+
+CJK = re.compile(
+    r"[\u3000-\u303f\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]"
+)
+LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+COUNT_NOUN = re.compile(
+    r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+"
+    r"(pages?|documents?|files?|entries|items|adrs?)\b",
+    re.IGNORECASE,
+)
+ROLE_NAMES = {"README.md", "AGENTS.md", "CONTEXT.md", "CONTEXT-MAP.md", "_template.md"}
+
+DOC_ROLE_PATHS = [
+    re.compile(r"docs/README\.md"),
+    re.compile(r"docs/(charter|structure|conventions|committing|governance|workflow)\.md"),
+    re.compile(r"docs/adapters\.md"),
+    re.compile(r"docs/spec/(README|0[1-6]-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/decisions/(README|\d{4}-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/backlog/(README|B-\d{4}-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/contracts/(README|[a-z0-9-]+)\.md"),
+    re.compile(r"docs/operations/(README|[a-z0-9-]+)\.md"),
+    re.compile(r"docs/toolchain/(README|[a-z0-9-]+)\.md"),
+    re.compile(r"docs/knowledge/(README|(guides|cases|notes)/[a-z0-9-]+\.md)"),
+]
+
+EXACT_BUDGETS = {
+    "AGENTS.md": 16_000,
+    "README.md": 8_000,
+    "CONTEXT.md": 6_000,
+    "docs/README.md": 2_000,
+    "docs/committing.md": 4_000,
+    "docs/spec/README.md": 2_000,
+    "docs/decisions/README.md": 2_000,
+    "docs/backlog/README.md": 2_000,
+    "template/README.md": 8_000,
+    "template/core/AGENTS.md": 16_000,
+    "template/core/README.md": 8_000,
+    "template/core/docs/committing.md": 4_000,
+}
+
+ENTRY_LIMITS = {
+    "docs/README.md": 40,
+    "docs/decisions/README.md": 40,
+    "docs/backlog/README.md": 60,
+    "template/README.md": 40,
+}
+
+GENERATED_DIRS = ("dist",)
+
+
+def budget_for(key: str, name: str) -> int | None:
+    if key in EXACT_BUDGETS:
+        return EXACT_BUDGETS[key]
+    if key.startswith("docs/decisions/"):
+        return 6_000
+    if key.startswith("docs/backlog/"):
+        return 4_000
+    if key.startswith("docs/"):
+        return 8_000
+    if key.startswith("template/overlays/"):
+        return 8_000
+    if key.startswith("template/"):
+        return 2_000 if name == "README.md" else 8_000
+    return None
+
+
+def check_role_coverage() -> None:
+    for base in ("docs", "template"):
+        root = ROOT / base
+        if not root.exists():
+            fail(f"missing directory: {base}/")
+            continue
+        for directory in sorted(p for p in root.rglob("*") if p.is_dir()):
+            if not list(directory.glob("*.md")):
+                continue
+            if not (directory / "README.md").exists():
+                fail(f"missing README: {rel(directory)}/")
+
+
+def check_empty_directories() -> None:
+    for directory in sorted(p for p in ROOT.rglob("*") if p.is_dir()):
+        if ".git" in directory.parts or "__pycache__" in directory.parts:
+            continue
+        if not any(directory.iterdir()):
+            fail(f"empty directory: {rel(directory)}/")
+
+
+def check_english(files: list[Path]) -> None:
+    for path in files:
+        if CJK.search(path.read_text(encoding="utf-8")):
+            fail(f"CJK text: {rel(path)}")
+
+
+def check_links(files: list[Path]) -> None:
+    for path in files:
+        for target in LINK.findall(path.read_text(encoding="utf-8")):
+            if target.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            bare = target.split("#")[0].strip()
+            if bare and not (path.parent / bare).exists():
+                fail(f"broken link in {rel(path)}: {target}")
+
+
+def check_budgets(files: list[Path]) -> None:
+    for path in files:
+        limit = budget_for(rel(path), path.name)
+        if limit is None:
+            continue
+        measured = volume(path.read_text(encoding="utf-8"))
+        if measured > limit:
+            fail(f"volume {measured} > {limit}: {rel(path)}")
+
+
+def check_entries(files: list[Path]) -> None:
+    for path in files:
+        key = rel(path)
+        limit = ENTRY_LIMITS.get(key)
+        if limit is None:
+            continue
+        measured = table_entries(path.read_text(encoding="utf-8"))
+        if measured > limit:
+            fail(f"entries {measured} > {limit}: {key}")
+
+
+def check_markers(files: list[Path]) -> None:
+    for path in files:
+        if re.search(r"\b(TODO|TBD|FIXME)\b", path.read_text(encoding="utf-8")):
+            fail(f"unfinished marker: {rel(path)}")
+
+
+INDEX_PAGES = (
+    "docs/README.md",
+    "docs/decisions/README.md",
+    "docs/backlog/README.md",
+    "template/README.md",
+    "docs/structure.md",
+    "template/core/docs/structure.md",
+)
+
+
+def check_index_autonomy(files: list[Path]) -> None:
+    for key in INDEX_PAGES:
+        path = ROOT / key
+        if not path.exists():
+            continue
+        for match in COUNT_NOUN.finditer(path.read_text(encoding="utf-8")):
+            fail(f"count in index or structure page: {key}: {match.group(0)!r}")
+
+
+def check_naming(files: list[Path]) -> None:
+    for path in files:
+        name = path.name
+        if name in ROLE_NAMES:
+            continue
+        if re.fullmatch(r"\d{4}-[a-z0-9-]+\.md", name):
+            continue
+        if re.fullmatch(r"B-\d{4}-[a-z0-9-]+\.md", name):
+            continue
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*\.md", name):
+            fail(f"file name is not kebab-case: {rel(path)}")
+
+
+def check_role_paths(files: list[Path]) -> None:
+    for path in files:
+        key = rel(path)
+        if not key.startswith("docs/"):
+            continue
+        if not any(pattern.fullmatch(key) for pattern in DOC_ROLE_PATHS):
+            fail(f"docs page does not map to a declared role: {key}")
+
+
+def check_generated(files: list[Path]) -> None:
+    for path in files:
+        lines = path.read_text(encoding="utf-8").splitlines()
+        if lines and lines[0].startswith("generated by"):
+            if len(lines) < 2 or lines[1].strip():
+                fail(f"generated header needs a blank second line: {rel(path)}")
+    for name in GENERATED_DIRS:
+        directory = ROOT / name
+        if not directory.exists():
+            continue
+        for path in directory.rglob("*.md"):
+            lines = path.read_text(encoding="utf-8").splitlines()
+            if not lines or not lines[0].startswith("generated by"):
+                fail(f"generated file lacks header: {rel(path)}")
+
+
+def check_version() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    spec = (ROOT / "docs/spec/README.md").read_text(encoding="utf-8")
+    found = [re.search(r"spec v(\d+)", text) for text in (readme, spec)]
+    if not all(found):
+        fail("spec version missing: README.md and docs/spec/README.md must state 'spec vN'")
+        return
+    if found[0].group(1) != found[1].group(1):
+        fail(f"spec version mismatch: README v{found[0].group(1)} vs spec v{found[1].group(1)}")
+
+
+def check_required_files() -> None:
+    for name in ("README.md", "AGENTS.md", "CONTEXT.md", "docs/workflow.md"):
+        if not (ROOT / name).exists():
+            fail(f"missing required file: {name}")
+    for page in (
+        "docs/spec/01-foundations.md",
+        "docs/spec/02-roles.md",
+        "docs/spec/03-flow.md",
+        "docs/spec/04-rules.md",
+        "docs/spec/05-overlays.md",
+        "docs/spec/06-migration.md",
+    ):
+        if not (ROOT / page).exists():
+            fail(f"missing spec page: {page}")
+
+
+def main() -> int:
+    files = markdown_files()
+    check_required_files()
+    check_role_coverage()
+    check_empty_directories()
+    check_english(files)
+    check_links(files)
+    check_budgets(files)
+    check_entries(files)
+    check_markers(files)
+    check_index_autonomy(files)
+    check_naming(files)
+    check_role_paths(files)
+    check_generated(files)
+    check_version()
+
+    if FAILURES:
+        print(f"FAIL — {len(FAILURES)} finding(s) across {len(files)} markdown files\n")
+        for item in FAILURES:
+            print(f"  - {item}")
+        return 1
+
+    print(f"PASS — {len(files)} markdown files, roles, links, budgets, entries, naming, version")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

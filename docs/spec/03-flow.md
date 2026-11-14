@@ -1,0 +1,81 @@
+# 03 — Flow: levels, work packages, closeout
+
+## Three levels
+
+A file lives at the lowest level that owns its fact. Shared facts climb; a fact used by one module never climbs.
+
+| Level | Owns | Always-read files | Never owns |
+|---|---|---|---|
+| Root | Scope, cross-member rules, the gate, the work-package queue, shared vocabulary | `README.md`, `AGENTS.md`, `CONTEXT.md` (when shared terms exist) | A rule that only one member needs |
+| Member | Its own charter-level facts, its own contracts, its own vocabulary, its own toolchain deviations | `README.md`; `AGENTS.md` only when it differs from the root's | A rule that only one module needs |
+| Module | Its own boundary rule, its own README when the module is a real abstraction | `README.md` (optional); `AGENTS.md` only after the deferred threshold is met | Anything two modules share |
+
+`CONTEXT-MAP.md` exists only when there are member-level vocabularies. It lists paths and stores no definitions. A term defined in two places is a bug, even when the two definitions agree.
+
+## Information flow
+
+```text
+idea
+  └─ docs/backlog/B-<nnnn>-<slug>.md        (deferred, with a revisit trigger)
+       └─ tasks/<slug>/spec.md            (what this effort will do; track field)
+            ├─ plan.md                    (how, with risks and stop conditions)
+            ├─ todo.md                    (steps, each with a done-when)
+            └─ summary.md                 (what happened; 3 sections)
+                 ├─ docs/contracts/<topic>.md   (a fact consumers may rely on)
+                 ├─ docs/decisions/NNNN-*.md   (a choice with rejected alternatives)
+                 ├─ docs/knowledge/guides|cases|notes
+                 └─ (nothing)                 (most efforts end here)
+```
+
+Most work packages produce only `summary.md` and disappear. That is the normal case, not a failure. A skeleton that forces every effort to yield an ADR produces ADRs nobody reads.
+
+## t0 — creating a work package
+
+Create `tasks/<slug>/` from `_template.md`, split it into four files, then delete `_template.md`; it is a scaffold, not a role.
+
+Four fields before any work starts:
+
+1. **Goal**: one sentence, testable.
+2. **Non-goal**: at least one thing this effort will not do. A work package without a non-goal expands until it stalls.
+3. **Acceptance**: how a reader will know it is done, in one command or one observable state.
+4. **`track:`**: which workflow suite this effort runs on, as a field in `spec.md`. Values are free-form (`default`, `spec-flow`, `superpowers`, `none`), but the field is mandatory. The track is never a directory root: a repository does not get a `docs/superpowers/` just because one effort used that suite.
+
+If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md` before work starts.
+
+## Runtime — the three permitted compromises
+
+An effort may deviate from its plan in exactly three ways, each recorded in `summary.md`:
+
+| Compromise | Allowed when | Record |
+|---|---|---|
+| Scope reduction | The acceptance criterion is still met | Which goal was dropped and where it moved (backlog or nothing) |
+| Track switch | The chosen suite cannot express the work | Old track, new track, why |
+| Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
+
+Anything else — a changed goal, a changed acceptance criterion — is a new work package, not a compromise.
+
+## Closeout — five steps, in order
+
+1. **Write `summary.md`.** Three sections: what was done, what was not, what a future maintainer must know. ≤3,000 non-whitespace characters. A summary that restates the diff is noise.
+2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
+3. **Delete what nothing cites.** `tasks/<slug>/` is deleted unless a frozen record cites it. Check with `rg -l '<slug>'`; a non-empty result means keep and register the pointer, not keep "just in case".
+4. **Update the indexes.** Remove the row from `tasks/README.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
+5. **Leave a tombstone if a frozen record cites the old path.** ≤3 lines, exactly one link, no explanation. A tombstone is a forwarding stub, not a summary. If no frozen record cites the path, delete it and stop.
+
+## Acceptance checklist
+
+Run before declaring a work package closed:
+
+- [ ] `summary.md` exists, is inside budget, and names what was not done.
+- [ ] Every contract, ADR, or knowledge file produced by the effort has a home and a link from its directory README.
+- [ ] `rg -l '<slug>'` was run; every surviving pointer is explained.
+- [ ] The work package row is gone from `tasks/README.md`.
+- [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
+- [ ] The gate is green.
+- [ ] No new optional role was created without its trigger.
+
+## Adapter closeout
+
+A third-party suite that writes into the repository is not migrated; it is registered. `docs/adapters.md` carries one row per suite: name, hard-coded output path, what reads it, the compatibility whitelist, and the closeout route (which step in the closeout sequence relocates its output). The suite keeps writing where it writes; the skeleton stops pretending that path is its own.
+
+A legacy path that survives migration follows the same rule: it appears in `docs/adapters.md`, and it is removed only when its last consumer is gone. Forcing a foreign tool to accept a new path costs more than one line in a registry.

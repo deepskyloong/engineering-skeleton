@@ -1,0 +1,12 @@
+{
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "typescript/no-explicit-any": "warn",
+    "typescript/consistent-type-imports": "error",
+    "unicorn/prefer-node-protocol": "error"
+  }
+}

@@ -1,0 +1,111 @@
+# 04 — Rules, budgets, retirement
+
+## Scope and strength
+
+This table covers cross-role rules. The steps in `03-flow.md` and `06-migration.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
+
+## Rules
+
+| # | Rule | Strength | Enforcement |
+|---|---|---|---|
+| R1 | One fact, one home | weak | Review: the same rule stated twice is a finding. Semantic duplication cannot be grepped reliably. |
+| R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.py` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
+| R3 | Change surface: spec → template → skill in the same or next commit | weak | Review against the `AGENTS.md` table |
+| R4a | Volume budgets are measured in non-whitespace characters | strong | `scripts/check.py` measures every budgeted file |
+| R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the four index tables that carry a limit |
+| R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.py` role-path map; an unmapped path fails |
+| R6 | No empty directories | strong | `scripts/check.py` fails on a directory with no files |
+| R7 | Files under a generated path carry the generated header | strong | `scripts/check.py` scans `dist/` and any file whose first line self-declares generated |
+| R8 | English for repository-maintained markdown | strong | `scripts/check.py` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
+| R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package leaves the tasks index |
+| R10 | Record method, not measurement | weak | Review: a number without a command is a finding |
+| R11 | File naming follows the convention | strong | `scripts/check.py` kebab-case check, with explicit exceptions for ADR and backlog names |
+
+## Naming and citation
+
+- Files: `kebab-case.md`; ADRs `NNNN-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
+- Auto-increment IDs use four digits: ADR `0001`, backlog `B-0001`. A new repository starts at `0001`; a migrated series keeps its width and is never renumbered.
+- Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, and YAML keep their line breaks.
+- Cite a file plus a section name (`docs/spec/02-roles.md`, "Five discriminations"). Do not cite section numbers.
+
+Only the kebab-case rule is gated. The others are review criteria until a checker exists.
+
+## Budget units
+
+Two units, never interchangeable:
+
+- **Volume** — non-whitespace characters. Measures reading cost.
+- **Entry** — table rows. Measures scannability.
+
+Lines are not a volume unit. The source documents measured between 41 and 167 characters per line; the same budget expressed in lines gives opposite verdicts for documents of similar size. Word count is not a volume unit either: it splits on whitespace, so a Chinese paragraph of 5,891 non-whitespace characters reports about 1,000 words. See `docs/decisions/0003-volume-budget-unit.md`.
+
+## Budgets
+
+| Document | Volume (non-ws chars) | Entry |
+|---|---|---|
+| Root `AGENTS.md` | ≤16,000 | routing table ≤12 rows |
+| Root `README.md` | ≤8,000 | install ≤3 steps |
+| Any `docs/` page | ≤8,000 | — |
+| ADR | ≤6,000 | — |
+| Backlog item | ≤4,000 | — |
+| `docs/workflow.md` | ≤8,000 | — |
+| `docs/committing.md` | ≤4,000 | — |
+| Member `README.md` | ≤8,000 | — |
+| Member `AGENTS.md` | ≤8,000 | — |
+| Module `AGENTS.md` (deferred) | ≤4,000 | — |
+| Directory `README.md` (index) | ≤2,000 | ≤40 rows |
+| Backlog index | ≤2,000 | ≤60 rows |
+| Overlay `README.md` (a guide, not an index) | ≤8,000 | — |
+| `operations/status.md` | ≤8,000 EN / ≤4,000 ZH | — |
+| `CONTEXT.md` | ≤6,000 | — |
+| `tasks/<slug>/summary.md` | ≤3,000 | 3 sections |
+| Tombstone | ≤400 | exactly 1 link |
+
+The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
+
+A directory `README.md` is an index and gets 2,000; an overlay `README.md` is a guide and gets 8,000. The path decides, not the file name.
+
+A `docs/committing.md` that adopts an external base is short by design: the base carries the rules, the page carries only deviations. The 4,000 limit exists so it cannot grow into a second copy of the base.
+
+## Measuring
+
+PowerShell:
+
+```powershell
+$p = 'AGENTS.md'
+$t = [IO.File]::ReadAllText((Resolve-Path -LiteralPath $p))
+($t -replace '\s', '').Length                      # volume
+(Get-Content -LiteralPath $p).Count                # lines, for entry budgets only
+```
+
+Bash:
+
+```bash
+tr -d '[:space:]' < AGENTS.md | wc -m             # volume
+wc -l < AGENTS.md                                   # lines, for entry budgets only
+```
+
+`(Get-Content).Count` counts physical lines, including blank ones; `Measure-Object -Line` does not. Neither is a volume unit.
+
+## Retirement and the four exceptions
+
+Default: an artifact that stops being true is deleted. `git log` keeps it, and deleting is the only way a reader can tell what is current.
+
+Four exceptions:
+
+1. **ADR** — never deleted. Marked `Superseded` and linked to its replacement. A decision's rejected alternatives are the record's value.
+2. **Closed backlog item** — the file and its index row stay; the row's status becomes `closed`. Its `Evidence` may be cited by a later item.
+3. **Superseded contract** — kept only while a consumer still cites it, then deleted.
+4. **Tombstone** — kept only while a frozen record cites the old path. ≤3 lines, one link, no explanation.
+
+An artifact that is "kept just in case" is not an exception; it is the start of a second home.
+
+## Generated artifacts
+
+A file under `dist/` — or any file whose first line self-declares — carries:
+
+```text
+generated by <command> — do not edit
+```
+
+as its first line, followed by a blank line. The gate regenerates it and fails when the content differs. An unmarked generated file is treated as authoritative and will be edited by hand; that is the failure the header prevents. `dist/` is the only generated directory in the skeleton today; a repository that adds another must add it to the gate's list.

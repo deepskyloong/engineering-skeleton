@@ -1,0 +1,86 @@
+# 01 — Foundations
+
+## What the skeleton is
+
+A repository skeleton is not a directory template. It is a set of **roles** — one kind of document, one home, one admission rule, one exit rule, one authority range — plus the rules that keep the roles from duplicating each other. The tree is a consequence of the roles; copying the tree without the roles produces files nobody can place six months later.
+
+The skeleton is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
+
+## Six principles
+
+**P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this skeleton exists to prevent.
+
+**P2 — Least per-turn tax.** Only `AGENTS.md` is loaded on every turn. Everything else is read on demand, through a routing table. A rule that costs context on every turn must be a red line, a gate, or a pointer — not an explanation.
+
+**P3 — Index autonomy.** Index files state membership, not totals. No "currently 18 documents", no "12 ADRs". The count goes stale and the structure block that carries it rots with it. Each directory's README lists its own children; the parent lists directories, not files.
+
+**P4 — A rule without enforcement is a slogan.** Every rule declares its strength: `strong` (a command or the gate fails), `weak` (a review criterion, checked by a person or an agent), `none` (a recommendation, explicitly labeled). Do not dress a `none` as a `strong`.
+
+**P5 — Structure over convention.** A path beats a promise. If a document must exist, it has a home; if it has no home, it does not exist and nobody will maintain it. "Please remember to write an ADR" is not a structure.
+
+**P6 — The spec is normative; everything downstream copies it.** Template and skill are derivatives. When they drift, the spec wins and the derivative is fixed. When the spec is wrong, the spec changes first and the derivative follows in the same or the next commit.
+
+## Four layers
+
+| Layer | Contains | Rule |
+|---|---|---|
+| `core` | Language-agnostic roles, rules, flow, budgets | Every repository has it. No exceptions. |
+| `overlay` | Toolchain, gate command, code layout, dependency policy, writing rules for one language | Exactly one overlay is active. Two overlays in one repository is a monorepo with two languages, which is a special case, not the default. |
+| `adapter` | A registry of third-party suites whose output paths are hard-coded, plus a compatibility whitelist | Never a physical directory. It is a table in `docs/adapters.md`. |
+| `optional` | Roles that appear only under a trigger: `docs/contracts/`, `docs/toolchain/`, module-level `AGENTS.md` | Absent by default. An absent optional role is correct, not incomplete. |
+
+The distinction between `adapter` and `optional` matters. `optional` is a role you may add; `adapter` is a foreign system you cannot move and must therefore register.
+
+## Canonical tree
+
+```text
+<repo>/
+├── README.md                  # storefront
+├── AGENTS.md                  # instruction layer: red lines, gate, routing
+├── CONTEXT.md                 # vocabulary (when shared terms exist)
+├── docs/
+│   ├── README.md              # index + governance of the docs tree
+│   ├── charter.md             # scope, non-goals
+│   ├── structure.md           # layout, placement rules, artifact tiers
+│   ├── conventions.md         # language, naming, citation, discriminations
+│   ├── committing.md          # commit messages and project deviations
+│   ├── governance.md          # versioning, change surface, ownership
+│   ├── adapters.md            # adapter registry (when a foreign suite exists)
+│   ├── contracts/             # durable contracts (optional)
+│   ├── operations/            # runbooks, status (optional)
+│   ├── decisions/             # ADRs (from the first real decision)
+│   ├── backlog/               # B-<nnnn> items (from the first deferred item)
+│   ├── toolchain/             # reproducible traps only (optional)
+│   └── knowledge/             # guides / cases / notes (optional)
+├── tasks/
+│   ├── README.md              # work package governance + index
+│   └── <slug>/                # spec.md, plan.md, todo.md, summary.md
+├── src/                       # source, single-package form
+├── tests/                     # tests, single-package form
+└── <overlay files>            # package.json, pyproject.toml, gate config
+```
+
+A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`, each member carrying its own `README.md`, `src/`, `tests/`, `AGENTS.md` (when it earns one), and docs. The root keeps only the four always-read files: `README.md`, `AGENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md` when needed, plus `docs/` and `tasks/`.
+
+## Single-package degeneration
+
+A repository with one package must not fake a monorepo. Apply all four:
+
+1. Remove `apps/` and `packages/`; `src/` and `tests/` sit at the root.
+2. Remove member-level `README.md`, `AGENTS.md`, and `docs/`; the root files absorb them.
+3. Keep the root `docs/` roles unchanged. The degeneration removes a level, not a role.
+4. The overlay's code-boundary rules survive; the member boundary rules do not apply.
+
+Degeneration is a form of the skeleton, not an exception to it. A repository that is one package today and three members tomorrow promotes by adding the level back; it does not rewrite the roles.
+
+## When a role is admitted
+
+A role enters a repository only when all five hold:
+
+1. A real document needs it — not a hypothetical future one.
+2. Its home is chosen and does not collide with an existing role.
+3. Its admission rule is written: what may be filed there.
+4. Its exit rule is written: what happens when it stops being true.
+5. Its budget is stated with a unit and a command.
+
+If any of the five is missing, the role does not exist yet. Write it down in `docs/backlog/` instead, with the trigger that would admit it.

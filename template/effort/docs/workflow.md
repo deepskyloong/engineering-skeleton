@@ -1,0 +1,44 @@
+# Workflow
+
+## Tracks
+
+A work package records `track:` in its `spec.md`: which workflow suite the effort runs on (`default`, `spec-flow`, `superpowers`, `none`). The field is mandatory; the value is free-form. The track is never a directory root: a repository does not get a `docs/<suite>/` because one effort used that suite.
+
+## t0 — create a work package
+
+Create `tasks/<slug>/` with four files from `_template.md`, and fill in four fields before any work:
+
+1. **Goal** — one sentence, testable.
+2. **Non-goal** — at least one thing this effort will not do.
+3. **Acceptance** — one command or one observable state.
+4. **`track:`** — see above.
+
+Add a row to `tasks/README.md`. If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md`. Slug rules: kebab-case, describes the outcome, not the ticket number.
+
+## Runtime — three permitted compromises
+
+| Compromise | Allowed when | Record in `summary.md` |
+|---|---|---|
+| Scope reduction | The acceptance criterion is still met | Which goal dropped, where it moved |
+| Track switch | The chosen suite cannot express the work | Old track, new track, why |
+| Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
+
+Anything else — a changed goal or acceptance criterion — is a new work package.
+
+## Closeout — five steps
+
+1. Write `summary.md` (≤3,000 non-ws chars): what was done, what was not, what a future maintainer must know.
+2. Relocate what outlives the effort: contract → `docs/contracts/`; decision → `docs/decisions/`; method → `docs/knowledge/guides/`; incident → `docs/knowledge/cases/`.
+3. Delete what nothing cites: `rg -l '<slug>'` must be empty, or every survivor is explained.
+4. Remove the row from `tasks/README.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
+5. Leave a tombstone only when a frozen record cites the old path (≤3 lines, one link).
+
+## Acceptance checklist
+
+- [ ] `summary.md` exists, inside budget, names what was not done.
+- [ ] Every contract, ADR, or knowledge file has a home and a link from its directory README.
+- [ ] `rg -l '<slug>'` was run; every survivor is explained.
+- [ ] The work package row is gone from `tasks/README.md`.
+- [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
+- [ ] The gate is green.
+- [ ] No optional role was created without its trigger.
