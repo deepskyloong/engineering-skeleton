@@ -9,7 +9,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Role | Home | Admission | Exit | Authority |
 |---|---|---|---|---|
 | Storefront README | `/README.md` | What the project is in one sentence, how to install, the shortest command that proves it runs, where to read next | Rewritten when the install path changes | Binds a newcomer's first ten minutes; makes no rules |
-| Instruction layer | `/AGENTS.md` | Red lines, the gate, the routing table, the anti-regrowth clause | Edited when a rule's strength changes | Binds every turn of every agent and person |
+| Instruction layer | `/AGENTS.md` | Red lines, exact commands, the gate, the routing table, the anti-regrowth clause | Edited when a rule's strength changes | Binds every turn of every agent and person |
 | Domains doc index | `/docs/README.md` | Governance of the docs tree, one row per subdirectory | — | Binds where a document may be placed |
 | Charter | `/docs/charter.md` | Scope, non-goals, hard constraints, success criteria | A non-goal is removed only by an ADR | Binds scope; a request outside it is refused |
 | Structure | `/docs/structure.md` | Levels (root / member / module), placement rules, artifact tiers; membership lives in each directory README | Updated when a level or placement rule changes, not when a file is added | Binds what "where does this go" means |

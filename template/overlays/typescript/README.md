@@ -13,8 +13,19 @@ Applies to a repository whose runtime is Bun. Copy every file in this directory 
 | `.oxlintrc.json` | Lint rules |
 | `.oxfmtrc.json` | Format rules |
 | `.gitignore` | Runtime and regenerable paths |
+| `.github/workflows/gate.yml` | CI forwarding: frozen install, then the local gate |
 | `src/index.ts` | Seed module; replace or delete |
 | `tests/index.test.ts` | Seed test; replace or delete |
+
+## Commands
+
+| Action | Command |
+|---|---|
+| Install | `bun install` |
+| Gate | `bun run gate` |
+| Focused test | `bun test <test-path>` |
+
+`bun install` creates `bun.lock`; commit it before the first CI run. The CI job uses `--frozen-lockfile` and fails without a committed lockfile.
 
 ## C1 — gate
 
@@ -30,7 +41,7 @@ A commit message cites `bun run gate`, never a single stage.
 
 ## C2 — CI
 
-`bun install --frozen-lockfile`, then `bun run gate`. CI adds no stage the local gate does not run.
+`.github/workflows/gate.yml` runs `bun install --frozen-lockfile`, then `bun run gate`. CI adds no stage the local gate does not run. The frozen install needs `bun.lock` committed; a fresh copy becomes CI-ready after the first `bun install` and a commit that includes the lockfile.
 
 ## C3 — layout
 
@@ -64,6 +75,7 @@ A commit message cites `bun run gate`, never a single stage.
 ## C7 — traps
 
 - **`bun run` is not `npm run`.** A script named `check` is not special. The gate is named `gate` and cited explicitly.
+- **A frozen install needs a committed lockfile.** `bun install --frozen-lockfile` fails on a fresh template until `bun.lock` is committed; run `bun install` once and commit the lockfile.
 - **`oxlint` without a path walks `node_modules`.** Always pass `src tests`; the same applies to `oxfmt`.
 - **Tests are not typechecked.** `tsconfig.json` includes `src` only because the test runner provides `bun:test` at runtime without shipping types. Add `@types/bun` and include `tests` when test type errors start to matter.
 - **Path aliases need a per-package `paths` entry.** A root alias does not cross a workspace boundary by itself.
@@ -75,4 +87,4 @@ Verified 2026-11-14 (for-the-record): bun 1.4.3, oxlint 1.93.0, oxfmt 0.78.0, ty
 
 ## C8 — upgrade
 
-Bump the three dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. Do not bump the lockfile without running the gate in the same commit.
+Bump the three dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. When the runtime version changes, update `bun-version` in `.github/workflows/gate.yml` in the same commit. Do not bump the lockfile without running the gate in the same commit.

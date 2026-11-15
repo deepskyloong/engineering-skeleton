@@ -14,7 +14,7 @@ Deferred items only. An item here binds nothing; it records a decision that has 
 | ID | Item | Status | Revisit when |
 |---|---|---|---|
 | [B-0001](B-0001-toolchain-role.md) | Whether `docs/toolchain/` survives as a role | open | A third trap file is proposed, or two traps stop reproducing |
-| [B-0002](B-0002-portable-skeleton-check.md) | A machine-checkable checker for target repositories | open | The second repository is forged, or the first migration completes |
+| [B-0002](B-0002-portable-skeleton-check.md) | A machine-checkable checker for target repositories | open | The first repository is forged, or the first migration reaches its overlay step |
 | [B-0003](B-0003-module-agents-threshold.md) | The measurable threshold for module-level `AGENTS.md` | open | gearset migration supplies a six-module member as a sample |
 | [B-0004](B-0004-overlay-config-validation.md) | Validate the overlay configs against a real repository | open | The first repository is forged, or the first migration reaches its overlay step |
 | [B-0005](B-0005-rollout-five-repositories.md) | Roll the skeleton out to the five source repositories | open | The first migration completes, or a second repository is ready to adopt |

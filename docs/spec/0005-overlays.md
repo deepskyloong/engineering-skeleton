@@ -7,7 +7,7 @@ The core is language-agnostic. Everything a language decides lives in one overla
 | Contract | What the overlay answers |
 |---|---|
 | C1 gate | One local command that runs format, lint, typecheck, test, and build in that order; the only command a commit message may cite |
-| C2 CI forwarding | CI calls the same gate with the same options; CI adds no rule the local gate does not enforce |
+| C2 CI forwarding | A workflow file (`.github/workflows/gate.yml`) calls the same gate with the same options; CI adds no rule the local gate does not enforce |
 | C3 Code layout and boundaries | Where source, tests, and fixtures live; which imports cross which boundary; what the single-package form looks like |
 | C4 Dependency and lockfile policy | The package manager, the lockfile, the frozen-install command, the rule for adding or upgrading a dependency |
 | C5 Artifact tiers | What is authoritative, regenerable, and runtime; what is committed |
@@ -23,7 +23,7 @@ An overlay that states a core rule is a bug. An overlay that omits a contract is
 |---|---|
 | Runtime and package manager | `bun`; no `npm`, no `pnpm`, no `yarn` |
 | C1 gate | `bun run gate` = format check → `oxlint` → `tsc --noEmit` → `bun test` → build |
-| C2 CI | `bun install --frozen-lockfile` then the same gate command |
+| C2 CI | `.github/workflows/gate.yml`: `bun install --frozen-lockfile` then the same gate command; the lockfile is committed before CI runs |
 | C3 layout | `src/<module>/` per package; `packages/*` for libraries, `apps/*` for entry points; single-package form is root `src/` |
 | C4 dependencies | `bun.lock`; `bun add` / `bun remove`; no caret ranges for internal packages, workspace protocol instead |
 | C5 tiers | `src/` authoritative, `dist/` regenerable, `.turbo` / caches runtime |
@@ -37,7 +37,7 @@ An overlay that states a core rule is a bug. An overlay that omits a contract is
 |---|---|
 | Runtime and package manager | `uv`; Python version pinned in `.python-version` |
 | C1 gate | `uv run python tools/gate.py` = `ruff format --check` → `ruff check` → `pyright` (when installed) → `pytest` → build (when a `[build-system]` exists) |
-| C2 CI | `uv sync --frozen` then the same gate command |
+| C2 CI | `.github/workflows/gate.yml`: `uv sync --frozen` then the same gate command; the lockfile is committed before CI runs |
 | C3 layout | `src/<package>/`; tests in `tests/`; workspace members under `packages/*`, each with its own `pyproject.toml` |
 | C4 dependencies | `uv.lock`; `uv add` / `uv remove`; no unpinned direct dependencies in a library |
 | C5 tiers | `src/` authoritative, `dist/` regenerable, `.venv/` and `__pycache__/` runtime |

@@ -47,7 +47,7 @@ It checks: every `docs/` and `template/` directory that contains markdown has a 
 | Change a level or a placement rule | `docs/spec/0002-roles.md`, `docs/structure.md`, `template/core/docs/structure.md` |
 | Change a budget or its unit | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `scripts/check.py` budget tables |
 | Add / remove an overlay | `docs/spec/0005-overlays.md`, `template/overlays/`, the compatibility table |
-| Change a gate command | `docs/spec/0005-overlays.md`, this file, every overlay README |
+| Change a gate command | `docs/spec/0005-overlays.md`, this file, every overlay README, `.github/workflows/gate.yml` |
 | Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |
 | Change a placeholder value or notation | `template/README.md` |
 | Change naming or citation rules | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.py` naming patterns |

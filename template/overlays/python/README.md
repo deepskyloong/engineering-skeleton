@@ -10,8 +10,19 @@ Applies to a repository managed with `uv`. Copy every file in this directory **e
 | `.python-version` | Interpreter pin read by `uv` |
 | `.gitignore` | Runtime, regenerable, and cache paths |
 | `tools/gate.py` | The gate runner |
+| `.github/workflows/gate.yml` | CI forwarding: frozen install, then the local gate |
 | `src/example_package/__init__.py` | Seed module; rename the directory and replace the code |
 | `tests/test_smoke.py` | Seed test; replace or delete |
+
+## Commands
+
+| Action | Command |
+|---|---|
+| Install | `uv sync` |
+| Gate | `uv run python tools/gate.py` |
+| Focused test | `uv run pytest <test-path> -q` |
+
+`uv sync` creates `uv.lock`; commit it before the first CI run. The CI job uses `uv sync --frozen` and fails without a committed lockfile.
 
 ## C1 — gate
 
@@ -27,7 +38,7 @@ A commit message cites `uv run python tools/gate.py`, never `pytest` alone.
 
 ## C2 — CI
 
-`uv sync --frozen`, then `uv run python tools/gate.py`. CI adds no stage the local gate does not run.
+`.github/workflows/gate.yml` runs `uv sync --frozen`, then `uv run python tools/gate.py`. CI adds no stage the local gate does not run. The frozen install needs `uv.lock` committed; a fresh copy becomes CI-ready after the first `uv sync` and a commit that includes the lockfile.
 
 ## C3 — layout
 
@@ -59,6 +70,7 @@ A commit message cites `uv run python tools/gate.py`, never `pytest` alone.
 ## C7 — traps
 
 - **A stale `.venv` shadows the resolved interpreter.** `uv sync` recreates it; `uv run --no-sync` does not. When an import works in one member and fails in another, delete `.venv` and sync again.
+- **A frozen install needs a committed lockfile.** `uv sync --frozen` fails on a fresh template until `uv.lock` is committed; run `uv sync` once and commit the lockfile.
 - **`uv run` inside a member uses the workspace lock.** A member that pins a version the workspace excludes fails only at run time.
 - **`pytest` exits 5 when it collects no tests.** The template ships one seed test for this reason; deleting it without replacing it turns the gate red.
 - **`python -m build` on a workspace root fails.** The gate runs the build stage only when a `[build-system]` exists; a workspace root normally has none.
@@ -69,4 +81,4 @@ Verified 2026-11-14 (for-the-record): uv 0.13.1, Python 3.15.0, ruff 0.17.5, pyt
 
 ## C8 — upgrade
 
-Raise `.python-version`, run `uv sync` to refresh `uv.lock`, run the gate, and record any behavior change as a trap above. Raise `target-version` only when the ruff release supports the new interpreter; a config pinned below the runtime hides syntax the runtime accepts.
+Raise `.python-version`, run `uv sync` to refresh `uv.lock`, run the gate, and record any behavior change as a trap above. When the `uv` version changes, update `version` in `.github/workflows/gate.yml` in the same commit. Raise `target-version` only when the ruff release supports the new interpreter; a config pinned below the runtime hides syntax the runtime accepts.

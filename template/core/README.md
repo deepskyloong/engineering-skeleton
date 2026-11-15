@@ -4,7 +4,13 @@
 
 ## Install
 
-Install with the overlay's package manager, then run the gate:
+Install with the overlay's package manager:
+
+```bash
+<install-command>
+```
+
+Then run the gate:
 
 ```bash
 <gate-command>
