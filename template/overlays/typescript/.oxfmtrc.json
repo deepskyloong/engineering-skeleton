@@ -11,8 +11,6 @@
   "ignorePatterns": [
     "**/.git/**",
     "**/node_modules/**",
-    "**/vendor/**",
-    "**/.venv/**",
     "**/.cache/**",
     "**/dist/**",
     "**/build/**",
