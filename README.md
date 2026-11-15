@@ -23,6 +23,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `template/`                                  | Copyable starting points: day-one files, first-effort files, language overlays.            |
 | `scripts/check.py`                           | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
 | `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring.                      |
+| `.github/workflows/gate.yml`                 | CI forwarding: runs `bun run gate` on push and pull request.                               |
 
 ## Quick start
 
