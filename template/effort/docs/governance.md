@@ -4,13 +4,13 @@
 
 A change that leaves a downstream file stale is incomplete, even if the changed file is correct.
 
-| Change | Also update |
-|---|---|
-| Add, rename, or remove a role | `docs/structure.md`, `AGENTS.md`'s routing table, the matching directory README |
-| Change a budget or its unit | `docs/conventions.md`, the header that states the budget |
-| Change the gate command | `docs/conventions.md`, `AGENTS.md`, every reference, and `.github/workflows/gate.yml` |
-| Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |
-| Change a template or generated file | regenerate it; the gate fails when it differs |
+| Change                              | Also update                                                                           |
+| ----------------------------------- | ------------------------------------------------------------------------------------- |
+| Add, rename, or remove a role       | `docs/structure.md`, `AGENTS.md`'s routing table, the matching directory README       |
+| Change a budget or its unit         | `docs/conventions.md`, the header that states the budget                              |
+| Change the gate command             | `docs/conventions.md`, `AGENTS.md`, every reference, and `.github/workflows/gate.yml` |
+| Move or rename a directory          | every pointer, proven by `rg -l '<old-path>'` returning nothing                       |
+| Change a template or generated file | regenerate it; the gate fails when it differs                                         |
 
 ## Who decides
 

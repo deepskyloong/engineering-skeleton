@@ -17,11 +17,11 @@ Add a row to `tasks/README.md`. If this effort answers a backlog item, set that 
 
 ## Runtime — three permitted compromises
 
-| Compromise | Allowed when | Record in `summary.md` |
-|---|---|---|
-| Scope reduction | The acceptance criterion is still met | Which goal dropped, where it moved |
-| Track switch | The chosen suite cannot express the work | Old track, new track, why |
-| Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
+| Compromise        | Allowed when                             | Record in `summary.md`             |
+| ----------------- | ---------------------------------------- | ---------------------------------- |
+| Scope reduction   | The acceptance criterion is still met    | Which goal dropped, where it moved |
+| Track switch      | The chosen suite cannot express the work | Old track, new track, why          |
+| Artifact deferral | A contract or ADR is not yet knowable    | The trigger that will produce it   |
 
 Anything else — a changed goal or acceptance criterion — is a new work package.
 

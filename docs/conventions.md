@@ -39,4 +39,4 @@ A generated repository copies the full five into its own `docs/conventions.md`; 
 
 ## Budget units
 
-Defined once in `docs/spec/0004-rules.md`; not restated here. The short form: volume is measured in non-whitespace characters (`tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.
+Defined once in `docs/spec/0004-rules.md`; not restated here. The short form: volume is measured in non-whitespace characters excluding table delimiter rows (`grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.

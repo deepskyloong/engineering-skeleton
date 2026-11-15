@@ -4,25 +4,25 @@ Applies to a repository whose runtime is Bun. Copy every file in this directory 
 
 ## Files
 
-| File | Role |
-|---|---|
-| `package.json` | Scripts, pinned dev toolchain |
-| `tsconfig.base.json` | Compiler options shared by both configs |
-| `tsconfig.json` | Typecheck config, `src` only |
-| `tsconfig.build.json` | Emit config, `src` only |
-| `.oxlintrc.json` | Lint rules |
-| `.oxfmtrc.json` | Format rules |
-| `.gitignore` | Runtime and regenerable paths |
+| File                         | Role                                               |
+| ---------------------------- | -------------------------------------------------- |
+| `package.json`               | Scripts, pinned dev toolchain                      |
+| `tsconfig.base.json`         | Compiler options shared by both configs            |
+| `tsconfig.json`              | Typecheck config, `src` only                       |
+| `tsconfig.build.json`        | Emit config, `src` only                            |
+| `.oxlintrc.json`             | Lint rules                                         |
+| `.oxfmtrc.json`              | Format rules                                       |
+| `.gitignore`                 | Runtime and regenerable paths                      |
 | `.github/workflows/gate.yml` | CI forwarding: frozen install, then the local gate |
-| `src/index.ts` | Seed module; replace or delete |
-| `tests/index.test.ts` | Seed test; replace or delete |
+| `src/index.ts`               | Seed module; replace or delete                     |
+| `tests/index.test.ts`        | Seed test; replace or delete                       |
 
 ## Commands
 
-| Action | Command |
-|---|---|
-| Install | `bun install` |
-| Gate | `bun run gate` |
+| Action       | Command                |
+| ------------ | ---------------------- |
+| Install      | `bun install`          |
+| Gate         | `bun run gate`         |
 | Focused test | `bun test <test-path>` |
 
 `bun install` creates `bun.lock`; commit it before the first CI run. The CI job uses `--frozen-lockfile` and fails without a committed lockfile.
@@ -58,11 +58,11 @@ A commit message cites `bun run gate`, never a single stage.
 
 ## C5 — artifact tiers
 
-| Tier | Paths |
-|---|---|
-| Authoritative | `src/`, `tests/`, config files |
-| Regenerable | `dist/`, `*.tsbuildinfo` |
-| Runtime | `node_modules/`, `.bun/`, `coverage/` |
+| Tier          | Paths                                 |
+| ------------- | ------------------------------------- |
+| Authoritative | `src/`, `tests/`, config files        |
+| Regenerable   | `dist/`, `*.tsbuildinfo`              |
+| Runtime       | `node_modules/`, `.bun/`, `coverage/` |
 
 ## C6 — language rules
 
@@ -83,8 +83,8 @@ A commit message cites `bun run gate`, never a single stage.
 - **CRLF breaks a shebang.** Add `*.ts text=lf` to `.gitattributes` if a script starts with `#!`.
 - **`composite` conflicts with `noEmit`.** Keep it out of the base config; add it only to a build config that emits.
 
-Verified 2026-11-14 (for-the-record): bun 1.4.3, oxlint 1.93.0, oxfmt 0.78.0, typescript 7.0.2.
+Verified 2026-11-15 (for-the-record): bun 1.4.4, oxlint 1.93.0, oxfmt 0.78.0, typescript 7.0.2.
 
 ## C8 — upgrade
 
-Bump the three dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. When the runtime version changes, update `bun-version` in `.github/workflows/gate.yml` in the same commit. Do not bump the lockfile without running the gate in the same commit.
+Bump the three dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. CI follows the latest Bun release; record the local runtime in the Verified line when it changes. Do not bump the lockfile without running the gate in the same commit.

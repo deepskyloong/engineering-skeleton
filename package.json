@@ -1,0 +1,11 @@
+{
+  "name": "engineering-skeleton",
+  "private": true,
+  "scripts": {
+    "fmt": "bun fmt .",
+    "fmt:check": "bun fmt --check .",
+    "py:fmt": "uvx ruff format --check scripts",
+    "py:lint": "uvx ruff check scripts",
+    "gate": "bun run fmt:check && bun run py:fmt && bun run py:lint && python scripts/check.py"
+  }
+}

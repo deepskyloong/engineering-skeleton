@@ -16,45 +16,45 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 ## Gate
 
 ```bash
-python scripts/check.py
+bun run gate
 ```
 
-It checks: every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its budget, index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, and no unfinished marker survives. Run it after any spec or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
+It runs the Bun format check, the Ruff format and lint checks, and the document checks. The document checks cover every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its budget, index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, and no unfinished marker survives. Run it after any spec or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
 
 ## Which file answers which question
 
-| Task | Read |
-|---|---|
+| Task                                                          | Read                            |
+| ------------------------------------------------------------- | ------------------------------- |
 | Understand what the skeleton is and why it is shaped this way | `docs/spec/0001-foundations.md` |
-| Decide where a new document belongs, or add/remove a role | `docs/spec/0002-roles.md` |
-| Decide which level (root / member / module) owns a file | `docs/spec/0003-flow.md` |
-| Change a rule, a budget, or a retirement exception | `docs/spec/0004-rules.md` |
-| Change a language overlay or the gate contract | `docs/spec/0005-overlays.md` |
-| Move an existing repository onto this skeleton | `docs/spec/0006-migration.md` |
-| Operate on a target repository (forge / audit / migrate) | `docs/workflow.md` |
-| Change where this repository's own files live | `docs/structure.md` |
-| Change language, naming, citation, or a discrimination | `docs/conventions.md` |
-| Change the commit message convention | `docs/committing.md` |
-| Change versioning, ownership, or the review flow | `docs/governance.md` |
-| Ask why a choice was made, or what was rejected | `docs/decisions/` |
-| Ask what is deliberately deferred | `docs/backlog/` |
+| Decide where a new document belongs, or add/remove a role     | `docs/spec/0002-roles.md`       |
+| Decide which level (root / member / module) owns a file       | `docs/spec/0003-flow.md`        |
+| Change a rule, a budget, or a retirement exception            | `docs/spec/0004-rules.md`       |
+| Change a language overlay or the gate contract                | `docs/spec/0005-overlays.md`    |
+| Move an existing repository onto this skeleton                | `docs/spec/0006-migration.md`   |
+| Operate on a target repository (forge / audit / migrate)      | `docs/workflow.md`              |
+| Change where this repository's own files live                 | `docs/structure.md`             |
+| Change language, naming, citation, or a discrimination        | `docs/conventions.md`           |
+| Change the commit message convention                          | `docs/committing.md`            |
+| Change versioning, ownership, or the review flow              | `docs/governance.md`            |
+| Ask why a choice was made, or what was rejected               | `docs/decisions/`               |
+| Ask what is deliberately deferred                             | `docs/backlog/`                 |
 
 ## Change surface — same commit, or it is incomplete
 
-| Change | Also update |
-|---|---|
-| Add / rename / remove a role | `docs/spec/0002-roles.md`, the matching `template/` file, the skill's mode steps, `scripts/check.py` expectations |
-| Change a level or a placement rule | `docs/spec/0002-roles.md`, `docs/structure.md`, `template/core/docs/structure.md` |
-| Change a budget or its unit | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `scripts/check.py` budget tables |
-| Add / remove an overlay | `docs/spec/0005-overlays.md`, `template/overlays/`, the compatibility table |
-| Change a gate command | `docs/spec/0005-overlays.md`, this file, every overlay README, `.github/workflows/gate.yml` |
-| Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |
-| Change a placeholder value or notation | `template/README.md` |
-| Change naming or citation rules | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.py` naming patterns |
-| Change the commit convention | `docs/committing.md`, `template/core/docs/committing.md` |
-| Change the skill's modes or steps | `SKILL.md`, `docs/spec/0002-roles.md` when a mode reads a new role |
-| Bump the spec version | `README.md` status, `docs/spec/README.md`, `scripts/check.py` compares both |
-| Change a generated path | `docs/spec/0004-rules.md`, `scripts/check.py` `GENERATED_DIRS` |
+| Change                                 | Also update                                                                                                                                                                 |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add / rename / remove a role           | `docs/spec/0002-roles.md`, the matching `template/` file, the skill's mode steps, `scripts/check.py` expectations                                                           |
+| Change a level or a placement rule     | `docs/spec/0002-roles.md`, `docs/structure.md`, `template/core/docs/structure.md`                                                                                           |
+| Change a budget or its unit            | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `scripts/check.py` budget tables                                                     |
+| Add / remove an overlay                | `docs/spec/0005-overlays.md`, `template/overlays/`, the compatibility table                                                                                                 |
+| Change a gate command                  | `docs/spec/0005-overlays.md`, this file, every overlay README, `package.json`, `.github/workflows/gate.yml`                                                                 |
+| Move or rename a directory             | every pointer, proven by `rg -l '<old-path>'` returning nothing                                                                                                             |
+| Change a placeholder value or notation | `template/README.md`                                                                                                                                                        |
+| Change naming or citation rules        | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.py` naming patterns |
+| Change the commit convention           | `docs/committing.md`, `template/core/docs/committing.md`                                                                                                                    |
+| Change the skill's modes or steps      | `SKILL.md`, `docs/spec/0002-roles.md` when a mode reads a new role                                                                                                          |
+| Bump the spec version                  | `README.md` status, `docs/spec/README.md`, `scripts/check.py` compares both                                                                                                 |
+| Change a generated path                | `docs/spec/0004-rules.md`, `scripts/check.py` `GENERATED_DIRS`                                                                                                              |
 
 ## Anti-regrowth
 

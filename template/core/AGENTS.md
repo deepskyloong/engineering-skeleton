@@ -17,10 +17,10 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 
 ## Commands
 
-| Action | Command |
-|---|---|
-| Install | `<install-command>` |
-| Gate | `<gate-command>` |
+| Action       | Command                                                 |
+| ------------ | ------------------------------------------------------- |
+| Install      | `<install-command>`                                     |
+| Gate         | `<gate-command>`                                        |
 | Focused test | `<focused-test-command>` (when the overlay defines one) |
 
 ## Gate
@@ -33,16 +33,16 @@ It runs format check, lint, typecheck, test, and build. CI runs the same command
 
 ## Routing table
 
-| Task | Read |
-|---|---|
-| What this project is, who it serves, what it refuses | `docs/charter.md` |
-| Where a new file belongs | `docs/structure.md` |
-| How to write a document, which role it is | `docs/conventions.md` |
-| How to write a commit message | `docs/committing.md` |
-| How an effort is created and closed | `docs/workflow.md` (when present) |
-| What is deliberately deferred | `docs/backlog/` (when present) |
-| Why a choice was made | `docs/decisions/` (when present) |
-| Which language and toolchain rules apply | the overlay README (when present) |
+| Task                                                 | Read                              |
+| ---------------------------------------------------- | --------------------------------- |
+| What this project is, who it serves, what it refuses | `docs/charter.md`                 |
+| Where a new file belongs                             | `docs/structure.md`               |
+| How to write a document, which role it is            | `docs/conventions.md`             |
+| How to write a commit message                        | `docs/committing.md`              |
+| How an effort is created and closed                  | `docs/workflow.md` (when present) |
+| What is deliberately deferred                        | `docs/backlog/` (when present)    |
+| Why a choice was made                                | `docs/decisions/` (when present)  |
+| Which language and toolchain rules apply             | the overlay README (when present) |
 
 Delete a row whose page does not exist yet. A pointer to a missing file is worse than no pointer.
 

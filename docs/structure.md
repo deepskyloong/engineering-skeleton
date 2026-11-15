@@ -12,11 +12,11 @@ Each directory's `README.md` lists its direct children. `docs/README.md` lists t
 
 ## The relationship between the three layers
 
-| Layer | Holds | Changes when |
-|---|---|---|
-| `docs/spec/` | Normative rules and rationale | A role, rule, budget, or flow is deliberately changed |
-| `template/` | Copyable starting points, derived from the spec | The spec changes, in the same or the next commit |
-| the skill (`i-project-skeleton`) | A thin entry point: modes, order, hard rules, pointer to this repository | The mode sequence or the repository path changes |
+| Layer                            | Holds                                                                    | Changes when                                          |
+| -------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- |
+| `docs/spec/`                     | Normative rules and rationale                                            | A role, rule, budget, or flow is deliberately changed |
+| `template/`                      | Copyable starting points, derived from the spec                          | The spec changes, in the same or the next commit      |
+| the skill (`i-project-skeleton`) | A thin entry point: modes, order, hard rules, pointer to this repository | The mode sequence or the repository path changes      |
 
 The direction is always spec → template → skill. A template rule that the spec does not state is a template bug. A skill step the spec cannot justify is a skill bug.
 
@@ -34,10 +34,10 @@ The chosen home's `README.md` is the membership list. Do not add a row here.
 
 ## Artifact tiers
 
-| Tier | Meaning | Lives in git |
-|---|---|---|
-| Authoritative | The source of truth for a rule or a template | Yes |
-| Regenerable | Produced from an authoritative file by a command | No |
-| Runtime | Session state, caches, reports produced by a run | No |
+| Tier          | Meaning                                          | Lives in git |
+| ------------- | ------------------------------------------------ | ------------ |
+| Authoritative | The source of truth for a rule or a template     | Yes          |
+| Regenerable   | Produced from an authoritative file by a command | No           |
+| Runtime       | Session state, caches, reports produced by a run | No           |
 
 `template/` and `docs/spec/` are authoritative. A generated index or a rendered copy is regenerable. A review report body is runtime; only its index is authoritative.

@@ -4,9 +4,9 @@ Third-party suites whose output paths are hard-coded, and legacy paths that cann
 
 ## Registry
 
-| Suite / legacy path | Hard-coded path | What reads it | Whitelist | Closeout route |
-|---|---|---|---|---|
-| `<suite>` | `<path>` | `<consumer>` | `<allowed files>` | `<which closeout step relocates it>` |
+| Suite / legacy path | Hard-coded path | What reads it | Whitelist         | Closeout route                       |
+| ------------------- | --------------- | ------------- | ----------------- | ------------------------------------ |
+| `<suite>`           | `<path>`        | `<consumer>`  | `<allowed files>` | `<which closeout step relocates it>` |
 
 ## Rules
 

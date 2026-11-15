@@ -6,18 +6,18 @@ Status: Accepted (2026-11-14)
 
 The first draft expressed document budgets in pages, then in lines. A review found that "page" is unmeasurable and that a line budget gives opposite verdicts for documents of similar size. Six documents were measured to settle the unit.
 
-| Document | Lines | Non-whitespace chars | `wc -w` words | Chars per line |
-|---|---|---|---|---|
-| bun-toolkit `AGENTS.md` | 305 | 21,793 | 3,702 | 101 |
-| gearset `AGENTS.md` | 143 | 12,458 | 2,035 | 167 |
-| oshi `AGENTS.md` (Chinese) | 50 | 5,891 | 1,051 | 139 |
-| python-toolkit `AGENTS.md` | 49 | 3,456 | 569 | 82 |
-| oshi `status.md` (Chinese) | 47 | 4,211 | 714 | 105 |
-| the v1 spec itself | 582 | 20,146 | 2,697 | 41 |
+| Document                   | Lines | Non-whitespace chars | `wc -w` words | Chars per line |
+| -------------------------- | ----- | -------------------- | ------------- | -------------- |
+| bun-toolkit `AGENTS.md`    | 305   | 21,793               | 3,702         | 101            |
+| gearset `AGENTS.md`        | 143   | 12,458               | 2,035         | 167            |
+| oshi `AGENTS.md` (Chinese) | 50    | 5,891                | 1,051         | 139            |
+| python-toolkit `AGENTS.md` | 49    | 3,456                | 569           | 82             |
+| oshi `status.md` (Chinese) | 47    | 4,211                | 714           | 105            |
+| the v1 spec itself         | 582   | 20,146               | 2,697         | 41             |
 
 ## Decision
 
-Volume is measured in non-whitespace characters. Entry budgets — indexes, tables, tombstones — are measured in lines, because a line is one entry there. The two units are never combined into one number.
+Volume is measured in non-whitespace characters, excluding table delimiter rows. A delimiter row is formatting, not content; its width follows the formatter and must not consume a reading budget. Entry budgets — indexes, tables, tombstones — are measured in lines, because a line is one entry there. The two units are never combined into one number.
 
 English and Chinese get separate volume limits: EN 16,000 and ZH 8,000 for a root `AGENTS.md`. The ZH limit is half the EN limit because a Chinese character costs roughly 2.7× the tokens of an English character; one shared number would either over-constrain Chinese or under-constrain English.
 

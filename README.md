@@ -10,18 +10,19 @@ This repository makes the roles normative and keeps the layout as small as it ca
 
 ## What is here
 
-| Path | Role |
-|---|---|
-| `docs/spec/` | The normative specification. Read this before changing anything else. |
-| `docs/charter.md` | Scope, non-goals, hard constraints, success criteria. |
-| `docs/structure.md` | This repository's layout and the placement rules for new files. |
-| `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
-| `docs/governance.md` | Versioning, change surface, review, and how the spec evolves. |
-| `docs/workflow.md` | The three operating modes: forge, audit, migrate. |
-| `docs/decisions/` | ADRs — the choices that shaped the skeleton, with rejected options. |
-| `docs/backlog/` | Deferred items with a revisit trigger. |
-| `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |
-| `scripts/check.py` | The repository gate: role coverage, link resolution, budget, naming. |
+| Path                                         | Role                                                                                       |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `docs/spec/`                                 | The normative specification. Read this before changing anything else.                      |
+| `docs/charter.md`                            | Scope, non-goals, hard constraints, success criteria.                                      |
+| `docs/structure.md`                          | This repository's layout and the placement rules for new files.                            |
+| `docs/conventions.md`                        | Language, naming, citation, and the five role discriminations.                             |
+| `docs/governance.md`                         | Versioning, change surface, review, and how the spec evolves.                              |
+| `docs/workflow.md`                           | The three operating modes: forge, audit, migrate.                                          |
+| `docs/decisions/`                            | ADRs — the choices that shaped the skeleton, with rejected options.                        |
+| `docs/backlog/`                              | Deferred items with a revisit trigger.                                                     |
+| `template/`                                  | Copyable starting points: day-one files, first-effort files, language overlays.            |
+| `scripts/check.py`                           | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
+| `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring.                      |
 
 ## Quick start
 
@@ -29,7 +30,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 2. Pick one overlay under `template/overlays/` and follow its README.
 3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
 4. When the first work package starts, copy `template/effort/` and create `tasks/<slug>/spec.md` with a `track:` line.
-5. Run `python scripts/check.py` in this repository after changing the spec or a template.
+5. Run `bun run gate` in this repository after changing the spec or a template.
 
 ## Reading order
 

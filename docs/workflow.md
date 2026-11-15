@@ -59,8 +59,8 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 ## Which mode to use
 
-| The user says | Mode |
-|---|---|
-| "new project", "bootstrap this repo", "initialize" | forge |
-| "review my repo structure", "why is this unmaintainable", "audit" | audit |
-| "move docs to the new layout", "adopt the skeleton" | migrate |
+| The user says                                                     | Mode    |
+| ----------------------------------------------------------------- | ------- |
+| "new project", "bootstrap this repo", "initialize"                | forge   |
+| "review my repo structure", "why is this unmaintainable", "audit" | audit   |
+| "move docs to the new layout", "adopt the skeleton"               | migrate |

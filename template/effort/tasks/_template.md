@@ -29,7 +29,7 @@ How the goal is reached, in steps. Name the files and the roles they land in.
 ## Risks
 
 | Risk | Mitigation | Stop condition |
-|---|---|---|
+| ---- | ---------- | -------------- |
 
 ## Out of scope
 
@@ -55,7 +55,6 @@ What this plan deliberately does not touch.
 ## Not done
 
 ## What a future maintainer must know
-
 ```
 
 Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point.

@@ -2,14 +2,14 @@
 
 Normative specification, `spec v1`. Read in order.
 
-| Page | Question it answers |
-|---|---|
-| [0001-foundations.md](0001-foundations.md) | What the skeleton is, which principles bind it, which layers exist |
-| [0002-roles.md](0002-roles.md) | Which document roles exist, where each lives, what may enter and leave |
-| [0003-flow.md](0003-flow.md) | Which level owns a file, how work moves from idea to closeout |
-| [0004-rules.md](0004-rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
-| [0005-overlays.md](0005-overlays.md) | What the language-agnostic core promises, what each overlay supplies |
-| [0006-migration.md](0006-migration.md) | How an existing repository moves onto this skeleton |
+| Page                                       | Question it answers                                                     |
+| ------------------------------------------ | ----------------------------------------------------------------------- |
+| [0001-foundations.md](0001-foundations.md) | What the skeleton is, which principles bind it, which layers exist      |
+| [0002-roles.md](0002-roles.md)             | Which document roles exist, where each lives, what may enter and leave  |
+| [0003-flow.md](0003-flow.md)               | Which level owns a file, how work moves from idea to closeout           |
+| [0004-rules.md](0004-rules.md)             | Which rules are enforced, how budgets are measured, what may be retired |
+| [0005-overlays.md](0005-overlays.md)       | What the language-agnostic core promises, what each overlay supplies    |
+| [0006-migration.md](0006-migration.md)     | How an existing repository moves onto this skeleton                     |
 
 ## Status
 

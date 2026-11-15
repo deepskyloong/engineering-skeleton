@@ -2,8 +2,8 @@
 
 Terms this repository uses with a fixed meaning. Add a row only when a term is used by two or more members, or when a synonym would cause a real mistake.
 
-| Term | Meaning | Avoid |
-|---|---|---|
+| Term         | Meaning                                  | Avoid                          |
+| ------------ | ---------------------------------------- | ------------------------------ |
 | example-term | One sentence a new maintainer can act on | the synonym that would mislead |
 
 Rules:

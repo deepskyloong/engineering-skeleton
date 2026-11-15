@@ -4,22 +4,22 @@ Applies to a repository managed with `uv`. Copy every file in this directory **e
 
 ## Files
 
-| File | Role |
-|---|---|
-| `pyproject.toml` | Project metadata, dev dependencies, ruff and pytest config |
-| `.python-version` | Interpreter pin read by `uv` |
-| `.gitignore` | Runtime, regenerable, and cache paths |
-| `tools/gate.py` | The gate runner |
-| `.github/workflows/gate.yml` | CI forwarding: frozen install, then the local gate |
-| `src/example_package/__init__.py` | Seed module; rename the directory and replace the code |
-| `tests/test_smoke.py` | Seed test; replace or delete |
+| File                              | Role                                                       |
+| --------------------------------- | ---------------------------------------------------------- |
+| `pyproject.toml`                  | Project metadata, dev dependencies, ruff and pytest config |
+| `.python-version`                 | Interpreter pin read by `uv`                               |
+| `.gitignore`                      | Runtime, regenerable, and cache paths                      |
+| `tools/gate.py`                   | The gate runner                                            |
+| `.github/workflows/gate.yml`      | CI forwarding: frozen install, then the local gate         |
+| `src/example_package/__init__.py` | Seed module; rename the directory and replace the code     |
+| `tests/test_smoke.py`             | Seed test; replace or delete                               |
 
 ## Commands
 
-| Action | Command |
-|---|---|
-| Install | `uv sync` |
-| Gate | `uv run python tools/gate.py` |
+| Action       | Command                        |
+| ------------ | ------------------------------ |
+| Install      | `uv sync`                      |
+| Gate         | `uv run python tools/gate.py`  |
 | Focused test | `uv run pytest <test-path> -q` |
 
 `uv sync` creates `uv.lock`; commit it before the first CI run. The CI job uses `uv sync --frozen` and fails without a committed lockfile.
@@ -53,11 +53,11 @@ A commit message cites `uv run python tools/gate.py`, never `pytest` alone.
 
 ## C5 — artifact tiers
 
-| Tier | Paths |
-|---|---|
-| Authoritative | `src/`, `tests/`, `tools/`, config files |
-| Regenerable | `dist/`, `*.egg-info/` |
-| Runtime | `.venv/`, `__pycache__/`, `.pytest_cache/`, `.ruff_cache/` |
+| Tier          | Paths                                                      |
+| ------------- | ---------------------------------------------------------- |
+| Authoritative | `src/`, `tests/`, `tools/`, config files                   |
+| Regenerable   | `dist/`, `*.egg-info/`                                     |
+| Runtime       | `.venv/`, `__pycache__/`, `.pytest_cache/`, `.ruff_cache/` |
 
 ## C6 — language rules
 
