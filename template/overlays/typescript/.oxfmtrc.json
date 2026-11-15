@@ -1,6 +1,19 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
   "printWidth": 100,
+  "semi": false,
   "singleQuote": true,
   "trailingComma": "all",
-  "semi": true
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/output/**",
+    "**/.cache/**",
+    "**/.tmp-*/**",
+    "**/.venv/**",
+    "**/__pycache__/**"
+  ]
 }
