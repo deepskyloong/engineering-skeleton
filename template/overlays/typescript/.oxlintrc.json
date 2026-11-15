@@ -1,12 +1,37 @@
 {
-  "plugins": ["typescript", "unicorn", "oxc"],
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
   "categories": {
     "correctness": "error",
-    "suspicious": "warn"
+    "suspicious": "warn",
+    "perf": "warn"
   },
   "rules": {
-    "typescript/no-explicit-any": "warn",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-misused-promises": "error",
     "typescript/consistent-type-imports": "error",
-    "unicorn/prefer-node-protocol": "error"
-  }
+    "unicorn/prefer-node-protocol": "error",
+    "import/no-cycle": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/tests/**"],
+      "rules": {
+        "typescript/await-thenable": "off"
+      }
+    }
+  ],
+  "options": {
+    "typeAware": true,
+    "reportUnusedDisableDirectives": "warn",
+    "denyWarnings": true
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/output/**",
+    "**/.cache/**",
+    "**/.tmp-*/**",
+    "**/tests/fixtures/**",
+    "**/*.d.ts"
+  ]
 }

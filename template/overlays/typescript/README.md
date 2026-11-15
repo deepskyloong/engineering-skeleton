@@ -54,7 +54,7 @@ A commit message cites `bun run gate`, never a single stage.
 
 `bun add`, `bun add -d`, `bun remove`; `bun.lock` is committed. CI installs with `--frozen-lockfile`. A dependency added without a lockfile change is a finding.
 
-`typescript`, `oxlint`, and `oxfmt` are pinned with caret ranges near the versions the template was verified against. `bun.lock` records the exact resolution; that is the pin that matters.
+`typescript`, `oxlint`, `oxlint-tsgolint`, and `oxfmt` are pinned with caret ranges near the versions the template was verified against. `bun.lock` records the exact resolution; that is the pin that matters.
 
 ## C5 — artifact tiers
 
@@ -77,14 +77,15 @@ A commit message cites `bun run gate`, never a single stage.
 - **`bun run` is not `npm run`.** A script named `check` is not special. The gate is named `gate` and cited explicitly.
 - **A frozen install needs a committed lockfile.** `bun install --frozen-lockfile` fails on a fresh template until `bun.lock` is committed; run `bun install` once and commit the lockfile.
 - **`oxlint` without a path walks `node_modules`.** Always pass `src tests`; the same applies to `oxfmt`.
+- **Type-aware rules need `oxlint-tsgolint`.** With `typeAware: true`, a missing `oxlint-tsgolint` dependency leaves the type-aware rules resolving to severity without reporting; keep the devDependency or the gate checks less than it claims.
 - **Tests are not typechecked.** `tsconfig.json` includes `src` only because the test runner provides `bun:test` at runtime without shipping types. Add `@types/bun` and include `tests` when test type errors start to matter.
 - **Path aliases need a per-package `paths` entry.** A root alias does not cross a workspace boundary by itself.
 - **TypeScript 7 requires `rootDir` when only `src` is included.** The build config sets `"rootDir": "src"`; removing it fails with TS5011.
 - **CRLF breaks a shebang.** Add `*.ts text=lf` to `.gitattributes` if a script starts with `#!`.
 - **`composite` conflicts with `noEmit`.** Keep it out of the base config; add it only to a build config that emits.
 
-Verified 2026-11-15 (for-the-record): bun 1.4.4, oxlint 1.93.0, oxfmt 0.78.0, typescript 7.0.2.
+Verified 2026-11-15 (for-the-record): bun 1.4.4, oxlint 1.93.0, oxlint-tsgolint 7.0.2007, oxfmt 0.78.0, typescript 7.0.2.
 
 ## C8 — upgrade
 
-Bump the three dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. CI follows the latest Bun release; record the local runtime in the Verified line when it changes. Do not bump the lockfile without running the gate in the same commit.
+Bump the dev dependencies in `package.json`, run `bun install` to refresh `bun.lock`, run the gate, and record any behavior change as a trap above. CI follows the latest Bun release; record the local runtime in the Verified line when it changes. Do not bump the lockfile without running the gate in the same commit.
