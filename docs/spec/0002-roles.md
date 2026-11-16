@@ -27,8 +27,8 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Backlog item          | `/docs/backlog/B-<nnnn>-slug.md`     | A deferred idea with a revisit trigger and evidence                                     | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue          |
 | Backlog index         | `/docs/backlog/README.md`            | One row per item, including closed; `Status` is `open`, `active`, or `closed`           | —                                                                                                      | Binds the queue's order and state     |
 | Operating modes       | `/docs/workflow.md`                  | The forge / audit / migrate steps, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes                                                                          | Binds how an effort is run and closed |
-| Vocabulary            | `/CONTEXT.md`                        | A term used by two or more members, with avoided synonyms                               | A term moves to a member when only it uses it                                                          | Binds naming in prose and code        |
-| Vocabulary map        | `/CONTEXT-MAP.md`                    | Locations of member vocabularies only; stores no definitions                            | —                                                                                                      | Binds where a term is defined         |
+| Vocabulary            | `/GLOSSARY.md`                       | A term whose meaning would drift without a fixed definition, with avoided synonyms      | A term moves to a member when only it uses it                                                          | Binds naming in prose and code        |
+| Vocabulary map        | `/GLOSSARY-MAP.md`                   | Locations of member vocabularies only; stores no definitions                            | —                                                                                                      | Binds where a term is defined         |
 
 ## Optional, admitted by trigger
 
@@ -49,11 +49,11 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 
 These separate roles that five source repositories kept merging. They are normative here and are copied into every generated repository's `docs/conventions.md` by reference, not by paraphrase.
 
-1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `CONTEXT.md` is vocabulary (what a word means and which synonyms are avoided); an ADR is a decision (which options existed and why the others lost); `architecture` is structure (how it is organized and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is architecture.
+1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `GLOSSARY.md` is vocabulary (what a word means and which synonyms are avoided); an ADR is a decision (which options existed and why the others lost); `architecture` is structure (how it is organized and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is architecture.
 2. **`spec` has two senses.** `tasks/<slug>/spec.md` is the work package's specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort. Never let one word carry both; when a sentence says "the spec", it must be obvious which one.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters; entries are lines. They measure different things and are not interchangeable.
-5. **Shared terms have a home.** A term used by two or more members lives in the root `CONTEXT.md`; a term used by one member lives in that member's `CONTEXT.md`; `CONTEXT-MAP.md` lists locations and stores no definitions.
+5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists locations and stores no definitions.
 
 ## Module-level rules: deferred
 

@@ -8,7 +8,7 @@ English for every file this repository maintains. Translate before landing; do n
 
 - Files: `kebab-case.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`.
 - Numbered files use four digits (`ADR-0001`, `B-0001`). A migrated series keeps its width and is never renumbered.
-- All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
+- All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Prose is not hard-wrapped. One paragraph is one line; the editor soft-wraps.
 
 ## Citation
@@ -17,11 +17,11 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 
 ## The five discriminations
 
-1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `CONTEXT.md` is vocabulary; an ADR is a decision (which options existed and why the others lost); `structure.md` is organization (how it is arranged and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is structure.
+1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `GLOSSARY.md` is vocabulary; an ADR is a decision (which options existed and why the others lost); `structure.md` is organization (how it is arranged and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is structure.
 2. **`spec` has two senses.** `tasks/<slug>/spec.md` is the work-package specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters excluding table delimiter rows; entries are lines. They are not interchangeable.
-5. **Shared terms have a home.** A term used by two or more members lives in the root `CONTEXT.md`; a term used by one member lives in that member's `CONTEXT.md`; `CONTEXT-MAP.md` lists locations and stores no definitions.
+5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists locations and stores no definitions.
 
 ## Budgets
 
@@ -39,7 +39,8 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 | Backlog index                    | ≤2,000                | ≤60 rows         |
 | Overlay `README.md`              | ≤8,000                | —                |
 | `status.md`                      | ≤8,000 EN / ≤4,000 ZH | —                |
-| `CONTEXT.md`                     | ≤6,000                | —                |
+| `GLOSSARY.md`                    | ≤6,000                | —                |
+| `GLOSSARY-MAP.md`                | ≤2,000                | —                |
 | `summary.md`                     | ≤3,000                | 3 sections       |
 | Tombstone                        | ≤400                  | 1 link           |
 

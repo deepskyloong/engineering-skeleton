@@ -7,7 +7,7 @@
 ## Evidence
 
 - oshi's `docs/backlog.md` is a correct tombstone by `0004`'s rules: 258 non-whitespace characters, one link to `backlog/README.md`, kept because 18 files cite the old path. The 2026-11-16 measurement classified it as `unplaced: docs page` because no role row matches it.
-- The oshi audit proposes more tombstones (`GLOSSARY.md`, `docs/adrs/`, `archived/`); `docs/status.md` stays at its top-level home after ADR-0006.
+- The oshi audit proposes more tombstones (`docs/adrs/`, `archived/`); `GLOSSARY.md` is the canonical vocabulary after ADR-0007; `docs/status.md` stays at its top-level home after ADR-0006.
 - `scripts/check.py`'s `DOC_ROLE_PATHS` has no tombstone pattern, so a tombstone inside `docs/` fails the role-path check even when it is correct.
 
 ## Minimal fix

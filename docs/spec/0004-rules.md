@@ -23,7 +23,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 
 ## Naming and citation
 
-- Files: `kebab-case.md`; the skeleton's spec pages `NNNN-slug.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
+- Files: `kebab-case.md`; the skeleton's spec pages `NNNN-slug.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Numbered files use four digits: spec page `0001`, ADR `ADR-0001`, backlog `B-0001`. Spec ordinals are fixed; record IDs start at `0001`. A migrated series keeps its width and is never renumbered.
 - Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, and YAML keep their line breaks.
 - Cite a file plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers.
@@ -58,7 +58,8 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | Backlog index                               | ≤2,000                | ≤60 rows               |
 | Overlay `README.md` (a guide, not an index) | ≤8,000                | —                      |
 | `status.md`                                 | ≤8,000 EN / ≤4,000 ZH | —                      |
-| `CONTEXT.md`                                | ≤6,000                | —                      |
+| `GLOSSARY.md`                               | ≤6,000                | —                      |
+| `GLOSSARY-MAP.md`                           | ≤2,000                | —                      |
 | `tasks/<slug>/summary.md`                   | ≤3,000                | 3 sections             |
 | Tombstone                                   | ≤400                  | exactly 1 link         |
 

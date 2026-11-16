@@ -37,7 +37,8 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 <repo>/
 ├── README.md                  # storefront
 ├── AGENTS.md                  # instruction layer: red lines, gate, routing
-├── CONTEXT.md                 # vocabulary (when shared terms exist)
+├── GLOSSARY.md                # vocabulary (when shared terms exist)
+├── GLOSSARY-MAP.md            # vocabulary map (when member vocabularies exist)
 ├── docs/
 │   ├── README.md              # index + governance of the docs tree
 │   ├── charter.md             # scope, non-goals
@@ -60,7 +61,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 └── <overlay files>            # package.json, pyproject.toml, gate config
 ```
 
-A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`, each member carrying its own `README.md`, `src/`, `tests/`, `AGENTS.md` (when it earns one), and docs. The root keeps only the four always-read files: `README.md`, `AGENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md` when needed, plus `docs/` and `tasks/`.
+A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`, each member carrying its own `README.md`, `src/`, `tests/`, `AGENTS.md` (when it earns one), and docs. The root keeps only the entry files (`README.md`, `AGENTS.md`), the shared vocabulary (`GLOSSARY.md`, and `GLOSSARY-MAP.md` when member vocabularies exist), plus `docs/` and `tasks/`.
 
 The tree is the role set, not a snapshot. Optional roles appear only when their trigger does, and each directory's `README.md` lists its current children.
 

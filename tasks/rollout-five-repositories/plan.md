@@ -33,7 +33,7 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 
 1. Audit immediately before the migration; write `audits/<repo>.md`; review it with the maintainer. Settle the role order and the exceptions.
 2. Freeze the old homes and add `docs/adapters.md`; the freeze and legacy rows are the first commit.
-3. Move one role per commit, smallest complete role first. Oshi's executed order is `tasks/README.md`, the operations split, then the Status role (now at `docs/status.md` after ADR-0006); contracts, knowledge, decisions, and `CONTEXT.md` remain.
+3. Move one role per commit, smallest complete role first. Oshi's executed order is `tasks/README.md`, the operations split, then the Status role (now at `docs/status.md` after ADR-0006); contracts, knowledge, and decisions remain, and the vocabulary is already at `GLOSSARY.md` after ADR-0007.
 4. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
 5. Split an over-budget page after the role is at its home; do not mix a split with a move.
 6. Gate: the target's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.
@@ -42,6 +42,7 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 
 - Status is a cross-domain state page at `docs/status.md`, not a procedure under `docs/operations/` (ADR-0006). Operations holds procedures only. Oshi's 2026-11-16 move was reverted; the page is byte-identical to its pre-move state.
 - The operations directory is procedures only. Oshi's split produced eight pages: `README.md`, `setup.md`, `commands.md`, `works.md`, `runbook.md`, `vlm.md`, `annotation.md`, `backups.md`; the command table stays in operations; the old `docs/operations.md` tombstone's reason is in `docs/adapters.md`.
+- Vocabulary lives at `GLOSSARY.md`; `CONTEXT.md` is a legacy alias, not a role (ADR-0007). Oshi's `GLOSSARY.md` stays; the earlier `GLOSSARY.md` → `CONTEXT.md` move is withdrawn.
 - The skeleton is unvalidated. A wrong placement or a missing rule changes the skeleton first; the target then follows. Do not hard-code an old skeleton rule into a target repository, and do not fork the spec inside one target.
 
 ## Check-in points

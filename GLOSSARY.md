@@ -1,4 +1,4 @@
-# CONTEXT — vocabulary
+# GLOSSARY — vocabulary
 
 Terms this repository uses with a fixed meaning. When writing a spec page, a template, or a commit message, use these words and avoid the synonyms listed as avoided.
 

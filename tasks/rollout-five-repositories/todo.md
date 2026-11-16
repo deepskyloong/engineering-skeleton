@@ -5,7 +5,8 @@
 - [ ] Review oshi's report with the maintainer — done when: the evidence class, the tombstone home, and the closed-package disposition are ruled.
 - [x] Freeze oshi's legacy paths and add `docs/adapters.md` — done when: the registry carries `experiments/`, `docs/plans/`, `docs/reviews/`, `docs/agents/`, `archived/`, and `.workbuddy`, and new files stop landing in them.
 - [x] Evolve the Status role to `docs/status.md` and revert oshi's move — done when: ADR-0006 is accepted, the spec and template changes are committed, and oshi's page is back at `docs/status.md` with a green gate.
-- [ ] Move oshi's living docs into their roles, one role per commit — done when: `docs/charter.md`, `docs/operations/`, `docs/contracts/`, `docs/knowledge/`, `docs/decisions/`, `CONTEXT.md`, `docs/status.md`, and `tasks/README.md` exist, and every old path is a tombstone or a registered legacy path.
+- [x] Evolve the Vocabulary role to `GLOSSARY.md` and retire `CONTEXT.md` as a role — done when: ADR-0007 is accepted, the spec/template/check changes are committed, and the skeleton's own `GLOSSARY.md` is in place.
+- [ ] Move oshi's living docs into their roles, one role per commit — done when: `docs/charter.md`, `docs/operations/`, `docs/contracts/`, `docs/knowledge/`, `docs/decisions/`, `docs/status.md`, and `tasks/README.md` exist; `GLOSSARY.md` is already at its canonical home and stays; every old path is a tombstone or a registered legacy path.
 - [ ] Split oshi's pages to their budgets and prove the repository gate — done when: every role file is inside its volume budget and `uv run pytest -q -n auto` plus the `web/` gate is green.
 - [ ] Audit bun-toolkit and write `audits/bun-toolkit.md` — done when: the same inventory and four-failure conditions hold.
 - [ ] Migrate bun-toolkit — done when: the `AGENTS.md` split and the adapter registry are in place and the gate is green.

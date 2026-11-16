@@ -48,7 +48,7 @@ COUNT_NOUN = re.compile(
     r"(pages?|documents?|files?|entries|items|adrs?)\b",
     re.IGNORECASE,
 )
-ROLE_NAMES = {"README.md", "AGENTS.md", "CONTEXT.md", "CONTEXT-MAP.md", "_template.md"}
+ROLE_NAMES = {"README.md", "AGENTS.md", "GLOSSARY.md", "GLOSSARY-MAP.md", "_template.md"}
 
 DOC_ROLE_PATHS = [
     re.compile(r"docs/README\.md"),
@@ -66,7 +66,8 @@ DOC_ROLE_PATHS = [
 EXACT_BUDGETS = {
     "AGENTS.md": 16_000,
     "README.md": 8_000,
-    "CONTEXT.md": 6_000,
+    "GLOSSARY.md": 6_000,
+    "GLOSSARY-MAP.md": 2_000,
     "docs/README.md": 2_000,
     "docs/committing.md": 4_000,
     "docs/spec/README.md": 2_000,
@@ -242,7 +243,7 @@ def check_version() -> None:
 
 
 def check_required_files() -> None:
-    for name in ("README.md", "AGENTS.md", "CONTEXT.md", "docs/workflow.md"):
+    for name in ("README.md", "AGENTS.md", "GLOSSARY.md", "docs/workflow.md"):
         if not (ROOT / name).exists():
             fail(f"missing required file: {name}")
     for page in (

@@ -8,7 +8,7 @@ English for every file this repository maintains: prose, templates, commit messa
 
 - Files: `kebab-case.md`, with `NNNN-slug.md` for spec pages, `ADR-<nnnn>-slug.md` for ADRs, and `B-<nnnn>-slug.md` for backlog items.
 - Numbered files use four digits: spec `0001`, ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated series keeps its width and is never renumbered.
-- All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `CONTEXT.md`.
+- All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Template placeholders: `<angle-bracket>` form, one placeholder per value, listed in `template/README.md`.
 - Prose is not hard-wrapped. A paragraph is one line; the editor soft-wraps. Code fences, tables, and YAML keep their line breaks.
 
@@ -24,7 +24,7 @@ Normative definitions live in `docs/spec/0002-roles.md` ("Five discriminations")
 - "The spec" is ambiguous here too: always write "work-package spec" or "contract".
 - `README.md` serves adopters; `docs/charter.md` serves the maintainer.
 - A budget line names its unit and the command that measures it.
-- This repository has no members, so it has one `CONTEXT.md` and no `CONTEXT-MAP.md`.
+- This repository has no members, so it has one `GLOSSARY.md` and no `GLOSSARY-MAP.md`.
 
 A generated repository copies the full five into its own `docs/conventions.md`; that copy is authoritative there, not this page.
 
