@@ -4,7 +4,7 @@
 
 A repository has three levels: root, member, module. The root holds the always-read files (`README.md`, `AGENTS.md`, `CONTEXT.md`), the shared `docs/` and `tasks/` trees, and the code boundary. A member is a package or app with its own `README.md`, `src/`, `tests/`, and docs when it has member-specific facts. A module is a boundary inside a member; it earns its own `AGENTS.md` only under the threshold in `docs/spec/0002-roles.md`.
 
-This repository has no members. Its root is the whole repository: `docs/` holds the specification and supporting policy, `template/` holds copyable starting points, and `scripts/` holds the gate. A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`; a single-package repository keeps them at the root.
+This repository has no members. Its root is the whole repository: `docs/` holds the specification and supporting policy, `template/` holds copyable starting points, `tasks/` holds the work packages, and `scripts/` holds the gate. A monorepo replaces `src/` and `tests/` with `apps/` and `packages/`; a single-package repository keeps them at the root.
 
 ## Directory ownership
 

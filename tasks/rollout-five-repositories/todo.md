@@ -1,0 +1,18 @@
+# Todo
+
+- [x] Open the work package and set `B-0005` to `active` — done when: `tasks/README.md` lists the package and the backlog row reads `active`.
+- [x] Audit oshi and write `audits/oshi.md` — done when: every markdown file has a role or `unplaced`, and the four failures are checked.
+- [ ] Review oshi's report with the maintainer — done when: the evidence class, the tombstone home, and the closed-package disposition are ruled.
+- [ ] Freeze oshi's legacy paths and add `docs/adapters.md` — done when: the registry carries `experiments/`, `docs/plans/`, `docs/reviews/`, `docs/agents/`, `archived/`, and `.workbuddy`, and new files stop landing in them.
+- [ ] Move oshi's living docs into their roles, one role per commit — done when: `docs/charter.md`, `docs/operations/`, `docs/contracts/`, `docs/knowledge/`, `docs/decisions/`, `CONTEXT.md`, and `tasks/README.md` exist, and every old path is a tombstone or a registered legacy path.
+- [ ] Split oshi's pages to their budgets and prove the repository gate — done when: every role file is inside its volume budget and `uv run pytest -q -n auto` plus the `web/` gate is green.
+- [ ] Audit bun-toolkit and write `audits/bun-toolkit.md` — done when: the same inventory and four-failure conditions hold.
+- [ ] Migrate bun-toolkit — done when: the `AGENTS.md` split and the adapter registry are in place and the gate is green.
+- [ ] Audit python-toolkit and write `audits/python-toolkit.md` — done when: the same conditions hold.
+- [ ] Migrate python-toolkit — done when: the layout page maps to `docs/structure.md` and the index carries no counts.
+- [ ] Audit gearset and write `audits/gearset.md` — done when: the same conditions hold, plus the six-module sample that `B-0003` needs.
+- [ ] Migrate gearset — done when: the module level is resolved against the `B-0003` sample and the gate is green.
+- [ ] Audit personal-agent-kit and write `audits/personal-agent-kit.md` — done when: the generated-artifact and knowledge-split findings are recorded.
+- [ ] Migrate personal-agent-kit — done when: the generated header and the knowledge split are in place.
+- [ ] Fix the skeleton gaps the rollout exposed — done when: each gap is an ADR, a spec change, or a backlog item, and the gate is green.
+- [ ] Close `B-0005` — done when: every repository is migrated or carries a reasoned exception, and the triggers for `B-0002`, `B-0003`, and `B-0004` have fired.

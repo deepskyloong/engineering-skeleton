@@ -20,6 +20,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/workflow.md`                           | The three operating modes: forge, audit, migrate.                                          |
 | `docs/decisions/`                            | ADRs — the choices that shaped the skeleton, with rejected options.                        |
 | `docs/backlog/`                              | Deferred items with a revisit trigger.                                                     |
+| `tasks/`                                     | Work packages: spec, plan, todo, and the closeout summary.                                 |
 | `template/`                                  | Copyable starting points: day-one files, first-effort files, language overlays.            |
 | `scripts/check.py`                           | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
 | `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring.                      |
