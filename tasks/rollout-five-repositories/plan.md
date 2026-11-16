@@ -11,6 +11,20 @@
 
 The audit reports stay in the package while it is open. A finding that changes the spec moves to `docs/backlog/` as an item; a finding that records a choice moves to `docs/decisions/`. The report itself is runtime evidence, per `docs/structure.md` ("Artifact tiers").
 
+## Work breakdown
+
+The table names the phases and their exit conditions; each work item's description, acceptance criteria, and evidence live in `todo.md`.
+
+| Phase                        | Work items | Exit condition                                                                                           |
+| ---------------------------- | ---------- | -------------------------------------------------------------------------------------------------------- |
+| P0 — skeleton and oshi audit | W01–W09    | The work item ledger and skeleton handoff are defined; oshi's audit review is ruled; skeleton gate green |
+| P1 — oshi migration          | W10–W11    | Oshi's living docs are in their roles; budgets and repository gate green                                 |
+| P2 — bun-toolkit             | W12–W13    | Audit reviewed; `AGENTS.md` split; adapter registry; gate green                                          |
+| P3 — python-toolkit          | W14–W15    | Audit reviewed; layout page mapped; index has no counts; gate green                                      |
+| P4 — gearset                 | W16–W17    | Audit reviewed; six-module sample resolves the module level; gate green                                  |
+| P5 — personal-agent-kit      | W18–W19    | Audit reviewed; generated header and knowledge split; gate green                                         |
+| P6 — closeout                | W20–W21    | Skeleton gaps filed; `B-0005` closed                                                                     |
+
 ## Skeleton status and review discipline
 
 The reusable protocol lives in the `i-draft-standard-rollout` skill; this plan records the B-0005 instance. The skeleton is a draft, not a validated standard. The rollout exists to find the errors in it, not to prove the draft right. A migration step reviews two things in the same pass: the target's compliance and the skeleton rule's correctness. A step that only applies the rule is incomplete. The glossary sequence is the sample: ADR-0007 gave the role the right name, but the body was still the three-column `CONTEXT.md` table, with no groups and implementation rules inside definitions. Oshi already had a coherent `GLOSSARY.md`, and the `domain-modeling` skill's `GLOSSARY-FORMAT` was the source; questioning the source instead of trusting the skeleton exposed the error, and ADR-0008 corrected the skeleton. A target that is more coherent than the skeleton is a finding, not a failure. The same review is expected for every role.
@@ -60,6 +74,7 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 - The vocabulary body follows the `domain-modeling` `GLOSSARY-FORMAT`: a context title, a description, `## Language`, bold terms with `_Avoid_`, and subheadings for natural clusters; the glossary defines terms, not rules. `GLOSSARY-MAP.md` lists member contexts, their paths, and their relationships; it stores no definitions. Oshi's `GLOSSARY.md` already follows this format (ADR-0008).
 - The skeleton is unvalidated. A wrong placement, a missing rule, or a wrong format changes the skeleton first; the target then follows. Do not hard-code an old skeleton rule into a target repository, and do not fork the spec inside one target.
 - The work-package handoff is a `Current state` block at the top of `todo.md`, rewritten in the same commit as any change to a step, a decision, a branch, or the gate. It is a snapshot inside the existing four files; there is no work log and no fifth progress file. A new conversation reads `tasks/README.md`, `spec.md`, `plan.md`, then the block, and re-checks `git status` and the gate.
+- The work package is a work item ledger: `plan.md` carries the phase breakdown; `todo.md` carries `W<n>` blocks with status, dependencies, a prose description, done-when criteria, and evidence. The `Current state` block is the dashboard; there is no `progress.md` and no work log (ADR-0009).
 
 ## Check-in points
 

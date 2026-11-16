@@ -26,6 +26,14 @@ Why this exists, in three sentences. Link the backlog item or the report that st
 
 How the goal is reached, in steps. Name the files and the roles they land in.
 
+## Work breakdown
+
+| Phase        | Work items | Exit condition    |
+| ------------ | ---------- | ----------------- |
+| P0 — <phase> | W01–W0n    | <observable exit> |
+
+The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `todo.md`.
+
 ## Risks
 
 | Risk | Mitigation | Stop condition |
@@ -48,12 +56,32 @@ What this plan deliberately does not touch.
 - Branch: <branch>; re-check `git status`
 - Gate: last known <result> (<date>); re-run `<gate-command>`
 - Last done: <one line>
-- Next action: <one action; who decides>
+- Phase: P0 — <phase>
+- Focus: W01 — <title>
+- Progress: <n> done / <n> todo / <n> blocked
+- Todo: <open work items or "none">
+- Next: W01 — <one action>
+- Blocked: <list or "none">
 - Open decisions: <list or "none">
-- Read first: `spec.md` (goal/acceptance), `plan.md` (decisions/check-in), this file (state/steps)
+- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
-- [ ] Step — done when: <observable>
-- [ ] Step — done when: <observable>
+## Work items
+
+### P0 — <phase>
+
+#### W01 — <title>
+
+**Status**: todo
+**Depends on**: none
+
+<prose description: what, why, constraints, files, sequence>
+
+**Done when**:
+
+- <observable criterion>
+- <observable criterion>
+
+**Evidence**: pending
 ```
 
 ## summary.md

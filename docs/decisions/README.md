@@ -14,6 +14,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0006](ADR-0006-status-page-home.md)         | Status lives at the docs top level, not inside the operations directory                                   | Accepted |
 | [ADR-0007](ADR-0007-vocabulary-home.md)          | The vocabulary home is `GLOSSARY.md`; `CONTEXT.md` is a legacy alias                                      | Accepted |
 | [ADR-0008](ADR-0008-vocabulary-format.md)        | The vocabulary body follows the domain-modeling glossary format; the map lists contexts and relationships | Accepted |
+| [ADR-0009](ADR-0009-work-package-ledger.md)      | The work package is a work item ledger; the plan carries the phase breakdown                              | Accepted |
 
 ## Format
 
