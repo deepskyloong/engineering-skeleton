@@ -6,6 +6,7 @@ One directory per effort: `tasks/<slug>/`, holding four files. The work package 
 
 - Slug: `kebab-case`, describes the outcome (`add-retry-budget`, not `ticket-42`).
 - Four files: `spec.md` (what), `plan.md` (how), `todo.md` (steps), `summary.md` (result). Split `_template.md` into these four, then delete `_template.md`.
+- The first thing in `todo.md` is a `Current state` block; see `docs/spec/0003-flow.md` for its fields and the same-commit update rule. It is a snapshot, not a log.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
 - On closeout: write `summary.md`, relocate artifacts, delete the directory unless a frozen record cites it, and remove the row below.

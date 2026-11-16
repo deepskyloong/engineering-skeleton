@@ -41,6 +41,17 @@ What this plan deliberately does not touch.
 ```markdown
 # Todo
 
+## Current state
+
+- Updated: <YYYY-MM-DD>
+- Status: open
+- Branch: <branch>; re-check `git status`
+- Gate: last known <result> (<date>); re-run `<gate-command>`
+- Last done: <one line>
+- Next action: <one action; who decides>
+- Open decisions: <list or "none">
+- Read first: `spec.md` (goal/acceptance), `plan.md` (decisions/check-in), this file (state/steps)
+
 - [ ] Step — done when: <observable>
 - [ ] Step — done when: <observable>
 ```

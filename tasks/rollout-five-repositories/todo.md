@@ -1,5 +1,16 @@
 # Todo
 
+## Current state
+
+- Updated: 2026-11-16
+- Status: open; backlog `B-0005` active
+- Branch: `feature/b0005-rollout`; re-check `git status`
+- Gate: last known `PASS — 68 markdown files` (2026-11-16); re-run `bun run gate`
+- Last done: add the work package Current state handoff
+- Next action: maintainer rules oshi audit review (evidence class / tombstone home / closed-package disposition), then selects the next oshi role
+- Open decisions: oshi audit review; next role (`docs/decisions` / `docs/contracts` / `docs/knowledge`)
+- Read first: `spec.md` (goal/acceptance), `plan.md` (decisions/check-in), this file (state/steps)
+
 - [x] Open the work package and set `B-0005` to `active` — done when: `tasks/README.md` lists the package and the backlog row reads `active`.
 - [x] Audit oshi and write `audits/oshi.md` — done when: every markdown file has a role or `unplaced`, and the four failures are checked.
 - [ ] Review oshi's report with the maintainer — done when: the evidence class, the tombstone home, and the closed-package disposition are ruled.
@@ -7,6 +18,7 @@
 - [x] Evolve the Status role to `docs/status.md` and revert oshi's move — done when: ADR-0006 is accepted, the spec and template changes are committed, and oshi's page is back at `docs/status.md` with a green gate.
 - [x] Evolve the Vocabulary role to `GLOSSARY.md` and retire `CONTEXT.md` as a role — done when: ADR-0007 is accepted, the spec/template/check changes are committed, and the skeleton's own `GLOSSARY.md` is in place.
 - [x] Align the Vocabulary body with the `domain-modeling` `GLOSSARY-FORMAT` and widen the map to contexts and relationships — done when: `GLOSSARY.md` and `template/first-use/GLOSSARY.md` use the format, `0002` states the role and map admission, and the gate is green.
+- [x] Add the work package `Current state` handoff — done when: the spec, template, and both task indexes define it, this `todo.md` carries the block, and the gate is green.
 - [ ] Move oshi's living docs into their roles, one role per commit — done when: `docs/charter.md`, `docs/operations/`, `docs/contracts/`, `docs/knowledge/`, `docs/decisions/`, `docs/status.md`, and `tasks/README.md` exist; `GLOSSARY.md` is already at its canonical home and stays; every old path is a tombstone or a registered legacy path.
 - [ ] Split oshi's pages to their budgets and prove the repository gate — done when: every role file is inside its volume budget and `uv run pytest -q -n auto` plus the `web/` gate is green.
 - [ ] Audit bun-toolkit and write `audits/bun-toolkit.md` — done when: the same inventory and four-failure conditions hold.

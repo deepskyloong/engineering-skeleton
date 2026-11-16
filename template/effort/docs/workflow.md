@@ -13,6 +13,8 @@ Create `tasks/<slug>/` with four files from `_template.md`, and fill in four fie
 3. **Acceptance** — one command or one observable state.
 4. **`track:`** — see above.
 
+Before the first step, initialize `todo.md` with a `## Current state` block: updated date, status, branch, last gate result with its date, last completed step, next action, open decisions, and read-first pointers. The checklist follows it. Rewrite the block in the same commit as any change to a step, a decision, a branch, or the gate; it is a snapshot, not a log, and a stale block is a defect. The block lives inside the four-file package; it is not a fifth file.
+
 Add a row to `tasks/README.md`. If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md`. Slug rules: kebab-case, describes the outcome, not the ticket number.
 
 ## Runtime — three permitted compromises
