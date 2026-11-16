@@ -4,6 +4,6 @@ One report per repository, written before its migration. The format is the fixed
 
 A report is runtime evidence for the work package; a finding that changes the specification becomes a backlog item in `docs/backlog/`, and a finding that records a choice becomes an ADR. Do not edit the report after its repository has migrated: write a new one.
 
-| Repository | Report             | Disposition                                 |
-| ---------- | ------------------ | ------------------------------------------- |
-| oshi       | [oshi.md](oshi.md) | audit complete; migration pending decisions |
+| Repository | Report             | Disposition                                                                                                                                                           |
+| ---------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| oshi       | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; contracts, knowledge, decisions, and `CONTEXT.md` pending |
