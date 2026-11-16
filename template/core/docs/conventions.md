@@ -38,7 +38,7 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 | Directory `README.md` (index)    | ≤2,000                | ≤40 rows         |
 | Backlog index                    | ≤2,000                | ≤60 rows         |
 | Overlay `README.md`              | ≤8,000                | —                |
-| `operations/status.md`           | ≤8,000 EN / ≤4,000 ZH | —                |
+| `status.md`                      | ≤8,000 EN / ≤4,000 ZH | —                |
 | `CONTEXT.md`                     | ≤6,000                | —                |
 | `summary.md`                     | ≤3,000                | 3 sections       |
 | Tombstone                        | ≤400                  | 1 link           |
