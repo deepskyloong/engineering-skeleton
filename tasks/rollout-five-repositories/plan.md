@@ -43,6 +43,7 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 - Status is a cross-domain state page at `docs/status.md`, not a procedure under `docs/operations/` (ADR-0006). Operations holds procedures only. Oshi's 2026-11-16 move was reverted; the page is byte-identical to its pre-move state.
 - The operations directory is procedures only. Oshi's split produced eight pages: `README.md`, `setup.md`, `commands.md`, `works.md`, `runbook.md`, `vlm.md`, `annotation.md`, `backups.md`; the command table stays in operations; the old `docs/operations.md` tombstone's reason is in `docs/adapters.md`.
 - Vocabulary lives at `GLOSSARY.md`; `CONTEXT.md` is a legacy alias, not a role (ADR-0007). Oshi's `GLOSSARY.md` stays; the earlier `GLOSSARY.md` → `CONTEXT.md` move is withdrawn.
+- The vocabulary body follows the `domain-modeling` `GLOSSARY-FORMAT`: a context title, a description, `## Language`, bold terms with `_Avoid_`, and subheadings for natural clusters; the glossary defines terms, not rules. `GLOSSARY-MAP.md` lists member contexts, their paths, and their relationships; it stores no definitions. Oshi's `GLOSSARY.md` already follows this format (ADR-0008).
 - The skeleton is unvalidated. A wrong placement or a missing rule changes the skeleton first; the target then follows. Do not hard-code an old skeleton rule into a target repository, and do not fork the spec inside one target.
 
 ## Check-in points

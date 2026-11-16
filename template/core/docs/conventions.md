@@ -21,7 +21,7 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 2. **`spec` has two senses.** `tasks/<slug>/spec.md` is the work-package specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters excluding table delimiter rows; entries are lines. They are not interchangeable.
-5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists locations and stores no definitions.
+5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists contexts, their paths, and their relationships; it stores no definitions.
 
 ## Budgets
 
@@ -53,3 +53,4 @@ Measure volume with `grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | 
 - **Never copy a value that has an owner.** Cite the config file or the CLI's `--help`.
 - **One fact, one home.** A parent links to a child's conclusion; it does not restate it.
 - **Generated files declare their command** on the first line.
+- **A glossary defines terms, not rules.** A `GLOSSARY.md` entry is a term, a definition, and the synonyms it avoids; a budget, a procedure, or an implementation rule stays in the page that owns it and is linked.

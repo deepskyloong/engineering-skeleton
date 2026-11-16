@@ -21,14 +21,16 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 
 ## Present from the first real use
 
-| Role                  | Home                                 | Admission                                                                               | Exit                                                                                                   | Authority                             |
-| --------------------- | ------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------- |
-| Decision record (ADR) | `/docs/decisions/ADR-<nnnn>-slug.md` | A choice with rejected alternatives that a future maintainer would otherwise relitigate | Marked `Superseded` and linked; never deleted                                                          | Binds the choice until superseded     |
-| Backlog item          | `/docs/backlog/B-<nnnn>-slug.md`     | A deferred idea with a revisit trigger and evidence                                     | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue          |
-| Backlog index         | `/docs/backlog/README.md`            | One row per item, including closed; `Status` is `open`, `active`, or `closed`           | —                                                                                                      | Binds the queue's order and state     |
-| Operating modes       | `/docs/workflow.md`                  | The forge / audit / migrate steps, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes                                                                          | Binds how an effort is run and closed |
-| Vocabulary            | `/GLOSSARY.md`                       | A term whose meaning would drift without a fixed definition, with avoided synonyms      | A term moves to a member when only it uses it                                                          | Binds naming in prose and code        |
-| Vocabulary map        | `/GLOSSARY-MAP.md`                   | Locations of member vocabularies only; stores no definitions                            | —                                                                                                      | Binds where a term is defined         |
+| Role                  | Home                                 | Admission                                                                               | Exit                                                                                                   | Authority                                             |
+| --------------------- | ------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| Decision record (ADR) | `/docs/decisions/ADR-<nnnn>-slug.md` | A choice with rejected alternatives that a future maintainer would otherwise relitigate | Marked `Superseded` and linked; never deleted                                                          | Binds the choice until superseded                     |
+| Backlog item          | `/docs/backlog/B-<nnnn>-slug.md`     | A deferred idea with a revisit trigger and evidence                                     | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue                          |
+| Backlog index         | `/docs/backlog/README.md`            | One row per item, including closed; `Status` is `open`, `active`, or `closed`           | —                                                                                                      | Binds the queue's order and state                     |
+| Operating modes       | `/docs/workflow.md`                  | The forge / audit / migrate steps, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes                                                                          | Binds how an effort is run and closed                 |
+| Vocabulary            | `/GLOSSARY.md`                       | A term whose meaning would drift without a fixed definition, with avoided synonyms      | A term moves to a member when only it uses it                                                          | Binds naming in prose and code                        |
+| Vocabulary map        | `/GLOSSARY-MAP.md`                   | Member contexts, their paths, and their relationships; stores no definitions            | —                                                                                                      | Binds where terms are defined and how contexts relate |
+
+`GLOSSARY.md` is a glossary, not a spec. Each entry is a bold term, a one- or two-sentence definition of what the term is, and an `_Avoid_` line naming the synonyms it replaces; group entries under a subheading when a natural cluster emerges. A budget, a procedure, or an implementation rule stays in the page that owns it and is linked, not restated.
 
 ## Optional, admitted by trigger
 
@@ -53,7 +55,7 @@ These separate roles that five source repositories kept merging. They are normat
 2. **`spec` has two senses.** `tasks/<slug>/spec.md` is the work package's specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort. Never let one word carry both; when a sentence says "the spec", it must be obvious which one.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters; entries are lines. They measure different things and are not interchangeable.
-5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists locations and stores no definitions.
+5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists contexts, their paths, and their relationships; it stores no definitions.
 
 ## Module-level rules: deferred
 

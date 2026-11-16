@@ -13,15 +13,15 @@ Do not copy all four at day one. Each segment has a trigger, and copying it earl
 
 ## Values to replace
 
-| Value                    | Where it appears                        | Set when                                   |
-| ------------------------ | --------------------------------------- | ------------------------------------------ |
-| `<project-name>`         | `README.md`, `AGENTS.md`, overlay files | Step 1                                     |
-| `<one-line purpose>`     | `README.md`, `AGENTS.md`                | Step 1                                     |
-| `<owner>`                | `docs/charter.md`                       | Step 1                                     |
-| `<language>`             | `AGENTS.md`                             | Step 2, once the overlay is chosen         |
-| `<install-command>`      | `README.md`, `AGENTS.md`                | Step 2, from the overlay README            |
-| `<gate-command>`         | `README.md`, `AGENTS.md`                | Step 2, after the overlay README states it |
-| `<focused-test-command>` | `AGENTS.md`                             | Step 2, when the overlay defines one       |
+| Value                    | Where it appears                                                        | Set when                                   |
+| ------------------------ | ----------------------------------------------------------------------- | ------------------------------------------ |
+| `<project-name>`         | `README.md`, `AGENTS.md`, overlay files, `GLOSSARY.md` (first-use copy) | Step 1                                     |
+| `<one-line purpose>`     | `README.md`, `AGENTS.md`                                                | Step 1                                     |
+| `<owner>`                | `docs/charter.md`                                                       | Step 1                                     |
+| `<language>`             | `AGENTS.md`                                                             | Step 2, once the overlay is chosen         |
+| `<install-command>`      | `README.md`, `AGENTS.md`                                                | Step 2, from the overlay README            |
+| `<gate-command>`         | `README.md`, `AGENTS.md`                                                | Step 2, after the overlay README states it |
+| `<focused-test-command>` | `AGENTS.md`                                                             | Step 2, when the overlay defines one       |
 
 `<repo-path>` does not appear in `core/`; it exists only in pointers a later migration generates.
 

@@ -1,13 +1,11 @@
-# GLOSSARY — vocabulary
+# <project-name>
 
-Terms this repository uses with a fixed meaning. Add a row only when a term's meaning would drift without a fixed definition, or when a synonym would cause a real mistake.
+The vocabulary of this repository: terms with a fixed meaning, so a spec, a template, or a commit message can name the same thing the same way.
 
-| Term         | Meaning                                  | Avoid                          |
-| ------------ | ---------------------------------------- | ------------------------------ |
-| example-term | One sentence a new maintainer can act on | the synonym that would mislead |
+## Language
 
-Rules:
+### Example
 
-- A term used by one member lives in that member's `GLOSSARY.md`.
-- `GLOSSARY-MAP.md` lists locations and stores no definitions.
-- When a definition changes, change it here and fix every pointer; do not add a second definition.
+**example-term**:
+One sentence a new maintainer can act on.
+_Avoid_: the synonym that would mislead

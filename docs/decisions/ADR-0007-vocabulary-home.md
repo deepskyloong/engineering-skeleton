@@ -12,7 +12,7 @@ The oshi audit exposed the mismatch. Oshi already has `GLOSSARY.md`, and its `do
 
 ## Decision
 
-The Vocabulary role lives at `/GLOSSARY.md`; the Vocabulary map lives at `/GLOSSARY-MAP.md` when member vocabularies exist. `GLOSSARY.md` is a root role admitted when a term's meaning would drift without a fixed definition, with avoided synonyms; it is not always-read. `GLOSSARY-MAP.md` stores locations only. `CONTEXT.md` and `CONTEXT-MAP.md` are legacy aliases: rename them to the GLOSSARY names; leave a tombstone only when a frozen record cites the old path, and register a foreign suite that insists on `CONTEXT.md` in `docs/adapters.md`. The root entry files are `README.md` and `AGENTS.md`; `GLOSSARY.md` is read when terms matter.
+The Vocabulary role lives at `/GLOSSARY.md`; the Vocabulary map lives at `/GLOSSARY-MAP.md` when member vocabularies exist. `GLOSSARY.md` is a root role admitted when a term's meaning would drift without a fixed definition, with avoided synonyms; it is not always-read. `GLOSSARY-MAP.md` stores locations only; ADR-0008 refines the map's shape to member contexts and relationships. `CONTEXT.md` and `CONTEXT-MAP.md` are legacy aliases: rename them to the GLOSSARY names; leave a tombstone only when a frozen record cites the old path, and register a foreign suite that insists on `CONTEXT.md` in `docs/adapters.md`. The root entry files are `README.md` and `AGENTS.md`; `GLOSSARY.md` is read when terms matter.
 
 The budget is 6,000 non-whitespace characters for `GLOSSARY.md` and 2,000 for `GLOSSARY-MAP.md`. The role admission is a term with a fixed meaning, not a term used by two or more members; a single-package repository with cross-cutting terms needs the root glossary, and this repository is the sample.
 
@@ -27,7 +27,7 @@ The budget is 6,000 non-whitespace characters for `GLOSSARY.md` and 2,000 for `G
 ## Consequences
 
 - `0001-foundations.md`, `0002-roles.md`, `0003-flow.md`, `0004-rules.md`, `0006-migration.md`, `docs/conventions.md`, `docs/structure.md`, `template/core/docs/conventions.md`, `template/core/docs/structure.md`, `template/first-use/`, and `scripts/check.py` change together.
-- The skeleton's own `CONTEXT.md` becomes `GLOSSARY.md`; the template's first-use vocabulary file becomes `GLOSSARY.md`; the title changes from "CONTEXT — vocabulary" to "GLOSSARY — vocabulary".
+- The skeleton's own `CONTEXT.md` becomes `GLOSSARY.md`; the template's first-use vocabulary file becomes `GLOSSARY.md`; the title changes from "CONTEXT — vocabulary" to the context name, and the body follows the format in ADR-0008.
 - The root is no longer described as "four always-read files". `README.md` and `AGENTS.md` are the entry files; `GLOSSARY.md` is read when terms matter. `0003` and both `structure.md` pages use "entry files".
 - A single-package repository can own a root glossary; the "two or more members" admission is removed. `GLOSSARY-MAP.md` remains the multi-member-only artifact.
 - Oshi's `GLOSSARY.md` stays. The audit's finding 7 and its pointer-debt row are superseded by this ADR; the `CONTEXT.md` move is removed from the rollout's todo. The audit remains a dated snapshot.
