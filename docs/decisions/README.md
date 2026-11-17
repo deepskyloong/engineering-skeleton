@@ -16,6 +16,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0008](ADR-0008-vocabulary-format.md)         | The vocabulary body follows the domain-modeling glossary format; the map lists contexts and relationships | Accepted |
 | [ADR-0009](ADR-0009-work-package-ledger.md)       | The work package is a work item ledger; the plan carries the phase breakdown                              | Accepted |
 | [ADR-0010](ADR-0010-suite-tracks-are-adapters.md) | Suite tracks are permanent adapters; legacy paths are the retirable kind                                  | Accepted |
+| [ADR-0011](ADR-0011-tombstone-role.md)            | A tombstone is a role at the old path; the gate enforces its shape                                        | Accepted |
 
 ## Format
 

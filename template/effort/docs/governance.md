@@ -28,4 +28,4 @@ A change that leaves a downstream file stale is incomplete, even if the changed 
 
 ## Retirement
 
-An artifact that stops being true is deleted; `git log` keeps it. Four exceptions: an ADR is marked `Superseded` and linked, never deleted; a closed backlog item keeps its file and its index row, with the row marked `closed`; a superseded contract stays only while a consumer cites it; a tombstone stays only while a frozen record cites the old path.
+An artifact that stops being true is deleted; `git log` keeps it. Four exceptions: an ADR is marked `Superseded` and linked, never deleted; a closed backlog item keeps its file and its index row, with the row marked `closed`; a superseded contract stays only while a consumer cites it; a tombstone stays at the old path only while a frozen record cites it — ≤3 lines, exactly one link, title ending with `— moved`.

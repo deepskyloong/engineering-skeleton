@@ -101,7 +101,7 @@ Four exceptions:
 1. **ADR** — never deleted. Marked `Superseded` and linked to its replacement. A decision's rejected alternatives are the record's value.
 2. **Closed backlog item** — the file and its index row stay; the row's status becomes `closed`. Its `Evidence` may be cited by a later item.
 3. **Superseded contract** — kept only while a consumer still cites it, then deleted.
-4. **Tombstone** — kept only while a frozen record cites the old path. ≤3 lines, one link, no explanation.
+4. **Tombstone** — kept only while a frozen record cites the old path. It lives at the old path: ≤3 lines, exactly one link, no explanation, and a title ending with `— moved`; the budget is in the table above.
 
 An artifact that is "kept just in case" is not an exception; it is the start of a second home.
 

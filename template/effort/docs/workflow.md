@@ -35,7 +35,7 @@ Anything else — a changed goal or acceptance criterion — is a new work packa
 2. Relocate what outlives the effort: contract → `docs/contracts/`; decision → `docs/decisions/`; method → `docs/knowledge/guides/`; incident → `docs/knowledge/cases/`.
 3. Delete what nothing cites: `rg -l '<slug>'` must be empty, or every survivor is explained.
 4. Remove the row from `tasks/README.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
-5. Leave a tombstone only when a frozen record cites the old path (≤3 lines, one link).
+5. Leave a tombstone at the old path only when a frozen record cites it: ≤3 lines, exactly one link, title ending with `— moved`.
 
 ## Acceptance checklist
 

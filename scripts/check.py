@@ -39,10 +39,37 @@ def table_entries(text: str) -> int:
     return max(len(rows) - 1, 0)
 
 
+def tombstone_state(path: Path) -> tuple[bool, str | None]:
+    """Return (is_tombstone, shape_issue) for a forwarding stub.
+
+    The marker is the title suffix, not the file name or its directory: a
+    tombstone lives at the old path and would otherwise look like a live page
+    to the role map.
+    """
+    text = path.read_text(encoding="utf-8")
+    lines = [line for line in text.splitlines() if line.strip()]
+    if (
+        not lines
+        or not lines[0].startswith("# ")
+        or not lines[0].rstrip().endswith(TOMBSTONE_SUFFIX)
+    ):
+        return False, None
+    if len(lines) > 3:
+        return True, f"{len(lines)} non-empty lines, max 3"
+    links = LINK.findall(text)
+    if len(links) != 1:
+        return True, f"{len(links)} links, expected 1"
+    measured = volume(text)
+    if measured > 400:
+        return True, f"volume {measured} > 400"
+    return True, None
+
+
 CJK = re.compile(
     r"[\u3000-\u303f\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]"
 )
 LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+TOMBSTONE_SUFFIX = "— moved"
 COUNT_NOUN = re.compile(
     r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+"
     r"(pages?|documents?|files?|entries|items|adrs?)\b",
@@ -112,7 +139,10 @@ def check_role_coverage() -> None:
             fail(f"missing directory: {base}/")
             continue
         for directory in sorted(p for p in root.rglob("*") if p.is_dir()):
-            if not list(directory.glob("*.md")):
+            pages = list(directory.glob("*.md"))
+            if not pages:
+                continue
+            if all(tombstone_state(p)[0] for p in pages):
                 continue
             if not (directory / "README.md").exists():
                 fail(f"missing README: {rel(directory)}/")
@@ -193,6 +223,8 @@ def check_naming(files: list[Path]) -> None:
         name = path.name
         key = rel(path).replace("\\", "/")
         route = "/" + key
+        if tombstone_state(path)[0]:
+            continue
         if name in ROLE_NAMES:
             continue
         if "/docs/spec/" in route:
@@ -212,8 +244,17 @@ def check_role_paths(files: list[Path]) -> None:
         key = rel(path)
         if not key.startswith("docs/"):
             continue
+        if tombstone_state(path)[0]:
+            continue
         if not any(pattern.fullmatch(key) for pattern in DOC_ROLE_PATHS):
             fail(f"docs page does not map to a declared role: {key}")
+
+
+def check_tombstones(files: list[Path]) -> None:
+    for path in files:
+        is_tombstone, issue = tombstone_state(path)
+        if is_tombstone and issue:
+            fail(f"tombstone shape: {rel(path)} — {issue}")
 
 
 def check_generated(files: list[Path]) -> None:
@@ -271,6 +312,7 @@ def main() -> int:
     check_index_autonomy(files)
     check_naming(files)
     check_role_paths(files)
+    check_tombstones(files)
     check_generated(files)
     check_version()
 

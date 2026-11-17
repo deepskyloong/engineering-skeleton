@@ -24,3 +24,7 @@ Keep the 400-character budget in `docs/spec/0004-rules.md`; add the tombstone pa
 ## Revisit when
 
 The first tombstone is created during the rollout, which is oshi's first move. A tombstone that survives after its last citation is deleted is a finding, not a reason to keep the row.
+
+## Outcome
+
+The Tombstone role is admitted at the old path, and `scripts/check.py` enforces the shape and exempts it from the role and naming maps. Closed 2026-11-17; see `docs/decisions/ADR-0011-tombstone-role.md`.
