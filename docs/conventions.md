@@ -9,7 +9,7 @@ English for every file this repository maintains: prose, templates, commit messa
 - Files: `kebab-case.md`, with `NNNN-slug.md` for spec pages, `ADR-<nnnn>-slug.md` for ADRs, and `B-<nnnn>-slug.md` for backlog items.
 - Numbered files use four digits: spec `0001`, ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series keeps its width and is never renumbered.
 - All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
-- Template placeholders: `<angle-bracket>` form, one placeholder per value, listed in `template/README.md`.
+- Template placeholders: `<angle-bracket>` values replaced at forge, and `{{NORM_SOURCE}}`, a token resolved from the target's `Norm source:` line and never replaced; both are listed in `template/README.md`.
 - Prose is not hard-wrapped. A paragraph is one line; the editor soft-wraps. Code fences, tables, and YAML keep their line breaks.
 
 ## Citation
@@ -18,15 +18,15 @@ Cite a file name plus a section name (`docs/spec/0002-roles.md`, "Five discrimin
 
 ## The five discriminations
 
-Normative definitions live in `docs/spec/0002-roles.md` ("Five discriminations"); this page does not restate them. What each means for this repository:
+Normative definitions live in `docs/spec/0002-roles.md` ("Five discriminations"); this page does not restate them. What each means in practice:
 
 - A choice with rejected alternatives goes to `docs/decisions/`, not into a README or a status page.
 - "The spec" is ambiguous here too: always write "work-package spec" or "contract".
 - `README.md` serves adopters; `docs/charter.md` serves the maintainer.
 - A budget line names its unit and the command that measures it.
-- This repository has no members, so it has one `GLOSSARY.md` and no `GLOSSARY-MAP.md`.
+- A repository with no members keeps one `GLOSSARY.md` and no `GLOSSARY-MAP.md`; a repository with members adds the map.
 
-A generated repository copies the full five into its own `docs/conventions.md`; that copy is authoritative there, not this page.
+A repository that adopts these norms points at this page: its `docs/conventions.md` carries `Base: {{NORM_SOURCE}}/docs/conventions.md`, records only deviations, and dates its last read. The base wins wherever the page is silent; a restated copy is a second home, not an adaptation.
 
 ## Document discipline
 

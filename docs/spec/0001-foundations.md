@@ -4,6 +4,8 @@
 
 A repository skeleton is not a directory template. It is a set of **roles** — one kind of document, one home, one admission rule, one exit rule, one authority range — plus the rules that keep the roles from duplicating each other. The tree is a consequence of the roles; copying the tree without the roles produces files nobody can place six months later.
 
+This repository is also the norm source for repositories that already exist: a general norm — language, naming, citation, document discipline, budgets — is written here once, and a target page points at it (`Base: {{NORM_SOURCE}}/docs/conventions.md`) instead of carrying a copy. The template supplies a new repository's shape; the norm source supplies the rules every repository that names it follows.
+
 The skeleton is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
 
 ## Six principles
@@ -18,7 +20,7 @@ The skeleton is language-agnostic in its core and language-specific in its overl
 
 **P5 — Structure over convention.** A path beats a promise. If a document must exist, it has a home; if it has no home, it does not exist and nobody will maintain it. "Please remember to write an ADR" is not a structure.
 
-**P6 — The spec is normative; everything downstream copies it.** Template and skill are derivatives. When they drift, the spec wins and the derivative is fixed. When the spec is wrong, the spec changes first and the derivative follows in the same or the next commit.
+**P6 — The spec is normative; everything downstream points at it or derives from it.** Template and skill are derivatives. A general norm reaches a target repository as a pointer — a base line plus deviations — not as a copied restatement. When they drift, the spec wins and the derivative is fixed. When the spec is wrong, the spec changes first and the derivative follows in the same or the next commit.
 
 ## Four layers
 

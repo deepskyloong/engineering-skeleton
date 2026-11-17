@@ -28,6 +28,7 @@
 | A generated `AGENTS.md` from source rules | Keep the generator; mark the output | The source rules stay authoritative; the generated file carries the header |
 | A README change-surface table | Keep it | It is a real mechanism, not a skeleton violation |
 | A commit convention inside `AGENTS.md` or a separate contributing guide | `docs/committing.md` | Keep one commit section only; move the vocabulary there and leave a routing row in `AGENTS.md` |
+| A copied conventions page carrying the discriminations and the budget table | `docs/conventions.md` as a base pointer plus deviations | The norm lives once at the source; the copy becomes a pointer, and the budget numbers live in the checker (`B-0002`) |
 | A root glossary or a pile of jargon | Root `GLOSSARY.md`; member terms move down | A term used by one member does not belong at the root; a legacy `CONTEXT.md` takes the `GLOSSARY` name, not a second home |
 | A legacy `CONTEXT.md` / `CONTEXT-MAP.md` | `GLOSSARY.md` / `GLOSSARY-MAP.md` | Rename; leave a tombstone only when a frozen record cites the old path; never keep both names |
 | An existing `tasks/` with ad-hoc folders | `tasks/README.md` plus one package at a time | Do not bulk-move; close or freeze an old package before converting it |
@@ -50,7 +51,7 @@ The notes below are observations from 2026-11-14, for-the-record; they describe 
 ## Order of migration
 
 1. Freeze additions to the old homes.
-2. Move `docs/` roles into the canonical tree, one role per commit.
+2. Move `docs/` roles into the canonical tree, one role per commit. A general-norm page becomes a base pointer plus its deviations (`Base: {{NORM_SOURCE}}/...`), never a restated copy.
 3. Split `AGENTS.md` last, after the docs exist — the routing table cannot point at pages that are not there yet.
 4. Add the gate — including the overlay's Markdown stage when it ships one (`B-0011`) — and prove it green before touching `tasks/`.
 5. Migrate the backlog and status.

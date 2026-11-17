@@ -6,12 +6,12 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 
 ## Hard invariants
 
-1. **The spec is normative; the template and the skill are downstream.** A role, a budget, or a discrimination changes in `docs/spec/` first, then in `template/`, then in the skill. Three-way drift is the failure this repository exists to prevent.
+1. **The spec is normative; the template and the skill are downstream.** A role, a budget, or a discrimination changes in `docs/spec/` first, then in the pages and steps that state it. A page that only points at the norm source needs no edit. Three-way drift is the failure this repository exists to prevent.
 2. **One role, one home.** No two spec pages may define the same role. If a page needs another page's definition, it links instead of restating.
 3. **English only.** Prose, templates, comments, commit messages. No CJK in this repository.
 4. **Budgets are measured, not asserted.** Volume is non-whitespace characters; entries are lines. Both units and their commands are defined in `docs/spec/0004-rules.md`. A number without a unit and a command is noise.
 5. **No pre-built empty directories.** A directory appears when its trigger does, and its README appears with it.
-6. **The template mirrors the spec, never leads it.** A template file that carries a rule the spec does not state is a bug in the template.
+6. **The template never leads the spec.** A template page points at a general norm or states only what cannot be pointed at — paths, commands, overlay mechanics; a rule the spec does not state is a bug in the template.
 
 ## Gate
 
@@ -45,7 +45,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | --- | --- |
 | Add / rename / remove a role | `docs/spec/0002-roles.md`, the matching `template/` file, the skill's mode steps, `scripts/check.py` expectations |
 | Change a level or a placement rule | `docs/spec/0002-roles.md`, `docs/structure.md`, `template/core/docs/structure.md` |
-| Change a budget or its unit | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `scripts/check.py` budget tables |
+| Change a budget or its unit | `docs/spec/0004-rules.md`, `scripts/check.py` budget tables, the portable checker's copy (`B-0002`) |
 | Add / remove an overlay | `docs/spec/0005-overlays.md`, `template/overlays/`, the compatibility table |
 | Change a gate command | `docs/spec/0005-overlays.md`, this file, every overlay README, `package.json`, `.github/workflows/gate.yml` |
 | Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |

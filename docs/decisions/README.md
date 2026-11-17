@@ -21,6 +21,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0013](ADR-0013-two-tier-volume-budgets.md) | Volume budgets carry a soft judgment line and a hard failure line | Accepted |
 | [ADR-0014](ADR-0014-backlog-carries-no-priority.md) | The backlog carries no priority field | Accepted |
 | [ADR-0015](ADR-0015-migrated-adr-series-zero-padded.md) | A migrated ADR series is zero-padded to four digits; a migrated backlog series keeps its width | Accepted |
+| [ADR-0016](ADR-0016-norm-source-pointer.md) | General norms are consumed by pointer, not copy | Accepted |
 
 ## Format
 

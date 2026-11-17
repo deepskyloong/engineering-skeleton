@@ -10,7 +10,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 | --- | --- | --- | --- |
 | R1 | One fact, one home | weak | Review: the same rule stated twice is a finding. Semantic duplication cannot be grepped reliably. |
 | R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.py` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
-| R3 | Change surface: spec → template → skill in the same or next commit | weak | Review against the `AGENTS.md` table |
+| R3 | Change surface: spec → template → skill in the same or next commit; a page that only points at the norm source needs no edit | weak | Review against the `AGENTS.md` table |
 | R4a | Volume budgets are measured in non-whitespace characters and carry a soft and a hard line; soft is a review signal, hard fails the gate | strong | `scripts/check.py` measures every budgeted file, warns above soft and fails above hard |
 | R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the index tables that carry a limit |
 | R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.py` role-path map; an unmapped path fails |

@@ -2,6 +2,8 @@
 
 skeleton: v1 — update this line when the template is re-copied from a newer spec.
 
+Norm source: `{{NORM_SOURCE}}` = `<path or URL>`. Change this line only; every reference uses the token.
+
 <one-line purpose>.
 
 This file is the per-turn rule layer: red lines, the gate, and the routing table. Everything explanatory lives in `docs/` and is read on demand.
