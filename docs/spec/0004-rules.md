@@ -17,7 +17,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 | R6 | No empty directories | strong | `scripts/check.py` fails on a directory with no files |
 | R7 | Files under a generated path carry the generated header | strong | `scripts/check.py` scans `dist/` and any file whose first line self-declares generated |
 | R8 | English for repository-maintained markdown | strong | `scripts/check.py` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
-| R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package leaves the tasks index |
+| R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package moves from the open table to the archive index |
 | R10 | Record method, not measurement | weak | Review: a count, duration, coverage number, resolved version, benchmark, or size that can drift is written as the command that produces it, or dated `for-the-record` |
 | R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for spec pages, ADRs, and backlog names |
 | R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.py` table check: cell padding and cell count per row. Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
@@ -61,7 +61,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `status.md` | ≤10,000 / ≤16,000 EN; ≤5,000 / ≤8,000 ZH | — |
 | `GLOSSARY.md` | ≤7,500 / ≤12,000 | — |
 | `GLOSSARY-MAP.md` | ≤2,500 / ≤4,000 | — |
-| `tasks/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
+| `tasks/<slug>/summary.md`, `tasks/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | exactly 1 link |
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
@@ -106,7 +106,7 @@ Four exceptions:
 3. **Superseded contract** — kept only while a consumer still cites it, then deleted.
 4. **Tombstone** — kept only while a frozen record cites the old path. It lives at the old path: ≤3 lines, exactly one link, no explanation, and a title ending with `— moved`; the budget is in the table above.
 
-An artifact that is "kept just in case" is not an exception; it is the start of a second home.
+An artifact that is "kept just in case" is not an exception; it is the start of a second home. A closed work package is not a fifth exception either: it is the frozen exit of a role (`0002`), and `tasks/archive/README.md` names it.
 
 ## Generated artifacts
 

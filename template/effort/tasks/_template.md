@@ -96,4 +96,4 @@ What this plan deliberately does not touch.
 ## What a future maintainer must know
 ```
 
-Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point.
+Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point. At closeout the package moves to `tasks/archive/<slug>/`; `summary.md` is the record a reader opens first.

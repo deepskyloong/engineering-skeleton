@@ -155,13 +155,13 @@ Fix the skeleton gaps oshi exposed. Each gap becomes an ADR, a spec change, or a
 **Status**: todo
 **Depends on**: W08
 
-Write `summary.md` in three sections, relocate what outlives the effort — rulings to ADRs or the backlog, the audit index's surviving dispositions to `B-0005` — and record oshi's disposition there without closing the item: the remaining four repositories keep `B-0005` active. Remove the package row from `tasks/README.md`, prove `rg -l 'rollout-oshi'`, and delete the directory unless a frozen record cites it.
+Write `summary.md` in three sections, relocate what outlives the effort — rulings to ADRs or the backlog, the audit index's surviving dispositions to `B-0005` — and record oshi's disposition there without closing the item: the remaining four repositories keep `B-0005` active. Move the package to `tasks/archive/rollout-oshi/`, move its row from `tasks/README.md` to `tasks/archive/README.md`, and prove `rg -l 'rollout-oshi'` survivors are explained.
 
 **Done when**:
 
 - `summary.md` exists, is inside budget, and names what was not done
 - `B-0005` carries oshi's disposition and remains `active`
-- the tasks index has no row for the package
+- the package is at `tasks/archive/rollout-oshi/` and its row is in the archive index
 - every surviving `rollout-oshi` pointer is explained
 - the gate is green
 

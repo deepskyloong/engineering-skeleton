@@ -1,6 +1,6 @@
 # Work packages
 
-One directory per effort: `tasks/<slug>/`, holding four files. The work package is temporary; what outlives it moves to `docs/`.
+One directory per effort: `tasks/<slug>/`, holding four files while it is open. What outlives the effort moves to `docs/`; the package itself moves to `tasks/archive/<slug>/` at closeout and stays there as a frozen record.
 
 ## Rules
 
@@ -10,7 +10,7 @@ One directory per effort: `tasks/<slug>/`, holding four files. The work package 
 - Work items are `W<n>` blocks under phase headings; each carries status, dependencies, a prose description, done-when criteria, and evidence. `done` requires evidence; `plan.md` carries the phase breakdown.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
-- On closeout: write `summary.md`, relocate artifacts, delete the directory unless a frozen record cites it, and remove the row below.
+- On closeout: write `summary.md`, relocate artifacts, move the package to `tasks/archive/<slug>/`, and move the row to the archive index.
 
 ## Open
 
@@ -18,9 +18,9 @@ One directory per effort: `tasks/<slug>/`, holding four files. The work package 
 | --- | --- | --- | --- |
 | rollout-oshi | Adopt the skeleton in oshi | default | open |
 
-## Closed
+## Archived
 
-Closed packages leave this table. `git log` and their `summary.md` are the record.
+Closed packages move to `tasks/archive/<slug>/`; `tasks/archive/README.md` is their index. The table above lists open packages only, so a package's state is its location rather than a column.
 
 ## Closeout checklist
 
@@ -28,5 +28,6 @@ Closed packages leave this table. `git log` and their `summary.md` are the recor
 - [ ] Contracts, ADRs, and knowledge files have homes and index links.
 - [ ] `rg -l '<slug>'` was run.
 - [ ] Every done work item cites evidence; every open item is in `Current state`.
-- [ ] This table no longer lists the package.
+- [ ] This table no longer lists the package; `tasks/archive/README.md` does.
+- [ ] The package is at `tasks/archive/<slug>/` and frozen.
 - [ ] The gate is green.
