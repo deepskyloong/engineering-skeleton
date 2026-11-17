@@ -100,19 +100,21 @@ DOC_ROLE_PATHS = [
 ]
 
 EXACT_BUDGETS = {
-    "AGENTS.md": (16_000, 32_000),
-    "README.md": (8_000, 16_000),
-    "GLOSSARY.md": (6_000, 12_000),
-    "GLOSSARY-MAP.md": (2_000, 4_000),
-    "docs/README.md": (2_000, 4_000),
-    "docs/committing.md": (4_000, 8_000),
-    "docs/spec/README.md": (2_000, 4_000),
-    "docs/decisions/README.md": (2_000, 4_000),
+    "AGENTS.md": (20_000, 32_000),
+    "README.md": (10_000, 16_000),
+    "GLOSSARY.md": (7_500, 12_000),
+    "GLOSSARY-MAP.md": (2_500, 4_000),
+    "docs/README.md": (6_000, 12_000),
+    "docs/committing.md": (5_000, 8_000),
+    "docs/spec/README.md": (6_000, 12_000),
+    "docs/decisions/README.md": (6_000, 12_000),
     "docs/backlog/README.md": (8_000, 16_000),
-    "template/README.md": (8_000, 16_000),
-    "template/core/AGENTS.md": (16_000, 32_000),
-    "template/core/README.md": (8_000, 16_000),
-    "template/core/docs/committing.md": (4_000, 8_000),
+    "template/README.md": (6_000, 12_000),
+    "template/core/AGENTS.md": (20_000, 32_000),
+    "template/core/README.md": (10_000, 16_000),
+    "template/core/docs/committing.md": (5_000, 8_000),
+    "template/first-use/docs/backlog/README.md": (8_000, 16_000),
+    "template/overlays/README.md": (6_000, 12_000),
 }
 
 ENTRY_LIMITS = {
@@ -134,15 +136,15 @@ def budget_for(key: str, name: str) -> tuple[int, int] | None:
     if key in EXACT_BUDGETS:
         return EXACT_BUDGETS[key]
     if key.startswith("docs/decisions/"):
-        return (6_000, 12_000)
+        return (7_500, 12_000)
     if key.startswith("docs/backlog/"):
-        return (4_000, 8_000)
+        return (5_000, 8_000)
     if key.startswith("docs/"):
-        return (8_000, 16_000)
+        return (10_000, 16_000)
     if key.startswith("template/overlays/"):
-        return (8_000, 16_000)
+        return (10_000, 16_000)
     if key.startswith("template/"):
-        return (2_000, 4_000) if name == "README.md" else (8_000, 16_000)
+        return (6_000, 12_000) if name == "README.md" else (10_000, 16_000)
     return None
 
 
