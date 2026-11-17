@@ -20,7 +20,13 @@ The skeleton is language-agnostic in its core and language-specific in its overl
 
 **P5 — Structure over convention.** A path beats a promise. If a document must exist, it has a home; if it has no home, it does not exist and nobody will maintain it. "Please remember to write an ADR" is not a structure.
 
-**P6 — The spec is normative; everything downstream points at it or derives from it.** Template and skill are derivatives. A general norm reaches a target repository as a pointer — a base line plus deviations — not as a copied restatement. When they drift, the spec wins and the derivative is fixed. When the spec is wrong, the spec changes first and the derivative follows in the same or the next commit.
+**P6 — One authority, many pointers.** A general norm is written once at its source; a consumer points at it and records only deviations, never a copied restatement. Template and skill are derivatives of the spec for the same reason: when they drift, the spec wins; when the spec is wrong, the spec changes first and the derivative follows in the same or the next commit.
+
+## Lineage
+
+The model has industry names, one per face: **single source of truth** for the authority, **incorporation by reference** and **normative reference** for the pointer, **base and overlay** for the layering, **profile** for a local adaptation of a base standard, and **shared kernel** for the part several consumers depend on together. The anti-patterns are named too: **vendoring** copies the dependency into the consumer, and a **fork** diverges from the source. This repository says **norm source** for the role and **base pointer plus deviations** for the consumer page.
+
+Two obligations follow from those names: a pointer must be reasonably available to its consumer, and a shared kernel's changes are announced. A private path meets the first on one machine; the second has no mechanism today, and `Last read` is only a provenance marker.
 
 ## Four layers
 

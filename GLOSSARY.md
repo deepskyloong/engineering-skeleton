@@ -14,6 +14,10 @@ _Avoid_: doc type, category
 The single path where a role lives.
 _Avoid_: location, place
 
+**norm source**:
+The repository that holds a general norm once; a consumer names it on one line and points at it, recording only deviations.
+_Avoid_: template, upstream, gold standard
+
 **layer**:
 One of the four strata the skeleton is built from: core, overlay, adapter, optional.
 _Avoid_: level (reserved for root/member/module)
