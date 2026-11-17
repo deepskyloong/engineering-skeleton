@@ -17,6 +17,7 @@ TABLE_DELIMITER = re.compile(r"\|[\s:|-]+\|")
 TABLE_ROW = re.compile(r"^\|.*\|$")
 CODE_SPAN = re.compile(r"`[^`]*`")
 SKIP_PARTS = {".git", "node_modules", "__pycache__"}
+BACKLOG_STATUSES = {"open", "active", "paused", "closed"}
 
 
 def rel(path: Path) -> str:
@@ -326,6 +327,33 @@ def check_tables(files: list[Path]) -> None:
                     fail(f"{rel(path)}:{number}: table cell has a run of spaces")
 
 
+def check_backlog_status(files: list[Path]) -> None:
+    """The backlog index carries one of four statuses, and a typo is a finding.
+
+    Status is the only column a reader filters the queue by, and it lives in the
+    index rather than in the item file (`docs/backlog/README.md`, "Rules"), so a
+    misspelled state has no second copy to correct it.
+    """
+    for path in files:
+        if rel(path) != "docs/backlog/README.md":
+            continue
+        header: list[str] | None = None
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            stripped = line.strip()
+            if not TABLE_ROW.match(stripped):
+                header = None
+                continue
+            cells = split_cells(stripped)
+            if header is None:
+                header = cells
+                continue
+            if TABLE_DELIMITER.fullmatch(stripped):
+                continue
+            status = cells[2].strip() if len(cells) > 2 else ""
+            if status not in BACKLOG_STATUSES:
+                fail(f"{rel(path)}:{number}: unknown backlog status {status!r}")
+
+
 def check_generated(files: list[Path]) -> None:
     for path in files:
         lines = path.read_text(encoding="utf-8").splitlines()
@@ -383,6 +411,7 @@ def main() -> int:
     check_role_paths(files)
     check_tombstones(files)
     check_tables(files)
+    check_backlog_status(files)
     check_generated(files)
     check_version()
 
@@ -394,7 +423,7 @@ def main() -> int:
 
     print(
         f"PASS — {len(files)} markdown files, roles, links, budgets, entries, "
-        "naming, tables, version"
+        "naming, tables, statuses, version"
     )
     return 0
 
