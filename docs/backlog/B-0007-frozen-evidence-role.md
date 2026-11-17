@@ -19,6 +19,8 @@ A research repository keeps records that are tracked, cited by later work, and n
 
 Option 2 is the cheapest and preserves every citation. Option 1 is the honest model if a second repository also keeps frozen records. Option 3 costs the most prose and loses the protocol text.
 
+Interim ruling (2026-11-17): oshi keeps both paths where they are as frozen legacy rows in `docs/adapters.md` (option 2). The role question stays open until a second repository keeps a frozen protocol; oshi's first-move trigger is spent.
+
 ## Revisit when
 
-Before oshi's first move of an evidence path, or when a second repository keeps a frozen protocol in git. Choose one candidate with oshi's sample, then record the choice as an ADR if it changes a role.
+When a second repository keeps a frozen protocol in git, or a record role is needed before that. Oshi's 2026-11-17 ruling keeps option 2 for its own paths.

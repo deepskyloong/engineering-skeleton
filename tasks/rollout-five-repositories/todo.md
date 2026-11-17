@@ -2,18 +2,18 @@
 
 ## Current state
 
-- Updated: 2026-11-16
+- Updated: 2026-11-17
 - Status: open; backlog `B-0005` active
 - Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 69 markdown files` (2026-11-16); re-run `bun run gate`
-- Last done: W09 — work item ledger and phase breakdown
-- Phase: P0 — skeleton and oshi audit
-- Focus: W03 — review oshi's audit
-- Progress: 8 done / 2 todo / 11 blocked
-- Todo: W03, W20
-- Next: W03 — rule the evidence class, tombstone home, and closed-package disposition; then choose the next oshi role
-- Blocked: W10–W19, W21 (see `Depends on`; W10 is next after W03)
-- Open decisions: oshi audit review; next oshi role (`docs/decisions` / `docs/contracts` / `docs/knowledge`)
+- Gate: last known `PASS — 71 markdown files` (2026-11-17); re-run `bun run gate`
+- Last done: W03 — review oshi's audit and rule the open questions
+- Phase: P1 — oshi migration
+- Focus: W10 — move oshi's living docs into their roles
+- Progress: 9 done / 2 todo / 10 blocked
+- Todo: W10, W20
+- Next: W10 — start with `docs/decisions`: move the four ADRs and leave tombstones at the cited old names
+- Blocked: W11–W19, W21 (see `Depends on`; W11 is next after W10)
+- Open decisions: none for the audit; each role move still stops for review before it starts
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -51,7 +51,7 @@ Inventory every markdown file in oshi outside vendored directories, assign each 
 
 #### W03 — Review oshi's audit
 
-**Status**: todo
+**Status**: done
 **Depends on**: W02
 
 Rule the audit's open questions with the maintainer: which evidence class covers `experiments/` and `docs/plans/`, where tombstones live, and how the five closed work packages are disposed of. Record the rulings in `audits/README.md` and `plan.md`, then choose the next oshi role.
@@ -62,7 +62,7 @@ Rule the audit's open questions with the maintainer: which evidence class covers
 - `audits/README.md` no longer leaves them open
 - the next oshi role is named
 
-**Evidence**: pending
+**Evidence**: commits `85ba4c0` (suite tracks, ADR-0010), `a2faba8` (tombstone role, ADR-0011); oshi `dcf99c9`; `audits/README.md`; `plan.md`; `B-0008` closed; next role `docs/decisions`.
 
 #### W04 — Freeze oshi's legacy paths and add the adapter registry
 
@@ -160,7 +160,7 @@ Replace the one-line checklist with a work item ledger: `W<n>` blocks with statu
 
 #### W10 — Move oshi's living docs into their roles
 
-**Status**: blocked
+**Status**: todo
 **Depends on**: W03
 
 Move oshi's living docs one role per commit. `docs/charter.md`, `docs/contracts/`, `docs/knowledge/`, and `docs/decisions/` do not exist yet; `docs/status.md`, `docs/operations/`, `tasks/README.md`, and `GLOSSARY.md` are already placed. Leave tombstones or adapter rows for paths that cannot move.

@@ -61,7 +61,7 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 
 1. Audit immediately before the migration; write `audits/<repo>.md`; review it with the maintainer. Settle the role order and the exceptions.
 2. Freeze the old homes and add `docs/adapters.md`; the freeze and legacy rows are the first commit.
-3. Move one role per commit, smallest complete role first. Oshi's executed order is `tasks/README.md`, the operations split, then the Status role (now at `docs/status.md` after ADR-0006); contracts, knowledge, and decisions remain, and the vocabulary is already at `GLOSSARY.md` after ADR-0007.
+3. Move one role per commit, smallest complete role first. Oshi's executed order is `tasks/README.md`, the operations split, then the Status role (now at `docs/status.md` after ADR-0006); the next role is `docs/decisions`, and `docs/contracts` and `docs/knowledge` remain; the vocabulary is already at `GLOSSARY.md` after ADR-0007.
 4. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
 5. Split an over-budget page after the role is at its home; do not mix a split with a move.
 6. Gate: the target's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.
@@ -75,6 +75,10 @@ This page records the operating sequence on top of `docs/spec/0006-migration.md`
 - The skeleton is unvalidated. A wrong placement, a missing rule, or a wrong format changes the skeleton first; the target then follows. Do not hard-code an old skeleton rule into a target repository, and do not fork the spec inside one target.
 - The work-package handoff is a `Current state` block at the top of `todo.md`, rewritten in the same commit as any change to a step, a decision, a branch, or the gate. It is a snapshot inside the existing four files; there is no work log and no fifth progress file. A new conversation reads `tasks/README.md`, `spec.md`, `plan.md`, then the block, and re-checks `git status` and the gate.
 - The work package is a work item ledger: `plan.md` carries the phase breakdown; `todo.md` carries `W<n>` blocks with status, dependencies, a prose description, done-when criteria, and evidence. The `Current state` block is the dashboard; there is no `progress.md` and no work log (ADR-0009).
+- A third-party suite's track root is a permanent adapter, not a legacy path (ADR-0010). Each suite owns its layout and content form. Oshi's four tracks are registered in `docs/adapters.md`; the five closed packages under `docs/superpowers/` and `docs/compound-engineering/` stay in place, and no migration folds a suite package into `tasks/`.
+- Frozen evidence stays where it is until a role is admitted. Oshi's `experiments/` and `docs/plans/` are frozen legacy paths in `docs/adapters.md`, with no move; `B-0007` remains open and fires only when a second repository keeps a frozen protocol (2026-11-17 ruling).
+- A tombstone is a role at the old path (ADR-0011): ≤3 lines, exactly one link, ≤400 non-whitespace characters, title ending `— moved`. `scripts/check.py` enforces the shape and exempts it from the role and naming maps; `B-0008` is closed. The oshi decisions move is its first use.
+- Oshi's next role is `docs/decisions`: four ADRs move to `docs/decisions/ADR-09` through `ADR-12` — the migrated series keeps its width and is never renumbered — with tombstones at the cited old names.
 
 ## Check-in points
 
