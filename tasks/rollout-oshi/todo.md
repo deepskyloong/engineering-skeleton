@@ -5,7 +5,7 @@
 - Updated: 2026-11-17
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 80 markdown files` (2026-11-17); re-run `bun run gate`
+- Gate: last known `PASS — 86 markdown files` (2026-11-17); re-run `bun run gate`
 - Last done: W01 — split the five-repository package into `rollout-oshi`
 - Phase: P1 — role moves
 - Focus: W02 — charter role
