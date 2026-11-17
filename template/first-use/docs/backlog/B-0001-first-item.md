@@ -10,4 +10,4 @@ The facts that make this worth revisiting: a count, a command output, an inciden
 
 ## Revisit when
 
-A measurable trigger, not a date. When the trigger fires, decide one of: keep, change, delete.
+The event that makes this actionable — a condition outside it, or a freed slot in the plan. Not a date. When it fires, decide one of: keep, change, delete.

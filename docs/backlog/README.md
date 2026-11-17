@@ -5,7 +5,7 @@ Deferred items only: an item here binds nothing, and records a decision not yet 
 ## Rules
 
 - Each item is its own file, `B-<nnnn>-<slug>.md`, numbered with four digits; a migrated series keeps its width and is never renumbered. The index carries order.
-- Every item states `Revisit when` — a measurable trigger, not a date. An item without a trigger is a wish.
+- Every item states `Revisit when`: the event that makes it actionable — a condition outside the item, or a freed slot in the plan. A date is not a trigger; an item that names neither is a wish.
 - **Status lives in the index, not the item file.** `open`: the trigger has not fired. `active`: a work package is on it. `paused`: work started and stopped, resumption undecided. `closed`: delivered, withdrawn, or superseded.
 - Closing: write a one-line outcome under `## Outcome`, set the row to `closed`, keep the file and the row. Closed rows stay; the index is an inventory, not a to-do list.
 
