@@ -15,7 +15,7 @@ After merging, add the three pages to the tree in `docs/structure.md`.
 | -------------------- | ----------------------------------------------------------------------- |
 | `docs/workflow.md`   | Tracks, t0 fields, handoff, work items, permitted compromises, closeout |
 | `docs/governance.md` | Change surface, who decides, review format, retirement                  |
-| `docs/adapters.md`   | Foreign suites and legacy paths, as a registry                          |
+| `docs/adapters.md`   | Suite tracks and legacy paths, as a registry                            |
 | `tasks/README.md`    | Work package governance and open table                                  |
 | `tasks/_template.md` | The four files, as one copyable scaffold                                |
 

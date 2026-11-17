@@ -27,8 +27,12 @@ The per-language part of the skeleton: toolchain, gate, code layout, and writing
 _Avoid_: plugin, extension
 
 **adapter**:
-The registry and compatibility whitelist for a third-party suite whose output path is hard-coded; not a physical directory layer.
+The registry and compatibility whitelist for third-party suite tracks and legacy paths; not a physical directory layer.
 _Avoid_: integration layer
+
+**suite track**:
+A directory a third-party workflow suite owns and loads by name; registered as a permanent adapter, never relocated.
+_Avoid_: adapter folder, foreign dir
 
 ### Work packages
 
@@ -77,5 +81,5 @@ A file produced by a command and marked so a reader knows not to edit it.
 _Avoid_: build output
 
 **legacy path**:
-An old location kept during migration because a foreign suite or a frozen record still needs it.
+A repository path kept during migration because a frozen record still cites it; retirable when the last consumer is gone.
 _Avoid_: old dir

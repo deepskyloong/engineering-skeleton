@@ -52,7 +52,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 1. Read `docs/spec/0006-migration.md` and the mapping row for the role.
 2. Move one role per commit. Never batch three directories into one commit, even when they look mechanical.
 3. Before committing, prove the pointer migration: `rg -l '<old-path>'` returns nothing, and the command prints the files it covered.
-4. Register any path that cannot move (a third-party suite's hard-coded output) in `docs/adapters.md` as a legacy path, and leave it in place.
+4. Register a third-party suite's track root in `docs/adapters.md` as a suite track and a path that cannot move as a legacy path; neither one moves.
 5. Add the target repository's remaining roles to `docs/backlog/` with a revisit trigger, or stop and report what is left.
 
 **Stop condition**: if a move would break a frozen record that cites the old path by name, do not move it. Write a tombstone (≤3 lines) and continue.

@@ -1,24 +1,26 @@
 # Adapters
 
-Third-party suites whose output paths are hard-coded, and legacy paths that cannot move yet. This is a registry, not a directory layer.
+Third-party suites that own directories in this repository, and legacy paths that cannot move yet. This is a registry, not a directory layer.
 
 ## Registry
 
-| Suite / legacy path | Hard-coded path | What reads it | Whitelist         | Closeout route                       |
-| ------------------- | --------------- | ------------- | ----------------- | ------------------------------------ |
-| `<suite>`           | `<path>`        | `<consumer>`  | `<allowed files>` | `<which closeout step relocates it>` |
+| Kind        | Suite / path | Path     | What reads it | Whitelist         | Disposition                           |
+| ----------- | ------------ | -------- | ------------- | ----------------- | ------------------------------------- |
+| suite track | `<suite>`    | `<root>` | `<consumer>`  | `<allowed files>` | leave; suite-owned while installed    |
+| legacy path | `<reason>`   | `<path>` | `<consumer>`  | `<allowed files>` | retire when the last consumer is gone |
 
 ## Rules
 
-1. The suite keeps writing where it writes. Do not make the repository bend so one tool can keep its habit.
-2. The whitelist names exactly which files or directories are tolerated. Everything else under that path is a finding.
-3. A closeout route is one of: move into the canonical role; mark generated and leave; delete after the last consumer disappears.
-4. A legacy path is removed only when its last consumer is gone, proven by `rg -l '<path>'`.
-5. A row is removed when the suite is uninstalled. A row that stays after uninstall is a stale exception.
+1. A suite writes where it writes. Do not make the repository bend so one tool can keep its habit.
+2. A suite track is permanent while the suite is installed. Its file layout and content form belong to the suite; do not relocate, merge, or normalize it. A closed package stays in its track; it is not folded into `tasks/<slug>/`.
+3. A legacy path is a repository path that cannot move because a frozen record cites it. Its closeout route is one of: move into the canonical role; mark generated and leave; delete after the last consumer disappears.
+4. The whitelist names exactly which files or directories are tolerated. Everything else under that path is a finding.
+5. A legacy path is removed only when its last consumer is gone, proven by `rg -l '<path>'`.
+6. A row is removed when the suite is uninstalled or the legacy path retires. A row that stays after that is a stale exception.
 
 ## When to add a row
 
-- A tool writes into the repository at a path the skeleton does not own.
+- A suite writes into the repository at a path the skeleton does not own.
 - A migration cannot move a path because a frozen record cites it.
 - A tool cannot follow a symlink or a junction.
 

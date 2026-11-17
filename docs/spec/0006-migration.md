@@ -12,7 +12,7 @@
 
 **M5 — A frozen record keeps its citation.** A file that a closed record cites by name is not rewritten to point at the new path. Move it, leave a tombstone, and register the tombstone's reason. Rewriting history to simplify today's grep is how a record stops being evidence.
 
-**M6 — A foreign path is registered, not forced.** A third-party suite's hard-coded output and a legacy path both go into `docs/adapters.md`. Do not make the whole repository bend so one tool can keep writing where it always wrote.
+**M6 — A foreign path is registered, not forced.** A third-party suite's track root is a permanent row in `docs/adapters.md`; a legacy path is a retirable row there. Do not make the whole repository bend so one tool can keep writing where it always wrote, and do not relocate a suite's track because it resembles a skeleton role.
 
 ## Mapping table
 

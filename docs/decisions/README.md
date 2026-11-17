@@ -4,17 +4,18 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 
 ## Index
 
-| ADR                                              | Decision                                                                                                  | Status   |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| [ADR-0001](ADR-0001-spec-repo-and-thin-skill.md) | The specification lives in a standalone repository; the skill is a thin entry point                       | Accepted |
-| [ADR-0002](ADR-0002-manual-skill-invocation.md)  | The skill is manually invoked, not description-triggered                                                  | Accepted |
-| [ADR-0003](ADR-0003-volume-budget-unit.md)       | Volume budgets measure non-whitespace characters, not lines or words                                      | Accepted |
-| [ADR-0004](ADR-0004-numbered-file-prefixes.md)   | Numbered files use four digits; citable records carry a type prefix                                       | Accepted |
-| [ADR-0005](ADR-0005-directory-inventories.md)    | Directory inventories belong to directory READMEs, not to `structure.md`                                  | Accepted |
-| [ADR-0006](ADR-0006-status-page-home.md)         | Status lives at the docs top level, not inside the operations directory                                   | Accepted |
-| [ADR-0007](ADR-0007-vocabulary-home.md)          | The vocabulary home is `GLOSSARY.md`; `CONTEXT.md` is a legacy alias                                      | Accepted |
-| [ADR-0008](ADR-0008-vocabulary-format.md)        | The vocabulary body follows the domain-modeling glossary format; the map lists contexts and relationships | Accepted |
-| [ADR-0009](ADR-0009-work-package-ledger.md)      | The work package is a work item ledger; the plan carries the phase breakdown                              | Accepted |
+| ADR                                               | Decision                                                                                                  | Status   |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | -------- |
+| [ADR-0001](ADR-0001-spec-repo-and-thin-skill.md)  | The specification lives in a standalone repository; the skill is a thin entry point                       | Accepted |
+| [ADR-0002](ADR-0002-manual-skill-invocation.md)   | The skill is manually invoked, not description-triggered                                                  | Accepted |
+| [ADR-0003](ADR-0003-volume-budget-unit.md)        | Volume budgets measure non-whitespace characters, not lines or words                                      | Accepted |
+| [ADR-0004](ADR-0004-numbered-file-prefixes.md)    | Numbered files use four digits; citable records carry a type prefix                                       | Accepted |
+| [ADR-0005](ADR-0005-directory-inventories.md)     | Directory inventories belong to directory READMEs, not to `structure.md`                                  | Accepted |
+| [ADR-0006](ADR-0006-status-page-home.md)          | Status lives at the docs top level, not inside the operations directory                                   | Accepted |
+| [ADR-0007](ADR-0007-vocabulary-home.md)           | The vocabulary home is `GLOSSARY.md`; `CONTEXT.md` is a legacy alias                                      | Accepted |
+| [ADR-0008](ADR-0008-vocabulary-format.md)         | The vocabulary body follows the domain-modeling glossary format; the map lists contexts and relationships | Accepted |
+| [ADR-0009](ADR-0009-work-package-ledger.md)       | The work package is a work item ledger; the plan carries the phase breakdown                              | Accepted |
+| [ADR-0010](ADR-0010-suite-tracks-are-adapters.md) | Suite tracks are permanent adapters; legacy paths are the retirable kind                                  | Accepted |
 
 ## Format
 
