@@ -5,7 +5,7 @@
 - Updated: 2026-11-17
 - Status: open; backlog `B-0005` active
 - Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 77 markdown files` (2026-11-17); re-run `bun run gate`
+- Gate: last known `PASS — 80 markdown files` (2026-11-17); re-run `bun run gate`
 - Last done: W03 — review oshi's audit and rule the open questions; W10's decisions role moved (`610f1e9`) and its ADRs padded to `ADR-0009…0012` (`7a988f4`), while charter, contracts, and knowledge remain
 - Phase: P1 — oshi migration
 - Focus: W10 — move oshi's living docs into their roles
@@ -170,6 +170,7 @@ Move oshi's living docs one role per commit. `docs/charter.md`, `docs/contracts/
 - the four roles exist at their canonical paths
 - every old path is a tombstone or registered legacy path
 - `rg -l '<old-path>'` survivors are explained
+- general-norm pages are pointers, or the exception is recorded
 - oshi's gate is green
 
 **Evidence**: commit `610f1e9` (decisions: ADR-09…12 at `docs/decisions/`, tombstones at the 09/10/12 old names, `docs/adrs/` a legacy path); `7a988f4` pads the series to `ADR-0009…0012` under ADR-0015, full gate green; charter, contracts, and knowledge pending.
@@ -217,6 +218,7 @@ Migrate bun-toolkit after the audit is reviewed. The `AGENTS.md` split and the a
 
 - `AGENTS.md` is split
 - the adapter registry is in place
+- general-norm pages are pointers, or the exception is recorded
 - the overlay's Markdown stage runs, or the exception is recorded
 - the gate is green
 
@@ -250,6 +252,7 @@ Migrate python-toolkit after the audit is reviewed. Map its layout page to `docs
 
 - the layout page maps to `docs/structure.md`
 - the index carries no counts
+- general-norm pages are pointers, or the exception is recorded
 - the gate is green
 
 **Evidence**: pending
@@ -281,6 +284,7 @@ Migrate gearset after the audit is reviewed. Resolve the module level against th
 **Done when**:
 
 - the module level is resolved against the sample
+- general-norm pages are pointers, or the exception is recorded
 - the overlay's Markdown stage runs, or the exception is recorded
 - the gate is green
 
