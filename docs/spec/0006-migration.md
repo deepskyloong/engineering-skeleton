@@ -52,7 +52,7 @@ The notes below are observations from 2026-11-14, for-the-record; they describe 
 1. Freeze additions to the old homes.
 2. Move `docs/` roles into the canonical tree, one role per commit.
 3. Split `AGENTS.md` last, after the docs exist — the routing table cannot point at pages that are not there yet.
-4. Add the gate and prove it green before touching `tasks/`.
+4. Add the gate — including the overlay's Markdown stage when it ships one (`B-0011`) — and prove it green before touching `tasks/`.
 5. Migrate the backlog and status.
 6. Register adapters and legacy paths.
 7. Delete empty directories only after their last file has moved.

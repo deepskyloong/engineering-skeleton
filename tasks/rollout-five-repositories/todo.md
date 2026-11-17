@@ -5,7 +5,7 @@
 - Updated: 2026-11-17
 - Status: open; backlog `B-0005` active
 - Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 76 markdown files` (2026-11-17); re-run `bun run gate`
+- Gate: last known `PASS — 77 markdown files` (2026-11-17); re-run `bun run gate`
 - Last done: W03 — review oshi's audit and rule the open questions; W10's decisions role moved (`610f1e9`), while charter, contracts, and knowledge remain
 - Phase: P1 — oshi migration
 - Focus: W10 — move oshi's living docs into their roles
@@ -217,6 +217,7 @@ Migrate bun-toolkit after the audit is reviewed. The `AGENTS.md` split and the a
 
 - `AGENTS.md` is split
 - the adapter registry is in place
+- the overlay's Markdown stage runs, or the exception is recorded
 - the gate is green
 
 **Evidence**: pending
@@ -280,6 +281,7 @@ Migrate gearset after the audit is reviewed. Resolve the module level against th
 **Done when**:
 
 - the module level is resolved against the sample
+- the overlay's Markdown stage runs, or the exception is recorded
 - the gate is green
 
 **Evidence**: pending
