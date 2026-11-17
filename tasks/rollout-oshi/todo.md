@@ -35,7 +35,7 @@ Close the five-repository package as superseded and open `tasks/rollout-oshi/`: 
 - `B-0005` states the per-repository order and stays `active`
 - the gate is green
 
-**Evidence**: `tasks/rollout-oshi/`; `B-0005` (per-repository plan); gate `PASS — 80 markdown files`.
+**Evidence**: commit `b041762`; `tasks/rollout-oshi/`; `B-0005` (per-repository plan); gate `PASS — 80 markdown files`.
 
 ### P1 — Role moves
 
