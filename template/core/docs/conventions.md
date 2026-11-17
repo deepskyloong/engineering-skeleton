@@ -7,7 +7,7 @@ English for every file this repository maintains. Translate before landing; do n
 ## Naming
 
 - Files: `kebab-case.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`.
-- Numbered files use four digits (`ADR-0001`, `B-0001`). A migrated series keeps its width and is never renumbered.
+- Numbered files use four digits (`ADR-0001`, `B-0001`). A migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series keeps its width.
 - All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Prose is not hard-wrapped. One paragraph is one line; the editor soft-wraps.
 

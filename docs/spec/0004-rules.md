@@ -25,7 +25,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 ## Naming and citation
 
 - Files: `kebab-case.md`; the skeleton's spec pages `NNNN-slug.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
-- Numbered files use four digits: spec page `0001`, ADR `ADR-0001`, backlog `B-0001`. Spec ordinals are fixed; record IDs start at `0001`. A migrated series keeps its width and is never renumbered.
+- Numbered files use four digits: spec page `0001`, ADR `ADR-0001`, backlog `B-0001`. Spec ordinals are fixed; record IDs start at `0001`. A migrated ADR series is zero-padded to four digits at migration and is never renumbered. A migrated backlog series keeps its width and is never renumbered: a backlog item is cited by path and line, and a tombstone cannot preserve a line anchor.
 - Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, and YAML keep their line breaks.
 - Cite a file plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers.
 - Section headings are unnumbered by default. Number them only when the number is part of the artifact a consumer cites: a legal clause, a fixed contract section, or a numbered procedure. A number added for visual order becomes wrong when the section moves.
