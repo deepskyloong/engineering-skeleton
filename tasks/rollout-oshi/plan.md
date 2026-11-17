@@ -1,0 +1,98 @@
+# Plan
+
+## Approach
+
+1. This package is the oshi step of `B-0005`; the programme's order and its one-package-per-repository rule live there. The next repository's package opens only after this one closes.
+2. The audit is done (`audits/oshi.md`, measured 2026-11-16) and reviewed (`audits/README.md`). Re-measure before each budget step; the report is a dated snapshot, not a budget.
+3. Move one role per commit, following `docs/spec/0006-migration.md` and the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain.
+4. Register what cannot move in oshi's `docs/adapters.md`; never force a suite track or a frozen record to accept a new path.
+5. Evolve the skeleton when a move exposes a wrong placement, a missing rule, a wrong format, a budget with no sample, or a source rule oshi's working practice contradicts. The change follows the change surface in `AGENTS.md`: spec first, then `template/`, then the skill, then `scripts/check.py`; oshi follows the evolved spec afterwards.
+6. Close when every audit finding has a disposition — resolved, withdrawn, or filed as a backlog item — and `B-0005` carries oshi's disposition.
+
+## Work breakdown
+
+| Phase | Work items | Exit condition |
+| --- | --- | --- |
+| P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; skeleton gate green |
+| P1 — Role moves | W02–W05 | Charter, contracts, knowledge, and toolchain at their canonical paths; old paths are tombstones or adapter rows; oshi's gate green |
+| P2 — Page repairs and audit closeout | W06–W07 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
+| P3 — Closeout | W08–W09 | Skeleton gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; skeleton gate green |
+
+The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `todo.md`.
+
+## Review discipline
+
+The skeleton is a draft, not a validated standard. The rollout exists to find its errors, not to prove it right. A migration step reviews two things in the same pass: oshi's compliance and the skeleton rule's correctness; a step that only applies the rule is incomplete. A target more coherent than the skeleton is a finding, not a failure — the glossary sequence is the sample: ADR-0007 gave the role the right name, but the body was still a three-column table, and oshi's own `GLOSSARY.md` plus the `domain-modeling` `GLOSSARY-FORMAT` exposed the error that ADR-0008 corrected.
+
+Before any role move or skeleton change, report:
+
+1. **The rule and its source.** Name the skeleton page and the evidence or sample behind it. "The skeleton says so" is not evidence.
+2. **Oshi's current shape.** Compare it with the rule. A coherent existing form is evidence, not a deviation to erase; a foreign suite's path is an adapter, not a skeleton role.
+3. **Proposed action and expected result.** One role, one commit, one observable gate.
+4. **Risks and controversy.** Frozen citations, foreign suites, over-budget pages, second homes, irreversible moves, and any point where the rule conflicts with oshi or with another skeleton page.
+5. **Alternatives and recommendation.** What was rejected and why, what you recommend, and what the maintainer must decide.
+
+Stop for the maintainer before acting when the source is ambiguous, oshi's form is better, the move is irreversible, a frozen record is involved, or the rule has no sample. After the decision, record it: a spec change and an ADR if the skeleton was wrong; an adapter or tombstone if oshi cannot move; a backlog item if the question remains open. Do not silently normalize oshi to a draft rule.
+
+## Migration guide
+
+This page records the operating sequence on top of `docs/spec/0006-migration.md`; it does not replace it. The six rules from `0006` apply:
+
+1. Freeze the old home before moving anything.
+2. One role per commit.
+3. Prove the pointer migration with `rg -l '<old-path>'`; every survivor is explained.
+4. `git mv` file by file; never a recursive move.
+5. A frozen record keeps its citation; leave a tombstone.
+6. A path that cannot move is a legacy path in `docs/adapters.md`.
+
+### Workspace
+
+1. Skeleton work happens on `feature/b0005-rollout` in `E:\Projects\engineering-skeleton`. Run `bun run gate` before every commit.
+2. Oshi's migration checkout is the worktree `E:\Projects\oshi\.worktrees\skeleton-migration` on `feature/skeleton-migration`; it was rebased onto `main` before the first move with `git rebase --onto main d990a58 feature/skeleton-migration`, which kept the s2 work off the branch.
+3. Run `git status --short` before the first move; a dirty file the move touches is a stop condition. `docs/reviews/README.md` was modified and uncommitted at audit time.
+
+### Oshi's sequence
+
+1. Already placed: `tasks/README.md`, the operations split, the status page at `docs/status.md`, the decisions at `docs/decisions/` padded to `ADR-0009…0012`, and the vocabulary at `GLOSSARY.md`.
+2. Next: `docs/brief.md` → `docs/charter.md`. Then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
+3. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
+4. Split an over-budget page after the role is at its home; do not mix a split with a move.
+5. Gate: oshi's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.
+
+### What the rollout has decided
+
+- Frozen evidence stays where it is until a role is admitted. Oshi's `experiments/` and `docs/plans/` are frozen legacy paths in `docs/adapters.md`, with no move; `B-0007` remains open and fires only when a second repository keeps a frozen protocol (2026-11-17 ruling).
+- A third-party suite's track root is a permanent adapter, not a legacy path (ADR-0010). Oshi's four tracks are registered in `docs/adapters.md`; the five closed packages under `docs/superpowers/` and `docs/compound-engineering/` stay in place, and no migration folds a suite package into `tasks/`.
+- A tombstone is a role at the old path (ADR-0011): ≤3 lines, exactly one link, ≤400 non-whitespace characters, title ending `— moved`. `scripts/check.py` enforces the shape and exempts it from the role and naming maps; `B-0008` is closed. Oshi's decisions move was its first use (`610f1e9`).
+- A migrated ADR series is zero-padded to four digits and never renumbered (ADR-0015); a migrated backlog series keeps its width because its items are cited by path and line. Oshi's `7a988f4` is the first application.
+- Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.
+- Oshi's `docs/conventions.md` consumes general norms by pointer: `Base: {{NORM_SOURCE}}/docs/conventions.md` plus deviations with a last-read date, never a restated copy (ADR-0016); a norm with no page at the source is recorded as an exception, not forked.
+
+## Check-in points
+
+Stop and confirm with the maintainer at each of these, rather than at every commit:
+
+- After the audit of a repository, before the first move.
+- After the freeze and adapter-registry commit, before any deletion.
+- Before a role move when the skeleton rule is ambiguous, has no sample, or conflicts with oshi's working practice.
+- Before changing the skeleton's spec in response to a migration finding; oshi waits for the skeleton gate.
+- After the docs roles are in place, before the budget splits.
+- Before deleting an archive or a directory.
+- After oshi's gate is green, before starting the next repository.
+
+## Risks
+
+| Risk | Mitigation | Stop condition |
+| --- | --- | --- |
+| A migration rewrites documents that record decisions, losing the reasoning. | One role per commit; a frozen record keeps its citation and gets a tombstone. | A move would break a frozen record that cites the old path. |
+| Uncommitted work in oshi is swept into a move. | Run `git status --short` before the first move. | The working tree has changes in a file the move touches. |
+| The spec is bent to fit oshi. | Change the skeleton first when the gap is a genuine defect; the remaining repositories then follow the same spec. | A move needs a one-off role, budget, or path that no other repo would use. |
+| The skeleton is a draft and a rule is wrong; oshi gets normalized to it. | Review the rule's source and oshi's existing form; a better target changes the skeleton first. | A rule has no source or sample, or conflicts with oshi's working practice. |
+| Splitting `docs/designs/` and `docs/specs/` turns eleven files into pages that restate each other. | One contract surface per page; a fact used twice is linked, not copied; the contract admission decides what stays. | Two pages state the same fact, or a page has no consumer outside its own effort. |
+
+## Out of scope
+
+- The other four source repositories; `B-0005` opens their packages after this one closes.
+- Rewriting oshi's content beyond what the role layout requires.
+- A machine-checkable gate for target repositories; that is `B-0002`.
+- The module `AGENTS.md` threshold; gearset supplies the sample, and `B-0003` sets the number afterwards.

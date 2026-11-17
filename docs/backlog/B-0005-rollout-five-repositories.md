@@ -8,16 +8,19 @@
 
 - The five source repositories have different maturity: oshi has the most complete backlog, gearset the richest module form, bun-toolkit the largest `AGENTS.md`, python-toolkit the clearest layout page, personal-agent-kit the only generated artifact.
 - Each migration surfaces a different assumption in the spec; a rollout that skips one leaves that assumption untested.
+- One package for all five was rejected on 2026-11-17: oshi's migration is the first application of a draft norm and changes it as it goes (ADR-0006 through ADR-0016), so the later repositories' phases would be planned against a spec oshi will not leave in place. The rollout runs one work package per repository.
 
 ## Plan
 
-1. Audit all five repositories against `docs/spec/0002-roles.md`; record one report per repository.
-2. Migrate oshi first: its backlog is the reference shape, and the cost of a wrong call is lowest.
-3. Migrate bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.
-4. Migrate python-toolkit: the layout page and the index autonomy rule get their test.
-5. Migrate gearset last among the code repositories: it supplies the six-module sample that settles `B-0003`.
-6. Migrate personal-agent-kit: the generated artifact contract and the knowledge split get their test. Its unit of work is a skill, so the work-package flow does not apply.
+1. One work package per repository, in order: oshi, bun-toolkit, python-toolkit, gearset, personal-agent-kit. Open the next package only when the previous closes; the spec it follows is the one the previous migration left. This item keeps its five-repository name because it tracks the programme, while a package is named for the repository it migrates.
+2. Each package audits its repository immediately before the first move, records `audits/<repo>.md`, and stops for the maintainer before touching anything.
+3. Oshi first: its backlog is the reference shape, and the cost of a wrong call is lowest.
+4. Bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.
+5. Python-toolkit: the layout page and the index autonomy rule get their test.
+6. Gearset last among the code repositories: it supplies the six-module sample that settles `B-0003`, and the module level is resolved against it.
+7. Personal-agent-kit: the generated artifact contract and the knowledge split get their test. Its unit of work is a skill, so the work-package flow does not apply.
+8. Close when every repository is migrated or carries a reasoned exception recorded here or in its `docs/adapters.md`.
 
 ## Revisit when
 
-The first migration completes, or a second repository is ready to adopt the skeleton. At that point, convert this item into a per-repository checklist and close it when all five have either migrated or recorded a reasoned exception.
+The first migration (oshi) completes; the next repository's package opens then, not before.
