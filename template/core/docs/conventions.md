@@ -48,6 +48,7 @@ Measure volume with `grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | 
 
 ## Document discipline
 
+- **A table is not a grid in the source.** One space on each side of a cell, no padding to column width. Renderers ignore the padding; a diff does not, and neither does `git blame`.
 - **Record method, not measurement.** A count, duration, coverage number, resolved version, or benchmark result is written as the command that produces it. (Review criterion.)
 - **A named set's cardinality is part of its name.** Changing "four layers" to five is a spec change, not a count update. Do not confuse it with a current inventory count.
 - **Never copy a value that has an owner.** Cite the config file or the CLI's `--help`.

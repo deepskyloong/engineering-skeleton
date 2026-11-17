@@ -19,7 +19,7 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 bun run gate
 ```
 
-It runs the Bun format check, the Ruff format and lint checks, and the document checks. The document checks cover every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its budget, index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, and no unfinished marker survives. CI runs the same command on push and pull request; it adds no stage. Run it after any spec or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
+It runs the Bun format check over code, the Prettier check over Markdown, the Ruff format and lint checks, and the document checks. The document checks cover every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its budget, index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, and no unfinished marker survives. CI runs the same command on push and pull request; it adds no stage. Run it after any spec or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
 
 ## Which file answers which question
 

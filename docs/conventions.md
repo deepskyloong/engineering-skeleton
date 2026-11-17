@@ -30,6 +30,7 @@ A generated repository copies the full five into its own `docs/conventions.md`; 
 
 ## Document discipline
 
+- **A table is not a grid in the source.** One space on each side of a cell, no padding to column width. Padding hides the row that changed inside a diff and hands every untouched row to the reformat commit in `git blame`; renderers ignore it anyway (`docs/spec/0004-rules.md`, R12).
 - **Record method, not measurement.** A count, duration, coverage number, node count, resolved version, or benchmark result is written as the command that produces it. A historical value survives only when the value itself is the fact, marked with a date and `for-the-record`.
 - **A named set's cardinality is part of its name.** "Four layers" or "five discriminations" defines a set; changing the number is a spec change, not a count to update in place. Do not confuse this with a current inventory count.
 - **Never copy a value that has an owner.** Cite `pyproject.toml`, `package.json`, CLI `--help`, or a type signature instead of restating its content.

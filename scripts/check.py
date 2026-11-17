@@ -14,6 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FAILURES: list[str] = []
 TABLE_DELIMITER = re.compile(r"\|[\s:|-]+\|")
+TABLE_ROW = re.compile(r"^\|.*\|$")
+CODE_SPAN = re.compile(r"`[^`]*`")
 SKIP_PARTS = {".git", "node_modules", "__pycache__"}
 
 
@@ -258,6 +260,72 @@ def check_tombstones(files: list[Path]) -> None:
             fail(f"tombstone shape: {rel(path)} — {issue}")
 
 
+def split_cells(row: str) -> list[str]:
+    """Split a table row on unescaped pipes, keeping the padding."""
+    body = row.strip()[1:-1]
+    cells: list[str] = []
+    buffer = ""
+    escaped = False
+    for char in body:
+        if escaped:
+            buffer += char
+            escaped = False
+        elif char == "\\":
+            buffer += char
+            escaped = True
+        elif char == "|":
+            cells.append(buffer)
+            buffer = ""
+        else:
+            buffer += char
+    cells.append(buffer)
+    return cells
+
+
+def check_tables(files: list[Path]) -> None:
+    """A table row carries one space per cell; column padding is a finding.
+
+    Padding is a formatting decision that hides the changed row in a diff and
+    hands every untouched row to the reformat commit in `git blame`
+    (`docs/spec/0004-rules.md`, R12). A cell count that differs from the header
+    is also reported: the formatter skips such a table, and the default printer
+    would pad it again.
+    """
+    for path in files:
+        in_fence = False
+        columns: int | None = None
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            stripped = line.strip()
+            if stripped.startswith(("```", "~~~")):
+                in_fence = not in_fence
+                columns = None
+                continue
+            if in_fence:
+                continue
+            if not TABLE_ROW.match(stripped):
+                columns = None
+                continue
+            cells = split_cells(stripped)
+            if columns is None:
+                columns = len(cells)
+            elif len(cells) != columns:
+                fail(
+                    f"{rel(path)}:{number}: {len(cells)} cells, header has {columns}; "
+                    r"escape a literal pipe as \|"
+                )
+            for cell in cells:
+                content = cell.strip()
+                if not content:
+                    continue
+                if cell != f" {content} ":
+                    fail(
+                        f"{rel(path)}:{number}: table cell is column-aligned; "
+                        "one space on each side"
+                    )
+                if "  " in CODE_SPAN.sub("x", content):
+                    fail(f"{rel(path)}:{number}: table cell has a run of spaces")
+
+
 def check_generated(files: list[Path]) -> None:
     for path in files:
         lines = path.read_text(encoding="utf-8").splitlines()
@@ -314,6 +382,7 @@ def main() -> int:
     check_naming(files)
     check_role_paths(files)
     check_tombstones(files)
+    check_tables(files)
     check_generated(files)
     check_version()
 
@@ -323,7 +392,10 @@ def main() -> int:
             print(f"  - {item}")
         return 1
 
-    print(f"PASS — {len(files)} markdown files, roles, links, budgets, entries, naming, version")
+    print(
+        f"PASS — {len(files)} markdown files, roles, links, budgets, entries, "
+        "naming, tables, version"
+    )
     return 0
 
 

@@ -20,6 +20,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 | R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package leaves the tasks index |
 | R10 | Record method, not measurement | weak | Review: a count, duration, coverage number, resolved version, benchmark, or size that can drift is written as the command that produces it, or dated `for-the-record` |
 | R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for spec pages, ADRs, and backlog names |
+| R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.py` table check: cell padding and cell count per row. Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
 
 ## Naming and citation
 

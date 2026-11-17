@@ -22,8 +22,8 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/backlog/` | Deferred items with a revisit trigger. |
 | `tasks/` | Work packages: spec, plan, todo, and the closeout summary. |
 | `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |
-| `scripts/check.py` | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
-| `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring. |
+| `scripts/check.py` | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming, table shape. |
+| `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format for code, Prettier for Markdown, Ruff lint, and command wiring. |
 | `.github/workflows/gate.yml` | CI forwarding: runs `bun run gate` on push and pull request. |
 
 ## Quick start
@@ -32,7 +32,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 2. Pick one overlay under `template/overlays/` and follow its README.
 3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
 4. When the first work package starts, copy `template/effort/` and create `tasks/<slug>/spec.md` with a `track:` line.
-5. Run `bun run gate` in this repository after changing the spec or a template.
+5. Run `bun install && bun run gate` in this repository after changing the spec or a template.
 
 ## Reading order
 

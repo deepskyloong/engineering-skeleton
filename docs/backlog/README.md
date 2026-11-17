@@ -23,3 +23,4 @@ Deferred items only. An item here binds nothing; it records a decision that has 
 | [B-0008](B-0008-tombstone-role.md) | Tombstones have no role row | closed | The first tombstone in the rollout |
 | [B-0009](B-0009-module-readme-budget.md) | Module README has no budget | open | gearset's five module READMEs are measured |
 | [B-0010](B-0010-routing-entry-limit.md) | Routing-table limit is unenforced | open | The next `AGENTS.md` change |
+| [B-0011](B-0011-overlay-markdown-formatting.md) | Overlays format no Markdown | open | The first forge needing Markdown normalization |
