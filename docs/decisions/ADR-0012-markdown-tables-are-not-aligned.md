@@ -27,3 +27,4 @@ Markdown is formatted by Prettier with `prettier-plugin-markdown-compact-tables`
 - The plugin skips a table it cannot parse — a missing delimiter row, or a row whose cell count differs from its header — and Prettier then pads it. The checker is the guard, so a skipped table cannot pass the gate.
 - `git blame -w` recovers lineage across the migration. `-w` stays a review aid: it also hides whitespace that carries meaning — two trailing spaces are a hard break, and indentation decides list nesting — so it is never a gate and never the only review.
 - Editor format-on-save must call `bun run fmt:md`; a bare `prettier` run without `--plugin` re-pads the tables.
+- Adopting the rule in another repository takes three things: the two devDependencies in `package.json`, a `fmt:md` script that passes `--plugin`, and `**/*.md` in the code formatter's ignore list. The values stay with those files; this record names them rather than copying them, because a copy in prose drifts.
