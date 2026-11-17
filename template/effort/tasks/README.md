@@ -15,8 +15,8 @@ One directory per effort: `tasks/<slug>/`, holding four files. The work package 
 ## Open
 
 | Slug | Goal | Track | Status |
-| ---- | ---- | ----- | ------ |
-| —    | —    | —     | —      |
+| --- | --- | --- | --- |
+| — | — | — | — |
 
 ## Closed
 

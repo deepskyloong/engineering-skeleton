@@ -11,16 +11,16 @@
 
 ## Index
 
-| File / directory                  | Content                                                               |
-| --------------------------------- | --------------------------------------------------------------------- |
-| [charter.md](charter.md)          | Scope, non-goals, hard constraints, success criteria                  |
-| [structure.md](structure.md)      | Levels, placement rules, artifact tiers                               |
-| [conventions.md](conventions.md)  | Language, naming, citation, five role discriminations                 |
-| [committing.md](committing.md)    | Commit message convention, based on an external base, plus deviations |
-| [governance.md](governance.md)    | Versioning, change surface, review, ownership                         |
-| [workflow.md](workflow.md)        | Operating modes: forge, audit, migrate                                |
-| [spec/](spec/README.md)           | The normative specification                                           |
-| [decisions/](decisions/README.md) | ADRs — choices and rejected alternatives                              |
-| [backlog/](backlog/README.md)     | Deferred items with revisit triggers                                  |
+| File / directory | Content |
+| --- | --- |
+| [charter.md](charter.md) | Scope, non-goals, hard constraints, success criteria |
+| [structure.md](structure.md) | Levels, placement rules, artifact tiers |
+| [conventions.md](conventions.md) | Language, naming, citation, five role discriminations |
+| [committing.md](committing.md) | Commit message convention, based on an external base, plus deviations |
+| [governance.md](governance.md) | Versioning, change surface, review, ownership |
+| [workflow.md](workflow.md) | Operating modes: forge, audit, migrate |
+| [spec/](spec/README.md) | The normative specification |
+| [decisions/](decisions/README.md) | ADRs — choices and rejected alternatives |
+| [backlog/](backlog/README.md) | Deferred items with revisit triggers |
 
 `docs/knowledge/` is an optional role and is absent until the first guide, case, or note exists. Its absence is correct, not incomplete.

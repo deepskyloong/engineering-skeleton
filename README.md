@@ -10,21 +10,21 @@ This repository makes the roles normative and keeps the layout as small as it ca
 
 ## What is here
 
-| Path                                         | Role                                                                                       |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `docs/spec/`                                 | The normative specification. Read this before changing anything else.                      |
-| `docs/charter.md`                            | Scope, non-goals, hard constraints, success criteria.                                      |
-| `docs/structure.md`                          | This repository's layout and the placement rules for new files.                            |
-| `docs/conventions.md`                        | Language, naming, citation, and the five role discriminations.                             |
-| `docs/governance.md`                         | Versioning, change surface, review, and how the spec evolves.                              |
-| `docs/workflow.md`                           | The three operating modes: forge, audit, migrate.                                          |
-| `docs/decisions/`                            | ADRs — the choices that shaped the skeleton, with rejected options.                        |
-| `docs/backlog/`                              | Deferred items with a revisit trigger.                                                     |
-| `tasks/`                                     | Work packages: spec, plan, todo, and the closeout summary.                                 |
-| `template/`                                  | Copyable starting points: day-one files, first-effort files, language overlays.            |
-| `scripts/check.py`                           | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
-| `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring.                      |
-| `.github/workflows/gate.yml`                 | CI forwarding: runs `bun run gate` on push and pull request.                               |
+| Path | Role |
+| --- | --- |
+| `docs/spec/` | The normative specification. Read this before changing anything else. |
+| `docs/charter.md` | Scope, non-goals, hard constraints, success criteria. |
+| `docs/structure.md` | This repository's layout and the placement rules for new files. |
+| `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
+| `docs/governance.md` | Versioning, change surface, review, and how the spec evolves. |
+| `docs/workflow.md` | The three operating modes: forge, audit, migrate. |
+| `docs/decisions/` | ADRs — the choices that shaped the skeleton, with rejected options. |
+| `docs/backlog/` | Deferred items with a revisit trigger. |
+| `tasks/` | Work packages: spec, plan, todo, and the closeout summary. |
+| `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |
+| `scripts/check.py` | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming. |
+| `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format, Ruff lint, and command wiring. |
+| `.github/workflows/gate.yml` | CI forwarding: runs `bun run gate` on push and pull request. |
 
 ## Quick start
 

@@ -28,16 +28,16 @@ How the goal is reached, in steps. Name the files and the roles they land in.
 
 ## Work breakdown
 
-| Phase        | Work items | Exit condition    |
-| ------------ | ---------- | ----------------- |
-| P0 — <phase> | W01–W0n    | <observable exit> |
+| Phase | Work items | Exit condition |
+| --- | --- | --- |
+| P0 — <phase> | W01–W0n | <observable exit> |
 
 The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `todo.md`.
 
 ## Risks
 
 | Risk | Mitigation | Stop condition |
-| ---- | ---------- | -------------- |
+| --- | --- | --- |
 
 ## Out of scope
 

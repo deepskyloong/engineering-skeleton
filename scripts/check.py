@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FAILURES: list[str] = []
 TABLE_DELIMITER = re.compile(r"\|[\s:|-]+\|")
+SKIP_PARTS = {".git", "node_modules", "__pycache__"}
 
 
 def rel(path: Path) -> str:
@@ -25,7 +26,7 @@ def fail(message: str) -> None:
 
 
 def markdown_files() -> list[Path]:
-    return [p for p in ROOT.rglob("*.md") if ".git" not in p.parts and "__pycache__" not in p.parts]
+    return [p for p in ROOT.rglob("*.md") if not SKIP_PARTS.intersection(p.parts)]
 
 
 def volume(text: str) -> int:

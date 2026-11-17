@@ -4,10 +4,10 @@ Third-party suites that own directories in this repository, and legacy paths tha
 
 ## Registry
 
-| Kind        | Suite / path | Path     | What reads it | Whitelist         | Disposition                           |
-| ----------- | ------------ | -------- | ------------- | ----------------- | ------------------------------------- |
-| suite track | `<suite>`    | `<root>` | `<consumer>`  | `<allowed files>` | leave; suite-owned while installed    |
-| legacy path | `<reason>`   | `<path>` | `<consumer>`  | `<allowed files>` | retire when the last consumer is gone |
+| Kind | Suite / path | Path | What reads it | Whitelist | Disposition |
+| --- | --- | --- | --- | --- | --- |
+| suite track | `<suite>` | `<root>` | `<consumer>` | `<allowed files>` | leave; suite-owned while installed |
+| legacy path | `<reason>` | `<path>` | `<consumer>` | `<allowed files>` | retire when the last consumer is gone |
 
 ## Rules
 

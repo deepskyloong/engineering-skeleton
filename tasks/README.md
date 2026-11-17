@@ -14,9 +14,9 @@ One directory per effort: `tasks/<slug>/`, holding four files. The work package 
 
 ## Open
 
-| Slug                      | Goal                                               | Track   | Status |
-| ------------------------- | -------------------------------------------------- | ------- | ------ |
-| rollout-five-repositories | Adopt the skeleton in the five source repositories | default | open   |
+| Slug | Goal | Track | Status |
+| --- | --- | --- | --- |
+| rollout-five-repositories | Adopt the skeleton in the five source repositories | default | open |
 
 ## Closed
 

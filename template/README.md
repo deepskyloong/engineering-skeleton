@@ -13,15 +13,15 @@ Do not copy all four at day one. Each segment has a trigger, and copying it earl
 
 ## Values to replace
 
-| Value                    | Where it appears                                                        | Set when                                   |
-| ------------------------ | ----------------------------------------------------------------------- | ------------------------------------------ |
-| `<project-name>`         | `README.md`, `AGENTS.md`, overlay files, `GLOSSARY.md` (first-use copy) | Step 1                                     |
-| `<one-line purpose>`     | `README.md`, `AGENTS.md`                                                | Step 1                                     |
-| `<owner>`                | `docs/charter.md`                                                       | Step 1                                     |
-| `<language>`             | `AGENTS.md`                                                             | Step 2, once the overlay is chosen         |
-| `<install-command>`      | `README.md`, `AGENTS.md`                                                | Step 2, from the overlay README            |
-| `<gate-command>`         | `README.md`, `AGENTS.md`                                                | Step 2, after the overlay README states it |
-| `<focused-test-command>` | `AGENTS.md`                                                             | Step 2, when the overlay defines one       |
+| Value | Where it appears | Set when |
+| --- | --- | --- |
+| `<project-name>` | `README.md`, `AGENTS.md`, overlay files, `GLOSSARY.md` (first-use copy) | Step 1 |
+| `<one-line purpose>` | `README.md`, `AGENTS.md` | Step 1 |
+| `<owner>` | `docs/charter.md` | Step 1 |
+| `<language>` | `AGENTS.md` | Step 2, once the overlay is chosen |
+| `<install-command>` | `README.md`, `AGENTS.md` | Step 2, from the overlay README |
+| `<gate-command>` | `README.md`, `AGENTS.md` | Step 2, after the overlay README states it |
+| `<focused-test-command>` | `AGENTS.md` | Step 2, when the overlay defines one |
 
 `<repo-path>` does not appear in `core/`; it exists only in pointers a later migration generates.
 
@@ -29,20 +29,20 @@ Do not copy all four at day one. Each segment has a trigger, and copying it earl
 
 These are grammar, not values. Replacing them would break the rule that uses them.
 
-| Token                                                                  | Meaning                                 |
-| ---------------------------------------------------------------------- | --------------------------------------- |
-| `<nnnn>`                                                               | Backlog number, four digits             |
-| `<slug>`                                                               | Work package slug                       |
-| `<topic>`                                                              | Contract, operation, or knowledge topic |
-| `<member>`                                                             | Workspace member name                   |
-| `<command>`                                                            | Command named in a generated header     |
-| `<type>`                                                               | Commit type                             |
-| `<scope>`                                                              | Commit scope                            |
-| `<path or URL>`                                                        | Location of an external base convention |
-| `<test-path>`                                                          | Path to one test file                   |
-| `<what changed and why>`                                               | Commit summary                          |
-| `<overlay files>`                                                      | Tree placeholder for the chosen overlay |
-| `<any constraint that would make a reviewer say "you cannot do that">` | Charter prompt                          |
+| Token | Meaning |
+| --- | --- |
+| `<nnnn>` | Backlog number, four digits |
+| `<slug>` | Work package slug |
+| `<topic>` | Contract, operation, or knowledge topic |
+| `<member>` | Workspace member name |
+| `<command>` | Command named in a generated header |
+| `<type>` | Commit type |
+| `<scope>` | Commit scope |
+| `<path or URL>` | Location of an external base convention |
+| `<test-path>` | Path to one test file |
+| `<what changed and why>` | Commit summary |
+| `<overlay files>` | Tree placeholder for the chosen overlay |
+| `<any constraint that would make a reviewer say "you cannot do that">` | Charter prompt |
 
 A value left unreplaced is a failure. A notation left in place is correct. `check.py` does not test this distinction; grep for `<` in the copied repository and classify each hit against the two tables.
 

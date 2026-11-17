@@ -8,13 +8,13 @@
 
 gearset's five module READMEs, measured 2026-11-16 with the gate's `volume()` definition:
 
-| File                               | Volume |
-| ---------------------------------- | -----: |
-| `src/logger/README.md`             | 12,340 |
-| `src/fetcher/README.md`            | 11,902 |
-| `src/reliable-sse/README.md`       | 10,286 |
+| File | Volume |
+| --- | --: |
+| `src/logger/README.md` | 12,340 |
+| `src/fetcher/README.md` | 11,902 |
+| `src/reliable-sse/README.md` | 10,286 |
 | `src/reliable-websocket/README.md` | 10,146 |
-| `src/utils/README.md`              |  4,165 |
+| `src/utils/README.md` | 4,165 |
 
 Four of five exceed 8,000. oshi's single module README is 2,108. The sample is the first real one, per `B-0003`'s note that gearset supplies the module-level evidence.
 

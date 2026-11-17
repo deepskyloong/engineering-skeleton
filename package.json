@@ -2,10 +2,18 @@
   "name": "engineering-skeleton",
   "private": true,
   "scripts": {
-    "fmt": "bun fmt .",
-    "fmt:check": "bun fmt --check .",
+    "fmt": "bun run fmt:code && bun run fmt:md",
+    "fmt:check": "bun run fmt:code:check && bun run fmt:md:check",
+    "fmt:code": "bun fmt --no-script .",
+    "fmt:code:check": "bun fmt --no-script --check .",
+    "fmt:md": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --write \"**/*.md\"",
+    "fmt:md:check": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --check \"**/*.md\"",
     "py:fmt": "uvx ruff format --check scripts",
     "py:lint": "uvx ruff check scripts",
     "gate": "bun run fmt:check && bun run py:fmt && bun run py:lint && python scripts/check.py"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1",
+    "prettier-plugin-markdown-compact-tables": "^1.0.0"
   }
 }

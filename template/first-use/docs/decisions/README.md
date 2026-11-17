@@ -4,8 +4,8 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 
 ## Index
 
-| ADR                                    | Decision       | Status   |
-| -------------------------------------- | -------------- | -------- |
+| ADR | Decision | Status |
+| --- | --- | --- |
 | [ADR-0001](ADR-0001-first-decision.md) | First decision | Accepted |
 
 ## Format

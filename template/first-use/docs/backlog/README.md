@@ -11,6 +11,6 @@ Deferred items only. An item binds nothing; it records a decision that has not b
 
 ## Index
 
-| ID                             | Item                | Status | Revisit when         |
-| ------------------------------ | ------------------- | ------ | -------------------- |
-| [B-0001](B-0001-first-item.md) | First deferred item | open   | A measurable trigger |
+| ID | Item | Status | Revisit when |
+| --- | --- | --- | --- |
+| [B-0001](B-0001-first-item.md) | First deferred item | open | A measurable trigger |

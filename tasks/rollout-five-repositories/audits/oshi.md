@@ -12,36 +12,36 @@ Measurement commands: the inventory is regenerated with `../tools/audit_repo.py`
 
 Each group below is a directory or a role with one disposition. Files not named here are runtime evidence and are not roles; their own directory index lists them.
 
-| Group                        | Files |  Volume | Assigned role                                     | Disposition                                        |
-| ---------------------------- | ----: | ------: | ------------------------------------------------- | -------------------------------------------------- |
-| `README.md`                  |     1 |  10,322 | Storefront README                                 | keep, trim to budget                               |
-| `AGENTS.md`                  |     1 |   5,891 | Instruction layer                                 | keep, split by reader                              |
-| `docs/README.md`             |     1 |   3,044 | Docs doc index                                    | keep, trim to budget                               |
-| `docs/brief.md`              |     1 |   4,029 | Charter                                           | move to `docs/charter.md`                          |
-| `docs/structure.md`          |     1 |   4,232 | Structure                                         | keep                                               |
-| `docs/conventions.md`        |     1 |  10,370 | Conventions                                       | keep, split to budget                              |
-| `docs/language-policy.md`    |     1 |   2,675 | Conventions (language matrix)                     | fold into `docs/conventions.md` or a contract      |
-| `docs/status.md`             |     1 |   4,185 | Status                                            | move to `docs/operations/status.md`                |
-| `docs/operations.md`         |     1 |  20,185 | Operations page                                   | split into `docs/operations/<topic>.md`            |
-| `docs/backlog/`              |    24 |  58,311 | Backlog item + index                              | keep; trim index, split oversized items            |
-| `docs/backlog.md`            |     1 |     258 | Tombstone                                         | keep; register the reason                          |
-| `docs/adrs/`                 |     5 |  21,315 | Decision record                                   | move to `docs/decisions/`, rename to `ADR-NN-`     |
-| `docs/designs/`              |     4 |  88,581 | unplaced — durable contract candidate             | move to `docs/contracts/`, split by topic          |
-| `docs/specs/`                |     7 | 146,716 | unplaced — durable contract candidate             | move to `docs/contracts/`, split by topic          |
-| `docs/notes/`                |    11 |  90,429 | Knowledge note                                    | move to `docs/knowledge/{guides,notes}/`           |
-| `docs/plans/`                |    10 | 215,997 | unplaced — frozen protocol, cited by experiments  | freeze; legacy path or record role                 |
-| `docs/superpowers/`          |     9 | 165,223 | unplaced — closed work-package artifact           | move to `tasks/<slug>/`, keep only the cited files |
-| `docs/compound-engineering/` |     2 |  40,911 | unplaced — closed work-package artifact           | move to `tasks/<slug>/`, keep only the cited files |
-| `docs/reviews/`              |    24 | 259,786 | runtime report bodies (gitignored) plus one index | index stays; trim it; bodies stay out of git       |
-| `docs/agents/`               |     4 |   3,923 | Adapter suite                                     | register in `docs/adapters.md`; do not move        |
-| `experiments/`               |    86 | 659,186 | unplaced — frozen evidence                        | freeze; legacy path or record role                 |
-| `archived/`                  |     3 |  38,781 | unplaced — archive                                | delete, or leave tombstones where cited            |
-| `tasks/`                     |     7 | 130,141 | Work package                                      | add `tasks/README.md`; split the extra files       |
-| `web/README.md`              |     1 |   5,715 | Member README                                     | keep                                               |
-| `src/oshi/README.md`         |     1 |   2,108 | Module README                                     | keep; no budget in the spec                        |
-| `.scratch/`                  |    10 |  49,933 | runtime workshop                                  | freeze; untracked or deleted at closeout           |
-| `.codeartsdoer/AGENTS.md`    |     1 |      60 | foreign adapter stub                              | register in `docs/adapters.md`                     |
-| `.workbuddy/`                |    11 |  90,065 | foreign agent memory                              | leave in place; another product owns it            |
+| Group | Files | Volume | Assigned role | Disposition |
+| --- | --: | --: | --- | --- |
+| `README.md` | 1 | 10,322 | Storefront README | keep, trim to budget |
+| `AGENTS.md` | 1 | 5,891 | Instruction layer | keep, split by reader |
+| `docs/README.md` | 1 | 3,044 | Docs doc index | keep, trim to budget |
+| `docs/brief.md` | 1 | 4,029 | Charter | move to `docs/charter.md` |
+| `docs/structure.md` | 1 | 4,232 | Structure | keep |
+| `docs/conventions.md` | 1 | 10,370 | Conventions | keep, split to budget |
+| `docs/language-policy.md` | 1 | 2,675 | Conventions (language matrix) | fold into `docs/conventions.md` or a contract |
+| `docs/status.md` | 1 | 4,185 | Status | move to `docs/operations/status.md` |
+| `docs/operations.md` | 1 | 20,185 | Operations page | split into `docs/operations/<topic>.md` |
+| `docs/backlog/` | 24 | 58,311 | Backlog item + index | keep; trim index, split oversized items |
+| `docs/backlog.md` | 1 | 258 | Tombstone | keep; register the reason |
+| `docs/adrs/` | 5 | 21,315 | Decision record | move to `docs/decisions/`, rename to `ADR-NN-` |
+| `docs/designs/` | 4 | 88,581 | unplaced — durable contract candidate | move to `docs/contracts/`, split by topic |
+| `docs/specs/` | 7 | 146,716 | unplaced — durable contract candidate | move to `docs/contracts/`, split by topic |
+| `docs/notes/` | 11 | 90,429 | Knowledge note | move to `docs/knowledge/{guides,notes}/` |
+| `docs/plans/` | 10 | 215,997 | unplaced — frozen protocol, cited by experiments | freeze; legacy path or record role |
+| `docs/superpowers/` | 9 | 165,223 | unplaced — closed work-package artifact | move to `tasks/<slug>/`, keep only the cited files |
+| `docs/compound-engineering/` | 2 | 40,911 | unplaced — closed work-package artifact | move to `tasks/<slug>/`, keep only the cited files |
+| `docs/reviews/` | 24 | 259,786 | runtime report bodies (gitignored) plus one index | index stays; trim it; bodies stay out of git |
+| `docs/agents/` | 4 | 3,923 | Adapter suite | register in `docs/adapters.md`; do not move |
+| `experiments/` | 86 | 659,186 | unplaced — frozen evidence | freeze; legacy path or record role |
+| `archived/` | 3 | 38,781 | unplaced — archive | delete, or leave tombstones where cited |
+| `tasks/` | 7 | 130,141 | Work package | add `tasks/README.md`; split the extra files |
+| `web/README.md` | 1 | 5,715 | Member README | keep |
+| `src/oshi/README.md` | 1 | 2,108 | Module README | keep; no budget in the spec |
+| `.scratch/` | 10 | 49,933 | runtime workshop | freeze; untracked or deleted at closeout |
+| `.codeartsdoer/AGENTS.md` | 1 | 60 | foreign adapter stub | register in `docs/adapters.md` |
+| `.workbuddy/` | 11 | 90,065 | foreign agent memory | leave in place; another product owns it |
 
 `GLOSSARY.md` (1,887) is unplaced: it is the root vocabulary and belongs in `CONTEXT.md`.
 
@@ -91,22 +91,22 @@ Sorted by severity, then by the effort each fix would take.
 
 The counts below are markdown files that name the old path and the number of occurrences. They decide which moves need tombstones and which need a legacy-path row.
 
-| Old path                     | Files citing | Occurrences | Consequence                             |
-| ---------------------------- | -----------: | ----------: | --------------------------------------- |
-| `experiments/`               |          144 |         975 | freeze and register; never rewrite      |
-| `docs/plans/`                |           84 |         178 | freeze and register, or 9 tombstones    |
-| `docs/designs/`              |           57 |         164 | move, then tombstones for cited paths   |
-| `docs/specs/`                |           53 |         158 | move, then tombstones for cited paths   |
-| `docs/status.md`             |           57 |         134 | move, then one tombstone                |
-| `docs/notes/`                |           32 |          62 | move, then tombstones per cited file    |
-| `docs/superpowers/`          |           24 |          65 | move, then tombstones per cited package |
-| `docs/backlog.md`            |           18 |          41 | already a tombstone; keep it            |
-| `docs/reviews/`              |           17 |          35 | index stays in place                    |
-| `docs/adrs/`                 |           15 |          24 | move, then tombstones for cited ADRs    |
-| `archived/`                  |           13 |          20 | delete; tombstones only where cited     |
-| `GLOSSARY.md`                |           10 |          18 | rename, then one tombstone              |
-| `docs/compound-engineering/` |            4 |          10 | move to `tasks/`                        |
-| `docs/agents/`               |            4 |          10 | stays; adapter row                      |
+| Old path | Files citing | Occurrences | Consequence |
+| --- | --: | --: | --- |
+| `experiments/` | 144 | 975 | freeze and register; never rewrite |
+| `docs/plans/` | 84 | 178 | freeze and register, or 9 tombstones |
+| `docs/designs/` | 57 | 164 | move, then tombstones for cited paths |
+| `docs/specs/` | 53 | 158 | move, then tombstones for cited paths |
+| `docs/status.md` | 57 | 134 | move, then one tombstone |
+| `docs/notes/` | 32 | 62 | move, then tombstones per cited file |
+| `docs/superpowers/` | 24 | 65 | move, then tombstones per cited package |
+| `docs/backlog.md` | 18 | 41 | already a tombstone; keep it |
+| `docs/reviews/` | 17 | 35 | index stays in place |
+| `docs/adrs/` | 15 | 24 | move, then tombstones for cited ADRs |
+| `archived/` | 13 | 20 | delete; tombstones only where cited |
+| `GLOSSARY.md` | 10 | 18 | rename, then one tombstone |
+| `docs/compound-engineering/` | 4 | 10 | move to `tasks/` |
+| `docs/agents/` | 4 | 10 | stays; adapter row |
 
 ## What this audit does not cover
 

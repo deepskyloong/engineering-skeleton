@@ -14,6 +14,7 @@
     "**/.cache/**",
     "**/dist/**",
     "**/build/**",
-    "**/coverage/**"
+    "**/coverage/**",
+    "**/*.md"
   ]
 }

@@ -6,14 +6,14 @@ Status: Accepted (2026-11-14)
 
 The first draft expressed document budgets in pages, then in lines. A review found that "page" is unmeasurable and that a line budget gives opposite verdicts for documents of similar size. Six documents were measured to settle the unit.
 
-| Document                   | Lines | Non-whitespace chars | `wc -w` words | Chars per line |
-| -------------------------- | ----- | -------------------- | ------------- | -------------- |
-| bun-toolkit `AGENTS.md`    | 305   | 21,793               | 3,702         | 101            |
-| gearset `AGENTS.md`        | 143   | 12,458               | 2,035         | 167            |
-| oshi `AGENTS.md` (Chinese) | 50    | 5,891                | 1,051         | 139            |
-| python-toolkit `AGENTS.md` | 49    | 3,456                | 569           | 82             |
-| oshi `status.md` (Chinese) | 47    | 4,211                | 714           | 105            |
-| the v1 spec itself         | 582   | 20,146               | 2,697         | 41             |
+| Document | Lines | Non-whitespace chars | `wc -w` words | Chars per line |
+| --- | --- | --- | --- | --- |
+| bun-toolkit `AGENTS.md` | 305 | 21,793 | 3,702 | 101 |
+| gearset `AGENTS.md` | 143 | 12,458 | 2,035 | 167 |
+| oshi `AGENTS.md` (Chinese) | 50 | 5,891 | 1,051 | 139 |
+| python-toolkit `AGENTS.md` | 49 | 3,456 | 569 | 82 |
+| oshi `status.md` (Chinese) | 47 | 4,211 | 714 | 105 |
+| the v1 spec itself | 582 | 20,146 | 2,697 | 41 |
 
 ## Decision
 

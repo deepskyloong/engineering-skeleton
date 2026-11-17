@@ -15,15 +15,15 @@ The audit reports stay in the package while it is open. A finding that changes t
 
 The table names the phases and their exit conditions; each work item's description, acceptance criteria, and evidence live in `todo.md`.
 
-| Phase                        | Work items | Exit condition                                                                                           |
-| ---------------------------- | ---------- | -------------------------------------------------------------------------------------------------------- |
-| P0 — skeleton and oshi audit | W01–W09    | The work item ledger and skeleton handoff are defined; oshi's audit review is ruled; skeleton gate green |
-| P1 — oshi migration          | W10–W11    | Oshi's living docs are in their roles; budgets and repository gate green                                 |
-| P2 — bun-toolkit             | W12–W13    | Audit reviewed; `AGENTS.md` split; adapter registry; gate green                                          |
-| P3 — python-toolkit          | W14–W15    | Audit reviewed; layout page mapped; index has no counts; gate green                                      |
-| P4 — gearset                 | W16–W17    | Audit reviewed; six-module sample resolves the module level; gate green                                  |
-| P5 — personal-agent-kit      | W18–W19    | Audit reviewed; generated header and knowledge split; gate green                                         |
-| P6 — closeout                | W20–W21    | Skeleton gaps filed; `B-0005` closed                                                                     |
+| Phase | Work items | Exit condition |
+| --- | --- | --- |
+| P0 — skeleton and oshi audit | W01–W09 | The work item ledger and skeleton handoff are defined; oshi's audit review is ruled; skeleton gate green |
+| P1 — oshi migration | W10–W11 | Oshi's living docs are in their roles; budgets and repository gate green |
+| P2 — bun-toolkit | W12–W13 | Audit reviewed; `AGENTS.md` split; adapter registry; gate green |
+| P3 — python-toolkit | W14–W15 | Audit reviewed; layout page mapped; index has no counts; gate green |
+| P4 — gearset | W16–W17 | Audit reviewed; six-module sample resolves the module level; gate green |
+| P5 — personal-agent-kit | W18–W19 | Audit reviewed; generated header and knowledge split; gate green |
+| P6 — closeout | W20–W21 | Skeleton gaps filed; `B-0005` closed |
 
 ## Skeleton status and review discipline
 
@@ -94,13 +94,13 @@ Stop and confirm with the maintainer at each of these, rather than at every comm
 
 ## Risks
 
-| Risk                                                                         | Mitigation                                                                                           | Stop condition                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| A migration rewrites documents that record decisions, losing the reasoning.  | One role per commit; a frozen record keeps its citation and gets a tombstone.                        | A move would break a frozen record that cites the old path.                     |
-| Uncommitted work in a target repository is swept into a move.                | Run `git status --short` before the first move of each repository.                                   | The working tree has changes in a file the move touches.                        |
-| The spec is bent to fit one repository.                                      | Change the skeleton first when the gap is a genuine defect; every repo then follows the same spec.   | A migration needs a one-off role, budget, or path that no other repo would use. |
-| Five audits in one pass hide a pattern a second look would catch.            | One measurement script and one report format across all five.                                        | Two reports disagree on what a role means.                                      |
-| The skeleton is a draft and a rule is wrong; a target gets normalized to it. | Review the rule's source and the target's existing form; a better target changes the skeleton first. | A rule has no source or sample, or conflicts with a target's working practice.  |
+| Risk | Mitigation | Stop condition |
+| --- | --- | --- |
+| A migration rewrites documents that record decisions, losing the reasoning. | One role per commit; a frozen record keeps its citation and gets a tombstone. | A move would break a frozen record that cites the old path. |
+| Uncommitted work in a target repository is swept into a move. | Run `git status --short` before the first move of each repository. | The working tree has changes in a file the move touches. |
+| The spec is bent to fit one repository. | Change the skeleton first when the gap is a genuine defect; every repo then follows the same spec. | A migration needs a one-off role, budget, or path that no other repo would use. |
+| Five audits in one pass hide a pattern a second look would catch. | One measurement script and one report format across all five. | Two reports disagree on what a role means. |
+| The skeleton is a draft and a rule is wrong; a target gets normalized to it. | Review the rule's source and the target's existing form; a better target changes the skeleton first. | A rule has no source or sample, or conflicts with a target's working practice. |
 
 ## Out of scope
 
