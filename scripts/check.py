@@ -102,7 +102,7 @@ EXACT_BUDGETS = {
     "docs/committing.md": 4_000,
     "docs/spec/README.md": 2_000,
     "docs/decisions/README.md": 2_000,
-    "docs/backlog/README.md": 2_000,
+    "docs/backlog/README.md": 8_000,
     "template/README.md": 8_000,
     "template/core/AGENTS.md": 16_000,
     "template/core/README.md": 8_000,

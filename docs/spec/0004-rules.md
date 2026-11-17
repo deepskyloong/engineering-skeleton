@@ -56,7 +56,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | Member `AGENTS.md` | ≤8,000 | — |
 | Module `AGENTS.md` (deferred) | ≤4,000 | — |
 | Directory `README.md` (index) | ≤2,000 | ≤40 rows |
-| Backlog index | ≤2,000 | ≤60 rows |
+| Backlog index | ≤8,000 | ≤60 rows |
 | Overlay `README.md` (a guide, not an index) | ≤8,000 | — |
 | `status.md` | ≤8,000 EN / ≤4,000 ZH | — |
 | `GLOSSARY.md` | ≤6,000 | — |
@@ -66,7 +66,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
 
-A directory `README.md` is an index and gets 2,000; an overlay `README.md` is a guide and gets 8,000. The path decides, not the file name.
+A directory `README.md` is an index and gets 2,000; the backlog index is the exception at 8,000, because its 60-row limit at the measured ~114 characters per row needs about 7,500. An overlay `README.md` is a guide and gets 8,000. The path decides, not the file name.
 
 A `docs/committing.md` that adopts an external base is short by design: the base carries the rules, the page carries only deviations. The 4,000 limit exists so it cannot grow into a second copy of the base.
 

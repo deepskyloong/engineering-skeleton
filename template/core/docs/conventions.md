@@ -36,7 +36,7 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 | Member `README.md` / `AGENTS.md` | ≤8,000 | — |
 | Module `AGENTS.md` (deferred) | ≤4,000 | — |
 | Directory `README.md` (index) | ≤2,000 | ≤40 rows |
-| Backlog index | ≤2,000 | ≤60 rows |
+| Backlog index | ≤8,000 | ≤60 rows |
 | Overlay `README.md` | ≤8,000 | — |
 | `status.md` | ≤8,000 EN / ≤4,000 ZH | — |
 | `GLOSSARY.md` | ≤6,000 | — |
