@@ -144,7 +144,11 @@ def budget_for(key: str, name: str) -> tuple[int, int] | None:
     if key.startswith("template/overlays/"):
         return (10_000, 16_000)
     if key.startswith("template/"):
-        return (6_000, 12_000) if name == "README.md" else (10_000, 16_000)
+        if name == "README.md":
+            return (6_000, 12_000)
+        if "/docs/backlog/" in key:
+            return (5_000, 8_000)
+        return (10_000, 16_000)
     return None
 
 
