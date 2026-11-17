@@ -323,7 +323,7 @@ Migrate personal-agent-kit after the audit is reviewed. Introduce the generated 
 **Status**: todo
 **Depends on**: none
 
-Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository. The first tombstone use exposed two: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` only while `0004` lets a migrated series keep its width, which a target gate (`B-0002`) has to admit.
+Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository. The first tombstone use exposed two: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` only while `0004` lets a migrated series keep its width, which a target gate (`B-0002`) has to admit per repository, not as a global constant.
 
 **Done when**:
 
