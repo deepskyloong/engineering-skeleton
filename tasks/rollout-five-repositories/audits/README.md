@@ -6,7 +6,7 @@ A report is runtime evidence for the work package; a finding that changes the sp
 
 | Repository | Report | Disposition |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; decisions at `docs/decisions/` (`610f1e9`) with tombstones at ADR-09/10/12 old names and `docs/adrs/` a legacy path; next role `docs/charter.md`; contracts and knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
+| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; decisions at `docs/decisions/` (`610f1e9`, padded to `ADR-0009…0012` in `7a988f4`) with tombstones at ADR-09/10/12 old names and `docs/adrs/` a legacy path; next role `docs/charter.md`; contracts and knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
 
 ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md`; the report remains a dated snapshot. The vocabulary is `GLOSSARY.md`; do not move oshi's file to `CONTEXT.md`.
 
@@ -16,6 +16,13 @@ ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md
 - Proof: `git grep -l 'docs/adrs/'` survivors are `.scratch/embedding-coverage/map.md` (closed suite package), `archived/` (legacy path, deletion pending), `docs/backlog/B-21` (closed item), `docs/decisions/ADR-12` (frozen ADR), `docs/plans/` (frozen), `experiments/m1/results/m1-final-report.md` (frozen), plus the adapter registry row and the index's move note; every frozen citation resolves through a tombstone.
 - The four ADR blobs are byte-identical to their pre-move state; the body keeps `## Background` and `## Rejected alternatives`, and the index records the grandfathering instead of rewriting accepted records.
 - Gate: text-only, the two `ruff` commands, green.
+
+## oshi ADR width reconciliation (2026-11-17)
+
+- The maintainer chose four-digit ADR width over the migrated two-digit exception. Skeleton `ADR-0015` changes the rule: a migrated ADR series is zero-padded at migration and never renumbered; a migrated backlog series keeps its width, because its items are cited by path and line and its index admits no non-item file.
+- Oshi commit `7a988f4`: `ADR-09…12` → `ADR-0009…0012`; the four blobs are renamed, not rewritten. The three `docs/adrs/` tombstones keep their titles and now point at the padded files. The two-digit uppercase names had no frozen citation, so no new stubs were needed. Living pointers and labels are repointed; frozen records keep `ADR-09` labels.
+- The backlog is untouched (`B-1…B-25`), as ADR-0015 requires.
+- Gate: full, because the status page was touched — 658 passed / 1 skipped; `ruff` check and format green; `ty` check green. `docs/decisions/README.md` volume 4,240 (soft 6,000).
 
 ## oshi rulings (2026-11-17)
 

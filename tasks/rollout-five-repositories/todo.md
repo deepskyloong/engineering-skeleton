@@ -6,7 +6,7 @@
 - Status: open; backlog `B-0005` active
 - Branch: `feature/b0005-rollout`; re-check `git status`
 - Gate: last known `PASS — 77 markdown files` (2026-11-17); re-run `bun run gate`
-- Last done: W03 — review oshi's audit and rule the open questions; W10's decisions role moved (`610f1e9`), while charter, contracts, and knowledge remain
+- Last done: W03 — review oshi's audit and rule the open questions; W10's decisions role moved (`610f1e9`) and its ADRs padded to `ADR-0009…0012` (`7a988f4`), while charter, contracts, and knowledge remain
 - Phase: P1 — oshi migration
 - Focus: W10 — move oshi's living docs into their roles
 - Progress: 9 done / 2 todo / 10 blocked
@@ -172,7 +172,7 @@ Move oshi's living docs one role per commit. `docs/charter.md`, `docs/contracts/
 - `rg -l '<old-path>'` survivors are explained
 - oshi's gate is green
 
-**Evidence**: commit `610f1e9` (decisions: ADR-09…12 at `docs/decisions/`, tombstones at the 09/10/12 old names, `docs/adrs/` a legacy path); charter, contracts, and knowledge pending.
+**Evidence**: commit `610f1e9` (decisions: ADR-09…12 at `docs/decisions/`, tombstones at the 09/10/12 old names, `docs/adrs/` a legacy path); `7a988f4` pads the series to `ADR-0009…0012` under ADR-0015, full gate green; charter, contracts, and knowledge pending.
 
 #### W11 — Split oshi's pages to their budgets
 
@@ -325,7 +325,7 @@ Migrate personal-agent-kit after the audit is reviewed. Introduce the generated 
 **Status**: todo
 **Depends on**: none
 
-Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository. The first tombstone use exposed two: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` only while `0004` lets a migrated series keep its width, which a target gate (`B-0002`) has to admit per repository, not as a global constant.
+Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository. The first tombstone use exposed two: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so a portable checker (`B-0002`) must accept `B-<n>` as well.
 
 **Done when**:
 
