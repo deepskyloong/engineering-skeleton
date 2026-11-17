@@ -1,13 +1,13 @@
 # Backlog
 
-Deferred items only. An item here binds nothing; it records a decision that has not been made, with the evidence that would settle it.
+Deferred items only: an item here binds nothing, and records a decision not yet made with the evidence that would settle it.
 
 ## Rules
 
-- Each item is its own file: `B-<nnnn>-<slug>.md`. New repositories use four digits; a migrated series keeps its width and is never renumbered; the index carries order.
+- Each item is its own file, `B-<nnnn>-<slug>.md`, numbered with four digits; a migrated series keeps its width and is never renumbered. The index carries order.
 - Every item states `Revisit when` — a measurable trigger, not a date. An item without a trigger is a wish.
-- **Status lives in the index, not in the item file.** `open` means the trigger has not fired; `active` means a work package is on it; `closed` means delivered, withdrawn, or superseded. The item file carries no status line.
-- Closing an item: write a one-line outcome under `## Outcome`, set the row's `Status` to `closed`, and keep both the file and the row. Closed rows stay, so the index is an inventory, not a to-do list.
+- **Status lives in the index, not the item file.** `open`: the trigger has not fired. `active`: a work package is on it. `closed`: delivered, withdrawn, or superseded.
+- Closing: write a one-line outcome under `## Outcome`, set the row to `closed`, keep the file and the row. Closed rows stay; the index is an inventory, not a to-do list.
 
 ## Index
 
@@ -24,3 +24,4 @@ Deferred items only. An item here binds nothing; it records a decision that has 
 | [B-0009](B-0009-module-readme-budget.md) | Module README has no budget | open | gearset's five module READMEs are measured |
 | [B-0010](B-0010-routing-entry-limit.md) | Routing-table limit is unenforced | open | The next `AGENTS.md` change |
 | [B-0011](B-0011-overlay-markdown-formatting.md) | Overlays format no Markdown | open | The first forge needing Markdown normalization |
+| [B-0012](B-0012-oxfmt-table-layout.md) | oxfmt tables | open | oxfmt gains a table padding key |

@@ -9,6 +9,7 @@ The index now keeps closed rows and carries `Status`. The entry budget is 60 row
 - The `Status` column and the "closed rows stay" rule were added on 2026-11-14.
 - oshi's backlog has 19 items and keeps closed rows; it is the reference shape, but also the largest sample.
 - No archive role exists. Adding one is a role admission, not a formatting fix.
+- 2026-11-17: a twelfth row fits the 2,000 volume budget only after the rules lost about a hundred characters of redundancy. Volume binds at twelve rows while the entry limit allows 60, so the two limits are inconsistent, not merely tight.
 
 ## Revisit when
 
