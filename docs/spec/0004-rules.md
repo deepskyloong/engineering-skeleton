@@ -11,7 +11,7 @@ This table covers cross-role rules. The steps in `0003-flow.md` and `0006-migrat
 | R1 | One fact, one home | weak | Review: the same rule stated twice is a finding. Semantic duplication cannot be grepped reliably. |
 | R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.py` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
 | R3 | Change surface: spec → template → skill in the same or next commit | weak | Review against the `AGENTS.md` table |
-| R4a | Volume budgets are measured in non-whitespace characters, excluding table delimiter rows | strong | `scripts/check.py` measures every budgeted file |
+| R4a | Volume budgets are measured in non-whitespace characters and carry a soft and a hard line; soft is a review signal, hard fails the gate | strong | `scripts/check.py` measures every budgeted file, warns above soft and fails above hard |
 | R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the index tables that carry a limit |
 | R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.py` role-path map; an unmapped path fails |
 | R6 | No empty directories | strong | `scripts/check.py` fails on a directory with no files |
@@ -43,30 +43,32 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 
 ## Budgets
 
-| Document | Volume (non-ws chars) | Entry |
+| Document | Volume (soft / hard) | Entry |
 | --- | --- | --- |
-| Root `AGENTS.md` | ≤16,000 | routing table ≤12 rows |
-| Root `README.md` | ≤8,000 | install ≤3 steps |
-| Any `docs/` page | ≤8,000 | — |
-| ADR | ≤6,000 | — |
-| Backlog item | ≤4,000 | — |
-| `docs/workflow.md` | ≤8,000 | — |
-| `docs/committing.md` | ≤4,000 | — |
-| Member `README.md` | ≤8,000 | — |
-| Member `AGENTS.md` | ≤8,000 | — |
-| Module `AGENTS.md` (deferred) | ≤4,000 | — |
-| Directory `README.md` (index) | ≤2,000 | ≤40 rows |
-| Backlog index | ≤8,000 | ≤60 rows |
-| Overlay `README.md` (a guide, not an index) | ≤8,000 | — |
-| `status.md` | ≤8,000 EN / ≤4,000 ZH | — |
-| `GLOSSARY.md` | ≤6,000 | — |
-| `GLOSSARY-MAP.md` | ≤2,000 | — |
-| `tasks/<slug>/summary.md` | ≤3,000 | 3 sections |
+| Root `AGENTS.md` | ≤16,000 / ≤32,000 | routing table ≤12 rows |
+| Root `README.md` | ≤8,000 / ≤16,000 | install ≤3 steps |
+| Any `docs/` page | ≤8,000 / ≤16,000 | — |
+| ADR | ≤6,000 / ≤12,000 | — |
+| Backlog item | ≤4,000 / ≤8,000 | — |
+| `docs/workflow.md` | ≤8,000 / ≤16,000 | — |
+| `docs/committing.md` | ≤4,000 / ≤8,000 | — |
+| Member `README.md` | ≤8,000 / ≤16,000 | — |
+| Member `AGENTS.md` | ≤8,000 / ≤16,000 | — |
+| Module `AGENTS.md` (deferred) | ≤4,000 / ≤8,000 | — |
+| Directory `README.md` (index) | ≤2,000 / ≤4,000 | ≤40 rows |
+| Backlog index | ≤8,000 / ≤16,000 | ≤60 rows |
+| Overlay `README.md` (a guide, not an index) | ≤8,000 / ≤16,000 | — |
+| `status.md` | ≤8,000 / ≤16,000 EN; ≤4,000 / ≤8,000 ZH | — |
+| `GLOSSARY.md` | ≤6,000 / ≤12,000 | — |
+| `GLOSSARY-MAP.md` | ≤2,000 / ≤4,000 | — |
+| `tasks/<slug>/summary.md` | ≤3,000 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | exactly 1 link |
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
 
-A directory `README.md` is an index and gets 2,000; the backlog index is the exception at 8,000, because its 60-row limit at the measured ~114 characters per row needs about 7,500. An overlay `README.md` is a guide and gets 8,000. The path decides, not the file name.
+A volume budget has two lines. Soft is where judgment starts: a file may stay above it, and the gate prints a warning instead of failing. Hard is where the file is too long for its role: the gate fails. Hard is double soft, and that doubling is a rule rather than a measurement, because this repository has no corpus of target repositories to measure; `docs/decisions/ADR-0013-two-tier-volume-budgets.md` records the alternatives. A limit with no judgment space, such as a tombstone's 400, stays one number.
+
+A directory `README.md` is an index and gets 2,000/4,000; the backlog index is the exception at 8,000/16,000, because its 60-row limit at the measured ~114 characters per row needs about 7,500. An overlay `README.md` is a guide and gets 8,000/16,000. The path decides, not the file name.
 
 A `docs/committing.md` that adopts an external base is short by design: the base carries the rules, the page carries only deviations. The 4,000 limit exists so it cannot grow into a second copy of the base.
 

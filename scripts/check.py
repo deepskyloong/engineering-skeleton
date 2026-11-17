@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 FAILURES: list[str] = []
+WARNINGS: list[str] = []
 TABLE_DELIMITER = re.compile(r"\|[\s:|-]+\|")
 TABLE_ROW = re.compile(r"^\|.*\|$")
 CODE_SPAN = re.compile(r"`[^`]*`")
@@ -26,6 +27,10 @@ def rel(path: Path) -> str:
 
 def fail(message: str) -> None:
     FAILURES.append(message)
+
+
+def warn(message: str) -> None:
+    WARNINGS.append(message)
 
 
 def markdown_files() -> list[Path]:
@@ -95,19 +100,19 @@ DOC_ROLE_PATHS = [
 ]
 
 EXACT_BUDGETS = {
-    "AGENTS.md": 16_000,
-    "README.md": 8_000,
-    "GLOSSARY.md": 6_000,
-    "GLOSSARY-MAP.md": 2_000,
-    "docs/README.md": 2_000,
-    "docs/committing.md": 4_000,
-    "docs/spec/README.md": 2_000,
-    "docs/decisions/README.md": 2_000,
-    "docs/backlog/README.md": 8_000,
-    "template/README.md": 8_000,
-    "template/core/AGENTS.md": 16_000,
-    "template/core/README.md": 8_000,
-    "template/core/docs/committing.md": 4_000,
+    "AGENTS.md": (16_000, 32_000),
+    "README.md": (8_000, 16_000),
+    "GLOSSARY.md": (6_000, 12_000),
+    "GLOSSARY-MAP.md": (2_000, 4_000),
+    "docs/README.md": (2_000, 4_000),
+    "docs/committing.md": (4_000, 8_000),
+    "docs/spec/README.md": (2_000, 4_000),
+    "docs/decisions/README.md": (2_000, 4_000),
+    "docs/backlog/README.md": (8_000, 16_000),
+    "template/README.md": (8_000, 16_000),
+    "template/core/AGENTS.md": (16_000, 32_000),
+    "template/core/README.md": (8_000, 16_000),
+    "template/core/docs/committing.md": (4_000, 8_000),
 }
 
 ENTRY_LIMITS = {
@@ -120,19 +125,24 @@ ENTRY_LIMITS = {
 GENERATED_DIRS = ("dist",)
 
 
-def budget_for(key: str, name: str) -> int | None:
+def budget_for(key: str, name: str) -> tuple[int, int] | None:
+    """Return the (soft, hard) volume budget for a markdown file.
+
+    Soft is a judgment line: the gate warns. Hard is a failure line
+    (`docs/spec/0004-rules.md`, R4a; ADR-0013).
+    """
     if key in EXACT_BUDGETS:
         return EXACT_BUDGETS[key]
     if key.startswith("docs/decisions/"):
-        return 6_000
+        return (6_000, 12_000)
     if key.startswith("docs/backlog/"):
-        return 4_000
+        return (4_000, 8_000)
     if key.startswith("docs/"):
-        return 8_000
+        return (8_000, 16_000)
     if key.startswith("template/overlays/"):
-        return 8_000
+        return (8_000, 16_000)
     if key.startswith("template/"):
-        return 2_000 if name == "README.md" else 8_000
+        return (2_000, 4_000) if name == "README.md" else (8_000, 16_000)
     return None
 
 
@@ -178,12 +188,15 @@ def check_links(files: list[Path]) -> None:
 
 def check_budgets(files: list[Path]) -> None:
     for path in files:
-        limit = budget_for(rel(path), path.name)
-        if limit is None:
+        limits = budget_for(rel(path), path.name)
+        if limits is None:
             continue
+        soft, hard = limits
         measured = volume(path.read_text(encoding="utf-8"))
-        if measured > limit:
-            fail(f"volume {measured} > {limit}: {rel(path)}")
+        if measured > hard:
+            fail(f"volume {measured} > {hard} (hard): {rel(path)}")
+        elif measured > soft:
+            warn(f"volume {measured} > {soft} (soft): {rel(path)}")
 
 
 def check_entries(files: list[Path]) -> None:
@@ -414,6 +427,12 @@ def main() -> int:
     check_backlog_status(files)
     check_generated(files)
     check_version()
+
+    if WARNINGS:
+        print(f"WARN — {len(WARNINGS)} file(s) over the soft volume budget\n")
+        for item in WARNINGS:
+            print(f"  - {item}")
+        print()
 
     if FAILURES:
         print(f"FAIL — {len(FAILURES)} finding(s) across {len(files)} markdown files\n")

@@ -19,7 +19,7 @@ The first implementation is read-only and fails with a file path. It does not re
 2. Every `docs/` directory that contains markdown has a `README.md`.
 3. Every `docs/` page maps to a declared role; an unmapped path is a finding.
 4. Every internal markdown link resolves, and every link target stays inside the repository.
-5. Volume budgets hold with table delimiter rows excluded: `AGENTS.md` 16,000, `README.md` 8,000, any docs page 8,000, ADR 6,000, backlog item 4,000, directory index 2,000.
+5. Volume budgets hold with table delimiter rows excluded: a file above its soft line is reported as a warning, above its hard line as a failure. The numbers live in the budget table of `docs/spec/0004-rules.md`; this set does not repeat them.
 6. Entry budgets hold: `docs/README.md` 40 rows, `docs/decisions/README.md` 40 rows, `docs/backlog/README.md` 60 rows.
 7. File names match their roles: new series use four digits (spec `NNNN-slug.md`, ADR `ADR-<nnnn>-slug.md`, backlog `B-<nnnn>-slug.md`); a migrated series keeps its width and is never renumbered.
 8. No CJK in repository-maintained markdown.

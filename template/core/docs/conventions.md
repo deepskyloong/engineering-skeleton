@@ -25,26 +25,26 @@ Cite a file plus a section name (`docs/structure.md`, "Placement rules"). Do not
 
 ## Budgets
 
-| Document | Volume (non-ws chars) | Entries |
+| Document | Volume (soft / hard) | Entries |
 | --- | --- | --- |
-| Root `AGENTS.md` | ≤16,000 | routing ≤12 rows |
-| `README.md` | ≤8,000 | install ≤3 steps |
-| Any `docs/` page | ≤8,000 | — |
-| `docs/workflow.md` | ≤8,000 | — |
-| ADR | ≤6,000 | — |
-| Backlog item | ≤4,000 | — |
-| Member `README.md` / `AGENTS.md` | ≤8,000 | — |
-| Module `AGENTS.md` (deferred) | ≤4,000 | — |
-| Directory `README.md` (index) | ≤2,000 | ≤40 rows |
-| Backlog index | ≤8,000 | ≤60 rows |
-| Overlay `README.md` | ≤8,000 | — |
-| `status.md` | ≤8,000 EN / ≤4,000 ZH | — |
-| `GLOSSARY.md` | ≤6,000 | — |
-| `GLOSSARY-MAP.md` | ≤2,000 | — |
-| `summary.md` | ≤3,000 | 3 sections |
+| Root `AGENTS.md` | ≤16,000 / ≤32,000 | routing ≤12 rows |
+| `README.md` | ≤8,000 / ≤16,000 | install ≤3 steps |
+| Any `docs/` page | ≤8,000 / ≤16,000 | — |
+| `docs/workflow.md` | ≤8,000 / ≤16,000 | — |
+| ADR | ≤6,000 / ≤12,000 | — |
+| Backlog item | ≤4,000 / ≤8,000 | — |
+| Member `README.md` / `AGENTS.md` | ≤8,000 / ≤16,000 | — |
+| Module `AGENTS.md` (deferred) | ≤4,000 / ≤8,000 | — |
+| Directory `README.md` (index) | ≤2,000 / ≤4,000 | ≤40 rows |
+| Backlog index | ≤8,000 / ≤16,000 | ≤60 rows |
+| Overlay `README.md` | ≤8,000 / ≤16,000 | — |
+| `status.md` | ≤8,000 / ≤16,000 EN; ≤4,000 / ≤8,000 ZH | — |
+| `GLOSSARY.md` | ≤6,000 / ≤12,000 | — |
+| `GLOSSARY-MAP.md` | ≤2,000 / ≤4,000 | — |
+| `summary.md` | ≤3,000 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | 1 link |
 
-Measure volume with `grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m` (Bash) or by dropping table delimiter rows before the PowerShell non-whitespace count. Count entries with `wc -l` or `(Get-Content $p).Count`. Lines are not a volume unit.
+Measure volume with `grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m` (Bash) or by dropping table delimiter rows before the PowerShell non-whitespace count. Count entries with `wc -l` or `(Get-Content $p).Count`. Lines are not a volume unit. Soft warns, hard fails; hard is double soft.
 
 ## Document discipline
 

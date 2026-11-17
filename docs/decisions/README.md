@@ -18,6 +18,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0010](ADR-0010-suite-tracks-are-adapters.md) | Suite tracks are permanent adapters; legacy paths are the retirable kind | Accepted |
 | [ADR-0011](ADR-0011-tombstone-role.md) | A tombstone is a role at the old path; the gate enforces its shape | Accepted |
 | [ADR-0012](ADR-0012-markdown-tables-are-not-aligned.md) | Markdown tables are not column-aligned; a compact-table formatter owns the shape | Accepted |
+| [ADR-0013](ADR-0013-two-tier-volume-budgets.md) | Volume budgets carry a soft judgment line and a hard failure line | Accepted |
 
 ## Format
 
