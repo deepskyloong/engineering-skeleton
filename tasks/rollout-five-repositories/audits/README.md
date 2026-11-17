@@ -6,9 +6,16 @@ A report is runtime evidence for the work package; a finding that changes the sp
 
 | Repository | Report | Disposition |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; next role `docs/decisions`; contracts and knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
+| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; decisions at `docs/decisions/` (`610f1e9`) with tombstones at ADR-09/10/12 old names and `docs/adrs/` a legacy path; next role `docs/charter.md`; contracts and knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
 
 ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md`; the report remains a dated snapshot. The vocabulary is `GLOSSARY.md`; do not move oshi's file to `CONTEXT.md`.
+
+## oshi decisions move (2026-11-17)
+
+- Commit `610f1e9`; ADR-09…12 live at `docs/decisions/` and keep the two-digit series width; three two-line tombstones remain at `docs/adrs/adr-09-fuser-mixing.md`, `adr-10-per-work-db.md`, and `adr-12-vlm-cluster-experimental-seam.md`. ADR-11 had no frozen path citation, so its old path left no stub. Finding 10 is resolved: the records now use the `ADR-NN` prefix.
+- Proof: `git grep -l 'docs/adrs/'` survivors are `.scratch/embedding-coverage/map.md` (closed suite package), `archived/` (legacy path, deletion pending), `docs/backlog/B-21` (closed item), `docs/decisions/ADR-12` (frozen ADR), `docs/plans/` (frozen), `experiments/m1/results/m1-final-report.md` (frozen), plus the adapter registry row and the index's move note; every frozen citation resolves through a tombstone.
+- The four ADR blobs are byte-identical to their pre-move state; the body keeps `## Background` and `## Rejected alternatives`, and the index records the grandfathering instead of rewriting accepted records.
+- Gate: text-only, the two `ruff` commands, green.
 
 ## oshi rulings (2026-11-17)
 
@@ -17,4 +24,4 @@ ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md
 - **Tombstones.** A tombstone is a role at the old path (ADR-0011); `B-0008` is closed. A correct tombstone is no longer `unplaced`.
 - **Next role.** `docs/decisions`.
 
-Resolved, withdrawn, or superseded: 2 (missing `tasks/README.md` resolved by `7443137`; the reshape instruction is withdrawn), 3 (withdrawn, registered tracks), 7 (superseded by ADR-0007), 8 (registry exists after W04), 16 (withdrawn). Still open: 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 17, and the role question inside 1 (`B-0007`).
+Resolved, withdrawn, or superseded: 2 (missing `tasks/README.md` resolved by `7443137`; the reshape instruction is withdrawn), 3 (withdrawn, registered tracks), 7 (superseded by ADR-0007), 8 (registry exists after W04), 10 (resolved by the decisions move, `610f1e9`), 16 (withdrawn). Still open: 4, 5, 6, 9, 11, 12, 13, 14, 15, 17, and the role question inside 1 (`B-0007`).

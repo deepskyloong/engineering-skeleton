@@ -5,13 +5,13 @@
 - Updated: 2026-11-17
 - Status: open; backlog `B-0005` active
 - Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 71 markdown files` (2026-11-17); re-run `bun run gate`
-- Last done: W03 — review oshi's audit and rule the open questions
+- Gate: last known `PASS — 76 markdown files` (2026-11-17); re-run `bun run gate`
+- Last done: W03 — review oshi's audit and rule the open questions; W10's decisions role moved (`610f1e9`), while charter, contracts, and knowledge remain
 - Phase: P1 — oshi migration
 - Focus: W10 — move oshi's living docs into their roles
 - Progress: 9 done / 2 todo / 10 blocked
 - Todo: W10, W20
-- Next: W10 — start with `docs/decisions`: move the four ADRs and leave tombstones at the cited old names
+- Next: W10 — charter role: check `docs/brief.md` against the charter admission, then move it to `docs/charter.md`
 - Blocked: W11–W19, W21 (see `Depends on`; W11 is next after W10)
 - Open decisions: none for the audit; each role move still stops for review before it starts
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
@@ -172,7 +172,7 @@ Move oshi's living docs one role per commit. `docs/charter.md`, `docs/contracts/
 - `rg -l '<old-path>'` survivors are explained
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: commit `610f1e9` (decisions: ADR-09…12 at `docs/decisions/`, tombstones at the 09/10/12 old names, `docs/adrs/` a legacy path); charter, contracts, and knowledge pending.
 
 #### W11 — Split oshi's pages to their budgets
 
@@ -323,7 +323,7 @@ Migrate personal-agent-kit after the audit is reviewed. Introduce the generated 
 **Status**: todo
 **Depends on**: none
 
-Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository.
+Fix the skeleton gaps the rollout exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for a single repository. The first tombstone use exposed two: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` only while `0004` lets a migrated series keep its width, which a target gate (`B-0002`) has to admit.
 
 **Done when**:
 
