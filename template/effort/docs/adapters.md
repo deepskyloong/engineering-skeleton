@@ -20,7 +20,7 @@ Third-party suites that own directories in this repository, and legacy paths tha
 
 ## When to add a row
 
-- A suite writes into the repository at a path the skeleton does not own.
+- A suite writes into the repository at a path the standard does not own.
 - A migration cannot move a path because a frozen record cites it.
 - A tool cannot follow a symlink or a junction.
 

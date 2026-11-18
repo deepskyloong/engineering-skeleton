@@ -2,7 +2,7 @@
 
 ## Problem
 
-`docs/toolchain/<language>.md` is the most likely place for a documentation skeleton to regress into a dumping ground. The first draft let it hold "measured conclusions"; a review pointed out that measurements belong in `docs/operations/` as commands, and that a page of version numbers and benchmark results goes stale silently. The role is now restricted to reproducible traps with a command that shows the failure, but the restriction has no enforcement.
+`docs/toolchain/<language>.md` is the most likely place for the repository standard to regress into a dumping ground. The first draft let it hold "measured conclusions"; a review pointed out that measurements belong in `docs/operations/` as commands, and that a page of version numbers and benchmark results goes stale silently. The role is now restricted to reproducible traps with a command that shows the failure, but the restriction has no enforcement.
 
 ## Evidence
 

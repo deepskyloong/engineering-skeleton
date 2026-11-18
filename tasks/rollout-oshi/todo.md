@@ -124,7 +124,7 @@ Re-measure every role page after the moves; the audit's 29 breaches were a 2026-
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, `docs/reviews/README.md`, and `docs/adrs/README.md` (finding 9); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6); the uncommitted `docs/reviews/README.md` (17). A finding that needs a skeleton rule goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`.
+Give every finding in `audits/oshi.md` a disposition. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, `docs/reviews/README.md`, and `docs/adrs/README.md` (finding 9); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6); the uncommitted `docs/reviews/README.md` (17). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`.
 
 **Done when**:
 
@@ -136,12 +136,12 @@ Give every finding in `audits/oshi.md` a disposition. The ones the moves do not 
 
 ### P3 — Closeout
 
-#### W08 — Fix the skeleton gaps the rollout exposed
+#### W08 — Fix the standard gaps the rollout exposed
 
 **Status**: todo
 **Depends on**: W07
 
-Fix the skeleton gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two are named: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two are named: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well.
 
 **Done when**:
 

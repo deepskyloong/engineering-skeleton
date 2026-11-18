@@ -2,7 +2,7 @@
 
 ## Problem
 
-R12 keeps column padding out of Markdown and assumes a repository that formats Markdown at all. Both overlays bypass that assumption: no gate stage reads `*.md`, so the pages shipped by `template/core/` are normalized by nothing — heading spacing, blank lines, list markers, and code fences included. A generated repository also has no table check, because the portable checker is deferred (`B-0002`). The result is a skeleton that is strict about its own Markdown and silent about a target repository's.
+R12 keeps column padding out of Markdown and assumes a repository that formats Markdown at all. Both overlays bypass that assumption: no gate stage reads `*.md`, so the pages shipped by `template/core/` are normalized by nothing — heading spacing, blank lines, list markers, and code fences included. A generated repository also has no table check, because the portable checker is deferred (`B-0002`). The result is a standard that is strict about its own Markdown and silent about a target repository's.
 
 ## Evidence
 

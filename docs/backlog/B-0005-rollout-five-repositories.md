@@ -1,4 +1,4 @@
-# B-0005 — Roll the skeleton out to the five source repositories
+# B-0005 — Roll the repository standard out to the five source repositories
 
 ## Problem
 

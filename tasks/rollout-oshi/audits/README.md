@@ -19,7 +19,7 @@ ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md
 
 ## oshi ADR width reconciliation (2026-11-17)
 
-- The maintainer chose four-digit ADR width over the migrated two-digit exception. Skeleton `ADR-0015` changes the rule: a migrated ADR series is zero-padded at migration and never renumbered; a migrated backlog series keeps its width, because its items are cited by path and line and its index admits no non-item file.
+- The maintainer chose four-digit ADR width over the migrated two-digit exception. Standard `ADR-0015` changes the rule: a migrated ADR series is zero-padded at migration and never renumbered; a migrated backlog series keeps its width, because its items are cited by path and line and its index admits no non-item file.
 - Oshi commit `7a988f4`: `ADR-09…12` → `ADR-0009…0012`; the four blobs are renamed, not rewritten. The three `docs/adrs/` tombstones keep their titles and now point at the padded files. The two-digit uppercase names had no frozen citation, so no new stubs were needed. Living pointers and labels are repointed; frozen records keep `ADR-09` labels.
 - The backlog is untouched (`B-1…B-25`), as ADR-0015 requires.
 - Gate: full, because the status page was touched — 658 passed / 1 skipped; `ruff` check and format green; `ty` check green. `docs/decisions/README.md` volume 4,240 (soft 6,000).

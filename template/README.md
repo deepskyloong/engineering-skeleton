@@ -1,6 +1,6 @@
 # Template
 
-Copyable starting points for a repository that adopts the skeleton. Read `docs/spec/0002-roles.md` first: the template is a consequence of the roles, and copying it without them produces files nobody can place later.
+Copyable starting points for a repository that adopts the standard. Read `docs/spec/0002-roles.md` first: the template is a consequence of the roles, and copying it without them produces files nobody can place later.
 
 ## Copy order
 
@@ -9,7 +9,7 @@ Copyable starting points for a repository that adopts the skeleton. Read `docs/s
 3. `first-use/` → only when the first ADR, the first backlog item, or the first shared term appears. Copy the matching piece only; its `docs/README.md` is a merge fragment, not a replacement.
 4. `effort/` → only when the first work package starts. Merge `docs/*` into the existing `docs/`; never overwrite `docs/README.md`.
 
-Do not copy all four at day one. Each segment has a trigger, and copying it early creates exactly the empty structure the skeleton forbids.
+Do not copy all four at day one. Each segment has a trigger, and copying it early creates exactly the empty structure the standard forbids.
 
 ## Values to replace
 
