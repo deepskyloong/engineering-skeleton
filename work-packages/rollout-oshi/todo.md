@@ -5,13 +5,13 @@
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
-- Gate: `PASS — 101 markdown files` (2026-11-18)
+- Gate: `PASS — 102 markdown files` (2026-11-18)
 - Last done: standard change — optional architecture role; ADR-0022; commit `16dd9ff`; W08a `a2848c8`
 - Phase: P1 — package rule and role moves
-- Focus: W03 — contract/architecture split reissued; review pending
+- Focus: W03 — admission census done; map re-cut pending
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — review the contract/architecture split in `maps/w03-contract-map.md`; then C1
+- Next: W03 — re-cut `maps/w03-contract-map.md` from `maps/w03-admission-census.md`
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
