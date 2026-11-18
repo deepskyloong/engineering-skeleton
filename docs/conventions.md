@@ -6,22 +6,22 @@ English for every file this repository maintains: prose, templates, commit messa
 
 ## Naming
 
-- Files: `kebab-case.md`, with `NNNN-slug.md` for spec pages, `ADR-<nnnn>-slug.md` for ADRs, and `B-<nnnn>-slug.md` for backlog items.
-- Numbered files use four digits: spec `0001`, ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series keeps its width and is never renumbered.
+- Files: `kebab-case.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
+- Numbered records use four digits: ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series keeps its width and is never renumbered.
 - All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Template placeholders: `<angle-bracket>` values replaced at forge, and `{{NORM_SOURCE}}`, a token resolved from the target's `Norm source:` line and never replaced; both are listed in `template/README.md`.
 - Prose is not hard-wrapped. A paragraph is one line; the editor soft-wraps. Code fences, tables, and YAML keep their line breaks.
 
 ## Citation
 
-Cite a file name plus a section name (`docs/spec/0002-roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number. Number section headings only when the number is part of a cited artifact: a legal clause, a fixed contract section, or a numbered procedure. Otherwise leave them unnumbered.
+Cite a file name plus a section name (`docs/norm/roles.md`, "Five discriminations"). Do not cite section numbers: they rot when a page is reordered, and a stale number is worse than no number. Number section headings only when the number is part of a cited artifact: a legal clause, a fixed contract section, or a numbered procedure. Otherwise leave them unnumbered.
 
 ## The five discriminations
 
-Normative definitions live in `docs/spec/0002-roles.md` ("Five discriminations"); this page does not restate them. What each means in practice:
+Normative definitions live in `docs/norm/roles.md` ("Five discriminations"); this page does not restate them. What each means in practice:
 
 - A choice with rejected alternatives goes to `docs/decisions/`, not into a README or a status page.
-- "The spec" is ambiguous here too: always write "work-package spec" or "contract".
+- "Spec" is ambiguous here too: always write "work-package spec" or "contract".
 - `README.md` serves adopters; `docs/charter.md` serves the maintainer.
 - A budget line names its unit and the command that measures it.
 - A repository with no members keeps one `GLOSSARY.md` and no `GLOSSARY-MAP.md`; a repository with members adds the map.
@@ -30,9 +30,9 @@ A repository that adopts these norms points at this page: its `docs/conventions.
 
 ## Document discipline
 
-- **A table is not a grid in the source.** One space on each side of a cell, no padding to column width. Padding hides the row that changed inside a diff and hands every untouched row to the reformat commit in `git blame`; renderers ignore it anyway (`docs/spec/0004-rules.md`, R12).
+- **A table is not a grid in the source.** One space on each side of a cell, no padding to column width. Padding hides the row that changed inside a diff and hands every untouched row to the reformat commit in `git blame`; renderers ignore it anyway (`docs/norm/rules.md`, R12).
 - **Record method, not measurement.** A count, duration, coverage number, node count, resolved version, or benchmark result is written as the command that produces it. A historical value survives only when the value itself is the fact, marked with a date and `for-the-record`.
-- **A named set's cardinality is part of its name.** "Four layers" or "five discriminations" defines a set; changing the number is a spec change, not a count to update in place. Do not confuse this with a current inventory count.
+- **A named set's cardinality is part of its name.** "Four layers" or "five discriminations" defines a set; changing the number is a standard change, not a count to update in place. Do not confuse this with a current inventory count.
 - **Never copy a value that has an owner.** Cite `pyproject.toml`, `package.json`, CLI `--help`, or a type signature instead of restating its content.
 - **One fact, one home.** A parent page links to a child's conclusion; it does not restate it.
 - **A test does not justify deleting prose.** Prose is the fast path; tests are the verification net. What is removable is the same prose written twice.
@@ -41,4 +41,4 @@ A repository that adopts these norms points at this page: its `docs/conventions.
 
 ## Budget units
 
-Defined once in `docs/spec/0004-rules.md`; not restated here. The short form: volume is measured in non-whitespace characters excluding table delimiter rows (`grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.
+Defined once in `docs/norm/rules.md`; not restated here. The short form: volume is measured in non-whitespace characters excluding table delimiter rows (`grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.

@@ -2,7 +2,7 @@
 
 ## Problem
 
-`docs/spec/0002-roles.md` admits a module `README.md` when a module is a real abstraction. `docs/spec/0004-rules.md` budgets a member `README.md` at 8,000 non-whitespace characters and says nothing about a module `README.md`. Admission rule 5 requires a budget with a unit and a command, so the role is currently admitted without one.
+`docs/norm/roles.md` admits a module `README.md` when a module is a real abstraction. `docs/norm/rules.md` budgets a member `README.md` at 8,000 non-whitespace characters and says nothing about a module `README.md`. Admission rule 5 requires a budget with a unit and a command, so the role is currently admitted without one.
 
 ## Evidence
 

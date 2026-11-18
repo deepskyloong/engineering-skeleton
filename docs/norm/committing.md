@@ -1,4 +1,4 @@
-# 0007 — Committing
+# Committing
 
 The committing norm for every repository that names the norm source. A repository's `docs/committing.md` points here and records only its own deviations; anything not overridden applies from this page. The path is the same in every repository.
 
@@ -119,7 +119,7 @@ It may not weaken: the header shape, outcome-not-files subjects, the body's "why
 Record overrides in `docs/committing.md` — the same path in every project, never forked to another filename or folded into `AGENTS.md`. The project's `AGENTS.md` points there on the commit path. Start the file with:
 
 ```text
-Base: `{{NORM_SOURCE}}/docs/spec/0007-committing.md`. Read it first; this file records only deviations. A rule here wins only on the dimension it names; everything else comes from the norm.
+Base: `{{NORM_SOURCE}}/docs/norm/committing.md`. Read it first; this file records only deviations. A rule here wins only on the dimension it names; everything else comes from the norm.
 ```
 
 ## Before committing

@@ -90,7 +90,7 @@ DOC_ROLE_PATHS = [
     re.compile(r"docs/README\.md"),
     re.compile(r"docs/(charter|structure|conventions|committing|governance|workflow)\.md"),
     re.compile(r"docs/adapters\.md"),
-    re.compile(r"docs/spec/(README|\d{4}-[a-z0-9-]+)\.md"),
+    re.compile(r"docs/norm/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/decisions/(README|ADR-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/backlog/(README|B-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/contracts/(README|[a-z0-9-]+)\.md"),
@@ -106,7 +106,7 @@ EXACT_BUDGETS = {
     "GLOSSARY-MAP.md": (2_500, 4_000),
     "docs/README.md": (6_000, 12_000),
     "docs/committing.md": (5_000, 8_000),
-    "docs/spec/README.md": (6_000, 12_000),
+    "docs/norm/README.md": (6_000, 12_000),
     "docs/decisions/README.md": (6_000, 12_000),
     "docs/backlog/README.md": (8_000, 16_000),
     "template/README.md": (6_000, 12_000),
@@ -131,7 +131,7 @@ def budget_for(key: str, name: str) -> tuple[int, int] | None:
     """Return the (soft, hard) volume budget for a markdown file.
 
     Soft is a judgment line: the gate warns. Hard is a failure line
-    (`docs/spec/0004-rules.md`, R4a; ADR-0013).
+    (`docs/norm/rules.md`, R4a; ADR-0013).
     """
     if key in EXACT_BUDGETS:
         return EXACT_BUDGETS[key]
@@ -250,9 +250,7 @@ def check_naming(files: list[Path]) -> None:
             continue
         if name in ROLE_NAMES:
             continue
-        if "/docs/spec/" in route:
-            pattern = r"\d{4}-[a-z0-9-]+\.md"
-        elif "/docs/decisions/" in route:
+        if "/docs/decisions/" in route:
             pattern = r"ADR-\d{4}-[a-z0-9-]+\.md"
         elif "/docs/backlog/" in route:
             pattern = r"B-\d{4}-[a-z0-9-]+\.md"
@@ -307,7 +305,7 @@ def check_tables(files: list[Path]) -> None:
 
     Padding is a formatting decision that hides the changed row in a diff and
     hands every untouched row to the reformat commit in `git blame`
-    (`docs/spec/0004-rules.md`, R12). A cell count that differs from the header
+    (`docs/norm/rules.md`, R12). A cell count that differs from the header
     is also reported: the formatter skips such a table, and the default printer
     would pad it again.
     """
@@ -390,13 +388,13 @@ def check_generated(files: list[Path]) -> None:
 
 def check_version() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    spec = (ROOT / "docs/spec/README.md").read_text(encoding="utf-8")
-    found = [re.search(r"spec v(\d+)", text) for text in (readme, spec)]
+    norm = (ROOT / "docs/norm/README.md").read_text(encoding="utf-8")
+    found = [re.search(r"standard v(\d+)", text) for text in (readme, norm)]
     if not all(found):
-        fail("spec version missing: README.md and docs/spec/README.md must state 'spec vN'")
+        fail("standard version missing: README.md and docs/norm/README.md must state 'standard vN'")
         return
     if found[0].group(1) != found[1].group(1):
-        fail(f"spec version mismatch: README v{found[0].group(1)} vs spec v{found[1].group(1)}")
+        fail(f"standard version mismatch: README v{found[0].group(1)} vs norm v{found[1].group(1)}")
 
 
 def check_required_files() -> None:
@@ -404,15 +402,17 @@ def check_required_files() -> None:
         if not (ROOT / name).exists():
             fail(f"missing required file: {name}")
     for page in (
-        "docs/spec/0001-foundations.md",
-        "docs/spec/0002-roles.md",
-        "docs/spec/0003-flow.md",
-        "docs/spec/0004-rules.md",
-        "docs/spec/0005-overlays.md",
-        "docs/spec/0006-migration.md",
+        "docs/norm/README.md",
+        "docs/norm/foundations.md",
+        "docs/norm/roles.md",
+        "docs/norm/flow.md",
+        "docs/norm/rules.md",
+        "docs/norm/overlays.md",
+        "docs/norm/migration.md",
+        "docs/norm/committing.md",
     ):
         if not (ROOT / page).exists():
-            fail(f"missing spec page: {page}")
+            fail(f"missing norm page: {page}")
 
 
 def main() -> int:

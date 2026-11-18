@@ -2,7 +2,7 @@
 
 ## Problem
 
-A research repository keeps records that are tracked, cited by later work, and never edited: pre-registered protocols, measured results, and verdicts. The role table has no home for them, and the four retirement exceptions in `docs/spec/0004-rules.md` do not cover a frozen protocol or result. A migration must therefore either delete evidence or invent a role in one repository, and both break the rule that a missing role is recorded here rather than forked.
+A research repository keeps records that are tracked, cited by later work, and never edited: pre-registered protocols, measured results, and verdicts. The role table has no home for them, and the four retirement exceptions in `docs/norm/rules.md` do not cover a frozen protocol or result. A migration must therefore either delete evidence or invent a role in one repository, and both break the rule that a missing role is recorded here rather than forked.
 
 ## Evidence
 

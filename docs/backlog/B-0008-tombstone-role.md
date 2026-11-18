@@ -2,7 +2,7 @@
 
 ## Problem
 
-`docs/spec/0004-rules.md` defines a tombstone as one of four retirement exceptions: at most 400 non-whitespace characters, exactly one link, kept only while a frozen record cites the old path. `docs/spec/0002-roles.md` has no row for it: no home, no admission, no exit, and `scripts/check.py` has no path pattern. A migration that leaves a forwarding file therefore creates an artifact the role table cannot place, and the next audit reports it as `unplaced`.
+`docs/norm/rules.md` defines a tombstone as one of four retirement exceptions: at most 400 non-whitespace characters, exactly one link, kept only while a frozen record cites the old path. `docs/norm/roles.md` has no row for it: no home, no admission, no exit, and `scripts/check.py` has no path pattern. A migration that leaves a forwarding file therefore creates an artifact the role table cannot place, and the next audit reports it as `unplaced`.
 
 ## Evidence
 
@@ -12,14 +12,14 @@
 
 ## Minimal fix
 
-Add one row to `docs/spec/0002-roles.md` under "Optional, admitted by trigger":
+Add one row to `docs/norm/roles.md` under "Optional, admitted by trigger":
 
 - **Home**: the old path being forwarded.
 - **Admission**: at most 3 lines, exactly one link, no explanation.
 - **Exit**: deleted when the last frozen record citing it is deleted.
 - **Trigger**: a frozen record cites a path that has moved.
 
-Keep the 400-character budget in `docs/spec/0004-rules.md`; add the tombstone pattern to `scripts/check.py` and to the portable check set in `B-0002`.
+Keep the 400-character budget in `docs/norm/rules.md`; add the tombstone pattern to `scripts/check.py` and to the portable check set in `B-0002`.
 
 ## Revisit when
 

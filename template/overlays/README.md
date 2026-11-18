@@ -9,4 +9,4 @@ An overlay ships **files, not code blocks**. After copying it and installing dep
 | [typescript/](typescript/README.md) | Bun | `bun run gate` |
 | [python/](python/README.md) | uv | `uv run python tools/gate.py` |
 
-Each overlay fills the eight contracts in `docs/spec/0005-overlays.md` and never restates a core rule. If an overlay needs a core rule changed, the spec changes first.
+Each overlay fills the eight contracts in `docs/norm/overlays.md` and never restates a core rule. If an overlay needs a core rule changed, the norm changes first.

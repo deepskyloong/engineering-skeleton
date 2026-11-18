@@ -6,7 +6,7 @@ One directory per effort: `tasks/<slug>/`, holding four files while it is open. 
 
 - Slug: `kebab-case`, describes the outcome (`add-retry-budget`, not `ticket-42`).
 - Four files: `spec.md` (what), `plan.md` (how), `todo.md` (work items and current state), `summary.md` (result). Split `_template.md` into these four, then delete `_template.md`.
-- The first thing in `todo.md` is a `Current state` block; see `docs/spec/0003-flow.md` for its fields and the same-commit update rule. It is a snapshot, not a log.
+- The first thing in `todo.md` is a `Current state` block; see `docs/norm/flow.md` for its fields and the same-commit update rule. It is a snapshot, not a log.
 - Work items are `W<n>` blocks under phase headings; each carries status, dependencies, a prose description, done-when criteria, and evidence. `done` requires evidence; `plan.md` carries the phase breakdown.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.

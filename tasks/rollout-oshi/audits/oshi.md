@@ -6,7 +6,7 @@
 - **Inventory**: 238 markdown files outside vendored directories, 2,241,268 non-whitespace characters in total.
 - **Working tree**: `docs/reviews/README.md` modified, two untracked files under `experiments/s2-legacy-review/`. The modified file is a tracked index; it is a stop condition for any move that touches `docs/reviews/`.
 
-Measurement commands: the inventory is regenerated with `../tools/audit_repo.py`; budgets use the `volume()` definition in `docs/spec/0004-rules.md` ("Budget units").
+Measurement commands: the inventory is regenerated with `../tools/audit_repo.py`; budgets use the `volume()` definition in `docs/norm/rules.md` ("Budget units").
 
 ## Inventory
 
@@ -73,7 +73,7 @@ Sorted by severity, then by the effort each fix would take.
 
 10. **[major] §Naming — ADRs use a lowercase prefix.** `docs/adrs/adr-09…adr-12` do not match `ADR-<nnnn>-slug.md`. Why: R11, and the migrated series keeps its width, so `ADR-09` is the correct target. Minimal fix: rename four files inside the same move to `docs/decisions/`; a frozen record that cites the old name gets a tombstone, not a rewrite.
 
-11. **[minor] §Status cap — the test measures total characters, the role measures non-whitespace.** `tests/test_status_cap.py` enforces 5,000 total characters; the spec's status budget is 4,000 non-whitespace (Chinese) or 8,000 (English). Why: two units for one limit, the exact confusion `docs/spec/0004-rules.md` forbids. Minimal fix: rewrite the test to strip whitespace and table delimiter rows, then set 4,200 for this repository (the conversion note in `docs/spec/0006-migration.md`).
+11. **[minor] §Status cap — the test measures total characters, the role measures non-whitespace.** `tests/test_status_cap.py` enforces 5,000 total characters; the spec's status budget is 4,000 non-whitespace (Chinese) or 8,000 (English). Why: two units for one limit, the exact confusion `docs/norm/rules.md` forbids. Minimal fix: rewrite the test to strip whitespace and table delimiter rows, then set 4,200 for this repository (the conversion note in `docs/norm/migration.md`).
 
 12. **[minor] §Docs tree — `docs/stack.md` is three documents in one.** It mixes toolchain facts, rejected alternatives, and deferred items. Why: the toolchain role admits reproducible traps, decisions belong in an ADR, and deferred items belong in the backlog. Minimal fix: split into `docs/toolchain/python.md` (traps only), one ADR for the runtime choices, and backlog rows for the deferred items.
 

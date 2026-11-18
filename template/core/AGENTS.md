@@ -1,6 +1,6 @@
 # AGENTS.md — <project-name> maintenance manual
 
-standard: v1 — update this line when the template is re-copied from a newer spec.
+standard: v1 — update this line when the template is re-copied from a newer norm.
 
 Norm source: `{{NORM_SOURCE}}` = `<path or URL>`. Change this line only; every reference uses the token.
 

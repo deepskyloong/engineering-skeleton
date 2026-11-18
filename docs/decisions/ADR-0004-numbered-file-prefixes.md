@@ -1,6 +1,6 @@
 # ADR-0004 — Type prefixes and four-digit ordinals for numbered files
 
-Status: Accepted (2026-11-14)
+Status: Superseded in part by [ADR-0019](ADR-0019-norm-pages-use-names.md) (2026-11-18); the four-digit record rule still holds.
 
 ## Context
 

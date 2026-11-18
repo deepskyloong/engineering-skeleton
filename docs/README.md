@@ -2,12 +2,12 @@
 
 ## Governance
 
-- **Authority**: this directory holds the normative specification, its supporting policy pages, decision records, and deferred items. It does not hold templates (that is `template/`) or tooling (`scripts/`).
+- **Authority**: this directory holds the norm, its supporting policy pages, decision records, and deferred items. It does not hold templates (that is `template/`) or tooling (`scripts/`).
 - **What goes here**: a document whose reader is a maintainer of the standard. A document whose reader is a user of a generated repository belongs in `template/`.
 - **What does not go here**: project-specific business documentation, language tutorials, copies of values owned by `template/` or `scripts/`.
 - **Structure**: each topic gets its own file. A new subdirectory gets its own README before it gets a second file. The top-level index lists subdirectories in one row each and does not repeat their file lists.
-- **Naming**: `kebab-case.md`; spec pages use `NNNN-slug.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
-- **Change flow**: a normative change lands in `docs/spec/` first; supporting pages follow in the same commit; `template/` follows in the same commit or in the next one with a pointer left behind.
+- **Naming**: `kebab-case.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
+- **Change flow**: a normative change lands in `docs/norm/` first; supporting pages follow in the same commit; `template/` follows in the same commit or in the next one with a pointer left behind.
 
 ## Index
 
@@ -19,7 +19,7 @@
 | [committing.md](committing.md) | Commit message convention: a base pointer to the norm source plus this repository's deviations |
 | [governance.md](governance.md) | Versioning, change surface, review, ownership |
 | [workflow.md](workflow.md) | Operating modes: forge, audit, migrate |
-| [spec/](spec/README.md) | The normative specification |
+| [norm/](norm/README.md) | The binding text: foundations, roles, flow, rules, overlays, migration, committing |
 | [decisions/](decisions/README.md) | ADRs — choices and rejected alternatives |
 | [backlog/](backlog/README.md) | Deferred items with revisit triggers |
 

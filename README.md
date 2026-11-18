@@ -12,11 +12,11 @@ This repository makes the roles normative and keeps the layout as small as it ca
 
 | Path | Role |
 | --- | --- |
-| `docs/spec/` | The normative specification. Read this before changing anything else. |
+| `docs/norm/` | The binding text of the standard. Read this before changing anything else. |
 | `docs/charter.md` | Scope, non-goals, hard constraints, success criteria. |
 | `docs/structure.md` | This repository's layout and the placement rules for new files. |
 | `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
-| `docs/governance.md` | Versioning, change surface, review, and how the spec evolves. |
+| `docs/governance.md` | Versioning, change surface, review, and how the standard evolves. |
 | `docs/workflow.md` | The three operating modes: forge, audit, migrate. |
 | `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
@@ -32,14 +32,14 @@ This repository makes the roles normative and keeps the layout as small as it ca
 2. Pick one overlay under `template/overlays/` and follow its README.
 3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
 4. When the first work package starts, copy `template/effort/` and create `tasks/<slug>/spec.md` with a `track:` line.
-5. Run `bun install && bun run gate` in this repository after changing the spec or a template.
+5. Run `bun install && bun run gate` in this repository after changing the norm or a template.
 
 ## Reading order
 
-For a person: this file → `docs/charter.md` → `docs/spec/0001-foundations.md` → `docs/spec/0002-roles.md`.
+For a person: this file → `docs/charter.md` → `docs/norm/foundations.md` → `docs/norm/roles.md`.
 
-For an agent: `AGENTS.md` → the routing table there → the one spec page the task needs.
+For an agent: `AGENTS.md` → the routing table there → the one norm page the task needs.
 
 ## Status
 
-`spec v1`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).
+`standard v1`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).

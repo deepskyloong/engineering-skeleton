@@ -1,6 +1,6 @@
 # <project-name>
 
-The vocabulary of this repository: terms with a fixed meaning, so a spec, a template, or a commit message can name the same thing the same way.
+The vocabulary of this repository: terms with a fixed meaning, so a document, a template, or a commit message can name the same thing the same way.
 
 ## Language
 

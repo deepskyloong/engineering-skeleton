@@ -9,7 +9,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0001](ADR-0001-spec-repo-and-thin-skill.md) | The specification lives in a standalone repository; the skill is a thin entry point | Accepted |
 | [ADR-0002](ADR-0002-manual-skill-invocation.md) | The skill is manually invoked, not description-triggered | Accepted |
 | [ADR-0003](ADR-0003-volume-budget-unit.md) | Volume budgets measure non-whitespace characters, not lines or words | Accepted |
-| [ADR-0004](ADR-0004-numbered-file-prefixes.md) | Numbered files use four digits; citable records carry a type prefix | Accepted |
+| [ADR-0004](ADR-0004-numbered-file-prefixes.md) | Numbered files use four digits; citable records carry a type prefix | Superseded in part by ADR-0019 |
 | [ADR-0005](ADR-0005-directory-inventories.md) | Directory inventories belong to directory READMEs, not to `structure.md` | Accepted |
 | [ADR-0006](ADR-0006-status-page-home.md) | Status lives at the docs top level, not inside the operations directory | Accepted |
 | [ADR-0007](ADR-0007-vocabulary-home.md) | The vocabulary home is `GLOSSARY.md`; `CONTEXT.md` is a legacy alias | Accepted |
@@ -24,6 +24,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0016](ADR-0016-norm-source-pointer.md) | General norms are consumed by pointer, not copy | Accepted |
 | [ADR-0017](ADR-0017-closed-work-packages-archive.md) | Closed work packages move to `tasks/archive/`; the open table lists only open packages | Accepted |
 | [ADR-0018](ADR-0018-repository-standard-rename.md) | The repository and its artifact are named the repository standard | Accepted |
+| [ADR-0019](ADR-0019-norm-pages-use-names.md) | Norm pages are named by subject; the binding text lives at `docs/norm/` | Accepted |
 
 ## Format
 

@@ -1,6 +1,6 @@
 # repository-standard
 
-The vocabulary of the repository standard: the words this repository uses for roles, levels, work packages, rules, and artifacts, so a spec page, a template, or a commit message can name the same thing the same way.
+The vocabulary of the repository standard: the words this repository uses for roles, levels, work packages, rules, and artifacts, so a norm page, a template, or a commit message can name the same thing the same way.
 
 ## Language
 
@@ -17,6 +17,10 @@ _Avoid_: doc type, category
 **home**:
 The single path where a role lives.
 _Avoid_: location, place
+
+**norm**:
+The binding text of the repository standard, under `docs/norm/`; a consumer points at a norm source and records only deviations.
+_Avoid_: spec (for this sense), standard (the whole artifact)
 
 **norm source**:
 The repository that holds a general norm once; a consumer names it on one line and points at it, recording only deviations.
@@ -63,11 +67,11 @@ A forwarding stub kept because a frozen record cites the old path.
 _Avoid_: redirect, alias
 
 **volume budget**:
-The size limit of a document, measured in the unit that `docs/spec/0004-rules.md` defines.
+The size limit of a document, measured in the unit that `docs/norm/rules.md` defines.
 _Avoid_: length, size
 
 **entry budget**:
-The count limit of an index or table, measured in the unit that `docs/spec/0004-rules.md` defines.
+The count limit of an index or table, measured in the unit that `docs/norm/rules.md` defines.
 _Avoid_: line limit
 
 **single-package degeneration**:

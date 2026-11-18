@@ -2,7 +2,7 @@
 
 ## Version model
 
-There is one version, `spec v<N>`, recorded in `README.md` and in the header of `docs/spec/README.md`. The template and the skill carry no independent version: they are correct when they match the current spec. A change that alters a role, a budget, or a discrimination is a spec version bump; a wording fix is not.
+There is one version, `standard v<N>`, recorded in `README.md` and in the header of `docs/norm/README.md`. The template and the skill carry no independent version: they are correct when they match the current norm. A change that alters a role, a budget, or a discrimination is a standard version bump; a wording fix is not.
 
 ## Who decides
 
@@ -13,7 +13,7 @@ There is one version, `spec v<N>`, recorded in `README.md` and in the header of 
 
 ## Change surface
 
-Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a change that leaves a downstream file stale is incomplete, even if the changed file is correct. The three downstream files are `docs/spec/`, `template/`, and the skill; a fourth is `scripts/check.py` when the change alters what can be checked.
+Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a change that leaves a downstream file stale is incomplete, even if the changed file is correct. The three downstream files are `docs/norm/`, `template/`, and the skill; a fourth is `scripts/check.py` when the change alters what can be checked.
 
 ## Review
 
@@ -26,10 +26,10 @@ Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a 
 
 - Single maintainer. Agents act on explicit instructions or on the invariants in `AGENTS.md`.
 - A release is a git tag `v<N>` plus a one-line note in `README.md`'s status section. No changelog file: `git log` is the changelog, and the ADRs hold the reasoning.
-- The spec is never "published" in the sense of a package. It is consumed by copying; therefore backward compatibility is a courtesy, not a constraint. A breaking change states the migration step in the same commit.
+- The standard is never "published" in the sense of a package. It is consumed by copying; therefore backward compatibility is a courtesy, not a constraint. A breaking change states the migration step in the same commit.
 
 ## Retirement
 
-- A spec page that no longer binds anything is deleted; `git log` keeps it.
+- A norm page that no longer binds anything is deleted; `git log` keeps it.
 - An ADR is never deleted. It is marked `Superseded` and linked to its replacement.
 - A backlog item that is closed stays, file and index row, because its `Evidence` may be cited elsewhere. Its row is marked `closed`; it is not removed.

@@ -7,7 +7,7 @@
 ## Evidence
 
 - The template's `AGENTS.md` states budgets and the change-surface rule with no command behind them.
-- Four of the twelve rules in `docs/spec/0004-rules.md` are `weak` and would remain weak even with a checker; the strong rules are only enforced inside this repository.
+- Four of the twelve rules in `docs/norm/rules.md` are `weak` and would remain weak even with a checker; the strong rules are only enforced inside this repository.
 - A portable checker needs a small config: repository root, overlay, optional roles present, language.
 - The rollout order is tracked in `B-0005`; a checker is worth extracting only after the second repository exists.
 
@@ -19,9 +19,9 @@ The first implementation is read-only and fails with a file path. It does not re
 2. Every `docs/` directory that contains markdown has a `README.md`.
 3. Every `docs/` page maps to a declared role; an unmapped path is a finding.
 4. Every internal markdown link resolves, and every link target stays inside the repository.
-5. Volume budgets hold with table delimiter rows excluded: a file above its soft line is reported as a warning, above its hard line as a failure. The numbers live in the budget table of `docs/spec/0004-rules.md`; this set does not repeat them.
+5. Volume budgets hold with table delimiter rows excluded: a file above its soft line is reported as a warning, above its hard line as a failure. The numbers live in the budget table of `docs/norm/rules.md`; this set does not repeat them.
 6. Entry budgets hold: `docs/README.md` 40 rows, `docs/decisions/README.md` 40 rows, `docs/backlog/README.md` 60 rows.
-7. File names match their roles: new series use four digits (spec `NNNN-slug.md`, ADR `ADR-<nnnn>-slug.md`, backlog `B-<nnnn>-slug.md`); a migrated series keeps its width and is never renumbered.
+7. File names match their roles: norm pages use `<slug>.md`; ADR and backlog series use four digits (`ADR-<nnnn>-slug.md`, `B-<nnnn>-slug.md`); a migrated series keeps its width and is never renumbered.
 8. No CJK in repository-maintained markdown.
 9. No empty directories.
 10. `AGENTS.md` carries a `standard: vN` line; the checker reads it but does not compare it with a spec repository.

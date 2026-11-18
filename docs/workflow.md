@@ -8,7 +8,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 **Steps**
 
-1. Read `docs/spec/0001-foundations.md` and `docs/spec/0002-roles.md`. Do not skip to the template: the template is a consequence, and copying it without the roles produces files nobody can place later.
+1. Read `docs/norm/foundations.md` and `docs/norm/roles.md`. Do not skip to the template: the template is a consequence, and copying it without the roles produces files nobody can place later.
 2. Copy `template/core/` to the repository root. Replace the values listed in `template/README.md`; leave the notation tokens in place.
 3. Choose one overlay under `template/overlays/` and apply its README. The gate must run green before anything else is added.
 4. Trim the `AGENTS.md` routing table to the pages that exist: charter, structure, conventions, committing, and the overlay's toolchain page.
@@ -35,7 +35,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 **Steps**
 
-1. Read `docs/spec/0002-roles.md` and `docs/spec/0004-rules.md`.
+1. Read `docs/norm/roles.md` and `docs/norm/rules.md`.
 2. Inventory: list every markdown file outside vendored directories, and assign each one a role or mark it `unplaced`.
 3. Check the four failures that matter most: two homes for one role, a rule restated in two places, a budget breach, and a pointer that resolves to nothing.
 4. Write the report in the fixed format: `[severity] §role — problem / why / minimal fix`. Sort by severity, then by the effort each fix would take.
@@ -49,7 +49,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 **Steps**
 
-1. Read `docs/spec/0006-migration.md` and the mapping row for the role.
+1. Read `docs/norm/migration.md` and the mapping row for the role.
 2. Move one role per commit. Never batch three directories into one commit, even when they look mechanical.
 3. Before committing, prove the pointer migration: `rg -l '<old-path>'` returns nothing, and the command prints the files it covered.
 4. Register a third-party suite's track root in `docs/adapters.md` as a suite track and a path that cannot move as a legacy path; neither one moves.

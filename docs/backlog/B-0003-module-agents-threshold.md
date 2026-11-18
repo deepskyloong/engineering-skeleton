@@ -2,7 +2,7 @@
 
 ## Problem
 
-`0002-roles.md` defers module-level `AGENTS.md` and states a provisional threshold: at least six modules in one member, and at least two modules needing a rule that would be wrong at member level. Neither number has been tested. The deferral is honest, but the threshold is a guess dressed as a criterion.
+`roles.md` defers module-level `AGENTS.md` and states a provisional threshold: at least six modules in one member, and at least two modules needing a rule that would be wrong at member level. Neither number has been tested. The deferral is honest, but the threshold is a guess dressed as a criterion.
 
 ## Evidence
 
