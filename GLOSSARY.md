@@ -6,6 +6,10 @@ The vocabulary of the engineering skeleton: the words this repository uses for r
 
 ### Structure and roles
 
+**repository standard**:
+The artifact this repository defines: the document roles, rules, flow, budgets, and the copyable template a repository follows or copies.
+_Avoid_: skeleton (the former name), framework, boilerplate
+
 **role**:
 One kind of document with one home, one admission rule, one exit rule, and one authority range.
 _Avoid_: doc type, category
