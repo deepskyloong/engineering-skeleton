@@ -27,6 +27,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0019](ADR-0019-norm-pages-use-names.md) | Norm pages are named by subject; the binding text lives at `docs/norm/` | Accepted |
 | [ADR-0020](ADR-0020-work-package-home-is-work-packages.md) | The work-package home is `work-packages/`; `tasks/` is left to a suite track | Accepted |
 | [ADR-0021](ADR-0021-package-evidence.md) | A work package carries the evidence it owns | Accepted |
+| [ADR-0022](ADR-0022-architecture-role.md) | Architecture is a role, not a contract or a structure section | Accepted |
 
 ## Format
 

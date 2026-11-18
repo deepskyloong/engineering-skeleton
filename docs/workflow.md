@@ -73,9 +73,9 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 | Current pattern | Target role | Note |
 | --- | --- | --- |
-| One large `AGENTS.md` holding rules, architecture, and history | `AGENTS.md` (red lines, gate, routing) + `docs/structure.md` + `docs/decisions/` | Split by reader: what must hold every turn, what explains the layout, what records a choice |
+| One large `AGENTS.md` holding rules, architecture, and history | `AGENTS.md` (red lines, gate, routing) + `docs/architecture/` + `docs/decisions/` | Split by reader: what must hold every turn, how the system is organized, what records a choice |
 | `adr/`, `adrs/`, `decisions/` | `docs/decisions/` | Pick one name; the other paths become tombstones only if cited. A migrated ADR series is zero-padded to four digits. |
-| `specs/` in four places | `work-packages/<slug>/spec.md`, `docs/contracts/`, `docs/operations/` | Split by admission: a promise a consumer may rely on is a contract; a procedure under pressure is operations; internal organization is neither and moves only when a role admits it. A directory named `specs/` is not a role match. |
+| `specs/` in four places | `work-packages/<slug>/spec.md`, `docs/contracts/`, `docs/operations/`, `docs/architecture/` | Split by admission: a promise a consumer may rely on is a contract; a procedure under pressure is operations; how the system is organized is architecture. A directory named `specs/` is not a role match. |
 | A single backlog file, or `backlog/B-<nnnn>` | `docs/backlog/B-<nnnn>-slug.md` + index | New repositories use four digits; existing numbering is kept and never renumbered |
 | `status.md` at the root | `docs/status.md` | Rewritten in place, no history |
 | A tracker suite's hidden directory | `docs/adapters.md` row | The suite keeps its path; the registry explains it |
@@ -93,7 +93,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 The notes below are observations from 2026-11-14, for-the-record; they describe the source state, not a current inventory.
 
-**bun-toolkit** — a TypeScript monorepo with a 305-line `AGENTS.md`, five ADRs, and a third-party tracker suite under `docs/agents/`. The `AGENTS.md` splits by reader: red lines and the gate stay, architecture moves to `docs/structure.md`, and the measured values become commands. The tracker suite is an adapter row, not a docs subdirectory.
+**bun-toolkit** — a TypeScript monorepo with a 305-line `AGENTS.md`, five ADRs, and a third-party tracker suite under `docs/agents/`. The `AGENTS.md` splits by reader: red lines and the gate stay, architecture moves to `docs/architecture/`, and the measured values become commands. The tracker suite is an adapter row, not a docs subdirectory.
 
 **gearset** — a TypeScript library with twelve ADRs and twenty-plus trigger-loaded docs. Its module form (`src/<module>/` with README, docs, and `AGENTS.md`) is the richest sample of the module level, and the reason the module-`AGENTS.md` threshold is deferred rather than guessed. Migrate its ADRs first; they are the part with real cost.
 

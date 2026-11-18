@@ -15,10 +15,11 @@ Each directory's `README.md` lists its direct children. `docs/README.md` lists t
 1. Is it normative for this repository? → `docs/`.
 2. Is it a copyable command or procedure someone runs under pressure? → `docs/operations/`.
 3. Is it a fact a consumer may rely on across efforts? → `docs/contracts/`.
-4. Is it a choice with rejected alternatives? → `docs/decisions/`.
-5. Is it deferred? → `docs/backlog/`.
-6. Is it a lesson that changes future behavior? → `docs/knowledge/`.
-7. Is it configuration for a tool? → beside the code it configures.
+4. Is it how the system is organized and what a change must respect? → `docs/architecture/`.
+5. Is it a choice with rejected alternatives? → `docs/decisions/`.
+6. Is it deferred? → `docs/backlog/`.
+7. Is it a lesson that changes future behavior? → `docs/knowledge/`.
+8. Is it configuration for a tool? → beside the code it configures.
 
 The chosen home's `README.md` is the membership list. Do not add a row here.
 

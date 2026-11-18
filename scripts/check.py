@@ -94,6 +94,7 @@ DOC_ROLE_PATHS = [
     re.compile(r"docs/decisions/(README|ADR-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/backlog/(README|B-\d{4}-[a-z0-9-]+)\.md"),
     re.compile(r"docs/contracts/(README|[a-z0-9-]+)\.md"),
+    re.compile(r"docs/architecture/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/operations/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/toolchain/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/knowledge/(README|(guides|cases|notes)/[a-z0-9-]+\.md)"),

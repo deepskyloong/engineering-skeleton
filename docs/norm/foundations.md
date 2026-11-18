@@ -35,7 +35,7 @@ Two obligations follow from those names: a pointer must be reasonably available 
 | `core` | Language-agnostic roles, rules, flow, budgets | Every repository has it. No exceptions. |
 | `overlay` | Toolchain, gate command, code layout, dependency policy, writing rules for one language | Exactly one overlay is active. Two overlays in one repository is a monorepo with two languages, which is a special case, not the default. |
 | `adapter` | A registry of third-party suite tracks that own their directories, legacy paths that cannot move yet, plus a compatibility whitelist | Never a physical directory. It is a table in `docs/adapters.md`. |
-| `optional` | Roles that appear only under a trigger: `docs/contracts/`, `docs/toolchain/`, module-level `AGENTS.md` | Absent by default. An absent optional role is correct, not incomplete. |
+| `optional` | Roles that appear only under a trigger: `docs/contracts/`, `docs/architecture/`, `docs/toolchain/`, module-level `AGENTS.md` | Absent by default. An absent optional role is correct, not incomplete. |
 
 The distinction between `adapter` and `optional` matters. `optional` is a role you may add; `adapter` is a foreign system you cannot move and must therefore register.
 
@@ -56,6 +56,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   ├── governance.md          # provenance, change surface, ownership
 │   ├── adapters.md            # adapter registry (when a foreign suite exists)
 │   ├── contracts/             # durable contracts (optional)
+│   ├── architecture/          # system organization (optional)
 │   ├── operations/            # runbooks, status (optional)
 │   ├── decisions/             # ADRs (from the first real decision)
 │   ├── backlog/               # B-<nnnn> items (from the first deferred item)

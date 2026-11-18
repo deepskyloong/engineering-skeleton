@@ -1,6 +1,6 @@
 # Roles
 
-One row per role. `Home` is the single authoritative path; a second path is a tombstone or a legacy path registered in `docs/adapters.md`, never a second home. `Admission` says what may be filed there. `Exit` says what happens when it stops being true. `Authority` says how far its statements bind.
+One row per role. `Home` is the single authoritative path; a second path is a tombstone or a legacy path registered in `docs/adapters.md`, never a second home. `Admission` says what may be filed there. `Exit` says what happens when it stops being true. `Authority` says how far its statements bind; a dash binds nothing.
 
 When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role**. A lower level may add detail; it may not override a refusal. A routing row in `AGENTS.md` cannot authorize work the charter excludes.
 
@@ -34,29 +34,47 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 
 ## Optional, admitted by trigger
 
-| Role | Home | Admission | Exit | Trigger |
-| --- | --- | --- | --- | --- |
-| Durable contract | `/docs/contracts/<topic>.md` | A fact a consumer may rely on across efforts: API shape, data schema, CLI surface, compatibility promise | Deleted when the artifact it constrains is deleted | A second effort depends on the same fact |
-| Operations page | `/docs/operations/<topic>.md` | A procedure someone must follow under pressure: deploy, rollback, restore, rotate | Deleted when the procedure disappears | The first procedure that cannot be remembered |
-| Status | `/docs/status.md` | Current phase, what works, what does not, next action | Rewritten in place; never accumulates history | The project has more than one open front |
-| Toolchain traps | `/docs/toolchain/<language>.md` | Reproducible failure modes and their fix, each with the command that shows it | Deleted when the trap stops reproducing | The second environment-specific trap |
-| Knowledge guide | `/docs/knowledge/guides/<topic>.md` | A method that changes what a maintainer does next time | Deleted when it stops being true | The same mistake is about to be made twice |
-| Knowledge case | `/docs/knowledge/cases/<topic>.md` | One incident, with the evidence that settled it | Deleted when the evidence is no longer citable | An incident worth citing in a review |
-| Knowledge note | `/docs/knowledge/notes/<topic>.md` | A short observation that does not yet justify a guide | Promoted or deleted | A thought worth keeping but not yet proven |
-| Adapter registry | `/docs/adapters.md` | Foreign suites' owned track roots (permanent) and legacy paths (retirable), the whitelist, and the disposition | Entry removed when the suite is uninstalled or the legacy path retires | A third-party suite writes into the repository, or a frozen record blocks a path move |
-| Tombstone | The old path being forwarded | A forwarding stub for a moved file: at most 3 lines, exactly one link, no explanation; the title ends with `— moved` | Deleted when the last frozen record citing the old path is deleted | A frozen record cites a path that has moved |
-| Module rules | `<member>/src/<module>/AGENTS.md` | Rules that differ from the member's and would be wrong at member level | Deleted when the module stops being a boundary | Deferred: see the threshold note below |
-| Member README | `<member>/README.md` | What the member is for, how to run its tests, where its own docs start | Deleted when the member is removed | The repository has more than one member |
+| Role | Home | Admission | Exit | Authority | Trigger |
+| --- | --- | --- | --- | --- | --- |
+| Durable contract | `/docs/contracts/<topic>.md` | A fact a consumer may rely on across efforts: API shape, data schema, CLI surface, compatibility promise | Deleted when the artifact it constrains is deleted | Binds its consumers; a break needs a migration step | A second effort depends on the same fact |
+| Architecture | `/docs/architecture/<topic>.md` | How the system is organized and what a change must respect: components and their boundaries, data and control flow, failure responses, invariants; an interface promise belongs to contracts and a choice's reason to an ADR | Deleted when the system it describes is gone | Binds a change's shape; a contradiction updates the page or records why not | The first change that must respect a boundary it does not own |
+| Operations page | `/docs/operations/<topic>.md` | A procedure someone must follow under pressure: deploy, rollback, restore, rotate | Deleted when the procedure disappears | Binds the operator; a step that cannot be followed is a bug | The first procedure that cannot be remembered |
+| Status | `/docs/status.md` | Current phase, what works, what does not, next action | Rewritten in place; never accumulates history | — | The project has more than one open front |
+| Toolchain traps | `/docs/toolchain/<language>.md` | Reproducible failure modes and their fix, each with the command that shows it | Deleted when the trap stops reproducing | Binds the fix; deleted when the trap stops reproducing | The second environment-specific trap |
+| Knowledge guide | `/docs/knowledge/guides/<topic>.md` | A method that changes what a maintainer does next time | Deleted when it stops being true | — | The same mistake is about to be made twice |
+| Knowledge case | `/docs/knowledge/cases/<topic>.md` | One incident, with the evidence that settled it | Deleted when the evidence is no longer citable | Its evidence binds | An incident worth citing in a review |
+| Knowledge note | `/docs/knowledge/notes/<topic>.md` | A short observation that does not yet justify a guide | Promoted or deleted | — | A thought worth keeping but not yet proven |
+| Adapter registry | `/docs/adapters.md` | Foreign suites' owned track roots (permanent) and legacy paths (retirable), the whitelist, and the disposition | Entry removed when the suite is uninstalled or the legacy path retires | Binds where a path may be written | A third-party suite writes into the repository, or a frozen record blocks a path move |
+| Tombstone | The old path being forwarded | A forwarding stub for a moved file: at most 3 lines, exactly one link, no explanation; the title ends with `— moved` | Deleted when the last frozen record citing the old path is deleted | — | A frozen record cites a path that has moved |
+| Module rules | `<member>/src/<module>/AGENTS.md` | Rules that differ from the member's and would be wrong at member level | Deleted when the module stops being a boundary | Binds the module | Deferred: see the threshold note below |
+| Member README | `<member>/README.md` | What the member is for, how to run its tests, where its own docs start | Deleted when the member is removed | — | The repository has more than one member |
 
 ## Five discriminations
 
 These separate roles that five source repositories kept merging. They are normative here; a target repository's `docs/conventions.md` carries a base pointer to the norm source instead of a paraphrase.
 
-1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `GLOSSARY.md` is vocabulary (what a word means and which synonyms are avoided); an ADR is a decision (which options existed and why the others lost); `architecture` is structure (how it is organized and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is architecture.
+1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `GLOSSARY.md` is vocabulary (what a word means and which synonyms are avoided); an ADR is a decision (which options existed and why the others lost); `architecture` is the system's organization (what the components are, how they connect, and what a change must respect). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is architecture.
 2. **`spec` has two senses.** `work-packages/<slug>/spec.md` is the work package's specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort. Never let one word carry both; when a sentence says "the spec", it must be obvious which one. The binding text is not a third sense: it lives under `docs/norm/`.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters; entries are lines. They measure different things and are not interchangeable.
 5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists contexts, their paths, and their relationships; it stores no definitions.
+
+## Role boundaries
+
+Two roles can seem to admit the same sentence. Apply the pair's test, then state the sentence once and link from the other page.
+
+| Pair | Test |
+| --- | --- |
+| Charter / Architecture | Does violating it change what the project is (charter) or how it works (architecture)? |
+| Structure / Architecture | Is it a repository path (structure) or a runtime component and its flow (architecture)? |
+| Architecture / Governance | Does it constrain a change's shape (architecture) or authorization (governance)? |
+| Contracts / Architecture | Can a consumer file a bug because it changed (contracts), or is it read to understand the system (architecture)? |
+| Charter / Contracts | Is it a measured success criterion (charter) or a guarantee a consumer relies on (contracts)? |
+| Charter / Conventions | Is it what the project accepts (charter) or how a document is written (conventions)? |
+| Conventions / Governance | Does it change how a document reads (conventions) or how a change is approved (governance)? |
+| Architecture, Contracts / Operations | Does it describe a system response or format (architecture, contracts), or steps a person runs (operations)? |
+
+When both still admit it, the narrower exit owns it: artifact (contracts), system shape (architecture), scope (charter). The other page links; it does not restate.
 
 ## Module-level rules: deferred
 
