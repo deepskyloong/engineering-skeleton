@@ -67,6 +67,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 - A migrated ADR series is zero-padded to four digits and never renumbered (ADR-0015); a migrated backlog series keeps its width because its items are cited by path and line. Oshi's `7a988f4` is the first application.
 - Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.
 - Oshi's `docs/conventions.md` consumes general norms by pointer: `Base: {{NORM_SOURCE}}/docs/conventions.md` plus deviations with a last-read date, never a restated copy (ADR-0016); a norm with no page at the source is recorded as an exception, not forked.
+- A requirements brief becomes the charter: scope and rulings move with the page, the user profile and communication conventions go to `docs/conventions.md` "Human labor and communication", and material or environment pointers stay in `docs/status.md` and `docs/operations/setup.md`; a dated history row is dropped rather than carried (2026-11-18 ruling, oshi `28c8bc4`).
 
 ## Check-in points
 

@@ -2,18 +2,18 @@
 
 ## Current state
 
-- Updated: 2026-11-17
+- Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
-- Branch: `feature/b0005-rollout`; re-check `git status`
-- Gate: last known `PASS — 86 markdown files` (2026-11-17); re-run `bun run gate`
-- Last done: W01 — split the five-repository package into `rollout-oshi`
+- Branch: `feature/b0005-rollout`, fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
+- Gate: `PASS — 97 markdown files` (2026-11-18)
+- Last done: W02 — move the charter role; oshi commit `28c8bc4`
 - Phase: P1 — role moves
-- Focus: W02 — charter role
-- Progress: 1 done / 8 todo / 0 blocked
-- Todo: W02–W09
-- Next: W02 — compare `docs/brief.md` with the charter admission, then move it to `docs/charter.md`
+- Focus: W03 — contracts role
+- Progress: 2 done / 7 todo / 0 blocked
+- Todo: W03–W09
+- Next: W03 — split `docs/designs/` and `docs/specs/` into `docs/contracts/`
 - Blocked: none
-- Open decisions: none for the audit; each role move still stops for review before it starts
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); W03 stops for review before it starts
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -41,7 +41,7 @@ Close the five-repository package as superseded and open `tasks/rollout-oshi/`: 
 
 #### W02 — Move the charter role
 
-**Status**: todo
+**Status**: done
 **Depends on**: W01
 
 Compare `docs/brief.md` (4,029) with the charter admission — scope, non-goals, hard constraints, success criteria — and move it to `docs/charter.md`. A brief that carries history or a roadmap loses that material to `docs/status.md` or the backlog before the move. Update living pointers; leave a tombstone if a frozen record cites the old path.
@@ -52,7 +52,7 @@ Compare `docs/brief.md` (4,029) with the charter admission — scope, non-goals,
 - no living page points at `docs/brief.md`; `rg -l 'docs/brief.md'` survivors are explained
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: oshi commit `28c8bc4`; `docs/charter.md` 3,678 non-whitespace; tombstone at `docs/brief.md` and its adapter row; `docs/conventions.md` "Human labor and communication" carries §2; oshi text-only gate green; dispositions in `audits/README.md`.
 
 #### W03 — Move the contracts role
 

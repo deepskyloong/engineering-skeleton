@@ -6,7 +6,7 @@ A report is runtime evidence for the work package; a finding that changes the sp
 
 | Repository | Report | Disposition |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; decisions at `docs/decisions/` (`610f1e9`, padded to `ADR-0009…0012` in `7a988f4`) with tombstones at ADR-09/10/12 old names and `docs/adrs/` a legacy path; next role `docs/charter.md`; contracts and knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
+| oshi | [oshi.md](oshi.md) | audit complete; adapters, tasks index, operations split, and the status page at `docs/status.md` committed; suite tracks registered and closed packages left in place; decisions at `docs/decisions/` (`610f1e9`, padded to `ADR-0009…0012` in `7a988f4`) with tombstones at ADR-09/10/12 old names and `docs/adrs/` a legacy path; charter at `docs/charter.md` (`28c8bc4`; tombstone `docs/brief.md` registered as a legacy path); next role contracts; knowledge pending; vocabulary is `GLOSSARY.md` (canonical after ADR-0007; no `CONTEXT.md` move) |
 
 ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md`; the report remains a dated snapshot. The vocabulary is `GLOSSARY.md`; do not move oshi's file to `CONTEXT.md`.
 
@@ -32,3 +32,11 @@ ADR-0007 supersedes finding 7 and the `GLOSSARY.md` pointer-debt row in `oshi.md
 - **Next role.** `docs/decisions`.
 
 Resolved, withdrawn, or superseded: 2 (missing `tasks/README.md` resolved by `7443137`; the reshape instruction is withdrawn), 3 (withdrawn, registered tracks), 7 (superseded by ADR-0007), 8 (registry exists after W04), 10 (resolved by the decisions move, `610f1e9`), 16 (withdrawn). Still open: 4, 5, 6, 9, 11, 12, 13, 14, 15, 17, and the role question inside 1 (`B-0007`).
+
+## oshi charter move (2026-11-18)
+
+- Both checkouts were rebased onto `main` before the move: the standard's `feature/b0005-rollout` fast-forwarded to `bd5b6f2` (it had no unique commits), and oshi's `feature/skeleton-migration` was rebased onto `1b52545`.
+- Commit `28c8bc4`: `docs/brief.md` → `docs/charter.md`. The page carries What this is / Who it serves / In scope (R1–R11) / Out of scope / Hard constraints (D1–D4) / Success criteria, 3,678 non-whitespace against the 10,000 soft line; the original wording of the requirements and rulings is preserved.
+- Disposition (maintainer, C): §2 user profile and communication conventions folded into `docs/conventions.md` "Human labor and communication", the section that owned the topic and pointed at §2; §3 material and environment dropped — current material is `docs/status.md`, the environment is `docs/operations/setup.md`, and the tool-selection findings are `docs/notes/pitfalls.md` §1/§2; §4 and §5 moved with the page. The charter's requirement-mapping pointer still names the archived v1 architecture, so finding 6's deletion must retire that pointer first.
+- Pointer proof: `git grep -n 'brief.md'` survivors are `archived/docs/designs/architecture.md` (4 lines, frozen archive), `tasks/manual-character-registration/spec.md` (1, closed suite package), `docs/notes/knowledge.md` (1, a historical statement naming §6 of the old page), and the adapter row. Every frozen citation resolves through the three-line tombstone.
+- Gate: text-only (two `ruff` commands), green. The charter's §N anchors do not survive the move; ADR-0011 accepts that, because a tombstone carries one link, not a section map.
