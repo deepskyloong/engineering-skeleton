@@ -26,6 +26,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0018](ADR-0018-repository-standard-rename.md) | The repository and its artifact are named the repository standard | Accepted |
 | [ADR-0019](ADR-0019-norm-pages-use-names.md) | Norm pages are named by subject; the binding text lives at `docs/norm/` | Accepted |
 | [ADR-0020](ADR-0020-work-package-home-is-work-packages.md) | The work-package home is `work-packages/`; `tasks/` is left to a suite track | Accepted |
+| [ADR-0021](ADR-0021-package-evidence.md) | A work package carries the evidence it owns | Accepted |
 
 ## Format
 

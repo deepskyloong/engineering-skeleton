@@ -1,6 +1,6 @@
 # Work package template
 
-Copy this file into `work-packages/<slug>/` and split it into four files at the headings. Delete the section that does not apply; never keep an empty heading.
+Copy this file into `work-packages/<slug>/` and split it into the four ledger files at the headings; `summary.md` is written at closeout. Delete the section that does not apply; never keep an empty heading.
 
 ## spec.md
 
@@ -94,6 +94,8 @@ What this plan deliberately does not touch.
 ## Not done
 
 ## What a future maintainer must know
+
+Evidence: <the directories and what each answers; "none" if none>
 ```
 
 Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point. At closeout the package moves to `work-packages/archive/<slug>/`; `summary.md` is the record a reader opens first.

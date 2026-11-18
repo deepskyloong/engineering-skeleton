@@ -8,14 +8,16 @@ A work package records `track:` in its `spec.md`: which workflow suite the effor
 
 A package carries state a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and record the choice in an ADR when the change is a decision.
 
-Create `work-packages/<slug>/` with four files from `_template.md`, and fill in four fields before any work:
+Create `work-packages/<slug>/` with the four ledger files from `_template.md`, and fill in four fields before any work:
 
 1. **Goal** — one sentence, testable.
 2. **Non-goal** — at least one thing this effort will not do.
 3. **Acceptance** — one command or one observable state.
 4. **`track:`** — see above.
 
-Before the first step, initialize `todo.md` with a `## Current state` block: updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and read-first pointers. The work items follow it. Rewrite the block in the same commit as any change to a work item, a decision, a branch, or the gate; it is a snapshot, not a log, and a stale block is a defect. The block lives inside the four-file package; it is not a fifth file.
+Before the first step, initialize `todo.md` with a `## Current state` block: updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and read-first pointers. The work items follow it. Rewrite the block in the same commit as any change to a work item, a decision, a branch, or the gate; it is a snapshot, not a log, and a stale block is a defect. The block lives inside `todo.md`; it is not a fifth file.
+
+Evidence the effort produces — a measurement report, an inventory, or a reproduction script — lives in a named directory beside the ledger. It stays in git, `summary.md` names each directory and what it answers, and closeout archives them with the package. Create the directory only when the first item exists; never an empty one.
 
 The unit of work is a `W<n>` block: status, dependencies, a prose description, one or more observable done-when criteria, and evidence. `done` requires evidence; an item without evidence stays open. `plan.md` groups the items into phases with an exit condition; the item detail stays in `todo.md`. One item is one reviewable commit or one primary outcome; split it when it needs more.
 

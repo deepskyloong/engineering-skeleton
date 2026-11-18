@@ -64,6 +64,8 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | exactly 1 link |
 
+Package evidence — a report, inventory, or reproduction script a work package owns — carries no volume budget; `summary.md` names it, and the evidence's own structure governs its length.
+
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
 
 A volume budget has two lines. Soft is where judgment starts: a file may stay above it, and the gate prints a warning instead of failing. Hard is where the file is too long for its role: the gate fails. For prose, soft is a quarter above the old single line and hard is twice it, because that line is where files were shaped to stop; a judgment line placed on it would flag the normal top of the distribution rather than an outlier. An index derives its soft line from its row cap instead: 40 rows at the measured ~117 characters per row plus a preamble is about 5,100, so 6,000, and hard is double that. `docs/decisions/ADR-0013-two-tier-volume-budgets.md` records how the numbers were set and what was rejected. A limit with no judgment space, such as a tombstone's 400, stays one number.

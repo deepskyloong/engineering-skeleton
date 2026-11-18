@@ -53,8 +53,12 @@ The workflow suite an effort runs on, recorded in the work package's spec.
 _Avoid_: pipeline, flow
 
 **work package**:
-One effort's four artifacts under `work-packages/<slug>/`: spec, plan, todo, and summary.
+One effort's four ledger artifacts under `work-packages/<slug>/` — spec, plan, todo, and summary — plus the package evidence it owns.
 _Avoid_: task, ticket
+
+**package evidence**:
+A report, inventory, or reproduction script a work package owns and cites; it lives beside the four ledger files, is named in `summary.md`, and archives with the package.
+_Avoid_: package artifact, attachment
 
 **closeout**:
 The end of a work package, when its summary is written and its durable output is relocated.

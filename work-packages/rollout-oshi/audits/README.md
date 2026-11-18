@@ -2,11 +2,11 @@
 
 One report per repository, written before its migration. The Findings section uses the fixed review format from `docs/governance.md`: severity, role, problem, why, minimal fix.
 
-A report is effort-scoped evidence for the work package; a finding that changes the specification becomes a backlog item in `docs/backlog/`, and a finding that records a choice becomes an ADR. Do not edit the report after its repository has migrated: write a new one.
+A report is package evidence for the work package; a finding that changes the specification becomes a backlog item in `docs/backlog/`, and a finding that records a choice becomes an ADR. Do not edit the report after its repository has migrated: write a new one.
 
 | Repository | Report | Status |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a (package evidence) before contracts (W03); knowledge pending; vocabulary `GLOSSARY.md` (ADR-0007) |
+| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a package evidence defined (ADR-0021); next contracts (W03); knowledge pending; vocabulary `GLOSSARY.md` (ADR-0007) |
 
 Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s2-legacy-review` only; its merge base with `main` is `37781fa`. `main` at `1b52545` differs by 35 files / +3,323 / −752. The inventory and pointer counts describe that tree, not `main`; re-measure before a budget or pointer step. The report stays frozen.
 

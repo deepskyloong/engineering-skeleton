@@ -17,9 +17,11 @@ After merging, add the three pages to the tree in `docs/structure.md`.
 | `docs/governance.md` | Change surface, who decides, review format, retirement |
 | `docs/adapters.md` | Suite tracks and legacy paths, as a registry |
 | `work-packages/README.md` | Work package governance, the open table, and the archive pointer |
-| `work-packages/_template.md` | The four files, as one copyable scaffold |
+| `work-packages/_template.md` | The four ledger files, as one copyable scaffold |
 
-`work-packages/_template.md` is not a role. Split it into `spec.md`, `plan.md`, `todo.md`, and `summary.md`, then delete it.
+`work-packages/_template.md` is not a role. Split it into the four ledger files (`spec.md`, `plan.md`, `todo.md`, and `summary.md`, written at closeout), then delete it.
+
+A package may also carry evidence directories it creates — a report, an inventory, or a reproduction script. `summary.md` names each one, and closeout archives it with the package. Do not create an empty one.
 
 At the first closeout, `work-packages/archive/` appears with its README; do not create it at first use.
 

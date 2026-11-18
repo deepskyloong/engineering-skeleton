@@ -27,13 +27,15 @@ idea
                  └─ (nothing)                 (most efforts end here)
 ```
 
+The four ledger files may sit beside evidence directories the effort produces; `summary.md` names each directory and what it answers, and closeout archives them with the package.
+
 Most work packages produce only `summary.md` and disappear. That is the normal case, not a failure. A standard that forces every effort to yield an ADR produces ADRs nobody reads.
 
 ## t0 — creating a work package
 
 A package carries state that a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and write the ADR when the change is a decision.
 
-Create `work-packages/<slug>/` from `_template.md`, split it into four files, then delete `_template.md`; it is a scaffold, not a role.
+Create `work-packages/<slug>/` from `_template.md`, split it into the four ledger files (`spec.md`, `plan.md`, `todo.md`, and `summary.md`, written at closeout), then delete `_template.md`; it is a scaffold, not a role. Create an evidence directory only when the first item exists; never an empty one.
 
 Four fields before any work starts:
 
@@ -42,7 +44,7 @@ Four fields before any work starts:
 3. **Acceptance**: how a reader will know it is done, in one command or one observable state.
 4. **`track:`**: which workflow suite this effort runs on, as a field in `spec.md`. Values are free-form (`default`, `spec-flow`, `superpowers`, `none`), but the field is mandatory. The track is never a directory root: a repository does not get a `docs/superpowers/` just because one effort used that suite.
 
-Before the first step, initialize `todo.md` with a `## Current state` block. It carries the updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and the read-first pointers; the work items follow it. The block is a snapshot, not a log, and lives inside `todo.md`: the work package still has four files. Rewrite it in the same commit as any change to a work item, a decision, a branch, or the gate. A stale block is a defect.
+Before the first step, initialize `todo.md` with a `## Current state` block. It carries the updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and the read-first pointers; the work items follow it. The block is a snapshot, not a log, and lives inside `todo.md`: it is not a fifth ledger file. Rewrite it in the same commit as any change to a work item, a decision, a branch, or the gate. A stale block is a defect.
 
 If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md` before work starts.
 
@@ -66,9 +68,9 @@ Anything else — a changed goal, a changed acceptance criterion — is a new wo
 
 ## Closeout — five steps, in order
 
-1. **Write `summary.md`.** Three sections: what was done, what was not, what a future maintainer must know. ≤3,000 non-whitespace characters. A summary that restates the diff is noise.
+1. **Write `summary.md`.** Three sections: what was done, what was not, what a future maintainer must know. It sits inside the summary budget in `rules.md`. A summary that restates the diff is noise.
 2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
-3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four files and any evidence the package still owns; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
+3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four ledger files and the evidence directories `summary.md` names; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
 4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
 5. **Leave a tombstone if a frozen record cites the old path.** ≤3 lines, exactly one link, no explanation. A tombstone is a forwarding stub, not a summary; it points into the archived package. If no frozen record cites the path, skip it and stop.
 
@@ -77,6 +79,7 @@ Anything else — a changed goal, a changed acceptance criterion — is a new wo
 Run before declaring a work package closed:
 
 - [ ] `summary.md` exists, is inside budget, and names what was not done.
+- [ ] `summary.md` names every evidence directory, and no evidence directory is empty.
 - [ ] Every contract, ADR, or knowledge file produced by the effort has a home and a link from its directory README.
 - [ ] `rg -l '<slug>'` was run; every surviving pointer is explained.
 - [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.

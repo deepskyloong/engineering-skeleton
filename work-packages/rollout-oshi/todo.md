@@ -4,16 +4,16 @@
 
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
-- Branch: `feature/b0005-rollout-oshi`; fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
-- Gate: `PASS — 98 markdown files` (2026-11-18)
-- Last done: W02 — move the charter role; oshi commit `28c8bc4`
+- Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
+- Gate: `PASS — 99 markdown files` (2026-11-18)
+- Last done: W08a — package evidence category; ADR-0021
 - Phase: P1 — package rule and role moves
-- Focus: W08a — define the package evidence category
-- Progress: 2 done / 8 todo / 0 blocked
-- Todo: W08a, W03–W09
-- Next: W08a — field 6 decision, then the norm/template/checker change
+- Focus: W03 — move the contracts role
+- Progress: 3 done / 7 todo / 0 blocked
+- Todo: W03–W09
+- Next: W03 — stop for review before it starts
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); W03 stops for review before it starts
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 stops for review before it starts
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -56,10 +56,10 @@ Compare `docs/brief.md` (4,029) with the charter admission — scope, non-goals,
 
 #### W08a — Define the package evidence category
 
-**Status**: todo
+**Status**: done
 **Depends on**: W02; field 6 acceptance
 
-Define the work package container in the standard: four ledger files by closeout (`spec.md`, `plan.md`, `todo.md`, and `summary.md` written then) plus evidence directories created on demand. Evidence is package-local: it stays in git, `summary.md` names each directory and what it answers, and closeout archives it with the package unless a successor owns it; it is not a role, carries no docs-page volume budget, and never becomes a durable home. The 2026-11-18 six-field decision report is the basis; field 6 is pending. The unit also decides whether `scripts/check.py` scans `work-packages/` and which subset — the four ledger files always, evidence naming at closeout. Change the norm, the template, the live index, the skill, and the checker; record the decision in a new ADR; oshi's `audits/` and `tools/` stay untouched.
+Define the work package container in the standard: four ledger files by closeout (`spec.md`, `plan.md`, `todo.md`, and `summary.md` written then) plus evidence directories created on demand. Evidence is package-local: it stays in git, `summary.md` names each directory and what it answers, and closeout archives it with the package unless a successor owns it; it is not a role, carries no docs-page volume budget, and never becomes a durable home. The 2026-11-18 six-field decision report is the basis; field 6 is `accepted` (owner user, route `on recommendation`). The unit adds a package check to `scripts/check.py`: the three open ledger files always, `summary.md` in the archive, and evidence naming once a summary exists. The norm, the template, the live index, the skill, and the checker state the same rule; ADR-0021 records the decision; oshi's `audits/` and `tools/` stay untouched.
 
 **Done when**:
 
@@ -70,7 +70,7 @@ Define the work package container in the standard: four ledger files by closeout
 - `check.py` passes on the three archived packages and `rollout-oshi` without a false positive
 - the standard gate is green
 
-**Evidence**: decision report 2026-11-18 (field 6 pending); commits pending
+**Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; `bun run gate` — `PASS — 99 markdown files`; package check covers the three archived packages and `rollout-oshi`. `rg` survivors of the old count phrase: ADR-0009 (two lines), ADR-0017, ADR-0020, the archived `rollout-five-repositories` plan and todo, and the frozen `audits/oshi.md`; each is a frozen record, and the criterion line carries the search string itself.
 
 #### W03 — Move the contracts role
 

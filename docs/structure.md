@@ -39,5 +39,6 @@ The chosen home's `README.md` is the membership list. Do not add a row here.
 | Authoritative | The source of truth for a rule or a template | Yes |
 | Regenerable | Produced from an authoritative file by a command | No |
 | Runtime | Session state, caches, reports produced by a run | No |
+| Package evidence | A report, inventory, or reproduction script a work package owns and cites; named in `summary.md` and archived with the package | Yes |
 
-`template/` and `docs/norm/` are authoritative. A generated index or a rendered copy is regenerable. A review report body is runtime; only its index is authoritative.
+`template/` and `docs/norm/` are authoritative. A generated index or a rendered copy is regenerable. A review report body outside a work package is runtime; one inside a work package is package evidence.

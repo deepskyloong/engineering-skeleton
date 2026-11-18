@@ -403,9 +403,59 @@ def check_required_files() -> None:
             fail(f"missing norm page: {page}")
 
 
+def package_dirs() -> list[tuple[Path, bool]]:
+    """Return every live and archived package, with archived as the flag."""
+    base = ROOT / "work-packages"
+    if not base.exists():
+        return []
+    packages = [
+        (path, False)
+        for path in sorted(base.iterdir(), key=lambda p: p.name)
+        if path.is_dir() and path.name != "archive"
+    ]
+    archive = base / "archive"
+    if archive.exists():
+        packages += [
+            (path, True)
+            for path in sorted(archive.iterdir(), key=lambda p: p.name)
+            if path.is_dir()
+        ]
+    return packages
+
+
+def check_packages() -> None:
+    """A package carries its ledger files and names the evidence directories it owns.
+
+    ADR-0021: four ledger files by closeout, evidence directories on demand.
+    `summary.md` is written at closeout, so it is required only in the archive;
+    an open package may carry three ledger files. Every top-level directory is
+    evidence and must be named in the summary once one exists. A file beside
+    the ledger is a fifth file, not evidence.
+    """
+    ledger = {"spec.md", "plan.md", "todo.md", "summary.md"}
+    for directory, archived in package_dirs():
+        key = rel(directory)
+        for name in ("spec.md", "plan.md", "todo.md"):
+            if not (directory / name).is_file():
+                fail(f"missing package file: {key}/{name}")
+        summary = directory / "summary.md"
+        if archived and not summary.is_file():
+            fail(f"missing package summary: {key}/summary.md")
+        for child in sorted(directory.iterdir(), key=lambda p: p.name):
+            if child.is_file() and child.name not in ledger:
+                fail(f"unexpected package file: {rel(child)}")
+        if not summary.is_file():
+            continue
+        text = summary.read_text(encoding="utf-8")
+        for child in sorted(directory.iterdir(), key=lambda p: p.name):
+            if child.is_dir() and child.name not in text:
+                fail(f"evidence directory not named in summary: {rel(child)}/")
+
+
 def main() -> int:
     files = markdown_files()
     check_required_files()
+    check_packages()
     check_role_coverage()
     check_empty_directories()
     check_english(files)
@@ -435,7 +485,7 @@ def main() -> int:
 
     print(
         f"PASS — {len(files)} markdown files, roles, links, budgets, entries, "
-        "naming, tables, statuses"
+        "naming, tables, statuses, packages"
     )
     return 0
 

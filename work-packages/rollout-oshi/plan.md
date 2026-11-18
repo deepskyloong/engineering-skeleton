@@ -54,7 +54,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 ### Oshi's sequence
 
 1. Already placed: `tasks/README.md`, the operations split, the status page at `docs/status.md`, the decisions at `docs/decisions/` padded to `ADR-0009…0012`, and the vocabulary at `GLOSSARY.md`.
-2. Done: `docs/brief.md` → `docs/charter.md`. Before contracts, W08a defines the package evidence category in the standard; then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
+2. Done: `docs/brief.md` → `docs/charter.md`. Before contracts, W08a defined the package evidence category in the standard (ADR-0021); then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
 3. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
 4. Split an over-budget page after the role is at its home; do not mix a split with a move.
 5. Gate: oshi's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.
@@ -68,6 +68,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 - Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.
 - Oshi's `docs/conventions.md` consumes general norms by pointer: `Base: {{NORM_SOURCE}}/docs/conventions.md` plus deviations with a last-read date, never a restated copy (ADR-0016); a norm with no page at the source is recorded as an exception, not forked.
 - A requirements brief becomes the charter: scope and rulings move with the page, the user profile and communication conventions go to `docs/conventions.md` "Human labor and communication", and material or environment pointers stay in `docs/status.md` and `docs/operations/setup.md`; a dated history row is dropped rather than carried (2026-11-18 ruling, oshi `28c8bc4`).
+- A work package carries the evidence it owns (ADR-0021, 2026-11-18): four ledger files by closeout, plus named evidence directories created on demand. Evidence stays in git, `summary.md` names each directory, closeout archives it with the package, and it carries no docs-page volume budget. Oshi's `audits/` and `tools/` are legal without a move; `scripts/check.py` checks the package shape.
 
 ## Check-in points
 
