@@ -16,7 +16,7 @@ Each directory's `README.md` lists its direct children. `docs/README.md` lists t
 | --- | --- | --- |
 | `docs/spec/` | Normative rules and rationale | A role, rule, budget, or flow is deliberately changed |
 | `template/` | Copyable starting points, derived from the spec | The spec changes, in the same or the next commit |
-| the skill (`i-project-skeleton`) | A thin entry point: modes, order, hard rules, pointer to this repository | The mode sequence or the repository path changes |
+| the skill (`i-repository-standard`) | A thin entry point: modes, order, hard rules, pointer to this repository | The mode sequence or the repository path changes |
 
 The direction is always spec → template → skill. A template rule that the spec does not state is a template bug. A skill step the spec cannot justify is a skill bug.
 

@@ -47,7 +47,7 @@ An overlay that states a core rule is a bug. An overlay that omits a contract is
 
 ## Compatibility mechanisms
 
-When a foreign tool cannot accept the skeleton's paths, pick one mechanism and record it in `docs/adapters.md`.
+When a foreign tool cannot accept the standard's paths, pick one mechanism and record it in `docs/adapters.md`.
 
 | Mechanism | Solves | Cost |
 | --- | --- | --- |

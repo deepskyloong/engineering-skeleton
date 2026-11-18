@@ -1,6 +1,6 @@
-# Engineering Skeleton
+# Repository Standard
 
-A language-agnostic repository skeleton: which documents a long-lived project needs, where each one lives, how work moves from an idea to a recorded decision, and how the whole thing stays maintainable.
+A language-agnostic repository standard: which documents a long-lived project needs, where each one lives, how work moves from an idea to a recorded decision, and how the whole thing stays maintainable.
 
 ## Why this exists
 
@@ -18,7 +18,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
 | `docs/governance.md` | Versioning, change surface, review, and how the spec evolves. |
 | `docs/workflow.md` | The three operating modes: forge, audit, migrate. |
-| `docs/decisions/` | ADRs — the choices that shaped the skeleton, with rejected options. |
+| `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
 | `tasks/` | Work packages: spec, plan, todo, and the closeout summary. |
 | `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |

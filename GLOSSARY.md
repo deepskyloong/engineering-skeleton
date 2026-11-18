@@ -1,6 +1,6 @@
-# engineering-skeleton
+# repository-standard
 
-The vocabulary of the engineering skeleton: the words this repository uses for roles, levels, work packages, rules, and artifacts, so a spec page, a template, or a commit message can name the same thing the same way.
+The vocabulary of the repository standard: the words this repository uses for roles, levels, work packages, rules, and artifacts, so a spec page, a template, or a commit message can name the same thing the same way.
 
 ## Language
 
@@ -23,7 +23,7 @@ The repository that holds a general norm once; a consumer names it on one line a
 _Avoid_: template, upstream, gold standard
 
 **layer**:
-One of the four strata the skeleton is built from: core, overlay, adapter, optional.
+One of the four strata the standard is built from: core, overlay, adapter, optional.
 _Avoid_: level (reserved for root/member/module)
 
 **level**:
@@ -31,7 +31,7 @@ The ownership tier of a file: root, member, module.
 _Avoid_: layer
 
 **overlay**:
-The per-language part of the skeleton: toolchain, gate, code layout, and writing rules.
+The per-language part of the standard: toolchain, gate, code layout, and writing rules.
 _Avoid_: plugin, extension
 
 **adapter**:

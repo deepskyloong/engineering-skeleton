@@ -27,7 +27,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 - [ ] The overlay gate runs green.
 - [ ] `AGENTS.md` volume is inside budget.
 
-**Stop condition**: if the project has no runnable code yet, stop after step 4 and say so. A documentation skeleton over an empty repository is a promise, not a structure.
+**Stop condition**: if the project has no runnable code yet, stop after step 4 and say so. A documentation standard over an empty repository is a promise, not a structure.
 
 ## Mode 2 — audit (existing repository)
 
@@ -63,4 +63,4 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | --- | --- |
 | "new project", "bootstrap this repo", "initialize" | forge |
 | "review my repo structure", "why is this unmaintainable", "audit" | audit |
-| "move docs to the new layout", "adopt the skeleton" | migrate |
+| "move docs to the new layout", "adopt the standard" | migrate |

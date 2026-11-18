@@ -12,7 +12,7 @@
 
 **M5 — A frozen record keeps its citation.** A file that a closed record cites by name is not rewritten to point at the new path. Move it, leave a tombstone, and register the tombstone's reason. Rewriting history to simplify today's grep is how a record stops being evidence.
 
-**M6 — A foreign path is registered, not forced.** A third-party suite's track root is a permanent row in `docs/adapters.md`; a legacy path is a retirable row there. Do not make the whole repository bend so one tool can keep writing where it always wrote, and do not relocate a suite's track because it resembles a skeleton role.
+**M6 — A foreign path is registered, not forced.** A third-party suite's track root is a permanent row in `docs/adapters.md`; a legacy path is a retirable row there. Do not make the whole repository bend so one tool can keep writing where it always wrote, and do not relocate a suite's track because it resembles a role the standard defines.
 
 ## Mapping table
 
@@ -26,7 +26,7 @@
 | A tracker suite's hidden directory | `docs/adapters.md` row | The suite keeps its path; the registry explains it |
 | Per-module `README.md` + `docs/` + `AGENTS.md` | Module `README.md`; module `AGENTS.md` deferred | Module docs fold into the member unless a module is a real boundary |
 | A generated `AGENTS.md` from source rules | Keep the generator; mark the output | The source rules stay authoritative; the generated file carries the header |
-| A README change-surface table | Keep it | It is a real mechanism, not a skeleton violation |
+| A README change-surface table | Keep it | It is a real mechanism, not a violation of the standard |
 | A commit convention inside `AGENTS.md` or a separate contributing guide | `docs/committing.md` | Keep one commit section only; move the vocabulary there and leave a routing row in `AGENTS.md` |
 | A copied conventions page carrying the discriminations and the budget table | `docs/conventions.md` as a base pointer plus deviations | The norm lives once at the source; the copy becomes a pointer, and the budget numbers live in the checker (`B-0002`) |
 | A root glossary or a pile of jargon | Root `GLOSSARY.md`; member terms move down | A term used by one member does not belong at the root; a legacy `CONTEXT.md` takes the `GLOSSARY` name, not a second home |

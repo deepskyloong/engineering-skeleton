@@ -1,6 +1,6 @@
-# AGENTS.md — engineering-skeleton maintenance manual
+# AGENTS.md — repository-standard maintenance manual
 
-This repository holds the normative skeleton. It is not a project built with the skeleton; it is the source the skeleton is copied from.
+This repository holds the repository standard. It is not a project built with it; it is the standard existing repositories point at, and the template a new one copies.
 
 This file is the per-turn rule layer: red lines, the gate, and the routing table. Everything explanatory lives in `docs/` and is read on demand.
 
@@ -25,12 +25,12 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 
 | Task | Read |
 | --- | --- |
-| Understand what the skeleton is and why it is shaped this way | `docs/spec/0001-foundations.md` |
+| Understand what the standard is and why it is shaped this way | `docs/spec/0001-foundations.md` |
 | Decide where a new document belongs, or add/remove a role | `docs/spec/0002-roles.md` |
 | Decide which level (root / member / module) owns a file | `docs/spec/0003-flow.md` |
 | Change a rule, a budget, or a retirement exception | `docs/spec/0004-rules.md` |
 | Change a language overlay or the gate contract | `docs/spec/0005-overlays.md` |
-| Move an existing repository onto this skeleton | `docs/spec/0006-migration.md` |
+| Move an existing repository onto this standard | `docs/spec/0006-migration.md` |
 | Operate on a target repository (forge / audit / migrate) | `docs/workflow.md` |
 | Change where this repository's own files live | `docs/structure.md` |
 | Change language, naming, citation, or a discrimination | `docs/conventions.md` |

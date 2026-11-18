@@ -1,16 +1,16 @@
 # 0001 — Foundations
 
-## What the skeleton is
+## What the standard is
 
-A repository skeleton is not a directory template. It is a set of **roles** — one kind of document, one home, one admission rule, one exit rule, one authority range — plus the rules that keep the roles from duplicating each other. The tree is a consequence of the roles; copying the tree without the roles produces files nobody can place six months later.
+A repository standard is not a directory template. It is a set of **roles** — one kind of document, one home, one admission rule, one exit rule, one authority range — plus the rules that keep the roles from duplicating each other. The tree is a consequence of the roles; copying the tree without the roles produces files nobody can place six months later.
 
 This repository is also the norm source for repositories that already exist: a general norm — language, naming, citation, document discipline, budgets — is written here once, and a target page points at it (`Base: {{NORM_SOURCE}}/docs/conventions.md`) instead of carrying a copy. The template supplies a new repository's shape; the norm source supplies the rules every repository that names it follows.
 
-The skeleton is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
+The standard is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
 
 ## Six principles
 
-**P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this skeleton exists to prevent.
+**P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this standard exists to prevent.
 
 **P2 — Least per-turn tax.** Only `AGENTS.md` is loaded on every turn. Everything else is read on demand, through a routing table. A rule that costs context on every turn must be a red line, a gate, or a pointer — not an explanation.
 
@@ -24,7 +24,7 @@ The skeleton is language-agnostic in its core and language-specific in its overl
 
 ## Lineage
 
-The model has industry names, one per face: **single source of truth** for the authority, **incorporation by reference** and **normative reference** for the pointer, **base and overlay** for the layering, **profile** for a local adaptation of a base standard, and **shared kernel** for the part several consumers depend on together. The anti-patterns are named too: **vendoring** copies the dependency into the consumer, and a **fork** diverges from the source. This repository says **norm source** for the role and **base pointer plus deviations** for the consumer page.
+The model has industry names, one per face: **single source of truth** for the authority, **incorporation by reference** and **normative reference** for the pointer, **base and overlay** for the layering, **profile** for a local adaptation of a base specification, and **shared kernel** for the part several consumers depend on together. The anti-patterns are named too: **vendoring** copies the dependency into the consumer, and a **fork** diverges from the source. This repository says **norm source** for the role and **base pointer plus deviations** for the consumer page.
 
 Two obligations follow from those names: a pointer must be reasonably available to its consumer, and a shared kernel's changes are announced. A private path meets the first on one machine; the second has no mechanism today, and `Last read` is only a provenance marker.
 
@@ -82,7 +82,7 @@ A repository with one package must not fake a monorepo. Apply all four:
 3. Keep the root `docs/` roles unchanged. The degeneration removes a level, not a role.
 4. The overlay's code-boundary rules survive; the member boundary rules do not apply.
 
-Degeneration is a form of the skeleton, not an exception to it. A repository that is one package today and three members tomorrow promotes by adding the level back; it does not rewrite the roles.
+Degeneration is a form of the standard, not an exception to it. A repository that is one package today and three members tomorrow promotes by adding the level back; it does not rewrite the roles.
 
 ## When a role is admitted
 
