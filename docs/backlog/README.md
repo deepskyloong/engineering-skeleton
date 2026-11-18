@@ -25,5 +25,5 @@ Deferred items only: an item here binds nothing, and records a decision not yet 
 | [B-0010](B-0010-routing-entry-limit.md) | Routing-table limit is unenforced | open | The next `AGENTS.md` change |
 | [B-0011](B-0011-overlay-markdown-formatting.md) | Overlays format no Markdown | open | The first forge needing Markdown normalization |
 | [B-0012](B-0012-bun-fmt-table-layout.md) | bun fmt may keep tables compact | open | bun fmt gains a table padding setting |
-| [B-0013](B-0013-commit-base-home.md) | The commit base lives outside the norm source | open | The norm-source model lands, or the commit convention changes |
+| [B-0013](B-0013-commit-base-home.md) | The commit base lives outside the norm source | closed | The norm-source model lands, or the commit convention changes |
 | [B-0014](B-0014-rename-norm-source.md) | The repository still presents itself as a skeleton | closed | `B-0005` closes and the placeholder model is in place |

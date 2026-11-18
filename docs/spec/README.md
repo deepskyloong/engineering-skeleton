@@ -10,6 +10,7 @@ Normative specification, `spec v1`. Read in order.
 | [0004-rules.md](0004-rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
 | [0005-overlays.md](0005-overlays.md) | What the language-agnostic core promises, what each overlay supplies |
 | [0006-migration.md](0006-migration.md) | How an existing repository moves onto this standard |
+| [0007-committing.md](0007-committing.md) | What every commit message must state, and which parts a repository may override |
 
 ## Status
 

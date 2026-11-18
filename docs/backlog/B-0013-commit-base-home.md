@@ -13,3 +13,7 @@
 ## Revisit when
 
 The norm-source model lands, or the commit convention changes — whichever comes first.
+
+## Outcome
+
+Closed 2026-11-18 as superseded by `B-0005`. Committing is a general norm; the norm now lives at `docs/spec/0007-committing.md`, and `docs/committing.md` is a base pointer plus this repository's deviations. personal-agent-kit's old base is a forwarding stub, and its consumers point at the new absolute path until they define a norm source.

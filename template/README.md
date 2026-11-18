@@ -18,7 +18,7 @@ Do not copy all four at day one. Each segment has a trigger, and copying it earl
 | `<project-name>` | `README.md`, `AGENTS.md`, overlay files, `GLOSSARY.md` (first-use copy) | Step 1 |
 | `<one-line purpose>` | `README.md`, `AGENTS.md` | Step 1 |
 | `<owner>` | `docs/charter.md` | Step 1 |
-| `<path or URL>` | The `Norm source:` line in `AGENTS.md`; a `Base:` line in `docs/committing.md` when one is adopted | Step 1 for the norm source; when a base is adopted |
+| `<path or URL>` | The `Norm source:` line in `AGENTS.md` | Step 1 |
 | `<YYYY-MM-DD>` | `Last read` in `docs/conventions.md` | Step 1, the forge date |
 | `<language>` | `AGENTS.md` | Step 2, once the overlay is chosen |
 | `<install-command>` | `README.md`, `AGENTS.md` | Step 2, from the overlay README |

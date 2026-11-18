@@ -1,6 +1,6 @@
 # Committing
 
-Base: `E:\Projects\personal-agent-kit\rules\commit-conventions.md`. Read it first; this file records only deviations.
+Base: `docs/spec/0007-committing.md`. Read it first; this file records only deviations. Last read: 2026-11-18.
 
 ## Deviations
 

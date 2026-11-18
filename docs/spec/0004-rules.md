@@ -70,7 +70,7 @@ A volume budget has two lines. Soft is where judgment starts: a file may stay ab
 
 A directory `README.md` is an index and gets 6,000/12,000, from its 40-row cap at the measured ~117 characters per row plus a preamble; the backlog index's 60 rows give 8,000/16,000. An overlay `README.md` is a guide and gets 10,000/16,000. The path decides, not the file name.
 
-A `docs/committing.md` that adopts an external base is short by design: the base carries the rules, the page carries only deviations. The 4,000 limit exists so it cannot grow into a second copy of the base.
+A `docs/committing.md` is short by design: `docs/spec/0007-committing.md` carries the norm, and the page carries only a pointer and this repository's deviations. The 5,000 limit exists so it cannot grow into a second copy of the norm.
 
 ## Measuring
 

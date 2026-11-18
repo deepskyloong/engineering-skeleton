@@ -18,8 +18,9 @@
 4. Bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.
 5. Python-toolkit: the layout page and the index autonomy rule get their test.
 6. Gearset last among the code repositories: it supplies the six-module sample that settles `B-0003`, and the module level is resolved against it.
-7. Personal-agent-kit: the generated artifact contract and the knowledge split get their test. Its unit of work is a skill, so the work-package flow does not apply.
-8. Close when every repository is migrated or carries a reasoned exception recorded here or in its `docs/adapters.md`.
+7. The committing norm moved into `docs/spec/0007-committing.md` on 2026-11-18; `docs/committing.md` is a base pointer plus this repository's deviations. A consumer without a `Norm source:` line points its `Base:` at the new absolute path until it defines one, then uses `{{NORM_SOURCE}}/docs/spec/0007-committing.md`. The template's page is a pointer.
+8. Personal-agent-kit: the generated artifact contract and the knowledge split get their test. Its unit of work is a skill, so the work-package flow does not apply.
+9. Close when every repository is migrated or carries a reasoned exception recorded here or in its `docs/adapters.md`.
 
 ## Revisit when
 

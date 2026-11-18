@@ -23,7 +23,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 - [ ] `docs/charter.md` names at least one non-goal.
 - [ ] `docs/structure.md` carries the tree and the three artifact tiers.
 - [ ] `docs/conventions.md` carries the language rule and the five discriminations.
-- [ ] `docs/committing.md` states the header shape, the body rule, and one logical change.
+- [ ] `docs/committing.md` points at the committing norm and records only deviations.
 - [ ] The overlay gate runs green.
 - [ ] `AGENTS.md` volume is inside budget.
 

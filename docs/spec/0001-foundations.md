@@ -4,7 +4,7 @@
 
 A repository standard is not a directory template. It is a set of **roles** — one kind of document, one home, one admission rule, one exit rule, one authority range — plus the rules that keep the roles from duplicating each other. The tree is a consequence of the roles; copying the tree without the roles produces files nobody can place six months later.
 
-This repository is also the norm source for repositories that already exist: a general norm — language, naming, citation, document discipline, budgets — is written here once, and a target page points at it (`Base: {{NORM_SOURCE}}/docs/conventions.md`) instead of carrying a copy. The template supplies a new repository's shape; the norm source supplies the rules every repository that names it follows.
+This repository is also the norm source for repositories that already exist: a general norm — language, naming, citation, commit messages, document discipline, budgets — is written here once, and a target page points at it (`Base: {{NORM_SOURCE}}/docs/conventions.md`) instead of carrying a copy. The template supplies a new repository's shape; the norm source supplies the rules every repository that names it follows.
 
 The standard is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
 
@@ -52,7 +52,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   ├── charter.md             # scope, non-goals
 │   ├── structure.md           # layout, placement rules, artifact tiers
 │   ├── conventions.md         # language, naming, citation, discriminations
-│   ├── committing.md          # commit messages and project deviations
+│   ├── committing.md          # commit norm pointer and deviations
 │   ├── governance.md          # versioning, change surface, ownership
 │   ├── adapters.md            # adapter registry (when a foreign suite exists)
 │   ├── contracts/             # durable contracts (optional)

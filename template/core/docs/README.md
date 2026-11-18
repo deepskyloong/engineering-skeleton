@@ -15,4 +15,4 @@
 | [charter.md](charter.md) | Scope, non-goals, constraints, success criteria |
 | [structure.md](structure.md) | Levels, placement rules, artifact tiers |
 | [conventions.md](conventions.md) | Language, naming, citation, five discriminators |
-| [committing.md](committing.md) | Commit message shape, types, and deviations from a base |
+| [committing.md](committing.md) | A base pointer to the committing norm plus this repository's deviations |

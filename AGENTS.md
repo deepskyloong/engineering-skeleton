@@ -34,7 +34,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | Operate on a target repository (forge / audit / migrate) | `docs/workflow.md` |
 | Change where this repository's own files live | `docs/structure.md` |
 | Change language, naming, citation, or a discrimination | `docs/conventions.md` |
-| Change the commit message convention | `docs/committing.md` |
+| Change the commit message convention | `docs/spec/0007-committing.md` (norm), `docs/committing.md` (deviations) |
 | Change versioning, ownership, or the review flow | `docs/governance.md` |
 | Ask why a choice was made, or what was rejected | `docs/decisions/` |
 | Ask what is deliberately deferred | `docs/backlog/` |
@@ -51,7 +51,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |
 | Change a placeholder value or notation | `template/README.md` |
 | Change naming or citation rules | `docs/spec/0004-rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.py` naming patterns |
-| Change the commit convention | `docs/committing.md`, `template/core/docs/committing.md` |
+| Change the commit convention | `docs/spec/0007-committing.md`, `docs/committing.md`, `template/core/docs/committing.md` |
 | Change the skill's modes or steps | `SKILL.md`, `docs/spec/0002-roles.md` when a mode reads a new role |
 | Bump the spec version | `README.md` status, `docs/spec/README.md`, `scripts/check.py` compares both |
 | Change a generated path | `docs/spec/0004-rules.md`, `scripts/check.py` `GENERATED_DIRS` |
