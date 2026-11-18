@@ -178,6 +178,7 @@ Write `summary.md` in three sections, relocate what outlives the effort — ruli
 **Done when**:
 
 - `summary.md` exists, is inside budget, and names what was not done
+- `summary.md` names `audits/` and `tools/` and what each answers; no evidence directory is empty
 - `B-0005` carries oshi's disposition and remains `active`
 - the package is at `work-packages/archive/rollout-oshi/` and its row is in the archive index
 - every surviving `rollout-oshi` pointer is explained
