@@ -36,4 +36,4 @@ Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s
 
 ## Move records
 
-Dated role moves and rulings: [moves.md](moves.md).
+Dated role moves and rulings: [move-records.md](move-records.md).
