@@ -11,7 +11,7 @@
 - Focus: W03 — contract/architecture split reissued; review pending
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — review the contract/architecture split in `moves/w03-contract-map.md`; then C1
+- Next: W03 — review the contract/architecture split in `maps/w03-contract-map.md`; then C1
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
