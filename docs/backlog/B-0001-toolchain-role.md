@@ -7,7 +7,7 @@
 ## Evidence
 
 - The review's finding: a directory whose admission rule is "things we learned about the toolchain" admits everything.
-- The narrowed rule (spec 02, "Optional, admitted by trigger"; spec 05, C7) is a review criterion, not a gate.
+- The narrowed rule (`roles.md`, "Optional, admitted by trigger"; `overlays.md`, C7) is a review criterion, not a gate.
 - No target repository currently has more than one trap file.
 
 ## Revisit when

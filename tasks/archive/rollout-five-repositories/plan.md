@@ -4,7 +4,7 @@
 
 1. Audit each repository immediately before its migration, one repository at a time, as the maintainer directed. Each report lands in `audits/<repo>.md` in the fixed format from `docs/governance.md`: severity, role, problem, why, minimal fix.
 2. Review the report with the maintainer before touching the repository. Settle the migration order per repository; `B-0005` proposes oshi, bun-toolkit, python-toolkit, gearset, then personal-agent-kit.
-3. Migrate one repository at a time, one role per commit, following `docs/spec/0006-migration.md` and the migrate mode of `docs/workflow.md`. Each migration starts from a clean working tree.
+3. Migrate one repository at a time, one role per commit, following the migrate mode of `docs/workflow.md`. Each migration starts from a clean working tree.
 4. Register what cannot move in that repository's `docs/adapters.md`; do not force a foreign suite or a frozen record to accept a new path.
 5. Evolve the skeleton when a migration exposes a wrong placement, a missing rule, a wrong format, a budget with no sample, or a source rule that the target's working practice contradicts. The change follows the change surface in `AGENTS.md`: spec first, then `template/`, then the skill, then `scripts/check.py`; the target then follows the evolved spec.
 6. Close `B-0005` when every repository is migrated or carries a reasoned exception, and file the spec gaps the rollout exposed as backlog items here.
@@ -41,7 +41,7 @@ Stop for the maintainer before acting when the source is ambiguous, the target's
 
 ## Migration guide
 
-This page records the operating sequence on top of `docs/spec/0006-migration.md`; it does not replace it. The six rules from `0006` apply to every repository:
+This page records the operating sequence on top of the migrate mode of `docs/workflow.md`; it does not replace it. The six execution rules apply to every repository:
 
 1. Freeze the old home before moving anything.
 2. One role per commit.

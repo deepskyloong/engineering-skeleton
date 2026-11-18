@@ -7,12 +7,12 @@
 ## Evidence
 
 - The five source repositories have different maturity: oshi has the most complete backlog, gearset the richest module form, bun-toolkit the largest `AGENTS.md`, python-toolkit the clearest layout page, personal-agent-kit the only generated artifact.
-- Each migration surfaces a different assumption in the spec; a rollout that skips one leaves that assumption untested.
-- One package for all five was rejected on 2026-11-17: oshi's migration is the first application of a draft norm and changes it as it goes (ADR-0006 through ADR-0016), so the later repositories' phases would be planned against a spec oshi will not leave in place. The rollout runs one work package per repository.
+- Each migration surfaces a different assumption in the norm; a rollout that skips one leaves that assumption untested.
+- One package for all five was rejected on 2026-11-17: oshi's migration is the first application of a draft norm and changes it as it goes (ADR-0006 through ADR-0016), so the later repositories' phases would be planned against a norm oshi will not leave in place. The rollout runs one work package per repository.
 
 ## Plan
 
-1. One work package per repository, in order: oshi, bun-toolkit, python-toolkit, gearset, personal-agent-kit. Open the next package only when the previous closes; the spec it follows is the one the previous migration left. This item keeps its five-repository name because it tracks the programme, while a package is named for the repository it migrates.
+1. One work package per repository, in order: oshi, bun-toolkit, python-toolkit, gearset, personal-agent-kit. Open the next package only when the previous closes; the norm it follows is the one the previous migration left. This item keeps its five-repository name because it tracks the programme, while a package is named for the repository it migrates.
 2. Each package audits its repository immediately before the first move, records `audits/<repo>.md`, and stops for the maintainer before touching anything.
 3. Oshi first: its backlog is the reference shape, and the cost of a wrong call is lowest.
 4. Bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.

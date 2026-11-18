@@ -4,7 +4,7 @@
 
 1. This package is the oshi step of `B-0005`; the programme's order and its one-package-per-repository rule live there. The next repository's package opens only after this one closes.
 2. The audit is done (`audits/oshi.md`, measured 2026-11-16) and reviewed (`audits/README.md`). Re-measure before each budget step; the report is a dated snapshot, not a budget.
-3. Move one role per commit, following `docs/norm/migration.md` and the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain.
+3. Move one role per commit, following the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain.
 4. Register what cannot move in oshi's `docs/adapters.md`; never force a suite track or a frozen record to accept a new path.
 5. Evolve the standard when a move exposes a wrong placement, a missing rule, a wrong format, a budget with no sample, or a source rule oshi's working practice contradicts. The change follows the change surface in `AGENTS.md`: spec first, then `template/`, then the skill, then `scripts/check.py`; oshi follows the evolved spec afterwards.
 6. Close when every audit finding has a disposition — resolved, withdrawn, or filed as a backlog item — and `B-0005` carries oshi's disposition.
@@ -36,7 +36,7 @@ Stop for the maintainer before acting when the source is ambiguous, oshi's form 
 
 ## Migration guide
 
-This page records the operating sequence on top of `docs/norm/migration.md`; it does not replace it. The six rules from `0006` apply:
+This page records the operating sequence on top of the migrate mode in `docs/workflow.md`; it does not replace it. The six execution rules apply:
 
 1. Freeze the old home before moving anything.
 2. One role per commit.

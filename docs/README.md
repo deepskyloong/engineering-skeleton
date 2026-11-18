@@ -18,8 +18,8 @@
 | [conventions.md](conventions.md) | Language, naming, citation, five role discriminations |
 | [committing.md](committing.md) | Commit message convention: a base pointer to the norm source plus this repository's deviations |
 | [governance.md](governance.md) | Versioning, change surface, review, ownership |
-| [workflow.md](workflow.md) | Operating modes: forge, audit, migrate |
-| [norm/](norm/README.md) | The binding text: foundations, roles, flow, rules, overlays, migration, committing |
+| [workflow.md](workflow.md) | Operating modes: forge, audit, migrate, and the migration mapping table |
+| [norm/](norm/README.md) | The binding text: foundations, roles, flow, rules, overlays, committing |
 | [decisions/](decisions/README.md) | ADRs — choices and rejected alternatives |
 | [backlog/](backlog/README.md) | Deferred items with revisit triggers |
 

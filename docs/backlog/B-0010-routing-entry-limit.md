@@ -13,7 +13,7 @@
 
 ## Minimal fix
 
-Compress the six spec-page rows into one `docs/norm/` row; the spec index already lists its pages, and a routing table that enumerates a directory's files is a second index. That leaves 8 rows and room for one more role. Then add a section-scoped counter to `scripts/check.py` that finds the routing section and counts its rows, and set the limit to 12.
+Compress the six norm-page rows into one `docs/norm/` row; the norm index already lists its pages, and a routing table that enumerates a directory's files is a second index. That leaves 8 rows and room for one more role. Then add a section-scoped counter to `scripts/check.py` that finds the routing section and counts its rows, and set the limit to 12.
 
 ## Revisit when
 

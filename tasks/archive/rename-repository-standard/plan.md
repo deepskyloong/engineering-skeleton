@@ -3,7 +3,7 @@
 ## Approach
 
 1. Record the decision first: ADR-0018, the glossary entry, `B-0014` set to `active`, and this package opened. The rename has one reason; the record names the alternatives that lost.
-2. Rewrite the normative living pages in the spec-first order: `docs/spec/`, then the root pages, then the top-level `docs/` pages. The template follows in the same pass; it is a consequence of the spec.
+2. Rewrite the normative living pages in the norm-first order: `docs/norm/`, then the root pages, then the top-level `docs/` pages. The template follows in the same pass; it is a consequence of the norm.
 3. Update the open queue and the live work package. Frozen records stay; ADR-0018 and the glossary map `skeleton` to `repository standard`.
 4. Rename the skill and its external references. The skill is the entry point; a stale name there sends a reader to a repository that no longer presents itself that way.
 5. Rename the package and the gate identifiers, regenerate the lockfile, and run the gate.
@@ -24,7 +24,7 @@ The table names the phases and their exit conditions; each item's description, a
 
 | Risk | Mitigation | Stop condition |
 | --- | --- | --- |
-| A blind replacement turns "standard" into a self-referential or ambiguous sentence. | Rewrite each sentence against its context; the spec pages are read one at a time. | A sentence needs the old word to stay true. |
+| A blind replacement turns "standard" into a self-referential or ambiguous sentence. | Rewrite each sentence against its context; the norm pages are read one at a time. | A sentence needs the old word to stay true. |
 | A frozen record is rewritten and stops being evidence. | Leave ADRs before ADR-0018, archived packages, and dated snapshots; map the old term in ADR-0018 and the glossary. | The rewrite would edit an archived package or an ADR. |
 | The skill and the repository name drift again. | Rename the skill directory, its frontmatter, its root variable, and every external reference in one pass. | A reference still resolves to `i-project-skeleton`. |
 | The package name changes but the lockfile keeps the old name. | Run `bun install` and `bun run gate` after the `package.json` edit. | `bun.lock` still carries `engineering-skeleton`. |

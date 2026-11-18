@@ -9,14 +9,15 @@ The binding text of the repository standard, `standard v1`. Read by question, no
 | [flow](flow.md) | Which level owns a file, how work moves from idea to closeout |
 | [rules](rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
 | [overlays](overlays.md) | What the language-agnostic core promises, what each overlay supplies |
-| [migration](migration.md) | How an existing repository moves onto this standard |
 | [committing](committing.md) | What every commit message must state, and which parts a repository may override |
+
+Migration is an operating mode, not a norm page: see [workflow](../workflow.md), Mode 3.
 
 ## Reading paths
 
 First pass: [foundations](foundations.md) → [roles](roles.md) → [flow](flow.md) → [rules](rules.md).
 
-Reference: [overlays](overlays.md) when a language overlay is involved; [migration](migration.md) when moving an existing repository; [committing](committing.md) when writing a commit message.
+Reference: [overlays](overlays.md) when a language overlay is involved; [committing](committing.md) when writing a commit message.
 
 The file names carry the subject; the order lives here. Adding a page does not renumber the set, and moving a page in a reading path does not break a citation.
 

@@ -408,7 +408,6 @@ def check_required_files() -> None:
         "docs/norm/flow.md",
         "docs/norm/rules.md",
         "docs/norm/overlays.md",
-        "docs/norm/migration.md",
         "docs/norm/committing.md",
     ):
         if not (ROOT / page).exists():

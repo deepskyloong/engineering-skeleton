@@ -2,7 +2,7 @@
 
 ## What this is
 
-A normative description of how a long-lived repository organizes its documents and its work. It is written to be copied: a new project reads the spec, copies the template, and starts with a structure instead of inventing one. An existing project reads the migration page and moves one role at a time.
+A normative description of how a long-lived repository organizes its documents and its work. It is written to be copied: a new project reads the norm, copies the template, and starts with a structure instead of inventing one. An existing project reads the migrate mode of `docs/workflow.md` and moves one role at a time.
 
 ## Who it serves
 

@@ -17,7 +17,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/structure.md` | This repository's layout and the placement rules for new files. |
 | `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
 | `docs/governance.md` | Versioning, change surface, review, and how the standard evolves. |
-| `docs/workflow.md` | The three operating modes: forge, audit, migrate. |
+| `docs/workflow.md` | The three operating modes: forge, audit, migrate, and the migration mapping table. |
 | `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
 | `tasks/` | Work packages: spec, plan, todo, and the closeout summary. |

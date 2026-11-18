@@ -138,7 +138,7 @@ Add a `Current state` dashboard to `todo.md` and require it to be rewritten in t
 - the template and both task indexes carry it
 - the gate is green
 
-**Evidence**: commit `aac07f6`; `docs/spec/0003-flow.md`; `template/effort/tasks/_template.md`; `tasks/README.md`.
+**Evidence**: commit `aac07f6`; `docs/norm/flow.md`; `template/effort/tasks/_template.md`; `tasks/README.md`.
 
 #### W09 — Replace the checklist with a work item ledger
 
@@ -154,7 +154,7 @@ Replace the one-line checklist with a work item ledger: `W<n>` blocks with statu
 - this ledger is in place
 - the gate is green
 
-**Evidence**: `docs/spec/0003-flow.md`; ADR-0009; `plan.md`; `template/effort/tasks/_template.md`; `tasks/README.md`; this file; gate `PASS — 69`.
+**Evidence**: `docs/norm/flow.md`; ADR-0009; `plan.md`; `template/effort/tasks/_template.md`; `tasks/README.md`; this file; gate `PASS — 69`.
 
 ### P1 — Oshi migration
 

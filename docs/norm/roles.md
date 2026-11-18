@@ -26,7 +26,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Decision record (ADR) | `/docs/decisions/ADR-<nnnn>-slug.md` | A choice with rejected alternatives that a future maintainer would otherwise relitigate | Marked `Superseded` and linked; never deleted | Binds the choice until superseded |
 | Backlog item | `/docs/backlog/B-<nnnn>-slug.md` | A deferred idea with a revisit trigger and evidence | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue |
 | Backlog index | `/docs/backlog/README.md` | One row per item, including closed; `Status` is `open`, `active`, `paused`, or `closed` | — | Binds the queue's order and state |
-| Operating modes | `/docs/workflow.md` | The forge / audit / migrate steps, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes | Binds how an effort is run and closed |
+| Operating modes | `/docs/workflow.md` | The forge / audit / migrate steps, the migration mapping table and its dated source observations, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes | Binds how an effort is run and closed |
 | Vocabulary | `/GLOSSARY.md` | A term whose meaning would drift without a fixed definition, with avoided synonyms | A term moves to a member when only it uses it | Binds naming in prose and code |
 | Vocabulary map | `/GLOSSARY-MAP.md` | Member contexts, their paths, and their relationships; stores no definitions | — | Binds where terms are defined and how contexts relate |
 

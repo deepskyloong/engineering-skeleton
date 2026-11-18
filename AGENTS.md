@@ -30,7 +30,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | Decide which level (root / member / module) owns a file | `docs/norm/flow.md` |
 | Change a rule, a budget, or a retirement exception | `docs/norm/rules.md` |
 | Change a language overlay or the gate contract | `docs/norm/overlays.md` |
-| Move an existing repository onto this standard | `docs/norm/migration.md` |
+| Move an existing repository onto this standard | `docs/workflow.md`, Mode 3 |
 | Operate on a target repository (forge / audit / migrate) | `docs/workflow.md` |
 | Change where this repository's own files live | `docs/structure.md` |
 | Change language, naming, citation, or a discrimination | `docs/conventions.md` |

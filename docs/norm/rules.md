@@ -2,7 +2,7 @@
 
 ## Scope and strength
 
-This table covers cross-role rules. The steps in `flow.md` and `migration.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
+This table covers cross-role rules. The steps in `flow.md` and the migrate mode of `workflow.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
 
 ## Rules
 

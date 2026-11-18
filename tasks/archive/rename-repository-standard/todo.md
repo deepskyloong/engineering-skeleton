@@ -44,13 +44,13 @@ Write `docs/decisions/ADR-0018-repository-standard-rename.md` with the candidate
 **Status**: todo
 **Depends on**: W01
 
-Rewrite `README.md`, `AGENTS.md`, `GLOSSARY.md`, `docs/spec/0001-foundations.md`, `0003-flow.md`, `0004-rules.md`, `0005-overlays.md`, `0006-migration.md`, `docs/spec/README.md`, `docs/README.md`, `docs/workflow.md`, and `docs/structure.md`. Replace "skeleton" with "repository standard" on first mention and "the standard" after it; rewrite the sentences a blind replacement would make self-referential, including `AGENTS.md`'s opening and `0001`'s degeneration paragraph. Keep the glossary's former-name line as the only living use of `skeleton`.
+Rewrite `README.md`, `AGENTS.md`, `GLOSSARY.md`, `docs/norm/foundations.md`, `docs/norm/flow.md`, `docs/norm/rules.md`, `docs/norm/overlays.md`, `docs/norm/README.md`, `docs/README.md`, `docs/workflow.md`, and `docs/structure.md`. Replace "skeleton" with "repository standard" on first mention and "the standard" after it; rewrite the sentences a blind replacement would make self-referential, including `AGENTS.md`'s opening and `foundations.md`'s degeneration paragraph. Keep the glossary's former-name line as the only living use of `skeleton`.
 
 **Done when**:
 
 - no living normative page says `skeleton` except the glossary's former-name line
 - `README.md` and `AGENTS.md` name the repository standard
-- `docs/spec/0001-foundations.md` says "What the standard is"
+- `docs/norm/foundations.md` says "What the standard is"
 - `bun run gate` is green
 
 **Evidence**: the twelve normative pages rewritten; `rg -n 'skeleton'` over them returns only `GLOSSARY.md`'s former-name line; gate `PASS — 90 markdown files`.
