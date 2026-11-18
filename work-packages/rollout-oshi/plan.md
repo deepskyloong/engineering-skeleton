@@ -4,7 +4,7 @@
 
 1. This package is the oshi step of `B-0005`; the programme's order and its one-package-per-repository rule live there. The next repository's package opens only after this one closes.
 2. The audit is done (`audits/oshi.md`, measured 2026-11-16) and reviewed (`audits/README.md`). Re-measure before each budget step; the report is a dated snapshot, not a budget.
-3. Move one role per commit, following the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain.
+3. Move one role per commit, following the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain. W08a (package evidence) is a standard change before contracts; it is not a role move.
 4. Register what cannot move in oshi's `docs/adapters.md`; never force a suite track or a frozen record to accept a new path.
 5. Evolve the standard when a move exposes a wrong placement, a missing rule, a wrong format, a budget with no sample, or a source rule oshi's working practice contradicts. The change follows the change surface in `AGENTS.md`: spec first, then `template/`, then the skill, then `scripts/check.py`; oshi follows the evolved spec afterwards.
 6. Close when every audit finding has a disposition — resolved, withdrawn, or filed as a backlog item — and `B-0005` carries oshi's disposition.
@@ -14,7 +14,7 @@
 | Phase | Work items | Exit condition |
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
-| P1 — Role moves | W02–W05 | Charter, contracts, knowledge, and toolchain at their canonical paths; old paths are tombstones or adapter rows; oshi's gate green |
+| P1 — Package rule and role moves | W08a, W02–W05 | The package evidence category is defined; charter, contracts, knowledge, and toolchain at their canonical paths; old paths are tombstones or adapter rows; both gates green |
 | P2 — Page repairs and audit closeout | W06–W07 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08–W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
@@ -54,7 +54,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 ### Oshi's sequence
 
 1. Already placed: `tasks/README.md`, the operations split, the status page at `docs/status.md`, the decisions at `docs/decisions/` padded to `ADR-0009…0012`, and the vocabulary at `GLOSSARY.md`.
-2. Next: `docs/brief.md` → `docs/charter.md`. Then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
+2. Done: `docs/brief.md` → `docs/charter.md`. Before contracts, W08a defines the package evidence category in the standard; then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
 3. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
 4. Split an over-budget page after the role is at its home; do not mix a split with a move.
 5. Gate: oshi's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.

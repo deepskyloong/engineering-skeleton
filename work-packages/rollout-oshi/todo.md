@@ -7,11 +7,11 @@
 - Branch: `feature/b0005-rollout-oshi`; fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
 - Gate: `PASS — 98 markdown files` (2026-11-18)
 - Last done: W02 — move the charter role; oshi commit `28c8bc4`
-- Phase: P1 — role moves
-- Focus: W03 — contracts role
-- Progress: 2 done / 7 todo / 0 blocked
-- Todo: W03–W09
-- Next: W03 — split `docs/designs/` and `docs/specs/` into `docs/contracts/`
+- Phase: P1 — package rule and role moves
+- Focus: W08a — define the package evidence category
+- Progress: 2 done / 8 todo / 0 blocked
+- Todo: W08a, W03–W09
+- Next: W08a — field 6 decision, then the norm/template/checker change
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); W03 stops for review before it starts
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
@@ -37,7 +37,7 @@ Close the five-repository package as superseded and open `tasks/rollout-oshi/`: 
 
 **Evidence**: commit `b041762`; `tasks/rollout-oshi/`; `B-0005` (per-repository plan); gate `PASS — 80 markdown files`.
 
-### P1 — Role moves
+### P1 — Package rule and role moves
 
 #### W02 — Move the charter role
 
@@ -54,10 +54,28 @@ Compare `docs/brief.md` (4,029) with the charter admission — scope, non-goals,
 
 **Evidence**: oshi commit `28c8bc4`; `docs/charter.md` 3,678 non-whitespace; tombstone at `docs/brief.md` and its adapter row; `docs/conventions.md` "Human labor and communication" carries §2; oshi text-only gate green; dispositions in `audits/README.md`.
 
+#### W08a — Define the package evidence category
+
+**Status**: todo
+**Depends on**: W02; field 6 acceptance
+
+Define the work package container in the standard: four ledger files by closeout (`spec.md`, `plan.md`, `todo.md`, and `summary.md` written then) plus evidence directories created on demand. Evidence is package-local: it stays in git, `summary.md` names each directory and what it answers, and closeout archives it with the package unless a successor owns it; it is not a role, carries no docs-page volume budget, and never becomes a durable home. The 2026-11-18 six-field decision report is the basis; field 6 is pending. The unit also decides whether `scripts/check.py` scans `work-packages/` and which subset — the four ledger files always, evidence naming at closeout. Change the norm, the template, the live index, the skill, and the checker; record the decision in a new ADR; oshi's `audits/` and `tools/` stay untouched.
+
+**Done when**:
+
+- field 6 reads `accepted` with owner, date, and route
+- `GLOSSARY.md`, `docs/structure.md`, `template/core/docs/structure.md`, `docs/norm/rules.md`, `docs/norm/flow.md`, `work-packages/README.md`, `template/effort/`, `scripts/check.py`, and `SKILL.md` state the same rule
+- the new ADR records the decision; ADR-0009 and ADR-0017 are clarified, not rewritten
+- `rg -n 'four files'` live survivors are "four ledger files" or frozen records with an explanation
+- `check.py` passes on the three archived packages and `rollout-oshi` without a false positive
+- the standard gate is green
+
+**Evidence**: decision report 2026-11-18 (field 6 pending); commits pending
+
 #### W03 — Move the contracts role
 
 **Status**: todo
-**Depends on**: W02
+**Depends on**: W02; W08a
 
 Create `docs/contracts/` and split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by contract surface: one page per API shape, data schema, CLI surface, or compatibility promise a second effort relies on. A design narrative that explains internal organization is architecture, not a contract; its choices become ADRs and its structure stays a section of the owning page. Leave tombstones for cited paths and register them in `docs/adapters.md`.
 
@@ -141,7 +159,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Four are named: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well; `scripts/check.py` does not scan `work-packages/`, so the audit report and the package's evidence pages get no volume, role, or link check — decide whether effort evidence has a budget and whether the checker scans a declared subset; `work-packages/README.md` says a package holds four files while `docs/norm/flow.md` closeout takes "any evidence the package still owns", so `audits/` and `tools/` have no category, no index link, and no closeout list — define the evidence category and its archive rule.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. The package evidence category and the `work-packages` checker coverage are W08a, before W03.
 
 **Done when**:
 
