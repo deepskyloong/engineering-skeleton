@@ -21,6 +21,7 @@ This table covers cross-role rules. The steps in `flow.md` and the migrate mode 
 | R10 | Record method, not measurement | weak | Review: a count, duration, coverage number, resolved version, benchmark, or size that can drift is written as the command that produces it, or dated `for-the-record` |
 | R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for ADRs and backlog names |
 | R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.py` table check: cell padding and cell count per row. Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
+| R13 | Admission is a content test: a role takes only the jobs its admission names. Durability is not admission, and a directory name is not a role. A source set that serves more than one job splits before any role move | weak | Review: a role holding a job its admission does not cover is a finding; the migration map carries one row per target page with its job and admission clause |
 
 ## Naming and citation
 

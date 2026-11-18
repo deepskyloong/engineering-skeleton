@@ -8,12 +8,12 @@
 - Gate: `PASS — 100 markdown files` (2026-11-18)
 - Last done: W08a — package evidence category; ADR-0021; commit `a2848c8`
 - Phase: P1 — package rule and role moves
-- Focus: W03 — contracts review pending the maintainer
+- Focus: W03 — contracts review pending; architecture rows withdrawn
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — answer the review in `moves/w03-contract-map.md`
+- Next: W03 — answer the review in `moves/w03-contract-map.md`; the architecture home is a separate unit
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 review pending — architecture decomposition and revision records
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 review pending — architecture home (A new role or B Structure admission) and revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items

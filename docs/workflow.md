@@ -75,7 +75,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | --- | --- | --- |
 | One large `AGENTS.md` holding rules, architecture, and history | `AGENTS.md` (red lines, gate, routing) + `docs/structure.md` + `docs/decisions/` | Split by reader: what must hold every turn, what explains the layout, what records a choice |
 | `adr/`, `adrs/`, `decisions/` | `docs/decisions/` | Pick one name; the other paths become tombstones only if cited. A migrated ADR series is zero-padded to four digits. |
-| `specs/` in four places | `work-packages/<slug>/spec.md` and `docs/contracts/` | The work-package spec is temporary; the contract is durable |
+| `specs/` in four places | `work-packages/<slug>/spec.md`, `docs/contracts/`, `docs/operations/` | Split by admission: a promise a consumer may rely on is a contract; a procedure under pressure is operations; internal organization is neither and moves only when a role admits it. A directory named `specs/` is not a role match. |
 | A single backlog file, or `backlog/B-<nnnn>` | `docs/backlog/B-<nnnn>-slug.md` + index | New repositories use four digits; existing numbering is kept and never renumbered |
 | `status.md` at the root | `docs/status.md` | Rewritten in place, no history |
 | A tracker suite's hidden directory | `docs/adapters.md` row | The suite keeps its path; the registry explains it |

@@ -2,7 +2,8 @@
 
 - Date: 2026-11-18
 - Source: oshi `28c8bc4`, worktree `E:\Projects\oshi\.worktrees\skeleton-migration`
-- Status: review pending; the maintainer's answer gates the move
+- Status: review pending; the architecture rows are withdrawn (see Correction)
+- Correction (2026-11-18): R13 and the role pass now require a `Job` and an `Admission` per page. This map predates them: its architecture rows — `system.md`, `failure-modes.md`, `components-pipeline.md`, `components-decision.md` — are withdrawn until a role admits organization content; the contract rows stand. Reissue after that decision.
 - Measure: non-whitespace characters, table delimiter rows excluded (`docs/norm/rules.md` "Measuring"). A target page's volume is its source sections plus a 300-character header allowance. Revision records are excluded (see "Disposals").
 
 The map applies the contracts role to the eleven markdown files under `docs/designs/` and `docs/specs/`. The role is a first application: no repository under the standard has a `docs/contracts/`, so the target is the sample, not proof. Each page names one consumer surface — the effort that relies on the fact. A page above 10,000 carries a soft warning and stays inside the 16,000 hard line; soft pages are listed for W06.
