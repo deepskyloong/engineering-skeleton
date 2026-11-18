@@ -31,6 +31,8 @@ Most work packages produce only `summary.md` and disappear. That is the normal c
 
 ## t0 — creating a work package
 
+A package carries state that a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and write the ADR when the change is a decision.
+
 Create `work-packages/<slug>/` from `_template.md`, split it into four files, then delete `_template.md`; it is a scaffold, not a role.
 
 Four fields before any work starts:

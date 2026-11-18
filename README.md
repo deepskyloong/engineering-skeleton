@@ -42,4 +42,4 @@ For an agent: `AGENTS.md` → the routing table there → the one norm page the 
 
 ## Status
 
-`standard v2`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).
+`standard v3`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).

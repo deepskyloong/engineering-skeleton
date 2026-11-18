@@ -1,6 +1,6 @@
 # Work packages
 
-One directory per effort: `work-packages/<slug>/`, holding four files while it is open. What outlives the effort moves to `docs/`; the package itself moves to `work-packages/archive/<slug>/` at closeout and stays there as a frozen record.
+One directory per effort that needs a ledger: `work-packages/<slug>/`, holding four files while it is open. A change that ends in one commit takes no package. What outlives the effort moves to `docs/`; the package itself moves to `work-packages/archive/<slug>/` at closeout and stays there as a frozen record.
 
 ## Rules
 

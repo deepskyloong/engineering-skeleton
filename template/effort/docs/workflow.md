@@ -6,6 +6,8 @@ A work package records `track:` in its `spec.md`: which workflow suite the effor
 
 ## t0 — create a work package
 
+A package carries state a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and record the choice in an ADR when the change is a decision.
+
 Create `work-packages/<slug>/` with four files from `_template.md`, and fill in four fields before any work:
 
 1. **Goal** — one sentence, testable.

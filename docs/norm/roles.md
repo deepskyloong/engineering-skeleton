@@ -16,8 +16,6 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Conventions | `/docs/conventions.md` | Language, naming, citation, the five discriminations; a target page points at the norm source and records deviations | Updated when a convention changes | Binds how a document is written |
 | Committing | `/docs/committing.md` | A base pointer to `docs/norm/committing.md` plus this repository's deviations | Rewritten when the convention changes; never deleted | Binds how a commit message is written; a project may add types and scopes, never weaken the header, the why-body, or one logical change |
 | Governance | `/docs/governance.md` | Versioning, change surface, ownership, review, retirement | Updated when the review flow changes | Binds who may change what |
-| Work package index | `/work-packages/README.md` | Work package governance, the active table, closeout checklist | — | Binds how an effort is run and closed |
-| Work package | `/work-packages/<slug>/` while open; `/work-packages/archive/<slug>/` after closeout | One effort: what, how, work items with acceptance and evidence, result | Frozen at closeout: moved, as a unit, to `/work-packages/archive/<slug>/`; read-only, never extended | Binds the effort while it is open; nothing after closeout |
 
 ## Present from the first real use
 
@@ -27,6 +25,8 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Backlog item | `/docs/backlog/B-<nnnn>-slug.md` | A deferred idea with a revisit trigger and evidence | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue |
 | Backlog index | `/docs/backlog/README.md` | One row per item, including closed; `Status` is `open`, `active`, `paused`, or `closed` | — | Binds the queue's order and state |
 | Operating modes | `/docs/workflow.md` | The forge / audit / migrate steps, the migration mapping table and its dated source observations, t0 fields, permitted compromises, closeout checklist | Rewritten when a step changes | Binds how an effort is run and closed |
+| Work package index | `/work-packages/README.md` | Work package governance, the open table, the closeout checklist | — | Binds how an effort is run and closed |
+| Work package | `/work-packages/<slug>/` while open; `/work-packages/archive/<slug>/` after closeout | An effort that needs a ledger: what, how, work items with acceptance and evidence, result | Frozen at closeout: moved, as a unit, to `/work-packages/archive/<slug>/`; read-only, never extended | Binds the effort while it is open; nothing after closeout |
 | Vocabulary | `/GLOSSARY.md` | A term whose meaning would drift without a fixed definition, with avoided synonyms | A term moves to a member when only it uses it | Binds naming in prose and code |
 | Vocabulary map | `/GLOSSARY-MAP.md` | Member contexts, their paths, and their relationships; stores no definitions | — | Binds where terms are defined and how contexts relate |
 
