@@ -6,7 +6,7 @@
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
 - Gate: `PASS — 99 markdown files` (2026-11-18)
-- Last done: W08a — package evidence category; ADR-0021
+- Last done: W08a — package evidence category; ADR-0021; commit `a2848c8`
 - Phase: P1 — package rule and role moves
 - Focus: W03 — move the contracts role
 - Progress: 3 done / 7 todo / 0 blocked
@@ -70,7 +70,7 @@ Define the work package container in the standard: four ledger files by closeout
 - `check.py` passes on the three archived packages and `rollout-oshi` without a false positive
 - the standard gate is green
 
-**Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; `bun run gate` — `PASS — 99 markdown files`; package check covers the three archived packages and `rollout-oshi`. `rg` survivors of the old count phrase: ADR-0009 (two lines), ADR-0017, ADR-0020, the archived `rollout-five-repositories` plan and todo, and the frozen `audits/oshi.md`; each is a frozen record, and the criterion line carries the search string itself.
+**Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; commit `a2848c8`; `bun run gate` — `PASS — 99 markdown files`; package check covers the three archived packages and `rollout-oshi`. `rg` survivors of the old count phrase: ADR-0009 (two lines), ADR-0017, ADR-0020, the archived `rollout-five-repositories` plan and todo, and the frozen `audits/oshi.md`; each is a frozen record, and the criterion line carries the search string itself.
 
 #### W03 — Move the contracts role
 
