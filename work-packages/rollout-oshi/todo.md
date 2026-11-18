@@ -8,10 +8,10 @@
 - Gate: `PASS — 102 markdown files` (2026-11-18)
 - Last done: standard change — optional architecture role; ADR-0022; commit `16dd9ff`; W08a `a2848c8`
 - Phase: P1 — package rule and role moves
-- Focus: W03 — admission census done; map re-cut pending
+- Focus: W03 — role-first map re-cut; review pending
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — re-cut `maps/w03-contract-map.md` from `maps/w03-admission-census.md`
+- Next: W03 — review `maps/w03-contract-map.md`; then C1 contracts
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
@@ -72,18 +72,18 @@ Define the work package container in the standard: four ledger files by closeout
 
 **Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; commit `a2848c8`; `bun run gate` — `PASS — 99 markdown files`; package check covers the three archived packages and `rollout-oshi`. `rg` survivors of the old count phrase: ADR-0009 (two lines), ADR-0017, ADR-0020, the archived `rollout-five-repositories` plan and todo, and the frozen `audits/oshi.md`; each is a frozen record, and the criterion line carries the search string itself.
 
-#### W03 — Move the contracts role
+#### W03 — Move the four role destinations
 
 **Status**: todo
 **Depends on**: W02; W08a
 
-Create `docs/contracts/` and split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by contract surface: one page per API shape, data schema, CLI surface, or compatibility promise a second effort relies on. A design narrative that explains internal organization is architecture, not a contract; its choices become ADRs, and the narrative moves to `docs/architecture/`. Leave tombstones for cited paths and register them in `docs/adapters.md`.
+Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by admission: contracts (one page per interface promise), architecture (system organization), operations (the existing `docs/operations/` pages), conventions (`docs/conventions.md`). A source directory maps no role; the section decides. Leave tombstones for cited paths and register both old directories as frozen paths in `docs/adapters.md`.
 
 **Done when**:
 
-- every page under `docs/contracts/` passes the contract admission
-- `docs/contracts/README.md` indexes the pages
-- every contract page is inside oshi's budget for the role
+- every page under `docs/contracts/` and `docs/architecture/` passes the admission; the operations merges and conventions additions land
+- `docs/contracts/README.md` and `docs/architecture/README.md` index their pages
+- every moved page is inside oshi's budget for its role
 - the old paths are tombstones or registered legacy paths
 - oshi's gate is green
 
