@@ -4,7 +4,7 @@
 
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
-- Branch: `feature/b0005-rollout`, fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
+- Branch: `feature/b0005-rollout-oshi`; fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
 - Gate: `PASS — 97 markdown files` (2026-11-18)
 - Last done: W02 — move the charter role; oshi commit `28c8bc4`
 - Phase: P1 — role moves
