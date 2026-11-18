@@ -5,15 +5,15 @@
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
-- Gate: `PASS — 100 markdown files` (2026-11-18)
-- Last done: W08a — package evidence category; ADR-0021; commit `a2848c8`
+- Gate: `PASS — 101 markdown files` (2026-11-18)
+- Last done: standard change — optional architecture role; ADR-0022; commit `16dd9ff`; W08a `a2848c8`
 - Phase: P1 — package rule and role moves
-- Focus: W03 — contracts review pending; architecture rows withdrawn
+- Focus: W03 — contracts plan stands; architecture rows to reissue against ADR-0022
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — answer the review in `moves/w03-contract-map.md`; the architecture home is a separate unit
+- Next: W03 — reissue the architecture rows in `moves/w03-contract-map.md`; then review the split before moving
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 review pending — architecture home (A new role or B Structure admission) and revision records
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -77,7 +77,7 @@ Define the work package container in the standard: four ledger files by closeout
 **Status**: todo
 **Depends on**: W02; W08a
 
-Create `docs/contracts/` and split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by contract surface: one page per API shape, data schema, CLI surface, or compatibility promise a second effort relies on. A design narrative that explains internal organization is architecture, not a contract; its choices become ADRs and its structure stays a section of the owning page. Leave tombstones for cited paths and register them in `docs/adapters.md`.
+Create `docs/contracts/` and split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by contract surface: one page per API shape, data schema, CLI surface, or compatibility promise a second effort relies on. A design narrative that explains internal organization is architecture, not a contract; its choices become ADRs, and the narrative moves to `docs/architecture/`. Leave tombstones for cited paths and register them in `docs/adapters.md`.
 
 **Done when**:
 
