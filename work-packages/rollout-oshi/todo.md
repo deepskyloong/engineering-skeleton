@@ -11,7 +11,7 @@
 - Focus: W03 — role-first map re-cut; review pending
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — review `maps/w03-contract-map.md`; then C1 contracts
+- Next: W03 — review `maps/w03-role-map.md`; then C1 contracts
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
