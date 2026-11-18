@@ -13,3 +13,7 @@ The repository is named `engineering-skeleton`, and `0001` describes it as "the 
 ## Revisit when
 
 `B-0005` closes and the placeholder model is in place.
+
+## Outcome
+
+Closed 2026-11-18. The repository and its artifact are named the repository standard (ADR-0018), and the living tree uses the new term. The old name survives only in frozen records; the GitHub repository and the local checkout remain the maintainer's actions.

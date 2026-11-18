@@ -3,15 +3,15 @@
 ## Current state
 
 - Updated: 2026-11-18
-- Status: open
+- Status: closed
 - Branch: `main`; re-check `git status`
-- Gate: last known `PASS — 90 markdown files` (2026-11-18); re-run `bun run gate`
-- Last done: W03 — rewrite the template and the open records
-- Phase: P2 — Skill and package
-- Focus: W04 — rename the skill and its references
-- Progress: 3 done / 3 todo / 0 blocked
-- Todo: W04–W06
-- Next: W04 — rename the skill and its references
+- Gate: last known `PASS — 91 markdown files` (2026-11-18); re-run `bun run gate`
+- Last done: W06 — close the package and `B-0014`
+- Phase: P3 — Closeout
+- Focus: none
+- Progress: 6 done / 0 todo / 0 blocked
+- Todo: none
+- Next: none
 - Blocked: none
 - Open decisions: none
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/risks), this file (state/ledger)
@@ -88,7 +88,7 @@ Rename `E:\AI\skills\i-project-skeleton` to `E:\AI\skills\i-repository-standard`
 - the rollout skill and the self-built index point at the new name
 - `bun run gate` is green
 
-**Evidence**: pending
+**Evidence**: `E:\AI\skills\i-repository-standard\SKILL.md`; `rg -n 'i-project-skeleton|SKELETON_ROOT|engineering-skeleton' E:\AI\skills` returns nothing; the rollout skill and the self-built index point at the new name.
 
 #### W05 — Rename the package and the gate identifiers
 
@@ -103,13 +103,13 @@ Update `package.json` to `repository-standard`, the `scripts/check.py` docstring
 - neither `scripts/check.py` nor `audit_repo.py` names the old repository
 - `bun run gate` is green
 
-**Evidence**: pending
+**Evidence**: `package.json` and `bun.lock` carry `repository-standard`; `scripts/check.py` and `tasks/rollout-oshi/tools/audit_repo.py` docstrings updated; gate `PASS — 90 markdown files`.
 
 ### P3 — Closeout
 
 #### W06 — Close the package and `B-0014`
 
-**Status**: todo
+**Status**: done
 **Depends on**: W05
 
 Write `summary.md`; move the package to `tasks/archive/rename-repository-standard/`; remove its row from `tasks/README.md` and add it to `tasks/archive/README.md`; set `B-0014` to `closed` and write its `## Outcome`; run the final `rg -il 'skeleton'` inventory and name every survivor in the summary; run the final gate.
@@ -122,4 +122,4 @@ Write `summary.md`; move the package to `tasks/archive/rename-repository-standar
 - every surviving `skeleton` occurrence is a frozen record or a dated snapshot named in the summary
 - `bun run gate` is green
 
-**Evidence**: pending
+**Evidence**: `summary.md`; package at `tasks/archive/rename-repository-standard/`; `B-0014` `closed` with `## Outcome`; the final inventory names the survivors; gate `PASS — 91 markdown files`.

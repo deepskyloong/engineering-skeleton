@@ -17,7 +17,6 @@ One directory per effort: `tasks/<slug>/`, holding four files while it is open. 
 | Slug | Goal | Track | Status |
 | --- | --- | --- | --- |
 | rollout-oshi | Adopt the repository standard in oshi | default | open |
-| rename-repository-standard | Rename the repository and its artifact to the repository standard | default | open |
 
 ## Archived
 
