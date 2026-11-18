@@ -17,7 +17,7 @@ A file lives at the lowest level that owns its fact. Shared facts climb; a fact 
 ```text
 idea
   └─ docs/backlog/B-<nnnn>-<slug>.md        (deferred, with a revisit trigger)
-       └─ tasks/<slug>/spec.md            (what this effort will do; track field)
+       └─ work-packages/<slug>/spec.md    (what this effort will do; track field)
             ├─ plan.md                    (how, with risks and stop conditions)
             ├─ todo.md                    (work items with status, done-when, evidence; Current state)
             └─ summary.md                 (what happened; 3 sections)
@@ -31,7 +31,7 @@ Most work packages produce only `summary.md` and disappear. That is the normal c
 
 ## t0 — creating a work package
 
-Create `tasks/<slug>/` from `_template.md`, split it into four files, then delete `_template.md`; it is a scaffold, not a role.
+Create `work-packages/<slug>/` from `_template.md`, split it into four files, then delete `_template.md`; it is a scaffold, not a role.
 
 Four fields before any work starts:
 
@@ -66,8 +66,8 @@ Anything else — a changed goal, a changed acceptance criterion — is a new wo
 
 1. **Write `summary.md`.** Three sections: what was done, what was not, what a future maintainer must know. ≤3,000 non-whitespace characters. A summary that restates the diff is noise.
 2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
-3. **Freeze the package.** Move `tasks/<slug>/` to `tasks/archive/<slug>/` as a unit, taking the four files and any evidence the package still owns; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
-4. **Update the indexes.** Remove the row from `tasks/README.md` and add it to `tasks/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
+3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four files and any evidence the package still owns; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
+4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
 5. **Leave a tombstone if a frozen record cites the old path.** ≤3 lines, exactly one link, no explanation. A tombstone is a forwarding stub, not a summary; it points into the archived package. If no frozen record cites the path, skip it and stop.
 
 ## Acceptance checklist
@@ -77,8 +77,8 @@ Run before declaring a work package closed:
 - [ ] `summary.md` exists, is inside budget, and names what was not done.
 - [ ] Every contract, ADR, or knowledge file produced by the effort has a home and a link from its directory README.
 - [ ] `rg -l '<slug>'` was run; every surviving pointer is explained.
-- [ ] The row moved from `tasks/README.md` to `tasks/archive/README.md`.
-- [ ] The package is at `tasks/archive/<slug>/` and read-only.
+- [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.
+- [ ] The package is at `work-packages/archive/<slug>/` and read-only.
 - [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
 - [ ] Every done work item cites evidence; every open item is in `Current state`.
 - [ ] The gate is green.
@@ -88,6 +88,6 @@ Run before declaring a work package closed:
 
 A third-party suite that writes into the repository is not migrated; it is registered. `docs/adapters.md` carries one row per suite track: its roots, what reads it, the compatibility whitelist, and the disposition — the track is permanent, and no closeout step relocates it. The suite keeps writing where it writes; the standard stops pretending that path is its own.
 
-A suite's closed packages stay in the track. A repository does not fold them into `tasks/<slug>/`: the suite loads its path by name, so a move changes nothing on disk and leaves two layouts behind.
+A suite's closed packages stay in the track. A repository does not fold them into `work-packages/<slug>/`: the suite loads its path by name, so a move changes nothing on disk and leaves two layouts behind.
 
 A legacy path that survives migration follows the other row kind: it appears in `docs/adapters.md`, and it is removed only when its last consumer is gone. Forcing a foreign tool to accept a new path costs more than one line in a registry.

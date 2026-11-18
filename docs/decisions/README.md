@@ -22,9 +22,10 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0014](ADR-0014-backlog-carries-no-priority.md) | The backlog carries no priority field | Accepted |
 | [ADR-0015](ADR-0015-migrated-adr-series-zero-padded.md) | A migrated ADR series is zero-padded to four digits; a migrated backlog series keeps its width | Accepted |
 | [ADR-0016](ADR-0016-norm-source-pointer.md) | General norms are consumed by pointer, not copy | Accepted |
-| [ADR-0017](ADR-0017-closed-work-packages-archive.md) | Closed work packages move to `tasks/archive/`; the open table lists only open packages | Accepted |
+| [ADR-0017](ADR-0017-closed-work-packages-archive.md) | Closed work packages move to `tasks/archive/`; the open table lists only open packages | Superseded in part by ADR-0020 |
 | [ADR-0018](ADR-0018-repository-standard-rename.md) | The repository and its artifact are named the repository standard | Accepted |
 | [ADR-0019](ADR-0019-norm-pages-use-names.md) | Norm pages are named by subject; the binding text lives at `docs/norm/` | Accepted |
+| [ADR-0020](ADR-0020-work-package-home-is-work-packages.md) | The work-package home is `work-packages/`; `tasks/` is left to a suite track | Accepted |
 
 ## Format
 

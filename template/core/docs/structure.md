@@ -2,7 +2,7 @@
 
 ## Levels
 
-A repository has three levels: root, member, module. The root holds the entry files (`README.md`, `AGENTS.md`), the shared vocabulary (`GLOSSARY.md`, and `GLOSSARY-MAP.md` when member vocabularies exist), the shared `docs/` and `tasks/` trees, and the code boundary. A member is a package or app with its own `README.md`, `src/`, `tests/`, and docs when it has member-specific facts. A module is a boundary inside a member; it earns its own `AGENTS.md` only when it has rules that would be wrong at member level.
+A repository has three levels: root, member, module. The root holds the entry files (`README.md`, `AGENTS.md`), the shared vocabulary (`GLOSSARY.md`, and `GLOSSARY-MAP.md` when member vocabularies exist), the shared `docs/` and `work-packages/` trees, and the code boundary. A member is a package or app with its own `README.md`, `src/`, `tests/`, and docs when it has member-specific facts. A module is a boundary inside a member; it earns its own `AGENTS.md` only when it has rules that would be wrong at member level.
 
 This template starts as a single-package repository: `src/` and `tests/` sit at the root. A monorepo replaces them with `apps/` and `packages/`; a single-package repository does not fake a member level.
 

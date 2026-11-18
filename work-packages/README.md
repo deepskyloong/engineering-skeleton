@@ -1,6 +1,6 @@
 # Work packages
 
-One directory per effort: `tasks/<slug>/`, holding four files while it is open. What outlives the effort moves to `docs/`; the package itself moves to `tasks/archive/<slug>/` at closeout and stays there as a frozen record.
+One directory per effort: `work-packages/<slug>/`, holding four files while it is open. What outlives the effort moves to `docs/`; the package itself moves to `work-packages/archive/<slug>/` at closeout and stays there as a frozen record.
 
 ## Rules
 
@@ -10,7 +10,7 @@ One directory per effort: `tasks/<slug>/`, holding four files while it is open. 
 - Work items are `W<n>` blocks under phase headings; each carries status, dependencies, a prose description, done-when criteria, and evidence. `done` requires evidence; `plan.md` carries the phase breakdown.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
-- On closeout: write `summary.md`, relocate artifacts, move the package to `tasks/archive/<slug>/`, and move the row to the archive index.
+- On closeout: write `summary.md`, relocate artifacts, move the package to `work-packages/archive/<slug>/`, and move the row to the archive index.
 
 ## Open
 
@@ -20,7 +20,7 @@ One directory per effort: `tasks/<slug>/`, holding four files while it is open. 
 
 ## Archived
 
-Closed packages move to `tasks/archive/<slug>/`; `tasks/archive/README.md` is their index. The table above lists open packages only, so a package's state is its location rather than a column.
+Closed packages move to `work-packages/archive/<slug>/`; `work-packages/archive/README.md` is their index. The table above lists open packages only, so a package's state is its location rather than a column.
 
 ## Closeout checklist
 
@@ -28,6 +28,6 @@ Closed packages move to `tasks/archive/<slug>/`; `tasks/archive/README.md` is th
 - [ ] Contracts, ADRs, and knowledge files have homes and index links.
 - [ ] `rg -l '<slug>'` was run.
 - [ ] Every done work item cites evidence; every open item is in `Current state`.
-- [ ] This table no longer lists the package; `tasks/archive/README.md` does.
-- [ ] The package is at `tasks/archive/<slug>/` and frozen.
+- [ ] This table no longer lists the package; `work-packages/archive/README.md` does.
+- [ ] The package is at `work-packages/archive/<slug>/` and frozen.
 - [ ] The gate is green.

@@ -61,7 +61,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `status.md` | ≤10,000 / ≤16,000 EN; ≤5,000 / ≤8,000 ZH | — |
 | `GLOSSARY.md` | ≤7,500 / ≤12,000 | — |
 | `GLOSSARY-MAP.md` | ≤2,500 / ≤4,000 | — |
-| `tasks/<slug>/summary.md`, `tasks/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
+| `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | exactly 1 link |
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
@@ -106,7 +106,7 @@ Four exceptions:
 3. **Superseded contract** — kept only while a consumer still cites it, then deleted.
 4. **Tombstone** — kept only while a frozen record cites the old path. It lives at the old path: ≤3 lines, exactly one link, no explanation, and a title ending with `— moved`; the budget is in the table above.
 
-An artifact that is "kept just in case" is not an exception; it is the start of a second home. A closed work package is not a fifth exception either: it is the frozen exit of a role (`roles.md`), and `tasks/archive/README.md` names it.
+An artifact that is "kept just in case" is not an exception; it is the start of a second home. A closed work package is not a fifth exception either: it is the frozen exit of a role (`roles.md`), and `work-packages/archive/README.md` names it.
 
 ## Generated artifacts
 

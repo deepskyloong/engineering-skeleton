@@ -6,7 +6,7 @@ A work package records `track:` in its `spec.md`: which workflow suite the effor
 
 ## t0 — create a work package
 
-Create `tasks/<slug>/` with four files from `_template.md`, and fill in four fields before any work:
+Create `work-packages/<slug>/` with four files from `_template.md`, and fill in four fields before any work:
 
 1. **Goal** — one sentence, testable.
 2. **Non-goal** — at least one thing this effort will not do.
@@ -17,7 +17,7 @@ Before the first step, initialize `todo.md` with a `## Current state` block: upd
 
 The unit of work is a `W<n>` block: status, dependencies, a prose description, one or more observable done-when criteria, and evidence. `done` requires evidence; an item without evidence stays open. `plan.md` groups the items into phases with an exit condition; the item detail stays in `todo.md`. One item is one reviewable commit or one primary outcome; split it when it needs more.
 
-Add a row to `tasks/README.md`. If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md`. Slug rules: kebab-case, describes the outcome, not the ticket number. Closeout moves the whole package to `tasks/archive/<slug>/`; `summary.md` is the entry point a reader opens first.
+Add a row to `work-packages/README.md`. If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md`. Slug rules: kebab-case, describes the outcome, not the ticket number. Closeout moves the whole package to `work-packages/archive/<slug>/`; `summary.md` is the entry point a reader opens first.
 
 ## Runtime — three permitted compromises
 
@@ -33,8 +33,8 @@ Anything else — a changed goal or acceptance criterion — is a new work packa
 
 1. Write `summary.md` (≤3,000 non-ws chars): what was done, what was not, what a future maintainer must know.
 2. Relocate what outlives the effort: contract → `docs/contracts/`; decision → `docs/decisions/`; method → `docs/knowledge/guides/`; incident → `docs/knowledge/cases/`.
-3. Freeze the package: move `tasks/<slug>/` to `tasks/archive/<slug>/` as a unit. Check `rg -l '<slug>'`; every survivor is explained.
-4. Move the row from `tasks/README.md` to `tasks/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
+3. Freeze the package: move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit. Check `rg -l '<slug>'`; every survivor is explained.
+4. Move the row from `work-packages/README.md` to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
 5. Leave a tombstone at the old path only when a frozen record cites it: ≤3 lines, exactly one link, title ending with `— moved`.
 
 ## Acceptance checklist
@@ -42,8 +42,8 @@ Anything else — a changed goal or acceptance criterion — is a new work packa
 - [ ] `summary.md` exists, inside budget, names what was not done.
 - [ ] Every contract, ADR, or knowledge file has a home and a link from its directory README.
 - [ ] `rg -l '<slug>'` was run; every survivor is explained.
-- [ ] The row moved from `tasks/README.md` to `tasks/archive/README.md`.
-- [ ] The package is at `tasks/archive/<slug>/` and read-only.
+- [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.
+- [ ] The package is at `work-packages/archive/<slug>/` and read-only.
 - [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
 - [ ] Every done work item cites evidence; every open item is in `Current state`.
 - [ ] The gate is green.

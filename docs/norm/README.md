@@ -1,6 +1,6 @@
 # Norm — the repository standard
 
-The binding text of the repository standard, `standard v1`. Read by question, not in order.
+The binding text of the repository standard, `standard v2`. Read by question, not in order.
 
 | Page | Question it answers |
 | --- | --- |
@@ -23,7 +23,7 @@ The file names carry the subject; the order lives here. Adding a page does not r
 
 ## Status
 
-`standard v1`. The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug.
+`standard v2`. The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug.
 
 ## Reading rule
 

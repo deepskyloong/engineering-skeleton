@@ -20,7 +20,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/workflow.md` | The three operating modes: forge, audit, migrate, and the migration mapping table. |
 | `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
-| `tasks/` | Work packages: spec, plan, todo, and the closeout summary. |
+| `work-packages/` | Work packages: spec, plan, todo, and the closeout summary. |
 | `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |
 | `scripts/check.py` | The document checks inside `bun run gate`: role coverage, link resolution, budget, naming, table shape. |
 | `package.json`, `.oxfmtrc.json`, `ruff.toml` | Root tooling for the gate: Bun format for code, Prettier for Markdown, Ruff lint, and command wiring. |
@@ -31,7 +31,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 1. Copy `template/core/` into the new repository root; replace every `<placeholder>`.
 2. Pick one overlay under `template/overlays/` and follow its README.
 3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
-4. When the first work package starts, copy `template/effort/` and create `tasks/<slug>/spec.md` with a `track:` line.
+4. When the first work package starts, copy `template/effort/` and create `work-packages/<slug>/spec.md` with a `track:` line.
 5. Run `bun install && bun run gate` in this repository after changing the norm or a template.
 
 ## Reading order
@@ -42,4 +42,4 @@ For an agent: `AGENTS.md` → the routing table there → the one norm page the 
 
 ## Status
 
-`standard v1`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).
+`standard v2`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).

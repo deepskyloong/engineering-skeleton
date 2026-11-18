@@ -16,8 +16,8 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Conventions | `/docs/conventions.md` | Language, naming, citation, the five discriminations; a target page points at the norm source and records deviations | Updated when a convention changes | Binds how a document is written |
 | Committing | `/docs/committing.md` | A base pointer to `docs/norm/committing.md` plus this repository's deviations | Rewritten when the convention changes; never deleted | Binds how a commit message is written; a project may add types and scopes, never weaken the header, the why-body, or one logical change |
 | Governance | `/docs/governance.md` | Versioning, change surface, ownership, review, retirement | Updated when the review flow changes | Binds who may change what |
-| Work package index | `/tasks/README.md` | Work package governance, the active table, closeout checklist | — | Binds how an effort is run and closed |
-| Work package | `/tasks/<slug>/` while open; `/tasks/archive/<slug>/` after closeout | One effort: what, how, work items with acceptance and evidence, result | Frozen at closeout: moved, as a unit, to `/tasks/archive/<slug>/`; read-only, never extended | Binds the effort while it is open; nothing after closeout |
+| Work package index | `/work-packages/README.md` | Work package governance, the active table, closeout checklist | — | Binds how an effort is run and closed |
+| Work package | `/work-packages/<slug>/` while open; `/work-packages/archive/<slug>/` after closeout | One effort: what, how, work items with acceptance and evidence, result | Frozen at closeout: moved, as a unit, to `/work-packages/archive/<slug>/`; read-only, never extended | Binds the effort while it is open; nothing after closeout |
 
 ## Present from the first real use
 
@@ -53,7 +53,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 These separate roles that five source repositories kept merging. They are normative here; a target repository's `docs/conventions.md` carries a base pointer to the norm source instead of a paraphrase.
 
 1. **Four documents, four jobs.** `AGENTS.md` is instruction (what must hold now); `GLOSSARY.md` is vocabulary (what a word means and which synonyms are avoided); an ADR is a decision (which options existed and why the others lost); `architecture` is structure (how it is organized and how to change it). Test: a choice with rejected alternatives is an ADR; a fact a consumer may rely on is a contract; an explanation of internal organization is architecture.
-2. **`spec` has two senses.** `tasks/<slug>/spec.md` is the work package's specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort. Never let one word carry both; when a sentence says "the spec", it must be obvious which one. The binding text is not a third sense: it lives under `docs/norm/`.
+2. **`spec` has two senses.** `work-packages/<slug>/spec.md` is the work package's specification: temporary, ends with the effort. `docs/contracts/<topic>.md` is the durable contract: survives the effort. Never let one word carry both; when a sentence says "the spec", it must be obvious which one. The binding text is not a third sense: it lives under `docs/norm/`.
 3. **README serves users, the charter serves maintainers.** README answers "how do I use this"; the charter answers "why does this exist and what will it refuse to do".
 4. **Budgets state a unit.** Volume is non-whitespace characters; entries are lines. They measure different things and are not interchangeable.
 5. **Shared terms have a home.** A term shared across the repository lives in the root `GLOSSARY.md`; a term used by one member lives in that member's `GLOSSARY.md`; `GLOSSARY-MAP.md` lists contexts, their paths, and their relationships; it stores no definitions.

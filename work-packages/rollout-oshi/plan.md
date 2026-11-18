@@ -62,7 +62,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 ### What the rollout has decided
 
 - Frozen evidence stays where it is until a role is admitted. Oshi's `experiments/` and `docs/plans/` are frozen legacy paths in `docs/adapters.md`, with no move; `B-0007` remains open and fires only when a second repository keeps a frozen protocol (2026-11-17 ruling).
-- A third-party suite's track root is a permanent adapter, not a legacy path (ADR-0010). Oshi's four tracks are registered in `docs/adapters.md`; the five closed packages under `docs/superpowers/` and `docs/compound-engineering/` stay in place, and no migration folds a suite package into `tasks/`.
+- A third-party suite's track root is a permanent adapter, not a legacy path (ADR-0010). Oshi's four tracks are registered in `docs/adapters.md`; the five closed packages under `docs/superpowers/` and `docs/compound-engineering/` stay in place, and no migration folds a suite package into `work-packages/`.
 - A tombstone is a role at the old path (ADR-0011): ≤3 lines, exactly one link, ≤400 non-whitespace characters, title ending `— moved`. `scripts/check.py` enforces the shape and exempts it from the role and naming maps; `B-0008` is closed. Oshi's decisions move was its first use (`610f1e9`).
 - A migrated ADR series is zero-padded to four digits and never renumbered (ADR-0015); a migrated backlog series keeps its width because its items are cited by path and line. Oshi's `7a988f4` is the first application.
 - Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.

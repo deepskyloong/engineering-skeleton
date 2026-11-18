@@ -53,7 +53,7 @@ The workflow suite an effort runs on, recorded in the work package's spec.
 _Avoid_: pipeline, flow
 
 **work package**:
-One effort's four artifacts under `tasks/<slug>/`: spec, plan, todo, and summary.
+One effort's four artifacts under `work-packages/<slug>/`: spec, plan, todo, and summary.
 _Avoid_: task, ticket
 
 **closeout**:
@@ -81,7 +81,7 @@ _Avoid_: simplified mode
 ### Specs and artifacts
 
 **spec (work package)**:
-`tasks/<slug>/spec.md`: what one effort will do.
+`work-packages/<slug>/spec.md`: what one effort will do.
 _Avoid_: spec (unqualified)
 
 **spec (contract)**:

@@ -17,4 +17,4 @@ Compress the six norm-page rows into one `docs/norm/` row; the norm index alread
 
 ## Revisit when
 
-The next change to `AGENTS.md`, or the first portable checker (`B-0002`). The compression is a prerequisite for adding a `tasks/README.md` routing row without breaking the budget.
+The next change to `AGENTS.md`, or the first portable checker (`B-0002`). The compression is a prerequisite for adding a `work-packages/README.md` routing row without breaking the budget.

@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Accepted; superseded in part by [ADR-0020](ADR-0020-work-package-home-is-work-packages.md) (2026-11-18). The archive rule stands; its path moved to `work-packages/archive/`.
 
 ## Context
 

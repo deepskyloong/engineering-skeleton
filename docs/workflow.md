@@ -75,7 +75,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | --- | --- | --- |
 | One large `AGENTS.md` holding rules, architecture, and history | `AGENTS.md` (red lines, gate, routing) + `docs/structure.md` + `docs/decisions/` | Split by reader: what must hold every turn, what explains the layout, what records a choice |
 | `adr/`, `adrs/`, `decisions/` | `docs/decisions/` | Pick one name; the other paths become tombstones only if cited. A migrated ADR series is zero-padded to four digits. |
-| `specs/` in four places | `tasks/<slug>/spec.md` and `docs/contracts/` | The work-package spec is temporary; the contract is durable |
+| `specs/` in four places | `work-packages/<slug>/spec.md` and `docs/contracts/` | The work-package spec is temporary; the contract is durable |
 | A single backlog file, or `backlog/B-<nnnn>` | `docs/backlog/B-<nnnn>-slug.md` + index | New repositories use four digits; existing numbering is kept and never renumbered |
 | `status.md` at the root | `docs/status.md` | Rewritten in place, no history |
 | A tracker suite's hidden directory | `docs/adapters.md` row | The suite keeps its path; the registry explains it |
@@ -86,7 +86,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | A copied conventions page carrying the discriminations and the budget table | `docs/conventions.md` as a base pointer plus deviations | The norm lives once at the source; the copy becomes a pointer, and the budget numbers live in the checker (`B-0002`) |
 | A root glossary or a pile of jargon | Root `GLOSSARY.md`; member terms move down | A term used by one member does not belong at the root; a legacy `CONTEXT.md` takes the `GLOSSARY` name, not a second home |
 | A legacy `CONTEXT.md` / `CONTEXT-MAP.md` | `GLOSSARY.md` / `GLOSSARY-MAP.md` | Rename; leave a tombstone only when a frozen record cites the old path; never keep both names |
-| An existing `tasks/` with ad-hoc folders | `tasks/README.md` plus one package at a time | Do not bulk-move; close or freeze an old package before converting it |
+| An existing `tasks/` with ad-hoc folders | `work-packages/README.md` plus one package at a time | Do not bulk-move; close or freeze an old package before converting it |
 | A `notes/` or `knowledge/` pile | `docs/knowledge/{guides,cases,notes}/` | A note that cannot state its evidence stays a note; it does not become a guide |
 
 ### Source observations
@@ -108,7 +108,7 @@ The notes below are observations from 2026-11-14, for-the-record; they describe 
 1. Freeze additions to the old homes.
 2. Move `docs/` roles into the canonical tree, one role per commit. A general-norm page becomes a base pointer plus its deviations (`Base: {{NORM_SOURCE}}/...`), never a restated copy.
 3. Split `AGENTS.md` last, after the docs exist — the routing table cannot point at pages that are not there yet.
-4. Add the gate — including the overlay's Markdown stage when it ships one (`B-0011`) — and prove it green before touching `tasks/`.
+4. Add the gate — including the overlay's Markdown stage when it ships one (`B-0011`) — and prove it green before touching `work-packages/`.
 5. Migrate the backlog and status.
 6. Register adapters and legacy paths.
 7. Delete empty directories only after their last file has moved.

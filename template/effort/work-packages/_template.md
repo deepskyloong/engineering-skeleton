@@ -1,6 +1,6 @@
 # Work package template
 
-Copy this file into `tasks/<slug>/` and split it into four files at the headings. Delete the section that does not apply; never keep an empty heading.
+Copy this file into `work-packages/<slug>/` and split it into four files at the headings. Delete the section that does not apply; never keep an empty heading.
 
 ## spec.md
 
@@ -96,4 +96,4 @@ What this plan deliberately does not touch.
 ## What a future maintainer must know
 ```
 
-Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point. At closeout the package moves to `tasks/archive/<slug>/`; `summary.md` is the record a reader opens first.
+Keep `summary.md` under 3,000 non-whitespace characters. A summary that restates the diff is noise; a summary that records the surprise is the point. At closeout the package moves to `work-packages/archive/<slug>/`; `summary.md` is the record a reader opens first.
