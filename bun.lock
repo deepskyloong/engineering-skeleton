@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "engineering-skeleton",
+      "name": "repository-standard",
       "devDependencies": {
         "prettier": "^3.10.1",
         "prettier-plugin-markdown-compact-tables": "^1.0.0",

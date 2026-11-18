@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gate for the engineering-skeleton repository.
+"""Gate for the repository-standard repository.
 
 Checks what can be checked mechanically. Prose quality and cross-file
 semantic duplication are review criteria, not a gate.

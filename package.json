@@ -1,5 +1,5 @@
 {
-  "name": "engineering-skeleton",
+  "name": "repository-standard",
   "private": true,
   "scripts": {
     "fmt": "bun run fmt:code && bun run fmt:md",

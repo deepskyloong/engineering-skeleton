@@ -6,12 +6,12 @@
 - Status: open
 - Branch: `main`; re-check `git status`
 - Gate: last known `PASS — 90 markdown files` (2026-11-18); re-run `bun run gate`
-- Last done: W01 — record the decision
-- Phase: P1 — Living pages
-- Focus: W02 — rewrite the normative pages
-- Progress: 1 done / 5 todo / 0 blocked
-- Todo: W02–W06
-- Next: W02 — rewrite the normative pages
+- Last done: W03 — rewrite the template and the open records
+- Phase: P2 — Skill and package
+- Focus: W04 — rename the skill and its references
+- Progress: 3 done / 3 todo / 0 blocked
+- Todo: W04–W06
+- Next: W04 — rename the skill and its references
 - Blocked: none
 - Open decisions: none
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/risks), this file (state/ledger)
@@ -53,7 +53,7 @@ Rewrite `README.md`, `AGENTS.md`, `GLOSSARY.md`, `docs/spec/0001-foundations.md`
 - `docs/spec/0001-foundations.md` says "What the standard is"
 - `bun run gate` is green
 
-**Evidence**: pending
+**Evidence**: the twelve normative pages rewritten; `rg -n 'skeleton'` over them returns only `GLOSSARY.md`'s former-name line; gate `PASS — 90 markdown files`.
 
 #### W03 — Rewrite the template and the open records
 
@@ -70,7 +70,7 @@ Update `template/README.md`, `template/core/AGENTS.md` (`skeleton: vN` to `stand
 - the live package's path points at `E:\Projects\repository-standard`
 - `bun run gate` is green
 
-**Evidence**: pending
+**Evidence**: template header `standard: vN`; the open backlog items and the live rollout package use the new term; gate `PASS — 90 markdown files`.
 
 ### P2 — Skill and package
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit one repository against the engineering skeleton's roles and budgets.
+"""Audit one repository against the repository standard's roles and budgets.
 
 Read-only. Prints a markdown summary; writes JSON when asked.
 """
