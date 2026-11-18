@@ -141,7 +141,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two are named: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Four are named: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well; `scripts/check.py` does not scan `work-packages/`, so the audit report and the package's evidence pages get no volume, role, or link check — decide whether effort evidence has a budget and whether the checker scans a declared subset; `work-packages/README.md` says a package holds four files while `docs/norm/flow.md` closeout takes "any evidence the package still owns", so `audits/` and `tools/` have no category, no index link, and no closeout list — define the evidence category and its archive rule.
 
 **Done when**:
 

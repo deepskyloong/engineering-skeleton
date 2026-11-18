@@ -8,7 +8,7 @@ A report is effort-scoped evidence for the work package; a finding that changes 
 | --- | --- | --- |
 | oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); next role contracts (W03); knowledge pending; vocabulary `GLOSSARY.md` (ADR-0007) |
 
-Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s2-legacy-review` only; its merge base with `main` is `37781fa`, and `da698e4` (the S2 closeout) differs by 29 files / 2,075 insertions. The inventory and pointer counts describe that tree, not `main`; re-measure before a budget or pointer step. The report stays frozen.
+Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s2-legacy-review` only; its merge base with `main` is `37781fa`. `main` at `1b52545` differs by 35 files / +3,323 / −752. The inventory and pointer counts describe that tree, not `main`; re-measure before a budget or pointer step. The report stays frozen.
 
 ## oshi findings
 
