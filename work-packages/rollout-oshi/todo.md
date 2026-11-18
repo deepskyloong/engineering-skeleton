@@ -5,7 +5,7 @@
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`; fast-forwarded to `main` at `bd5b6f2` on 2026-11-18; re-check `git status`
-- Gate: `PASS — 97 markdown files` (2026-11-18)
+- Gate: `PASS — 98 markdown files` (2026-11-18)
 - Last done: W02 — move the charter role; oshi commit `28c8bc4`
 - Phase: P1 — role moves
 - Focus: W03 — contracts role
@@ -124,7 +124,7 @@ Re-measure every role page after the moves; the audit's 29 breaches were a 2026-
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, `docs/reviews/README.md`, and `docs/adrs/README.md` (finding 9); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6); the uncommitted `docs/reviews/README.md` (17). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`.
 
 **Done when**:
 
