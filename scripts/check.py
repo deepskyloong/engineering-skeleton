@@ -386,17 +386,6 @@ def check_generated(files: list[Path]) -> None:
                 fail(f"generated file lacks header: {rel(path)}")
 
 
-def check_version() -> None:
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    norm = (ROOT / "docs/norm/README.md").read_text(encoding="utf-8")
-    found = [re.search(r"standard v(\d+)", text) for text in (readme, norm)]
-    if not all(found):
-        fail("standard version missing: README.md and docs/norm/README.md must state 'standard vN'")
-        return
-    if found[0].group(1) != found[1].group(1):
-        fail(f"standard version mismatch: README v{found[0].group(1)} vs norm v{found[1].group(1)}")
-
-
 def check_required_files() -> None:
     for name in ("README.md", "AGENTS.md", "GLOSSARY.md", "docs/workflow.md"):
         if not (ROOT / name).exists():
@@ -431,7 +420,6 @@ def main() -> int:
     check_tables(files)
     check_backlog_status(files)
     check_generated(files)
-    check_version()
 
     if WARNINGS:
         print(f"WARN — {len(WARNINGS)} file(s) over the soft volume budget\n")
@@ -447,7 +435,7 @@ def main() -> int:
 
     print(
         f"PASS — {len(files)} markdown files, roles, links, budgets, entries, "
-        "naming, tables, statuses, version"
+        "naming, tables, statuses"
     )
     return 0
 

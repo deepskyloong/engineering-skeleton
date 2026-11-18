@@ -53,7 +53,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   ├── structure.md           # layout, placement rules, artifact tiers
 │   ├── conventions.md         # language, naming, citation, discriminations
 │   ├── committing.md          # commit norm pointer and deviations
-│   ├── governance.md          # versioning, change surface, ownership
+│   ├── governance.md          # provenance, change surface, ownership
 │   ├── adapters.md            # adapter registry (when a foreign suite exists)
 │   ├── contracts/             # durable contracts (optional)
 │   ├── operations/            # runbooks, status (optional)

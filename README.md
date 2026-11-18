@@ -16,7 +16,7 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/charter.md` | Scope, non-goals, hard constraints, success criteria. |
 | `docs/structure.md` | This repository's layout and the placement rules for new files. |
 | `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
-| `docs/governance.md` | Versioning, change surface, review, and how the standard evolves. |
+| `docs/governance.md` | Provenance, change surface, review, and how the standard evolves. |
 | `docs/workflow.md` | The three operating modes: forge, audit, migrate, and the migration mapping table. |
 | `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
@@ -42,4 +42,4 @@ For an agent: `AGENTS.md` → the routing table there → the one norm page the 
 
 ## Status
 
-`standard v3`. The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).
+The template and the skill are downstream: when a role or budget changes, all three change in the same commit. A machine-checkable checker for target repositories is deferred (`docs/backlog/B-0002`).

@@ -13,7 +13,7 @@ A research repository keeps records that are tracked, cited by later work, and n
 
 ## Candidate homes
 
-1. **Record role** — `docs/records/<topic>.md`, admitted when a tracked record is cited by another frozen record, never edited, with no volume budget and an exit only when nothing cites it. This needs an ADR and a standard version bump.
+1. **Record role** — `docs/records/<topic>.md`, admitted when a tracked record is cited by another frozen record, never edited, with no volume budget and an exit only when nothing cites it. This needs an ADR.
 2. **Registered legacy path** — keep `experiments/` and `docs/plans/` where they are, freeze them, and add one row per path to `docs/adapters.md`. No role change; the path stays visibly foreign to the docs tree.
 3. **Knowledge case per incident** — one case per experiment, with the protocol and result linked from the case, not copied into it. The case budget forces a summary, and the raw record stays a legacy path.
 

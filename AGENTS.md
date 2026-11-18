@@ -35,7 +35,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | Change where this repository's own files live | `docs/structure.md` |
 | Change language, naming, citation, or a discrimination | `docs/conventions.md` |
 | Change the commit message convention | `docs/norm/committing.md` (norm), `docs/committing.md` (deviations) |
-| Change versioning, ownership, or the review flow | `docs/governance.md` |
+| Change provenance, ownership, or the review flow | `docs/governance.md` |
 | Ask why a choice was made, or what was rejected | `docs/decisions/` |
 | Ask what is deliberately deferred | `docs/backlog/` |
 
@@ -53,7 +53,6 @@ It runs the Bun format check over code, the Prettier check over Markdown, the Ru
 | Change naming or citation rules | `docs/norm/rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.py` naming patterns |
 | Change the commit convention | `docs/norm/committing.md`, `docs/committing.md`, `template/core/docs/committing.md` |
 | Change the skill's modes or steps | `SKILL.md`, `docs/norm/roles.md` when a mode reads a new role |
-| Bump the standard version | `README.md` status, `docs/norm/README.md`, `scripts/check.py` compares both |
 | Change a generated path | `docs/norm/rules.md`, `scripts/check.py` `GENERATED_DIRS` |
 
 ## Anti-regrowth

@@ -1,8 +1,10 @@
 # Governance
 
-## Version model
+## Provenance
 
-There is one version, `standard v<N>`, recorded in `README.md` and in the header of `docs/norm/README.md`. The template and the skill carry no independent version: they are correct when they match the current norm. A change that alters a role, a budget, or a discrimination is a standard version bump; a wording fix is not.
+There is no version number. A repository records where it read the standard: the `Norm source:` line in `AGENTS.md`, and `Last read: <date>` on the pages it consumes by pointer (`docs/conventions.md`, ADR-0016). This repository's own history is `git log`; no counter sits in front of it.
+
+A change that alters a role, a budget, or a discrimination is still a deliberate change, with its ADR or its page edit. It is recorded where it lands, not in a number.
 
 ## Who decides
 
@@ -20,12 +22,12 @@ Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a 
 - Adversarial review is the default: a reviewer tries to break the spec, not to praise it. The output format is fixed — severity, section, problem, why, minimal fix — and the four severities are `blocker`, `major`, `minor`, `nit`.
 - A review that only restates the document is not a review. A review without a section reference cannot be adjudicated.
 - Findings are adjudicated in one of three ways: accepted, accepted with a different fix (the reason is recorded), or deferred with a trigger. Deferred findings become backlog items; they do not disappear into a conversation.
-- A `blocker` finding blocks a version bump. A `major` finding blocks the bump until it is fixed or deferred with a trigger.
+- A `blocker` finding blocks the change. A `major` finding blocks it until it is fixed or deferred with a trigger.
 
-## Ownership and release
+## Ownership and distribution
 
 - Single maintainer. Agents act on explicit instructions or on the invariants in `AGENTS.md`.
-- A release is a git tag `v<N>` plus a one-line note in `README.md`'s status section. No changelog file: `git log` is the changelog, and the ADRs hold the reasoning.
+- No changelog file: `git log` is the changelog, and the ADRs hold the reasoning.
 - The standard is never "published" in the sense of a package. It is consumed by copying; therefore backward compatibility is a courtesy, not a constraint. A breaking change states the migration step in the same commit.
 
 ## Retirement
