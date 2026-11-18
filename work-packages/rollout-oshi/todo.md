@@ -5,15 +5,15 @@
 - Updated: 2026-11-18
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
-- Gate: `PASS — 99 markdown files` (2026-11-18)
+- Gate: `PASS — 100 markdown files` (2026-11-18)
 - Last done: W08a — package evidence category; ADR-0021; commit `a2848c8`
 - Phase: P1 — package rule and role moves
-- Focus: W03 — move the contracts role
+- Focus: W03 — contracts review pending the maintainer
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — stop for review before it starts
+- Next: W03 — answer the review in `moves/w03-contract-map.md`
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 stops for review before it starts
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); W03 review pending — architecture decomposition and revision records
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
