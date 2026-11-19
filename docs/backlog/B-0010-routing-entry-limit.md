@@ -2,7 +2,7 @@
 
 ## Problem
 
-`docs/norm/rules.md` budgets the root `AGENTS.md` routing table at 12 rows. This repository's table has 13, and `bun run gate` passes. `scripts/check.py` has no `AGENTS.md` entry in `ENTRY_LIMITS`, and `table_entries()` assumes one table per file: adding the key alone would count the change-surface table and the command table as routing rows. A strong rule with no command is the exact defect P4 names.
+`docs/norm/rules.md` budgets the root `AGENTS.md` routing table at 12 rows. This repository's table has 13, and `bun run gate` passes. `scripts/check.ts` has no `AGENTS.md` entry in `ENTRY_LIMITS`, and `table_entries()` assumes one table per file: adding the key alone would count the change-surface table and the command table as routing rows. A strong rule with no command is the exact defect P4 names.
 
 ## Evidence
 
@@ -13,7 +13,7 @@
 
 ## Minimal fix
 
-Compress the six norm-page rows into one `docs/norm/` row; the norm index already lists its pages, and a routing table that enumerates a directory's files is a second index. That leaves 8 rows and room for one more role. Then add a section-scoped counter to `scripts/check.py` that finds the routing section and counts its rows, and set the limit to 12.
+Compress the six norm-page rows into one `docs/norm/` row; the norm index already lists its pages, and a routing table that enumerates a directory's files is a second index. That leaves 8 rows and room for one more role. Then add a section-scoped counter to `scripts/check.ts` that finds the routing section and counts its rows, and set the limit to 12.
 
 ## Revisit when
 

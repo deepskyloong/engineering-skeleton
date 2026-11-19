@@ -8,9 +8,8 @@
     "fmt:code:check": "bun fmt --no-script --check .",
     "fmt:md": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --write \"**/*.md\"",
     "fmt:md:check": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --check \"**/*.md\"",
-    "py:fmt": "uvx ruff format --check scripts",
-    "py:lint": "uvx ruff check scripts",
-    "gate": "bun run fmt:check && bun run py:fmt && bun run py:lint && python scripts/check.py"
+    "check": "bun scripts/check.ts",
+    "gate": "bun run fmt:check && bun run check"
   },
   "devDependencies": {
     "prettier": "^3.10.1",

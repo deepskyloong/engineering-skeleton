@@ -9,18 +9,18 @@ This table covers cross-role rules. The steps in `flow.md` and the migrate mode 
 | # | Rule | Strength | Enforcement |
 | --- | --- | --- | --- |
 | R1 | One fact, one home | weak | Review: the same rule stated twice is a finding. Semantic duplication cannot be grepped reliably. |
-| R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.py` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
+| R2 | Index autonomy: no totals in indexes or structure pages | strong | `scripts/check.ts` scans the index pages and both `structure.md` pages for count-plus-noun patterns |
 | R3 | Change surface: norm → template → skill in the same or next commit; a page that only points at the norm source needs no edit | weak | Review against the `AGENTS.md` table |
-| R4a | Volume budgets are measured in non-whitespace characters and carry a soft and a hard line; soft is a review signal, hard fails the gate | strong | `scripts/check.py` measures every budgeted file, warns above soft and fails above hard |
-| R4b | Entry budgets are measured in table rows | strong | `scripts/check.py` counts rows in the index tables that carry a limit |
-| R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.py` role-path map; an unmapped path fails |
-| R6 | No empty directories | strong | `scripts/check.py` fails on a directory with no files |
-| R7 | Files under a generated path carry the generated header | strong | `scripts/check.py` scans `dist/` and any file whose first line self-declares generated |
-| R8 | English for repository-maintained markdown | strong | `scripts/check.py` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
+| R4a | Volume budgets are measured in non-whitespace characters and carry a soft and a hard line; soft is a review signal, hard fails the gate | strong | `scripts/check.ts` measures every budgeted file, warns above soft and fails above hard |
+| R4b | Entry budgets are measured in table rows | strong | `scripts/check.ts` counts rows in the index tables that carry a limit |
+| R5 | Every `docs/` page maps to a declared role, including optional ones | strong | `scripts/check.ts` role-path map; an unmapped path fails |
+| R6 | No empty directories | strong | `scripts/check.ts` fails on a directory with no files |
+| R7 | Files under a generated path carry the generated header | strong | `scripts/check.ts` scans `dist/` and any file whose first line self-declares generated |
+| R8 | English for repository-maintained markdown | strong | `scripts/check.ts` scans markdown for CJK, including full-width punctuation. Commit messages, comments, and test names are review criteria |
 | R9 | No history in living documents | weak | Review: `status.md` is rewritten in place; a backlog row changes status instead of disappearing; a closed work package moves from the open table to the archive index |
 | R10 | Record method, not measurement | weak | Review: a count, duration, coverage number, resolved version, benchmark, or size that can drift is written as the command that produces it, or dated `for-the-record` |
-| R11 | File naming follows the convention | strong | `scripts/check.py` naming check, with explicit patterns for ADRs and backlog names |
-| R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.py` table check: cell padding and cell count per row. Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
+| R11 | File naming follows the convention | strong | `scripts/check.ts` naming check, with explicit patterns for ADRs and backlog names |
+| R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.ts` table check: cell padding and cell count per row. Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
 | R13 | Admission is a content test: a role takes only the jobs its admission names. Durability is not admission, and a directory name is not a role. A source set that serves more than one job splits before any role move | weak | Review: a role holding a job its admission does not cover is a finding; the migration map carries one row per target page with its job and admission clause |
 
 ## Naming and citation
@@ -31,7 +31,7 @@ This table covers cross-role rules. The steps in `flow.md` and the migrate mode 
 - Cite a file plus a section name (`docs/norm/roles.md`, "Five discriminations"). Do not cite section numbers.
 - Section headings are unnumbered by default. Number them only when the number is part of the artifact a consumer cites: a legal clause, a fixed contract section, or a numbered procedure. A number added for visual order becomes wrong when the section moves.
 
-Naming and the prose rule are gated by `scripts/check.py`; the other bullets are review criteria.
+Naming and the prose rule are gated by `scripts/check.ts`; the other bullets are review criteria.
 
 ## Budget units
 

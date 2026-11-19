@@ -15,7 +15,7 @@ A change that alters a role, a budget, or a discrimination is still a deliberate
 
 ## Change surface
 
-Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a change that leaves a downstream file stale is incomplete, even if the changed file is correct. The three downstream files are `docs/norm/`, `template/`, and the skill; a fourth is `scripts/check.py` when the change alters what can be checked.
+Defined as a table in `AGENTS.md`. It is repeated here only in its principle: a change that leaves a downstream file stale is incomplete, even if the changed file is correct. The three downstream files are `docs/norm/`, `template/`, and the skill; a fourth is `scripts/check.ts` when the change alters what can be checked.
 
 ## Review
 

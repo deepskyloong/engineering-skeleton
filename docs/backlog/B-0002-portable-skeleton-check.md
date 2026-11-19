@@ -2,7 +2,7 @@
 
 ## Problem
 
-`scripts/check.py` checks this repository: role paths, link resolution, volume and entry budgets, naming, and generated paths. It does not check placeholders, and it is not copied into a target repository. A generated repository gets the rules but not the checker, so its code gate is real and its documentation gate is not. P4 says a rule without enforcement is a slogan; the template currently exports slogans.
+`scripts/check.ts` checks this repository: role paths, link resolution, volume and entry budgets, naming, and generated paths. It does not check placeholders, and it is not copied into a target repository. A generated repository gets the rules but not the checker, so its code gate is real and its documentation gate is not. P4 says a rule without enforcement is a slogan; the template currently exports slogans.
 
 ## Evidence
 

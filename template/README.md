@@ -46,7 +46,7 @@ These are grammar, not values. Replacing them would break the rule that uses the
 | `<overlay files>` | Tree placeholder for the chosen overlay |
 | `<any constraint that would make a reviewer say "you cannot do that">` | Charter prompt |
 
-A value left unreplaced is a failure; a notation left in place is correct. `{{NORM_SOURCE}}` is the one token a generated repository keeps and resolves from its `Norm source:` line. `check.py` does not test this distinction; grep for `<` and `{{` in the copied repository and classify each hit against the two tables.
+A value left unreplaced is a failure; a notation left in place is correct. `{{NORM_SOURCE}}` is the one token a generated repository keeps and resolves from its `Norm source:` line. `scripts/check.ts` does not test this distinction; grep for `<` and `{{` in the copied repository and classify each hit against the two tables.
 
 ## What not to copy
 

@@ -14,7 +14,7 @@ ADR-0012 buys the compact table shape with this repository's first runtime depen
 
 ## Minimal fix
 
-Replace `fmt:md` and `fmt:md:check` with the `bun fmt` invocation — it already claims Markdown — remove `prettier` and the plugin from `devDependencies`, and drop `**/*.md` from both ignore lists. Keep `scripts/check.py`'s table check: it guards against a formatter that silently skips a table it cannot parse, and that risk does not leave with the plugin.
+Replace `fmt:md` and `fmt:md:check` with the `bun fmt` invocation — it already claims Markdown — remove `prettier` and the plugin from `devDependencies`, and drop `**/*.md` from both ignore lists. Keep `scripts/check.ts`'s table check: it guards against a formatter that silently skips a table it cannot parse, and that risk does not leave with the plugin.
 
 ## Revisit when
 
