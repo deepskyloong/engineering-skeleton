@@ -5,14 +5,14 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W04 applied 2026-11-19 — C1 `e4b96c8` (guides), C2 `55cea2d` (cases); 5 pages at `docs/knowledge/`, 5 tombstones, `docs/notes/` registered as a legacy path frozen against new pages; prose 258 files clean, ruff green. Before it: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit. Follow-ups: `739af32` unwrapped the prose in 27 pages; `2ea92a9` added `scripts/check_prose.py` as the fifth gate stage (calls the `md-tools` app, needs `MD_TOOLS_PROJECT`); `319719c` extended the unwrap to every markdown file including suite tracks and `df5e4ba` widened the stage to all 250 files
+- Last done: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → `knowledge/guides/`), `adbebc5` (identity choice → `ADR-0013`, old path tombstoned); details and the duplicate trace in `maps/w04b-role-map.md`. Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`. Follow-ups — the prose unwrap, the three `md-tools` defects, and the gate's fifth stage — are that map's "Prose and gate follow-ups"
 - Phase: P1 — package rule and role moves
-- Focus: W04b — route the `docs/notes/` residue by job
-- Progress: 5 done / 6 todo / 0 blocked
-- Todo: W04b–W09
-- Next: W04b — the six residue pages take their roles; `docs/notes/` retires
+- Focus: W04b-ii — the explanation-role ruling, then the five remaining pages
+- Progress: 6 done / 6 todo / 0 blocked
+- Todo: W04b-ii, W05–W09
+- Next: the maintainer's ruling on whether a zero-background explanation page has a role; W04b-ii cannot route without it
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; **W04 role pass settled 2026-11-19 (A, on recommendation)**: `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages route through W04b, and the zero-background explanation job has no admitted role (W08 evidence)
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; **W04b-i settled 2026-11-19**: the method and the decision had homes, `data-integrity.md` had none to gain (its claims are already stated verbatim in `components-decision.md` §4.13/§4.14, FM-09, FM-16 and `data-layers.md`), so it is parked rather than merged; **open**: does the explanation job hold a role, and do the five pages dissolve or stay?
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -69,7 +69,7 @@ Define the work package container in the standard: four ledger files by closeout
 - `check.py` passes on the three archived packages and `rollout-oshi` without a false positive
 - the standard gate is green
 
-**Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; commit `a2848c8`; `bun run gate` — `PASS — 99 markdown files`; package check covers the three archived packages and `rollout-oshi`. `rg` survivors of the old count phrase: ADR-0009 (two lines), ADR-0017, ADR-0020, the archived `rollout-five-repositories` plan and todo, and the frozen `audits/oshi.md`; each is a frozen record, and the criterion line carries the search string itself.
+**Evidence**: decision report 2026-11-18 (field 6 `accepted`, route `on recommendation`); ADR-0021; `a2848c8`; gate `PASS — 99 markdown files`; the package check covers the three archived packages and this one; the old-count-phrase survivors are all frozen records.
 
 #### W03 — Move the four role destinations
 
@@ -86,7 +86,7 @@ Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 file
 - the old paths are tombstones or registered legacy paths
 - oshi's gate is green
 
-**Evidence**: oshi `6d6033a` (contracts, 26 files), `b7efaec` (architecture, 23 files), `5bfb3de` (operations, 56 files), `5f9df75` (conventions and the shelf retirement, 27 files); `uv run pytest -q -n auto` 658 passed / 1 skipped, `ruff check`, `ruff format --check`, `ty check src/oshi`, `cd web && bun run validate` 86 tests, green at every commit. Measured after C4: 20 contracts files (max `schema.md` 12,261), 7 architecture files (max `components-decision.md` 10,883), 4 operations pages (max `ui-checks.md` 8,852), `conventions.md` 10,959. Pointer proof: `git grep -n 'docs/designs/\|docs/specs/'` survivors are the two adapter legacy rows, frozen citers, and new pages' `Source` headers. Deviations and the five corrections to the accepted map: `maps/w03-role-map.md` "Applied results". Prose: `739af32` (docs, 2,707 -> 2,300 lines), `319719c` (whole repository, 10,076 -> 8,099 lines; both verified whitespace-only), rule in `docs/conventions.md` §8 item 10 with the `docs/adapters.md` carve-out, gate stages `2ea92a9` and `df5e4ba`. The gate found a blind spot in the tool itself: a block never ended at a structural line, so a paragraph above an unspaced heading was neither joined nor reported; `md-tools` `f03dc62` splits the block there and `4507b6a` unwrapped the 10 blocks it then reported in 4 pages. Then a reader caught what the tool still got wrong: two or more consecutive `Label: value` lines are fields, and joining them yields `Type: research Status: resolved Blocked by: None`, which `verify` cannot see because the join is whitespace-only; `319719c` had done exactly that on three embedding-coverage tickets. `md-tools` `36fad3e` treats such a run as one verbatim block (threshold two, one indent), and `6112c2e` restored the original breaks. The last tool defect was in its own reporting: `md-reflow --check` exited 0 with or without findings, so a shell gate passed and both consumers had to parse JSON to learn anything; `da678b6` gives one three-code contract in every mode (0 nothing to report, 1 findings or a failed verification, 2 the run could not cover every file), and `12739f3` plus the `i-skill-audit` format check adapt in the same pass, because each read a non-zero code as "tool unavailable". The standard then enforced its own rule: 6 of its files carried 63 blocks, of which 40 were ledger work-item fields the tool misread as prose (`739cd70` teaches it the bold label) and 23 were glossary entries whose three lines had always rendered as one paragraph (`6ee600f`); `ffcbade` puts the stage in `scripts/check.py` so `bun run gate` keeps its five-stage contract, and the template's half is deferred in `B-0011` with the installability trigger that would unblock it. `MD_TOOLS_PROJECT` was not in the profile; it is now set there to `E:\Projects\python-toolkit`, so the gate no longer needs a per-shell export.
+**Evidence**: commits, measured volumes, deviations and the five corrections to the accepted map in `maps/w03-role-map.md` "Applied results", with the per-commit gate results. The prose unwrap, the three `md-tools` defects, and the gate's fifth stage are that map's "Prose and gate follow-ups". Pointer proof: `git grep -n 'docs/designs/\|docs/specs/'` survivors are the two adapter legacy rows, the frozen citers, and the new pages' `Source` headers.
 
 #### W04 — Move the knowledge role
 
@@ -102,19 +102,34 @@ Split `docs/notes/` (11 files, 90,429) into `docs/knowledge/guides/` for methods
 - no living pointer resolves to the five moved paths; every survivor is explained
 - oshi's gate is green
 
-**Evidence**: oshi `e4b96c8` (guides: 3 pages, 2 indexes, `docs/knowledge/README.md`), `55cea2d` (cases: 2 pages, 1 index); five tombstones, each three content lines and ≤129 non-whitespace; `docs/notes/` registered in `docs/adapters.md` as a legacy path with its Freeze sentence; measured after C2: `pitfalls.md` 15,283 (soft), `python-env-convention.md` 7,691, `embedding-fundamentals.md` 7,370, `gt-error-audit.md` 4,329, `prototype-curve-reading.md` 5,762; pointer proof: `git grep` survivors are `docs/plans/m5-plan.md`, `m8-plan.md`, `experiments/m1` (report, README, `build_kit.py`), `experiments/m3/results/g2b-apply-probe.json`, `experiments/m3b` (README, `build_kit.py`), `experiments/m5/results/coldstart.md`, and the closed `tasks/manual-character-registration` package — frozen or citing only the live shelf; prose 258 files with 0 wrapped blocks, `ruff check` and `ruff format --check` green; full report in `maps/w04-role-map.md`. Acceptance amended 2026-11-19 (A): the split is guides and cases, not guides and notes, and six pages stay as a registered legacy path.
+**Evidence**: `maps/w04-role-map.md` "Applied results" — commits `e4b96c8` and `55cea2d`, the measured volumes, the repointed pages, the `docs/notes/` legacy row, the pointer proof, and the gate. Acceptance amended 2026-11-19 (A): the split is guides and cases, and six pages stay as a registered legacy path.
 
-#### W04b — Route the six `docs/notes/` residue pages
+#### W04b-i — Extract the admitted jobs from the residue
 
-**Status**: todo
+**Status**: done
 **Depends on**: W04
 
-Each page takes the role its job admits, and `docs/notes/` retires when the last one leaves. `maps/w04-role-map.md` fixes the target per page: `knowledge.md` splits into a guide, an ADR, `GLOSSARY.md` entries, and a dropped history table; `data-integrity.md` and `recognition-pipeline.md` merge the load-bearing why into architecture and drop what architecture already states; `annotation-eval-terms.md` becomes glossary entries plus an operations pointer; `recall-vs-coverage.md` becomes one glossary entry per term; `classifier-vs-prototype.md` becomes `ADR-0013`. A page that duplicates a contract or architecture page without carrying a load-bearing why is retired with a tombstone, not routed. The freeze holds while this runs: no new page enters the shelf.
+Two of the six pages hold a job that is admitted and homeless: `recognition-pipeline.md` §3's tuning method (a guide) and `classifier-vs-prototype.md`'s choice with a rejected alternative (an ADR). The other four hold no job a role takes, so they wait for the ruling in W04b-ii. A page that duplicates a contract or architecture page is retired with a tombstone, not relabelled to fit; the freeze holds while this runs.
 
 **Done when**:
 
-- every page has a recorded disposition — move, merge, or drop plus tombstone
-- the architecture, vocabulary, ADR and operations pages it lands in pass their admissions and hard lines
+- the method and the decision each have one home, and no page states the same rule twice
+- the retired path is a tombstone and its frozen citers resolve
+- oshi's gate is green
+
+**Evidence**: oshi `a9300cc` (`knowledge/guides/threshold-binding.md`, 1,292; `recognition-pipeline.md` §3 becomes a pointer), `adbebc5` (`decisions/ADR-0013-no-in-project-classifier.md`, 4,047; `classifier-vs-prototype.md` → tombstone, 132); `decisions/README.md` index row and `guides/README.md` guide row; prose 260 files with 0 wrapped blocks, ruff green, every relative link under `docs/` resolves; `git grep` over the retired path returns three frozen records only. Reading `data-integrity.md` page by page found every claim already stated elsewhere, so there was nothing to merge: the trace and the per-page pass are in `maps/w04b-role-map.md`.
+
+#### W04b-ii — Decide whether explanation is a role, then route the five pages
+
+**Status**: todo
+**Depends on**: W04b-i
+
+One ruling opens this unit: does a page whose job is to teach a system to a zero-background reader hold a role, or do those pages dissolve into architecture, `GLOSSARY.md`, `docs/operations/`, with a tombstone where nothing survives? After the ruling, route each of the five: `knowledge.md` (§3 → a guide, §1 → an ADR, §2 → `GLOSSARY.md`, §4 → the guides index, §5 drops), `data-integrity.md`, `recognition-pipeline.md`, `annotation-eval-terms.md` (15,338, over soft), `recall-vs-coverage.md`. `maps/w04b-role-map.md` carries the duplicate trace, the volumes, and the argument for each recommendation.
+
+**Done when**:
+
+- the ruling is recorded, and every page has a disposition that follows from it
+- the pages it lands in pass their admissions and hard lines
 - `docs/notes/` holds no live page; the adapter row retires when the last tombstone does
 - oshi's gate is green
 
@@ -174,7 +189,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 adds the explanation-home question: a zero-background system explanation has no admitted role, three residue pages carry one, and `AGENTS.md` norm 3 used to send every recurring concept to `docs/notes/`; decide whether a role is admitted (with its template, checker pattern, and skill step) or the pages are absorbed into architecture and vocabulary, then let W04b route them.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 adds the explanation-home question: a zero-background system explanation has no admitted role, five residue pages carry that register, and `AGENTS.md` norm 3 used to send every recurring concept to `docs/notes/`; decide whether a role is admitted (with its template, checker pattern, and skill step) or the pages are absorbed into architecture and vocabulary, then let W04b-ii route them.
 
 **Done when**:
 
