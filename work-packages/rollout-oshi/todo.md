@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W06a closed — `docs/status.md` gives back the instruction layer, the contract and the done-list it was holding (oshi `13c060f` → `3b66d71`); the page is 3,840 non-whitespace against 5,000 raw, and the budget unit is now stated in §8.6
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 277 files, 0 wrapped)
+- Last done: W07b closed — `docs/conventions.md` is a base pointer plus three deviations and forwarding sections, 14,441 → 12,056 non-whitespace (oshi `c34f501` → `edcfe25`); W07a's seven pointer and index repairs preceded it (`166cab9` → `f8f1f70`)
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 278 files, 0 wrapped)
 - Phase: P2 — page repairs and audit closeout
 - Focus: W06 — re-measure every role page, then split by topic
-- Progress: 12 done / 4 todo / 0 blocked
+- Progress: 14 done / 4 todo / 0 blocked
 - Todo: W06–W09
-- Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep, now that `docs/conventions.md` sits at 14,441 of 16,000
+- Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
@@ -236,7 +236,7 @@ One decision rides with this item: the budget unit. `docs/conventions.md` §8.6 
 **Status**: todo
 **Depends on**: W05c; W06a for the status row
 
-Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 2026-11-16 snapshot, and the C4 list was a snapshot of a smaller tree. Measured 2026-11-19 at oshi `9c27e08`, three pages are over their hard line and none was in W06's scope: `docs/reviews/README.md` (13,323 / 12,000 index line), `docs/backlog/B-13-degenerate-crops.md` (13,875 / 8,000 item line), and `docs/development-workflows.md` (16,611 / 16,000), which W05b removes rather than this split. Over soft: `contracts/schema.md` (12,273), `contracts/ui-label.md` (12,251), `contracts/ui-audit.md` (12,185), `architecture/components-decision.md` (10,911), `contracts/data-rules-ingest.md` (10,009), `docs/conventions.md` (14,092 after the language fold in C3, against a 16,000 hard line), `knowledge/guides/pitfalls.md` (15,341), `knowledge/explainers/reading-the-numbers.md` (15,023), `knowledge/explainers/recognition-pipeline.md` (11,614), and the storefront `README.md` (10,564). Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md`, `docs/backlog/README.md`, `docs/README.md`), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
+Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 2026-11-16 snapshot, and the C4 list was a snapshot of a smaller tree. Measured 2026-11-19 at oshi `9c27e08`, three pages are over their hard line and none was in W06's scope: `docs/reviews/README.md` (13,323 / 12,000 index line), `docs/backlog/B-13-degenerate-crops.md` (13,875 / 8,000 item line), and `docs/development-workflows.md` (16,611 / 16,000), which W05b removes rather than this split. Over soft: `contracts/schema.md` (12,273), `contracts/ui-label.md` (12,251), `contracts/ui-audit.md` (12,185), `architecture/components-decision.md` (10,911), `contracts/data-rules-ingest.md` (10,009), `docs/conventions.md` (12,056 after W07b's conversion, from 14,441; over the 10,000 soft line, clear of the 16,000 hard one), `knowledge/guides/pitfalls.md` (15,341), `knowledge/explainers/reading-the-numbers.md` (15,023), `knowledge/explainers/recognition-pipeline.md` (11,614), and the storefront `README.md` (10,564). Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md`, `docs/backlog/README.md`, `docs/README.md`), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
 
 **Done when**:
 
@@ -251,7 +251,7 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; what they leave behind stays in this item's finding list.
 
 **Done when**:
 
@@ -260,6 +260,37 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 - oshi's gate is green
 
 **Evidence**: pending
+
+#### W07a — Repair the pointer and index residue
+
+**Status**: done
+**Depends on**: W05c
+
+Seven text-only commits for the residue that needed no ruling: the docs index stops offering `designs/`, `plans/`, `specs/` and `notes/` as landing points, states the three missing top-level pages and the README-less tombstone shelves; `docs/plans/README.md` sends specifications to contracts and models to architecture; `docs/conventions.md` §8.1 and §8.5 name explainers and toolchain; `docs/committing.md`'s scope vocabulary grows to 26 entries; `docs/status.md`'s local-command count matches the five it runs; two knowledge READMEs resolve their `Source` rows through the norm-source token; `docs/adapters.md` records three designs tombstones rather than four and whitelists the notes README.
+
+**Done when**:
+
+- every changed page's relative links and cited paths resolve
+- the oshi text-only gate is green
+
+**Evidence**: oshi `166cab9` (docs index and `structure.md`), `99eb712` (plans governance), `b924e30` (conventions §8.1/§8.5), `74f7c0f` (commit scopes), `5a82c5c` (status count), `764a2c7` (norm-source paths), `f8f1f70` (adapters counts). Each: ruff check and format green, prose 277 files with 0 wrapped blocks, every relative link verified with `Test-Path`.
+
+#### W07b — Convert `docs/conventions.md` to a base pointer
+
+**Status**: done
+**Depends on**: W07a
+
+The last role page that restated the norm while pointing at it: no `Base` row, no last-read date, and the citation, prose, padding and record rules written out beside the repository's own. Seven commits. The `{{NORM_SOURCE}}` token gets the one definition it lacked — three pages cited it and `AGENTS.md` only spelled the path out inline. §1 and §3 become one guide, because their two sections are one method's two moments: what is frozen before measurement, and how a definition that turns out wrong is traced and ruled rather than edited in place. §2.1's mechanically enforced half moves to the contracts page as §4.8, beside the holdout exclusion it belongs with, because a consumer could cite a dev number without ever meeting the rule that forbids it. The one skipped review round is recorded where a reader looks for it. The page becomes `Base`, `Last read` and three deviations — the language matrix, the status cap and its unit, numbered citations — with every other section a forwarding stub. Five live pointers that the conversion turned circular are repointed.
+
+Numbered headings and titles survive on purpose: roughly forty citations in frozen records and live pages name `§N`, and frozen records are never rewritten, so deleting a section would have broken them. §3 joined §1 in the guide rather than becoming a `docs/workflow.md` deviation — one method, and workflow's three deviation rows are package-layout consequences rather than lifecycle rules. What the page still carries is local to this repository: the language matrix, the directory-README procedure, ten document-discipline items, the labor rules and the write boundary's one-command checks.
+
+**Done when**:
+
+- the page states its base, its last-read date and its deviations, and restates no norm clause
+- every rule that moved has one home, and each §N citation still resolves
+- the oshi text-only gate is green
+
+**Evidence**: oshi `c34f501` (norm-source token defined), `4ceef45` (`knowledge/guides/locked-definitions.md` and its index row), `d563883` (`data-rules-decisions.md` §4.8), `5e3938f` (reviews governance records the skipped round), `1a85f34` (the conversion), `22f84a1` (five circular pointers), `edcfe25` (§1 and §3 leave their text to the guide). Page 14,441 → 12,056 non-whitespace: over the 10,000 soft line, clear of the 16,000 hard one, and the remainder is W06's to split. Each commit: ruff check and format green, prose 277 → 278 files with 0 wrapped blocks, every relative link and cited path resolving. Known residue: three `.scratch/embedding-coverage` tickets cite `docs/conventions.md:11-13`, a line range that now lands in the deviations table — the §1 heading resolves the intent, the line numbers cannot.
 
 ### P3 — Closeout
 
