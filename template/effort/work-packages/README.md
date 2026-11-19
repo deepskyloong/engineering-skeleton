@@ -9,6 +9,7 @@ One directory per effort that needs a ledger: `work-packages/<slug>/`, holding f
 - Evidence the effort produces lives in a named directory beside the ledger — a report, an inventory, or a reproduction script. It stays in git, `summary.md` names it, and closeout archives it with the package. Never create an empty evidence directory.
 - The first thing in `board.md` is a `Current state` block; see `docs/workflow.md` for its fields and the same-commit update rule. It is a snapshot, not a log.
 - Work items are one file each under `items/<ID>.md`, one row each in the board's index. Each file carries dependencies, a prose description, done-when criteria, and evidence; status lives in the board, never in the file. `done` requires evidence, and the evidence field cites artifacts and what each proves rather than restating them; `plan.md` carries the phase breakdown.
+- IDs are identifiers, not a sequence: `plan.md`'s row order is the order, and a phase may hold numbers issued later. A late discovery unrelated to an open item takes the next free `W<n>` and joins the phase where it was found; one that decomposes an open item takes the next letter under it, and the parent becomes a container that closes only when its children do.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
 - On closeout: write `summary.md`, take the four ledger files, `items/`, and the evidence directories it names, move the package to `work-packages/archive/<slug>/`, and move the row to the archive index.

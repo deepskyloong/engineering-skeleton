@@ -18,7 +18,7 @@
 | P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07g, W10 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08, W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
-The table names every ID and each phase's exit condition; the item detail lives in `items/<ID>.md`. IDs are identifiers, not a sequence: row order is the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it; that parent then carries no work of its own, stays `doing` until every child closes, and its done-when names the set.
+The table names every ID and each phase's exit condition; the item detail lives in `items/<ID>.md`. Numbering and late-discovery placement follow `docs/norm/flow.md` "Work items"; this package applied the letter rule when W07 became a container over W07a–W07g.
 
 ## Review discipline
 

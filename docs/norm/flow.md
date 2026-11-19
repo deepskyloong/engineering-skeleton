@@ -57,6 +57,8 @@ The package's work is carried by work items. Each has a stable `W<n>` ID, one fi
 
 `plan.md` groups the work items into phases, names the IDs in each phase, and states each phase's exit condition; it does not restate the item detail. `board.md` carries the current state and the index: one row per item, its status, and a link to `items/<ID>.md`, grouped under the plan's phase headings. It is the only place a status lives; an item file never states one.
 
+IDs are identifiers, not a sequence: `plan.md`'s row order and the board's index carry the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it — `W07g` under `W07` — and the parent becomes a container: the work it still carried moves into its children, it carries none of its own, stays `doing` until the last child closes, and its done-when names the child set. A closed item is not reopened; a later discovery gets a new ID.
+
 ## Runtime — the three permitted compromises
 
 An effort may deviate from its plan in exactly three ways, each recorded in `summary.md`:
