@@ -5,15 +5,15 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W07e — twelve directory READMEs point at the norm's role rows, and the three that had drifted now match the rows they cite (`c430dad`, `f02544c`, `9edbea9`, `3ecb1de`)
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 277 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
+- Last done: W07f — the forwarding stubs are gone and every moved path is an adapter row (ADR-0028; `0291824`, oshi `e040e5f`, `dd2afd5`)
+- Gate: standard `bun run gate` PASS 2026-11-19 (112 markdown files, 62 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 246 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
 - Phase: P2 — page repairs and audit closeout
 - Focus: W06 — re-measure every role page, then split by topic
-- Progress: 16 done / 4 todo / 1 doing
-- Todo: W06, W07d, W08, W09; W07 in progress
+- Progress: 18 done / 3 todo / 1 doing
+- Todo: W06, W08, W09; W07 in progress
 - Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
 - Blocked: none
-- Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
+- Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027); R4 settled, the tombstone role retired (`0291824`, ADR-0028)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -251,7 +251,7 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: doing
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. This item is the umbrella over the findings that still need a repair or a ruling; the ruling-free batches became W07a–W07e and all five are closed. What remains under it: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `archived/` as a fifth deletion exception with its 20 citations (6); `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission does not name it; `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Finding 17 is resolved (`fb6701e`); finding 11 was W06a's; finding 1 stays with `B-0007`; W07d decides the retired-path citations. A finding that needs a rule in the standard goes to W08 instead of being fixed locally.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. This item is the umbrella over the findings that still need a repair or a ruling; the ruling-free batches became W07a–W07e, and W07f took the stub question to the standard — all six are closed. What remains under it: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `archived/` as a fifth deletion exception with its 20 citations (6); `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission does not name it; `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Finding 17 is resolved (`fb6701e`); finding 11 was W06a's; finding 1 stays with `B-0007`. A finding that needs a rule in the standard goes to W08 instead of being fixed locally.
 
 **Done when**:
 
@@ -311,7 +311,7 @@ The audit found the rest of §8 consistent — two declared deviations, one cita
 
 #### W07d — Decide the retired-path citations in open backlog items and ADRs
 
-**Status**: todo
+**Status**: done
 **Depends on**: W07c
 
 Seven citations survive in five open backlog items (`B-2`, `B-3`, `B-4`, `B-12`, `B-22`) and `ADR-0010`: `docs/designs/architecture-v2.md`, `docs/designs/data-model.md`, `docs/designs/per-work-db.md`, `docs/specs/backup-spec.md`, `docs/specs/label-ui-spec.md`, and `docs/notes/*`. Nothing is broken — the tombstones resolve every link — and that is exactly why the item stalled: what has to be decided is whether a citation is a measurement or a present-tense claim. `ADR-0010`'s "The current topology and lifecycle rules are in `docs/designs/per-work-db.md`" asserts where the rule lives today and must move to `docs/architecture/db-topology.md`; `B-3`'s "re-mapped 2026-10-29" reports what a page said on a date, and rewriting it would alter the record. The working rule this item proposes: a citation that asserts where a rule lives now is repointed, a citation that reports a dated state keeps its path. The ruling it needs is whether that is the right line, and whether an open backlog item — open, but frozen at filing — may be edited at all under ADR-0015's "never renumbered" clause.
@@ -322,7 +322,7 @@ Seven citations survive in five open backlog items (`B-2`, `B-3`, `B-4`, `B-12`,
 - every surviving retired-path citation is classified under it, and the repointed ones are changed
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: ADR-0028 writes the split into its frozen-record clause — a present-tense pointer to a rule's home is repointed, a dated report keeps its path — and that clause is what settles "an open item may be edited": yes, under that split only. Classification of the seven: `ADR-0010` repointed to `docs/architecture/db-topology.md` and `docs/contracts/backup.md`; `B-12`'s rule conflict repointed to `docs/contracts/backup.md` §1; `B-2` and `B-4` blast radii, `B-12`'s 20 and 25 lines, and `B-3`'s dated re-map kept, because each reports what a survey found on a date; `B-22` kept, because the item is delivered and therefore frozen. Two pointers of the same class outside the list — ADR-0015's definitions and mutation scope — were repointed with them. oshi `dd2afd5`; text gate green, every relative link resolving. The wider question this item exposed (why the tombstones exist at all) was handed to W07f and answered there by ADR-0028.
 
 #### W07e — Directory READMEs point at the norm instead of restating it
 
@@ -341,16 +341,32 @@ Two pages needed repair rather than trimming: `docs/operations/README.md` gained
 - no directory README contradicts a norm role row (statuses, naming widths)
 - oshi's gate is green
 
-**Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`), `3ecb1de` (the stub inventory: 30 tombstones carry 217 citations, one uncited and deleted, 29 load-bearing). Text gate green: ruff check and format, prose 278 → 277 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard. A request to consolidate or delete the surviving stubs was measured and declined: it is ADR-0011's two rejected options, and the citations that keep them alive sit in frozen records and `Source` provenance rows.
+**Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`), `3ecb1de` (the stub inventory: 30 tombstones carry 217 citations, one uncited and deleted, 29 load-bearing). Text gate green: ruff check and format, prose 278 → 277 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard. A request to consolidate or delete the surviving stubs was measured and declined: it is ADR-0011's two rejected options, and the citations that keep them alive sit in frozen records and `Source` provenance rows. Superseded 2026-11-19: the maintainer asked again, this time to change the standard rather than to weigh the options inside it, and W07f granted the deletion (ADR-0028). The measurement stays accurate and became ADR-0028's cost figure, corrected to 31 files once `docs/backlog.md`'s `(moved)` variant was counted in.
 
 ### P3 — Closeout
+
+#### W07f — Retire the forwarding stubs and register the moved paths
+
+**Status**: done
+**Depends on**: W07d
+
+The maintainer asked twice to delete the residual redirect files. The first answer measured them and declined, on ADR-0011's authority; the second asked for a standard change instead, and the ruling was "directories over one saved click". ADR-0028 retires the Tombstone role: a moved path is one `docs/adapters.md` row, the old path keeps no file, and a citation resolves three ways — the registry row, the successor's `Source` row, `git log --follow`. Oshi applies it: 31 files deleted across five directories, 12 `moved path` rows added, the index and the four pages that described the shelves rewritten, and the present-tense pointers repointed while dated reports keep their paths.
+
+**Done when**:
+
+- the standard states the rule, and the checker treats a title ending `— moved` as a finding
+- no file exists at a moved path, and every retired path is an adapter row with a retirement condition
+- every live page's relative links resolve
+- both gates are green
+
+**Evidence**: standard `0291824` — ADR-0028, ADR-0011 superseded, `norm/roles.md` (Tombstone row and discrimination gone, Adapter admission extended), `norm/rules.md` (budget row and exception 4 gone), `norm/flow.md`, `docs/workflow.md`, `GLOSSARY.md`, `scripts/docs-model.ts` (`MOVED_MARKER`), `scripts/doc-checks.ts` (`movedStubs`), both test files, `template/effort/docs/adapters.md`; gate PASS 112 markdown files / 62 tests. oshi `e040e5f` — 31 deletions, `docs/adapters.md` rewritten with 12 rows, `docs/README.md`, `structure.md`, `conventions.md` §8, `plans/README.md`, `operations/README.md`; `dd2afd5` — the pointer repairs. Full gate: ruff check and format, `ty` clean, prose 246 files with 0 wrapped blocks, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed; the relative-link sweep over every tracked markdown file returns one pre-existing template placeholder under `.scratch/embedding-coverage/` and nothing else.
 
 #### W08 — Fix the standard gaps the rollout exposed
 
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/docs-model.ts` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 raised the explanation-home question — a zero-background system explanation had no admitted role, five residue pages carried that register, and `AGENTS.md` norm 3 sent every recurring concept to `docs/notes/` — and W04b-ii settled it on 2026-11-19: no role is admitted, the pages dissolved into architecture, `GLOSSARY.md` and tombstones, and norm 3 now points at the guide and case homes. The standard still has no place for a teaching page; if a second target produces the same pressure, that is the evidence this ruling lacked.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. One remains after W08a: `scripts/docs-model.ts` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. The other — ADR-0011's cited sample (`docs/backlog.md`) ending `(moved)` and failing the admission it documents — closed with the role itself: W07f retired it (ADR-0028), and the checker now flags the marker instead of shaping it. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 raised the explanation-home question — a zero-background system explanation had no admitted role, five residue pages carried that register, and `AGENTS.md` norm 3 sent every recurring concept to `docs/notes/` — and W04b-ii settled it on 2026-11-19: no role is admitted, the pages dissolved into architecture, `GLOSSARY.md` and adapter rows, and norm 3 now points at the guide and case homes. The standard still has no place for a teaching page; if a second target produces the same pressure, that is the evidence this ruling lacked.
 
 **Done when**:
 

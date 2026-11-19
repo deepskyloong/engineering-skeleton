@@ -15,7 +15,7 @@
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
 | P1 — Package rule and role moves | W08a, W02, W03, W04, W04b-i, W04b-ii, W04c, W05, W05b, W05c | The package evidence category is defined; charter, contracts, knowledge and toolchain at their canonical paths; every remaining live page at an admitted home or a recorded disposition; the roles the standard calls always-present or first-use in place or ruled out in the standard; old paths are tombstones or adapter rows; both gates green |
-| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07e | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
+| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07f | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08, W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
 The table names every ID and each phase's exit condition; the item detail lives in `todo.md`. A work item discovered mid-phase enters both files in the same commit under the next free `W<n>`; the lettered suffixes above are existing IDs, not a pattern to extend.
@@ -32,7 +32,7 @@ Before any role move or change to the standard, report:
 4. **Risks and controversy.** Frozen citations, foreign suites, over-budget pages, second homes, irreversible moves, and any point where the rule conflicts with oshi or with another page of the standard.
 5. **Alternatives and recommendation.** What was rejected and why, what you recommend, and what the maintainer must decide.
 
-Stop for the maintainer before acting when the source is ambiguous, oshi's form is better, the move is irreversible, a frozen record is involved, or the rule has no sample. After the decision, record it: a spec change and an ADR if the standard was wrong; an adapter or tombstone if oshi cannot move; a backlog item if the question remains open. Do not silently normalize oshi to a draft rule.
+Stop for the maintainer before acting when the source is ambiguous, oshi's form is better, the move is irreversible, a frozen record is involved, or the rule has no sample. After the decision, record it: a spec change and an ADR if the standard was wrong; an adapter row if oshi cannot move or has moved; a backlog item if the question remains open. Do not silently normalize oshi to a draft rule.
 
 ## Migration guide
 
@@ -42,8 +42,8 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 2. One role per commit.
 3. Prove the pointer migration with `rg -l '<old-path>'`; every survivor is explained.
 4. `git mv` file by file; never a recursive move.
-5. A frozen record keeps its citation; leave a tombstone.
-6. A path that cannot move is a legacy path in `docs/adapters.md`.
+5. A frozen record keeps its citation; the old path is a registry row.
+6. A path that cannot move is a legacy path in `docs/adapters.md`; a path that moved is a moved-path row there (ADR-0028).
 
 ### Workspace
 
@@ -55,7 +55,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 
 1. Already placed: `tasks/README.md`, the operations split, the status page at `docs/status.md`, the decisions at `docs/decisions/` padded to `ADR-0009…0012`, and the vocabulary at `GLOSSARY.md`.
 2. Done: `docs/brief.md` → `docs/charter.md`. Before contracts, W08a defined the package evidence category in the standard (ADR-0021); then contracts: `docs/designs/` and `docs/specs/` become `docs/contracts/`, one contract surface per page. Then knowledge: `docs/notes/` splits into `docs/knowledge/guides/` and `docs/knowledge/notes/`. Then toolchain: `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows, if the toolchain admission holds.
-3. For each role: `git mv` file by file, update living pointers, leave a tombstone for frozen citations, register the tombstone reason in `docs/adapters.md`, and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
+3. For each role: `git mv` file by file, update living pointers, register every moved path in `docs/adapters.md` (no file left behind, ADR-0028), and prove `rg -l '<old-path>'` survivors are explained. Run the full gate.
 4. Split an over-budget page after the role is at its home; do not mix a split with a move.
 5. Gate: oshi's `AGENTS.md` "Gate". The text-only shortcut applies only when the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock`, or `.python-version`; a `web/` diff is not text-only, and a `docs/status.md` diff is not text-only either.
 
@@ -63,7 +63,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 
 - Frozen evidence stays where it is until a role is admitted. Oshi's `experiments/` and `docs/plans/` are frozen legacy paths in `docs/adapters.md`, with no move; `B-0007` remains open and fires only when a second repository keeps a frozen protocol (2026-11-17 ruling).
 - A third-party suite's track root is a permanent adapter, not a legacy path (ADR-0010). Oshi's four tracks are registered in `docs/adapters.md`; the five closed packages under `docs/superpowers/` and `docs/compound-engineering/` stay in place, and no migration folds a suite package into `work-packages/`.
-- A tombstone is a role at the old path (ADR-0011): ≤3 lines, exactly one link, ≤400 non-whitespace characters, title ending `— moved`. `scripts/check.py` enforces the shape and exempts it from the role and naming maps; `B-0008` is closed. Oshi's decisions move was its first use (`610f1e9`).
+- A tombstone was a role at the old path (ADR-0011): ≤3 lines, one link, title ending `— moved`. Retired 2026-11-19 by ADR-0028 — a moved path is one `docs/adapters.md` row and no file, and the checker now flags the marker. Oshi's W07f deleted the 31 files the role had produced.
 - A migrated ADR series is zero-padded to four digits and never renumbered (ADR-0015); a migrated backlog series keeps its width because its items are cited by path and line. Oshi's `7a988f4` is the first application.
 - Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.
 - Oshi's `docs/conventions.md` consumes general norms by pointer: `Base: {{NORM_SOURCE}}/docs/conventions.md` plus deviations with a last-read date, never a restated copy (ADR-0016); a norm with no page at the source is recorded as an exception, not forked.
@@ -86,7 +86,7 @@ Stop and confirm with the maintainer at each of these, rather than at every comm
 
 | Risk | Mitigation | Stop condition |
 | --- | --- | --- |
-| A migration rewrites documents that record decisions, losing the reasoning. | One role per commit; a frozen record keeps its citation and gets a tombstone. | A move would break a frozen record that cites the old path. |
+| A migration rewrites documents that record decisions, losing the reasoning. | One role per commit; a frozen record keeps its citation and the moved path becomes an adapter row. | A move would break a frozen record that cites the old path. |
 | Uncommitted work in oshi is swept into a move. | Run `git status --short` before the first move. | The working tree has changes in a file the move touches. |
 | The spec is bent to fit oshi. | Change the standard first when the gap is a genuine defect; the remaining repositories then follow the same spec. | A move needs a one-off role, budget, or path that no other repo would use. |
 | The standard is a draft and a rule is wrong; oshi gets normalized to it. | Review the rule's source and oshi's existing form; a better target changes the standard first. | A rule has no source or sample, or conflicts with oshi's working practice. |
