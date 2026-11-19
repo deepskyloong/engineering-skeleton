@@ -5,12 +5,12 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W03 map reviewed and rewritten 2026-11-19 after four accepted rulings — UI design content moved to contracts, adapter rows are directory-level, `annotation §9`/`§11` disposed, frozen section citations recorded as exceptions
+- Last done: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit
 - Phase: P1 — package rule and role moves
-- Focus: W03 — C1 contracts
-- Progress: 3 done / 7 todo / 0 blocked
-- Todo: W03–W09
-- Next: C1 — create `docs/contracts/` (19 pages and their index), the two adapter legacy rows, the `docs/README.md` row, and the C1 pointer edits
+- Focus: W04 — knowledge role
+- Progress: 4 done / 6 todo / 0 blocked
+- Todo: W04–W09
+- Next: W04 — split `docs/notes/` into `docs/knowledge/guides/` and `docs/knowledge/notes/`
 - Blocked: none
 - Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
@@ -73,7 +73,7 @@ Define the work package container in the standard: four ledger files by closeout
 
 #### W03 — Move the four role destinations
 
-**Status**: todo
+**Status**: done
 **Depends on**: W02; W08a
 
 Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by admission: contracts (a fact a consumer may rely on, including all four UI specifications), architecture (system organization only), operations (the existing `docs/operations/` pages), conventions (`docs/conventions.md`). A source directory maps no role; the section decides. The map is `maps/w03-role-map.md`, accepted 2026-11-19: 19 contract pages, 6 architecture pages, 4 operations pages, 10 tombstones. Leave tombstones for cited paths, forward cross-role splits to `docs/README.md`, and register both old directories as `legacy path` rows in `docs/adapters.md` "Registry"; the four frozen citations the drops degrade are recorded in the map and carried by W08.
@@ -86,7 +86,7 @@ Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 file
 - the old paths are tombstones or registered legacy paths
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: oshi `6d6033a` (contracts, 26 files), `b7efaec` (architecture, 23 files), `5bfb3de` (operations, 56 files), `5f9df75` (conventions and the shelf retirement, 27 files); `uv run pytest -q -n auto` 658 passed / 1 skipped, `ruff check`, `ruff format --check`, `ty check src/oshi`, `cd web && bun run validate` 86 tests, green at every commit. Measured after C4: 20 contracts files (max `schema.md` 12,261), 7 architecture files (max `components-decision.md` 10,883), 4 operations pages (max `ui-checks.md` 8,852), `conventions.md` 10,959. Pointer proof: `git grep -n 'docs/designs/\|docs/specs/'` survivors are the two adapter legacy rows, frozen citers, and new pages' `Source` headers. Deviations and the five corrections to the accepted map: `maps/w03-role-map.md` "Applied results".
 
 #### W04 — Move the knowledge role
 
@@ -126,7 +126,7 @@ Split `docs/notes/` (11 files, 90,429) into `docs/knowledge/guides/` for methods
 **Status**: todo
 **Depends on**: W05
 
-Re-measure every role page after the moves; the audit's 29 breaches were a 2026-11-16 snapshot. Split by topic, not by length: `contracts/schema.md` (11,725), `contracts/ui-audit.md` (11,811), `contracts/ui-label.md` (11,998), `contracts/data-rules-ingest.md` (10,028), and `architecture/components-decision.md` (10,758) are the hard-path pages; `docs/conventions.md` (~12,800) is the soft one. Trim each index to one line per child (`docs/reviews/README.md` 11,708, `docs/backlog/README.md` 5,524, `docs/README.md` 3,044), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
+Re-measure every role page after the moves; the audit's 29 breaches were a 2026-11-16 snapshot. After C4 four pages sit over soft: `contracts/schema.md` (12,261), `contracts/ui-label.md` (12,188), `contracts/ui-audit.md` (12,104), `architecture/components-decision.md` (10,883); `contracts/data-rules-ingest.md` (9,988) and `docs/conventions.md` (10,959) are inside the line. Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md` 11,708, `docs/backlog/README.md` 5,524, `docs/README.md` 3,044), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
 
 **Done when**:
 
