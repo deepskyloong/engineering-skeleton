@@ -341,7 +341,7 @@ Two pages needed repair rather than trimming. `docs/operations/README.md` had no
 - no directory README contradicts a norm role row (statuses, naming widths)
 - oshi's gate is green
 
-**Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`). Text gate green: ruff check and format, prose 278 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard.
+**Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`), `3ecb1de` (the stub inventory: 30 tombstones carry 217 citations, one uncited and deleted, the other 29 load-bearing). Text gate green: ruff check and format, prose 278 → 277 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard. A request to consolidate or delete the surviving stubs was measured and declined: it is ADR-0011's two rejected options, and the citations that keep them alive sit in frozen records and `Source` provenance rows.
 
 ### P3 — Closeout
 
