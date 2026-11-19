@@ -35,7 +35,7 @@ It runs the Bun format check over code, the Prettier check over Markdown, the ch
 | Change where this repository's own files live | `docs/structure.md` |
 | Change language, naming, citation, or a discrimination | `docs/conventions.md` |
 | Change the commit message convention | `docs/norm/committing.md` (norm), `docs/committing.md` (deviations) |
-| Change provenance, ownership, or the review flow | `docs/governance.md` |
+| Change provenance, ownership, or the review flow | `docs/norm/foundations.md` (provenance and distribution), `docs/norm/flow.md` (who decides, review) |
 | Ask why a choice was made, or what was rejected | `docs/decisions/` |
 | Ask what is deliberately deferred | `docs/backlog/` |
 

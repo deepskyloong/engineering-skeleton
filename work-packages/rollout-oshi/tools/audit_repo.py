@@ -127,7 +127,6 @@ def guess_role(rel: str) -> str:
             "conventions.md": "Conventions", "language-policy.md": "Conventions",
             "documentation.md": "Conventions", "writing-module-docs.md": "Conventions",
             "committing.md": "Committing",
-            "governance.md": "Governance",
             "workflow.md": "Workflow", "development-workflows.md": "unplaced: workflow variant",
             "status.md": "Status", "operations.md": "Operations",
             "index.md": "Docs index",

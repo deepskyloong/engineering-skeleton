@@ -8,6 +8,8 @@ This repository is also the norm source for repositories that already exist: a g
 
 The standard is language-agnostic in its core and language-specific in its overlays. It is written for a repository that lives for years and is maintained by one person, alone or with agents.
 
+This repository keeps no changelog: `git log` is it, and the decisions hold the reasoning. The standard is never published as a package; it is consumed by copying, so backward compatibility is a courtesy rather than a constraint, and a breaking change states the migration step in the same commit. There is no version number either: a repository records where it read the standard — the `Norm source:` line in `AGENTS.md`, and a `Last read` marker on each page it points at.
+
 ## Six principles
 
 **P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this standard exists to prevent.
@@ -53,7 +55,6 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   ├── structure.md           # layout, placement rules, artifact tiers
 │   ├── conventions.md         # language, naming, citation, discriminations
 │   ├── committing.md          # commit norm pointer and deviations
-│   ├── governance.md          # provenance, review (with the first work package)
 │   ├── status.md              # current phase, what works, next action (optional)
 │   ├── adapters.md            # adapter registry (when a foreign suite exists)
 │   ├── contracts/             # durable contracts (optional)

@@ -1,6 +1,6 @@
 # Audit reports and dispositions
 
-One report per repository, written before its migration. The Findings section uses the fixed review format from `docs/governance.md`: severity, role, problem, why, minimal fix.
+One report per repository, written before its migration. The Findings section uses the fixed review format from `docs/norm/flow.md`: severity, role, problem, why, minimal fix.
 
 A report is package evidence for the work package; a finding that changes the specification becomes a backlog item in `docs/backlog/`, and a finding that records a choice becomes an ADR. Do not edit the report after its repository has migrated: write a new one.
 

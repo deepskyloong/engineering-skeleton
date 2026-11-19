@@ -13,8 +13,7 @@ After merging, add the three pages to the tree in `docs/structure.md`.
 
 | File | Role |
 | --- | --- |
-| `docs/workflow.md` | Tracks, t0 fields, handoff, work items, permitted compromises, closeout |
-| `docs/governance.md` | Change surface, who decides, review format, retirement |
+| `docs/workflow.md` | The lifecycle norm's base pointer, plus this repository's deviations |
 | `docs/adapters.md` | Suite tracks and legacy paths, as a registry |
 | `work-packages/README.md` | Work package governance, the open table, and the archive pointer |
 | `work-packages/_template.md` | The four ledger files, as one copyable scaffold |

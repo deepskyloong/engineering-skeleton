@@ -26,7 +26,6 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Backlog item | `/docs/backlog/B-<nnnn>-slug.md` | A deferred idea with a revisit trigger and evidence | Closed with a one-line outcome; the file and its index row stay, and the row's status becomes `closed` | Binds nothing; it is a queue |
 | Backlog index | `/docs/backlog/README.md` | The queue's rules (numbering, trigger, status, closing) and one row per item, including closed; `Status` is `open` (trigger not fired), `active` (a work package is on it), `paused` (work started and stopped, resumption undecided), or `closed` (delivered, withdrawn, or superseded) | — | Binds the queue's order and state |
 | Operating modes | `/docs/workflow.md` | The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure; the closeout checklist lives in the work package index | Rewritten when a step changes | Binds the effort lifecycle's steps |
-| Governance | `/docs/governance.md` | Versioning, change surface, ownership, review, retirement; joins with the first work package | Updated when the review flow changes | Binds who may change what |
 | Work package index | `/work-packages/README.md` | Work package governance, the open table, the closeout checklist | — | Binds the effort's closure and the open table |
 | Work package | `/work-packages/<slug>/` while open; `/work-packages/archive/<slug>/` after closeout | An effort that needs a ledger: what, how, work items with acceptance and evidence, result | Frozen at closeout: moved, as a unit, to `/work-packages/archive/<slug>/`; read-only, never extended | Binds the effort while it is open; no new obligations after closeout, and its evidence remains citable |
 | Vocabulary | `/GLOSSARY.md` | A term whose meaning would drift without a fixed definition, with avoided synonyms | A term moves to a member when only it uses it | Binds naming in prose and code |
@@ -76,16 +75,15 @@ Two roles can seem to admit the same sentence. Apply the pair's test, then state
 | Charter / Architecture | Does violating it change what the project is (charter) or how it works (architecture)? |
 | Structure / Architecture | Is it a repository path (structure) or a runtime component and its flow (architecture)? |
 | Structure / Directory index | Is it a repository-wide level or placement rule (structure), or the membership and local rules of one subtree (directory index)? |
-| Architecture / Governance | Does it constrain a change's shape (architecture) or authorization (governance)? |
+| Architecture / Instruction layer | Does it constrain a change's shape (architecture) or what must hold every turn (`AGENTS.md`)? |
 | Contracts / Architecture | Can a consumer file a bug because it changed (contracts), or is it read to understand the system (architecture)? |
 | Charter / Contracts | Is it a measured success criterion (charter) or a guarantee a consumer relies on (contracts)? |
 | Charter / Conventions | Is it what the project accepts (charter) or how a document is written (conventions)? |
 | Charter / Instruction layer | Does it define what the project accepts or refuses (charter), or what every turn must do (`AGENTS.md`)? |
 | Status / Work package | Cross-package snapshot (status) versus one effort's state (work package); status links, the package owns the detail |
 | Suite tracks / Adapter registry | Does it record the artifact shape a suite writes at its roots and the rules layered on its defaults (suite tracks), or the roots with their tolerated files and disposition (adapter registry)? |
-| Operating modes, Governance / Suite tracks | Does the rule bind every effort in the repository, whatever suite runs it (operating modes, governance), or the artifacts one suite writes at its roots (suite tracks)? A suite never owns the lifecycle or the authorization; it may only narrow its own artifacts below them |
+| Operating modes / Suite tracks | Does the rule bind every effort in the repository, whatever suite runs it (operating modes), or the artifacts one suite writes at its roots (suite tracks)? A suite never owns the lifecycle or the authorization, and it may only narrow its own artifacts below them |
 | Tombstone / Adapter | Forwarding a moved path (tombstone) versus registering a foreign suite's path (adapter); a path takes one, not both |
-| Conventions / Governance | Does it change how a document reads (conventions) or how a change is approved (governance)? |
 | Architecture, Contracts / Operations | Does it describe a system response or format (architecture, contracts), or steps a person runs (operations)? |
 | Explainer / Architecture, Guide, Glossary | Does it walk a newcomer through how the subsystem works (explainer), state what a change must respect (architecture), a method a maintainer applies next time (guide), or what a term means (glossary)? |
 

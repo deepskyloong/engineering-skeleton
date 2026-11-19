@@ -67,7 +67,7 @@ export const INDEX_PAGES = [
 /** The paths a `docs/` page is admitted at. A role change edits this list. */
 export const DOC_ROLE_PATHS = [
   'docs/README\\.md',
-  'docs/(charter|structure|conventions|committing|governance|workflow|status)\\.md',
+  'docs/(charter|structure|conventions|committing|workflow|status)\\.md',
   'docs/suite-tracks\\.md',
   'docs/adapters\\.md',
   'docs/norm/(README|[a-z0-9-]+)\\.md',
