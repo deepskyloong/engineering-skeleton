@@ -13,7 +13,6 @@ import {
   splitCells,
   splitLines,
   tableEntries,
-  tombstoneShape,
   volume,
 } from './docs-model.ts'
 
@@ -69,34 +68,6 @@ describe('splitCells', () => {
 
   test('a row with empty cells keeps them', () => {
     expect(splitCells('| a |  | c |')).toEqual([' a ', '  ', ' c '])
-  })
-})
-
-describe('tombstoneShape', () => {
-  const good = '# Old page — moved\n\nSee [the new home](new.md).\n'
-
-  test('a stub at the old path holds its shape', () => {
-    expect(tombstoneShape(good)).toEqual({ isTombstone: true, issue: null })
-  })
-
-  test('a fourth non-empty line is a finding', () => {
-    expect(tombstoneShape(`${good}one\ntwo\n`).issue).toBe('4 non-empty lines, max 3')
-  })
-
-  test('no link is a finding', () => {
-    expect(tombstoneShape('# Old page — moved\n\nnothing here\n').issue).toBe('0 links, expected 1')
-  })
-
-  test('over 400 non-whitespace characters is a finding', () => {
-    const long = `# Old — moved\n\n[New](new.md) ${'x'.repeat(500)}\n`
-    expect(tombstoneShape(long).issue).toMatch(/^volume \d+ > 400$/)
-  })
-
-  test('a page without the title suffix is not a tombstone', () => {
-    expect(tombstoneShape('# A live page\n\n[x](y.md)\n')).toEqual({
-      isTombstone: false,
-      issue: null,
-    })
   })
 })
 

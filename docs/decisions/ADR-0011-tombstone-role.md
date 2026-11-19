@@ -1,6 +1,6 @@
 # ADR-0011 — A tombstone is a role at the old path
 
-Status: Accepted (2026-11-17)
+Status: Superseded by [ADR-0028](ADR-0028-a-moved-path-is-a-row.md) (2026-11-19); the role it admitted is retired.
 
 ## Context
 

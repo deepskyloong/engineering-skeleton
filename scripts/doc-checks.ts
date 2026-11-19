@@ -24,6 +24,7 @@ import {
   INDEX_PAGES,
   LINK,
   matchesFully,
+  MOVED_MARKER,
   namingPattern,
   pyRepr,
   pyStrip,
@@ -34,7 +35,6 @@ import {
   TABLE_DELIMITER,
   TABLE_ROW,
   tableEntries,
-  tombstoneShape,
   volume,
   type Finding,
   fail,
@@ -215,7 +215,7 @@ export function packages(context: Context): Finding[] {
   return findings
 }
 
-/** Every directory that holds markdown carries a README, unless every page is a tombstone. */
+/** Every directory that holds markdown carries a README. */
 export function roleCoverage(context: Context): Finding[] {
   const findings: Finding[] = []
   for (const base of ['docs', 'template']) {
@@ -229,9 +229,6 @@ export function roleCoverage(context: Context): Finding[] {
         .filter(entry => entry.isFile && entry.name.endsWith('.md'))
         .map(entry => `${directory}/${entry.name}`)
       if (pages.length === 0) {
-        continue
-      }
-      if (pages.every(page => tombstoneShape(context.readText(page)).isTombstone)) {
         continue
       }
       if (!context.exists(`${directory}/README.md`)) {
@@ -351,9 +348,6 @@ export function naming(context: Context): Finding[] {
   const findings: Finding[] = []
   for (const key of context.files) {
     const name = baseName(key)
-    if (tombstoneShape(context.readText(key)).isTombstone) {
-      continue
-    }
     if (ROLE_NAMES.has(name)) {
       continue
     }
@@ -370,9 +364,6 @@ export function rolePaths(context: Context): Finding[] {
     if (!key.startsWith('docs/')) {
       continue
     }
-    if (tombstoneShape(context.readText(key)).isTombstone) {
-      continue
-    }
     if (!DOC_ROLE_PATHS.some(pattern => pattern.test(key))) {
       findings.push(fail(`docs page does not map to a declared role: ${key}`))
     }
@@ -380,12 +371,22 @@ export function rolePaths(context: Context): Finding[] {
   return findings
 }
 
-export function tombstones(context: Context): Finding[] {
+/**
+ * A forwarding stub is not admitted (ADR-0028).
+ *
+ * The moved path belongs in `docs/adapters.md`; a file left at the old path reads as
+ * content in every listing and cannot carry the successor's provenance.
+ */
+export function movedStubs(context: Context): Finding[] {
   const findings: Finding[] = []
   for (const key of context.files) {
-    const state = tombstoneShape(context.readText(key))
-    if (state.isTombstone && state.issue) {
-      findings.push(fail(`tombstone shape: ${key} — ${state.issue}`))
+    const title = splitLines(context.readText(key))[0]
+    if (title && pyStrip(title).endsWith(MOVED_MARKER)) {
+      findings.push(
+        fail(
+          `forwarding stub not admitted: ${key} — delete it and register the moved path in docs/adapters.md`,
+        ),
+      )
     }
   }
   return findings
@@ -402,9 +403,6 @@ export function explainerSections(context: Context): Finding[] {
   const findings: Finding[] = []
   for (const key of context.files) {
     if (!key.startsWith('docs/knowledge/explainers/') || baseName(key) === 'README.md') {
-      continue
-    }
-    if (tombstoneShape(context.readText(key)).isTombstone) {
       continue
     }
     const sections = context.readText(key).split('\n## ').slice(2)
@@ -670,7 +668,7 @@ export function runChecks(context: Context, options: RunOptions = {}): Finding[]
     ...indexAutonomy(context),
     ...naming(context),
     ...rolePaths(context),
-    ...tombstones(context),
+    ...movedStubs(context),
     ...explainerSections(context),
     ...tables(context),
     ...backlogStatus(context),

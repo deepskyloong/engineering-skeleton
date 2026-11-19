@@ -21,6 +21,7 @@ import {
   indexAutonomy,
   links,
   markers,
+  movedStubs,
   naming,
   packages,
   prose,
@@ -29,7 +30,6 @@ import {
   rolePaths,
   runChecks,
   tables,
-  tombstones,
   type Runner,
 } from './doc-checks.ts'
 
@@ -103,18 +103,17 @@ describe('roleCoverage', () => {
     ])
   })
 
-  test('a shelf of tombstones needs no README', () => {
-    const stub = '# Old — moved\n\n[New](new.md)\n'
+  test('a directory of pages without a README stays a finding', () => {
     const findings = roleCoverage(
       createContext(
         fixture({
-          'docs/legacy/a.md': stub,
-          'docs/legacy/b.md': stub,
+          'docs/legacy/a.md': '# A\n',
+          'docs/legacy/b.md': '# B\n',
           'template/README.md': '# T\n',
         }),
       ),
     )
-    expect(findings).toEqual([])
+    expect(messages(findings)).toEqual(['missing README: docs/legacy/'])
   })
 })
 
@@ -199,11 +198,11 @@ describe('naming', () => {
     ])
   })
 
-  test('a tombstone at an illegal name is exempt', () => {
+  test('a retired stub name is not exempt', () => {
     const findings = naming(
       createContext(fixture({ 'docs/Notes.md': '# Old — moved\n\n[New](new.md)\n' })),
     )
-    expect(findings).toEqual([])
+    expect(messages(findings)).toEqual(['file name does not match its role: docs/Notes.md'])
   })
 })
 
@@ -224,14 +223,20 @@ describe('rolePaths', () => {
   })
 })
 
-describe('tombstones', () => {
-  test('a stub that grew a line is a finding', () => {
-    const findings = tombstones(
-      createContext(
-        fixture({ 'docs/old.md': '# Old — moved\n\n[New](new.md)\nexplanation\nanother line\n' }),
-      ),
+describe('movedStubs', () => {
+  test('a file left at a moved path is a finding', () => {
+    const findings = movedStubs(
+      createContext(fixture({ 'docs/old.md': '# Old — moved\n\n[New](new.md)\n' })),
     )
-    expect(messages(findings)).toEqual(['tombstone shape: docs/old.md — 4 non-empty lines, max 3'])
+    expect(messages(findings)).toEqual([
+      'forwarding stub not admitted: docs/old.md — delete it and register the moved path in docs/adapters.md',
+    ])
+  })
+
+  test('a live page is not a stub', () => {
+    expect(
+      movedStubs(createContext(fixture({ 'docs/live.md': '# Live\n\n[New](new.md)\n' }))),
+    ).toEqual([])
   })
 })
 

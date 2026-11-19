@@ -53,7 +53,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 2. Run the six execution rules below. They carry the move order, the pointer proof, and the frozen-record rule.
 3. Add the target repository's remaining roles to `docs/backlog/` with a revisit trigger, or stop and report what is left.
 
-**Stop condition**: if a move would break a frozen record that cites the old path by name, do not move it. Write a tombstone (≤3 lines) and continue.
+**Stop condition**: if a move would break a frozen record that cites the old path by name, do not move it. Register the old path in `docs/adapters.md` and continue.
 
 ### Six execution rules
 
@@ -65,7 +65,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 
 **M4 — No bulk `mv`.** Move file by file with `git mv`, so a rename is visible in the diff. A recursive move hides deletions inside a directory rename.
 
-**M5 — A frozen record keeps its citation.** A file that a closed record cites by name is not rewritten to point at the new path. Move it, leave a tombstone, and register the tombstone's reason. Rewriting history to simplify today's grep is how a record stops being evidence.
+**M5 — A frozen record keeps its citation.** A file that a closed record cites by name is not rewritten to point at the new path. Move it, register the old path in `docs/adapters.md`, and say what cites it. Rewriting history to simplify today's grep is how a record stops being evidence.
 
 **M6 — A foreign path is registered, not forced.** A third-party suite's track root is a permanent row in `docs/adapters.md`; a legacy path is a retirable row there. Do not make the whole repository bend so one tool can keep writing where it always wrote, and do not relocate a suite's track because it resembles a role the standard defines.
 
@@ -74,7 +74,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | Current pattern | Target role | Note |
 | --- | --- | --- |
 | One large `AGENTS.md` holding rules, architecture, and history | `AGENTS.md` (red lines, gate, routing) + `docs/architecture/` + `docs/decisions/` | Split by reader: what must hold every turn, how the system is organized, what records a choice |
-| `adr/`, `adrs/`, `decisions/` | `docs/decisions/` | Pick one name; the other paths become tombstones only if cited. A migrated ADR series is zero-padded to four digits. |
+| `adr/`, `adrs/`, `decisions/` | `docs/decisions/` | Pick one name; the other paths get an adapter-registry row only if a record cites them. A migrated ADR series is zero-padded to four digits. |
 | `specs/` in four places | `work-packages/<slug>/spec.md`, `docs/contracts/`, `docs/operations/`, `docs/architecture/` | Split by admission: a promise a consumer may rely on is a contract; a procedure under pressure is operations; how the system is organized is architecture. A directory named `specs/` is not a role match. |
 | A single backlog file, or `backlog/B-<nnnn>` | `docs/backlog/B-<nnnn>-slug.md` + index | New repositories use four digits; existing numbering is kept and never renumbered |
 | `status.md` at the root | `docs/status.md` | Rewritten in place, no history |
@@ -89,7 +89,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | A suite track's rules layered on the lifecycle | `docs/suite-tracks.md` records the deviation, the base rule stays in the repository's page | A suite owns its artifacts and the rules it layers on its own defaults; it never owns the lifecycle or the authorization, so a suite's document is not the page a maintainer reads for either |
 | A copied conventions page carrying the discriminations and the budget table | `docs/conventions.md` as a base pointer plus deviations | The norm lives once at the source; the copy becomes a pointer, and the budget numbers live in the checker (`B-0002`) |
 | A root glossary or a pile of jargon | Root `GLOSSARY.md`; member terms move down | A term used by one member does not belong at the root; a legacy `CONTEXT.md` takes the `GLOSSARY` name, not a second home |
-| A legacy `CONTEXT.md` / `CONTEXT-MAP.md` | `GLOSSARY.md` / `GLOSSARY-MAP.md` | Rename; leave a tombstone only when a frozen record cites the old path; never keep both names |
+| A legacy `CONTEXT.md` / `CONTEXT-MAP.md` | `GLOSSARY.md` / `GLOSSARY-MAP.md` | Rename; register the old path only when a record cites it; never keep both names |
 | An existing `tasks/` with ad-hoc folders | `work-packages/README.md` plus one package at a time | Do not bulk-move; close or freeze an old package before converting it |
 | A `notes/` or `knowledge/` pile | `docs/knowledge/{guides,cases,notes,explainers}/` | A note that cannot state its evidence stays a note; it does not become a guide. A page that teaches a subsystem from zero is an explainer and ends every section at the page that owns the fact; a page that would mostly link is an index |
 

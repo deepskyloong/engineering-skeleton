@@ -43,7 +43,8 @@ export const BACKLOG_STATUSES = new Set(['open', 'active', 'paused', 'closed'])
 export const CJK =
   /[\u3000-\u303f\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]/
 export const LINK = /\[[^\]]*\]\(([^)]+)\)/g
-export const TOMBSTONE_SUFFIX = '— moved'
+/** The marker a forwarding stub carried before ADR-0028 retired the role. */
+export const MOVED_MARKER = '— moved'
 export const COUNT_NOUN =
   /\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(pages?|documents?|files?|entries|items|adrs?)\b/gi
 export const ROLE_NAMES = new Set([
@@ -186,32 +187,6 @@ export function splitCells(row: string): string[] {
 }
 
 /**
- * Is this text a forwarding stub, and if so does it hold its shape?
- *
- * The marker is the title suffix, not the file name or its directory: a tombstone lives
- * at the old path and would otherwise look like a live page to the role map.
- */
-export function tombstoneShape(text: string): { isTombstone: boolean; issue: string | null } {
-  const lines = splitLines(text).filter(line => pyStrip(line) !== '')
-  const title = lines[0]
-  if (!title || !title.startsWith('# ') || !pyStrip(title).endsWith(TOMBSTONE_SUFFIX)) {
-    return { isTombstone: false, issue: null }
-  }
-  if (lines.length > 3) {
-    return { isTombstone: true, issue: `${lines.length} non-empty lines, max 3` }
-  }
-  const links = [...text.matchAll(LINK)]
-  if (links.length !== 1) {
-    return { isTombstone: true, issue: `${links.length} links, expected 1` }
-  }
-  const measured = volume(text)
-  if (measured > 400) {
-    return { isTombstone: true, issue: `volume ${measured} > 400` }
-  }
-  return { isTombstone: true, issue: null }
-}
-
-/**
  * The (soft, hard) volume budget for a markdown file, or null when it carries none.
  *
  * Soft is a judgment line: the gate warns. Hard is a failure line (`docs/norm/rules.md`,
@@ -267,7 +242,7 @@ export function entryLimit(key: string): number | null {
   return null
 }
 
-/** The naming pattern a path's role hands it; a tombstone is exempt at the caller. */
+/** The naming pattern a path's role hands it. */
 export function namingPattern(key: string): RegExp {
   const route = `/${key}`
   if (route.includes('/docs/decisions/')) {

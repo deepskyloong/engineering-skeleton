@@ -26,7 +26,7 @@ This table covers cross-role rules. The steps in `flow.md` and the migrate mode 
 ## Naming and citation
 
 - Files: `kebab-case.md`; ADRs `ADR-<nnnn>-slug.md`; backlog `B-<nnnn>-slug.md`. All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
-- Numbered records use four digits: ADR `ADR-0001`, backlog `B-0001`. Record IDs start at `0001`. Norm pages are named by subject, not numbered; their order lives in `docs/norm/README.md`, so adding a page does not renumber the set. A migrated ADR series is zero-padded to four digits at migration and is never renumbered. A migrated backlog series keeps its width and is never renumbered: a backlog item is cited by path and line, and a tombstone cannot preserve a line anchor.
+- Numbered records use four digits: ADR `ADR-0001`, backlog `B-0001`. Record IDs start at `0001`. Norm pages are named by subject, not numbered; their order lives in `docs/norm/README.md`, so adding a page does not renumber the set. A migrated ADR series is zero-padded to four digits at migration and is never renumbered. A migrated backlog series keeps its width and is never renumbered: a backlog item is cited by path and line, and a rewrite preserves neither.
 - Prose is not hard-wrapped; one paragraph is one line. Code fences, tables, YAML, and a run of two or more `Label: value` fields keep their line breaks. The gate calls the `md-tools` CLI, which is the rule's only implementation.
 - Cite a file plus a section name (`docs/norm/roles.md`, "Five discriminations"). Do not cite section numbers.
 - Section headings are unnumbered by default. Number them only when the number is part of the artifact a consumer cites: a legal clause, a fixed contract section, or a numbered procedure. A number added for visual order becomes wrong when the section moves.
@@ -63,13 +63,12 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `GLOSSARY.md` | ≤7,500 / ≤12,000 | — |
 | `GLOSSARY-MAP.md` | ≤2,500 / ≤4,000 | — |
 | `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
-| Tombstone | ≤400 | exactly 1 link |
 
 Package evidence — a report, inventory, or reproduction script a work package owns — carries no volume budget; `summary.md` names it, and the evidence's own structure governs its length. `work-packages/<slug>/spec.md`, `plan.md`, and `todo.md` are working state, not durable reading artifacts; they carry no volume budget. `summary.md` is the closeout reading artifact and carries the budget above.
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
 
-A volume budget has two lines. Soft is where judgment starts: a file may stay above it, and the gate prints a warning instead of failing. Hard is where the file is too long for its role: the gate fails. For prose, soft is a quarter above the old single line and hard is twice it, because that line is where files were shaped to stop; a judgment line placed on it would flag the normal top of the distribution rather than an outlier. An index derives its soft line from its row cap instead: 40 rows at the measured ~117 characters per row plus a preamble is about 5,100, so 6,000, and hard is double that. `docs/decisions/ADR-0013-two-tier-volume-budgets.md` records how the numbers were set and what was rejected. A limit with no judgment space, such as a tombstone's 400, stays one number.
+A volume budget has two lines. Soft is where judgment starts: a file may stay above it, and the gate prints a warning instead of failing. Hard is where the file is too long for its role: the gate fails. For prose, soft is a quarter above the old single line and hard is twice it, because that line is where files were shaped to stop; a judgment line placed on it would flag the normal top of the distribution rather than an outlier. An index derives its soft line from its row cap instead: 40 rows at the measured ~117 characters per row plus a preamble is about 5,100, so 6,000, and hard is double that. `docs/decisions/ADR-0013-two-tier-volume-budgets.md` records how the numbers were set and what was rejected. A limit with no judgment space stays one number.
 
 A directory `README.md` is an index and gets 6,000/12,000, from its 40-row cap at the measured ~117 characters per row plus a preamble; the backlog index's 60 rows give 8,000/16,000. An overlay `README.md` is a guide and gets 10,000/16,000. The path decides, not the file name.
 
@@ -100,16 +99,15 @@ The gate's `volume()` function is authoritative; the commands above match it by 
 
 `(Get-Content).Count` counts physical lines, including blank ones; `Measure-Object -Line` does not. Neither is a volume unit.
 
-## Retirement and the four exceptions
+## Retirement and the three exceptions
 
 Default: an artifact that stops being true is deleted. `git log` keeps it, and deleting is the only way a reader can tell what is current.
 
-Four exceptions:
+Three exceptions:
 
 1. **ADR** — never deleted. Marked `Superseded` and linked to its replacement. A decision's rejected alternatives are the record's value.
 2. **Closed backlog item** — the file and its index row stay; the row's status becomes `closed`. Its `Evidence` may be cited by a later item.
 3. **Superseded contract** — kept only while a consumer still cites it, then deleted.
-4. **Tombstone** — kept only while a frozen record cites the old path. It lives at the old path: ≤3 lines, exactly one link, no explanation, and a title ending with `— moved`; the budget is in the table above.
 
 An artifact that is "kept just in case" is not an exception; it is the start of a second home. A closed work package is not a fifth exception either: it is the frozen exit of a role (`roles.md`), and `work-packages/archive/README.md` names it.
 

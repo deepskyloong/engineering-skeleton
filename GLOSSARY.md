@@ -66,7 +66,7 @@ _Avoid_: wrap-up
 
 ### Rules and budgets
 
-**tombstone**: A forwarding stub kept because a frozen record cites the old path.
+**tombstone**: Historical: the forwarding stub a repository left at a moved path before ADR-0028 retired the role; records written before 2026-11-19 name it. A moved path is now a `docs/adapters.md` row, and no file is left behind.
 
 _Avoid_: redirect, alias
 

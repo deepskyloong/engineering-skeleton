@@ -74,7 +74,7 @@ Anything else — a changed goal, a changed acceptance criterion — is a new wo
 2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
 3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four ledger files and the evidence directories `summary.md` names; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
 4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
-5. **Leave a tombstone if a frozen record cites the old path.** ≤3 lines, exactly one link, no explanation. A tombstone is a forwarding stub, not a summary; it points into the archived package. If no frozen record cites the path, skip it and stop.
+5. **Register whatever path a citation leaves behind.** A retired directory or a moved file gets a row in `docs/adapters.md`: the old path, its successor, what still cites it, and the condition that retires the row. Leave no file at the old path; a forwarding stub is not a summary, and it is no longer admitted (ADR-0028). If no record cites the path, skip the row and stop.
 
 ## Who decides and how a change is reviewed
 
