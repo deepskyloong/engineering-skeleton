@@ -15,10 +15,10 @@
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
 | P1 — Package rule and role moves | W08a, W02, W03, W04, W04b-i, W04b-ii, W04c, W05, W05b, W05c | The package evidence category is defined; charter, contracts, knowledge and toolchain at their canonical paths; every remaining live page at an admitted home or a recorded disposition; the roles the standard calls always-present or first-use in place or ruled out in the standard; old paths are tombstones or adapter rows; both gates green |
-| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07f | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
+| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07g | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08, W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
-The table names every ID and each phase's exit condition; the item detail lives in `todo.md`. A work item discovered mid-phase enters both files in the same commit under the next free `W<n>`; the lettered suffixes above are existing IDs, not a pattern to extend.
+The table names every ID and each phase's exit condition; the item detail lives in `todo.md`. IDs are identifiers, not a sequence: row order is the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it; that parent then carries no work of its own, stays `doing` until every child closes, and its done-when names the set.
 
 ## Review discipline
 

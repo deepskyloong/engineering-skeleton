@@ -9,8 +9,8 @@
 - Gate: standard `bun run gate` PASS 2026-11-19 (112 markdown files, 62 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 246 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
 - Phase: P2 — page repairs and audit closeout
 - Focus: W06 — re-measure every role page, then split by topic
-- Progress: 18 done / 3 todo / 1 doing
-- Todo: W06, W08, W09; W07 in progress
+- Progress: 18 done / 4 todo / 1 umbrella (W07)
+- Todo: W06, W07g, W08, W09; W07 is the container over W07a–W07g
 - Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
 - Blocked: none
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027); R4 settled, the tombstone role retired (`0291824`, ADR-0028)
@@ -251,15 +251,15 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: doing
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. This item is the umbrella over the findings that still need a repair or a ruling; the ruling-free batches became W07a–W07e, and W07f took the stub question to the standard — all six are closed. What remains under it: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `archived/` as a fifth deletion exception with its 20 citations (6); `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission does not name it; `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Finding 17 is resolved (`fb6701e`); finding 11 was W06a's; finding 1 stays with `B-0007`. A finding that needs a rule in the standard goes to W08 instead of being fixed locally.
+The bundle: give every finding in `audits/oshi.md` a disposition, recorded in the findings table of `audits/README.md`. This item carries no work of its own; W07a–W07g are its leaves. Finding 17 is resolved (`fb6701e`), finding 11 was W06a's, and finding 1 stays with `B-0007`.
 
 **Done when**:
 
-- every finding is resolved, withdrawn, or filed as a backlog item
-- the dispositions are recorded in `audits/README.md`
+- W07a–W07g are `done`
+- every disposition is recorded in `audits/README.md`
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: the children's evidence and the findings table; pending until W07g closes.
 
 #### W07a — Repair the pointer and index residue
 
@@ -343,8 +343,6 @@ Two pages needed repair rather than trimming: `docs/operations/README.md` gained
 
 **Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`), `3ecb1de` (the stub inventory: 30 tombstones carry 217 citations, one uncited and deleted, 29 load-bearing). Text gate green: ruff check and format, prose 278 → 277 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard. A request to consolidate or delete the surviving stubs was measured and declined: it is ADR-0011's two rejected options, and the citations that keep them alive sit in frozen records and `Source` provenance rows. Superseded 2026-11-19: the maintainer asked again, this time to change the standard rather than to weigh the options inside it, and W07f granted the deletion (ADR-0028). The measurement stays accurate and became ADR-0028's cost figure, corrected to 31 files once `docs/backlog.md`'s `(moved)` variant was counted in.
 
-### P3 — Closeout
-
 #### W07f — Retire the forwarding stubs and register the moved paths
 
 **Status**: done
@@ -360,6 +358,23 @@ The maintainer asked twice to delete the residual redirect files. The first answ
 - both gates are green
 
 **Evidence**: standard `0291824` — ADR-0028, ADR-0011 superseded, `norm/roles.md` (Tombstone row and discrimination gone, Adapter admission extended), `norm/rules.md` (budget row and exception 4 gone), `norm/flow.md`, `docs/workflow.md`, `GLOSSARY.md`, `scripts/docs-model.ts` (`MOVED_MARKER`), `scripts/doc-checks.ts` (`movedStubs`), both test files, `template/effort/docs/adapters.md`; gate PASS 112 markdown files / 62 tests. oshi `e040e5f` — 31 deletions, `docs/adapters.md` rewritten with 12 rows, `docs/README.md`, `structure.md`, `conventions.md` §8, `plans/README.md`, `operations/README.md`; `dd2afd5` — the pointer repairs. Full gate: ruff check and format, `ty` clean, prose 246 files with 0 wrapped blocks, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed; the relative-link sweep over every tracked markdown file returns one pre-existing template placeholder under `.scratch/embedding-coverage/` and nothing else.
+
+#### W07g — Dispose of the four findings the batches did not carry
+
+**Status**: todo
+**Depends on**: W06
+
+Four findings still need a repair or a ruling: index autonomy in `experiments/README.md`, `docs/plans/README.md` and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `archived/` as a fifth deletion exception with its 20 citations (finding 6); `docs/adapters.md` "Freeze" states where new files may go and the adapter registry's admission does not name it; `web/README.md`'s table is padded by the frontend `oxfmt`, which puts R12 out of reach there without a toolchain change. A finding that needs a rule in the standard goes to W08 instead of being fixed locally.
+
+**Done when**:
+
+- each of the four is resolved, withdrawn, or filed as a backlog item
+- the dispositions are recorded in `audits/README.md`
+- oshi's gate is green
+
+**Evidence**: pending
+
+### P3 — Closeout
 
 #### W08 — Fix the standard gaps the rollout exposed
 
