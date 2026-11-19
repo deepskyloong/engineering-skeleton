@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05b C2 — `docs/mutation-testing.md` split by admission (oshi `410fb16`): tool rejections into ADR-0015's table, method into `docs/knowledge/guides/mutation-testing.md` (7,008), the probe into `docs/knowledge/cases/mutation-first-round.md` (2,878), old path a tombstone
+- Last done: W05b closed — C3 `docs/language-policy.md` folded into `docs/conventions.md` §11 (oshi `fc17b18`); the four unplaced pages are at admitted homes
 - Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 275 files, 0 wrapped)
 - Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
-- Focus: W05b — place the three remaining live pages no work item owned
-- Progress: 9 done / 6 todo / 0 blocked
-- Todo: W05b–W09
-- Next: W05b C3 — `docs/language-policy.md` folds into `docs/conventions.md`, tombstone at the old path
+- Focus: W05c — the two required pages, with the `.gitignore`-level `Norm source:` line they resolve against
+- Progress: 10 done / 5 todo / 0 blocked
+- Todo: W05c–W09
+- Next: W05c C6 — `docs/committing.md` plus the `Norm source:` line in `AGENTS.md`; C7 is the governance disposition
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
@@ -171,21 +171,21 @@ The maintainer's ruling was to dissolve the five pages into a new form, then let
 
 #### W05b — Place the four pages no work item owned, and remove the one over a hard line
 
-**Status**: todo — C4 done 2026-11-19; C1–C3 open
+**Status**: done
 **Depends on**: W05; C4 on R1 (settled)
 
-P1's exit condition named charter, contracts, knowledge and toolchain, and all four reached their homes. The migrate protocol's last step — list what is left — was never run, so four live pages with consumers still hold no role: `docs/testing.md` (7,500), `docs/mutation-testing.md` (9,311), `docs/language-policy.md` (2,965), and `docs/development-workflows.md` (16,611, over the 16,000 hard line). The role pass is `maps/w05b-residual-role-pass.md`: testing splits into `AGENTS.md` red lines plus a guide, mutation into ADR-0015's rejected table, a guide and a case, language folds into `docs/conventions.md`, and the suite map splits three ways now that R1 admitted Suite tracks as a role (`0d3a5a1`): the shape in `docs/suite-tracks.md`, the ownership boundary in `docs/structure.md`, the checkout procedure in a guide. One role per commit; a closed package's citation is answered by a tombstone, an open package's pointer is repointed.
+P1's exit condition named charter, contracts, knowledge and toolchain, and all four reached their homes. The migrate protocol's last step — list what is left — was never run, so four live pages with consumers still held no role: `docs/testing.md` (7,500), `docs/mutation-testing.md` (9,311), `docs/language-policy.md` (2,965), and `docs/development-workflows.md` (16,611, over the 16,000 hard line). The role pass is `maps/w05b-residual-role-pass.md`: testing split into `AGENTS.md` red lines plus a guide, mutation into ADR-0015's rejected table, a guide and a case, language folded into `docs/conventions.md` §11, and the suite map split three ways once R1 admitted Suite tracks as a role (`0d3a5a1`). One role per commit; a closed package's citation is answered by a tombstone, an open package's pointer is repointed.
 
 **Done when**:
 
 - each job is at an admitted home, or has a disposition recorded in the map
 - `AGENTS.md` carries the test red lines; no second decision page restates ADR-0015's tool choice
-- `docs/development-workflows.md` is gone and its three jobs sit with their roles — C4 done
+- `docs/development-workflows.md` is gone and its three jobs sit with their roles
 - the four old paths are tombstones; every living pointer is repointed and every frozen citer resolves
 - the page over a hard line is removed rather than carried into W06
 - oshi's gate is green
 
-**Evidence**: C4 — standard `0d3a5a1` (role admitted, gate PASS 112 files / 66 tests) and oshi `0e57e99` (suite-tracks 8,864, structure 7,439, guide 4,687, tombstone 54; text-only gate green, prose 272 files, links resolve; a mirror re-lock of `uv.lock` reverted). C1–C3 per-commit shas, measured volumes and the pointer proof still go into the map's "Applied results" as they land.
+**Evidence**: standard `0d3a5a1` (Suite tracks admitted; gate PASS 112 files / 66 tests), `06aeb6d` (base rule plus deviations), `a241462` (Governance retired; gate PASS 111 files / 66 tests). oshi: C4 `0e57e99` (suite-tracks 8,864, structure 7,439, guide 4,687, tombstone 54); C1 `55e6b0c` (guide 7,191, `AGENTS.md` 6,746 → 7,562); C2 `410fb16` (guide 7,008, case 2,878, ADR-0015 5,167 → 5,677); C3 `fc17b18` (conventions 11,760 → 14,092, tombstone 53). Every commit: text-only gate green (ruff check / format, prose 272 → 275 files, 0 wrapped) and every relative link under `docs/` resolving; per-commit volumes, pointer proofs and survivor lists are the map's "Applied results".
 
 #### W05c — Give the two required roles a home, and record the third's retirement
 

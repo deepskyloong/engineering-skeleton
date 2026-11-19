@@ -2,7 +2,7 @@
 
 - Date: 2026-11-19
 - Source: oshi `9c27e08` (clean tree), worktree `E:\Projects\oshi\.worktrees\skeleton-migration` on `feature/skeleton-migration`; standard `2819ab8`
-- Status: open — R1 accepted 2026-11-19 (ADR-0026) and C4 applied (`0e57e99`); R2 settled as the base-rule-plus-deviation model (`06aeb6d`); R3 settled, the Governance role retired (`a241462`, ADR-0027), so C7 is a recorded disposition rather than a page; C1–C3 and C6 remain
+- Status: closed 2026-11-19 — C4 `0e57e99`, C1 `55e6b0c`, C2 `410fb16`, C3 `fc17b18`; R1/R2/R3 settled in the standard (`0d3a5a1`, `06aeb6d`, `a241462`). W05c continues from this map's R2/R3 sections.
 - Role basis: `docs/norm/roles.md`, "Always present", "Present from the first real use", "Optional, admitted by trigger", "Five discriminations"; `docs/decisions/ADR-0010-suite-tracks-are-adapters.md`
 - Measure: non-whitespace characters, table delimiter rows excluded (`docs/norm/rules.md`, "Measuring"), taken 2026-11-19 on the worktree above
 
@@ -145,6 +145,22 @@ The tool choice had an admitted home already — ADR-0015's rejected table recor
 The candidate list (`gate.py`, `fuser.py`, `holdout.py`, `diff.py`, `output.py`, `repair.py`, `scan.py`; `assign.py` and `review/apply.py` below the bar) did **not** stay in the guide: it is a dated snapshot of branch coverage, and the guide carries the criteria it is recomputed from.
 
 Pointer proof: `git grep 'mutation-testing.md'` survivors are ADR-0015's two citations, both answered by the tombstone; the sibling references inside `docs/knowledge/guides/testing.md` resolve within the same directory. Living pointers repointed in the commit: `docs/README.md`, both knowledge indexes, `docs/operations/works.md`. Gate: text-only path — ruff clean, prose 275 files, 0 wrapped, every relative link under `docs/` resolves.
+
+### C3 — language policy, oshi `fc17b18`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/language-policy.md` | 2,965 | 53 (tombstone) | removed; tombstone links `conventions.md` |
+| `docs/conventions.md` | 11,760 | 14,092 | Conventions, new §11 "Language" |
+| `docs/README.md` | 3,814 | 4,099 | +4 compatibility-redirect rows |
+
+Language is a conventions job by its admission ("Language, naming, citation…"), so the policy folded in rather than surviving as a sibling. It was appended as §11: every existing numeric citation (`§1` / `§2` / `§8` / `§9` / `§10` in the b16 and head-kind specs, the manual-registration ledger) keeps its target, and the new section takes the issue of a renumbering that would have touched four frozen records.
+
+The fold compressed rather than transported: the policy's own header and version line dropped, the six scope rows kept with their examples trimmed, the "never translated" list and the coupled-edit rules kept because they are the operational half, and the PowerShell acceptance check kept because it is the only mechanical test of the rule. `conventions.md` now sits at 14,092 against the 16,000 hard line — the fold consumed most of the headroom W06 would otherwise have.
+
+The tombstone links `conventions.md` directly, unlike C1 and C2: every frozen citer (the b16 package's spec and plan, the b16 labour quote, the manual-registration summary) asks the same question, and it now has exactly one home.
+
+Two pointer decisions worth recording: `docs/README.md` gained compatibility-redirect rows for all four tombstones (`development-workflows.md`, `testing.md`, `mutation-testing.md`, `language-policy.md`), because that page lists its own children and the earlier removals left four files unindexed; and `docs/README.md`'s description of `conventions.md` now names the language section. Repointed from a living page: `AGENTS.md`, `web/README.md`, `B-12`, `tasks/head-kind-experiment/spec.md` (two). Gate: text-only path — ruff clean, prose 275 files, 0 wrapped, links resolve.
 
 ## Role pass
 
