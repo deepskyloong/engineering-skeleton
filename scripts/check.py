@@ -88,7 +88,7 @@ ROLE_NAMES = {"README.md", "AGENTS.md", "GLOSSARY.md", "GLOSSARY-MAP.md", "_temp
 
 DOC_ROLE_PATHS = [
     re.compile(r"docs/README\.md"),
-    re.compile(r"docs/(charter|structure|conventions|committing|governance|workflow)\.md"),
+    re.compile(r"docs/(charter|structure|conventions|committing|governance|workflow|status)\.md"),
     re.compile(r"docs/adapters\.md"),
     re.compile(r"docs/norm/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/decisions/(README|ADR-\d{4}-[a-z0-9-]+)\.md"),
@@ -97,7 +97,7 @@ DOC_ROLE_PATHS = [
     re.compile(r"docs/architecture/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/operations/(README|[a-z0-9-]+)\.md"),
     re.compile(r"docs/toolchain/(README|[a-z0-9-]+)\.md"),
-    re.compile(r"docs/knowledge/(README|(guides|cases|notes)/[a-z0-9-]+\.md)"),
+    re.compile(r"docs/knowledge/(README|(guides|cases|notes)/(README|[a-z0-9-]+))\.md"),
 ]
 
 EXACT_BUDGETS = {
@@ -136,10 +136,14 @@ def budget_for(key: str, name: str) -> tuple[int, int] | None:
     """
     if key in EXACT_BUDGETS:
         return EXACT_BUDGETS[key]
+    if key.startswith("work-packages/") and name == "summary.md":
+        return (3_750, 6_000)
     if key.startswith("docs/decisions/"):
         return (7_500, 12_000)
     if key.startswith("docs/backlog/"):
         return (5_000, 8_000)
+    if key.startswith("docs/") and name == "README.md" and key.count("/") >= 2:
+        return (6_000, 12_000)
     if key.startswith("docs/"):
         return (10_000, 16_000)
     if key.startswith("template/overlays/"):
@@ -206,10 +210,20 @@ def check_budgets(files: list[Path]) -> None:
             warn(f"volume {measured} > {soft} (soft): {rel(path)}")
 
 
+def entry_limit(key: str) -> int | None:
+    if key in ENTRY_LIMITS:
+        return ENTRY_LIMITS[key]
+    if key.endswith("/README.md"):
+        if key.startswith("template/overlays/") and key != "template/overlays/README.md":
+            return None
+        return 60 if "/backlog/" in key else 40
+    return None
+
+
 def check_entries(files: list[Path]) -> None:
     for path in files:
         key = rel(path)
-        limit = ENTRY_LIMITS.get(key)
+        limit = entry_limit(key)
         if limit is None:
             continue
         measured = table_entries(path.read_text(encoding="utf-8"))
@@ -349,11 +363,11 @@ def check_backlog_status(files: list[Path]) -> None:
     """The backlog index carries one of four statuses, and a typo is a finding.
 
     Status is the only column a reader filters the queue by, and it lives in the
-    index rather than in the item file (`docs/backlog/README.md`, "Rules"), so a
-    misspelled state has no second copy to correct it.
+    index rather than in the item file (`docs/norm/roles.md`, "Backlog index"),
+    so a misspelled state has no second copy to correct it.
     """
     for path in files:
-        if rel(path) != "docs/backlog/README.md":
+        if rel(path) not in ("docs/backlog/README.md", "template/first-use/docs/backlog/README.md"):
             continue
         header: list[str] | None = None
         for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):

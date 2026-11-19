@@ -65,7 +65,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
 | Tombstone | ≤400 | exactly 1 link |
 
-Package evidence — a report, inventory, or reproduction script a work package owns — carries no volume budget; `summary.md` names it, and the evidence's own structure governs its length.
+Package evidence — a report, inventory, or reproduction script a work package owns — carries no volume budget; `summary.md` names it, and the evidence's own structure governs its length. `work-packages/<slug>/spec.md`, `plan.md`, and `todo.md` are working state, not durable reading artifacts; they carry no volume budget. `summary.md` is the closeout reading artifact and carries the budget above.
 
 The EN/ZH split exists because a Chinese character costs roughly 2.7× the tokens of an English character. A single number would either over-constrain Chinese or under-constrain English. The ZH limit is half the EN limit.
 
@@ -84,14 +84,16 @@ $p = 'AGENTS.md'
 $t = [IO.File]::ReadAllText((Resolve-Path -LiteralPath $p))
 $lines = $t -split "`n" | Where-Object { $_ -notmatch '^\|[\s:|-]+\|$' }
 ($lines -join "`n" -replace '\s', '').Length        # volume
-(Get-Content -LiteralPath $p).Count                # lines, for entry budgets only
+(Get-Content -LiteralPath $p).Count                # physical lines; neither unit
+(Get-Content -LiteralPath $p | Where-Object { $_ -match '^\|' -and $_ -notmatch '^\|[\s:|-]+\|$' }).Count - 1  # entries: table rows, header excluded
 ```
 
 Bash:
 
 ```bash
 grep -vE '^\|[[:space:]:-]+\|$' AGENTS.md | tr -d '[:space:]' | wc -m  # volume
-wc -l < AGENTS.md                                   # lines, for entry budgets only
+wc -l < AGENTS.md                                   # physical lines; neither unit
+awk '/^\|/ && !/^\|[\s:|-]+\|$/ {n++} END {print n-1}' AGENTS.md  # entries: table rows, header excluded
 ```
 
 The gate's `volume()` function is authoritative; the commands above match it by dropping table delimiter rows.

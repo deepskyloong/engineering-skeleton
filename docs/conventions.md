@@ -41,4 +41,4 @@ A repository that adopts these norms points at this page: its `docs/conventions.
 
 ## Budget units
 
-Defined once in `docs/norm/rules.md`; not restated here. The short form: volume is measured in non-whitespace characters excluding table delimiter rows (`grep -vE '^\|[[:space:]:-]+\|$' FILE | tr -d '[:space:]' | wc -m`), entries in rows (`wc -l`), and a limit without both a unit and a command is not a limit.
+Defined once in `docs/norm/rules.md`; not restated here. A limit without both a unit and a command is not a limit.

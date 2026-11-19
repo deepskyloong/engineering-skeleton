@@ -8,7 +8,7 @@ This template starts as a single-package repository: `src/` and `tests/` sit at 
 
 ## Directory ownership
 
-Each directory's `README.md` lists its direct children. `docs/README.md` lists the docs subdirectories; subdirectory READMEs list their own pages. A parent lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
+Each directory's `README.md` lists its direct children. The docs index lists the role pages and any docs subdirectories; each subdirectory README lists its own pages. A parent above a directory lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
 
 ## Placement rules
 

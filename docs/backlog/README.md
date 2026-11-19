@@ -6,7 +6,7 @@ Deferred items only: an item here binds nothing, and records a decision not yet 
 
 - Each item is its own file, `B-<nnnn>-<slug>.md`, numbered with four digits; a migrated backlog series keeps its width and is never renumbered. The index carries order.
 - Every item states `Revisit when`: the event that makes it actionable — a condition outside the item, or a freed slot in the plan. A date is not a trigger; an item that names neither is a wish.
-- **Status lives in the index, not the item file.** `open`: the trigger has not fired. `active`: a work package is on it. `paused`: work started and stopped, resumption undecided. `closed`: delivered, withdrawn, or superseded.
+- **Status lives in the index, not the item file.** The four states and their boundaries are defined in `docs/norm/roles.md` (Backlog index); the index records the state, not a second definition.
 - Closing: write a one-line outcome under `## Outcome`, set the row to `closed`, keep the file and the row. Closed rows stay; the index is an inventory, not a to-do list.
 
 ## Index

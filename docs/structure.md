@@ -8,7 +8,7 @@ This repository has no members. Its root is the whole repository: `docs/` holds 
 
 ## Directory ownership
 
-Each directory's `README.md` lists its direct children. `docs/README.md` lists the docs subdirectories; `docs/norm/README.md`, `docs/decisions/README.md`, and `docs/backlog/README.md` list their own pages. A parent lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
+Each directory's `README.md` lists its direct children. `docs/README.md` lists the top-level docs pages and the docs subdirectories; `docs/norm/README.md`, `docs/decisions/README.md`, and `docs/backlog/README.md` list their own pages. A parent above a directory lists directories, not files. No page restates another directory's inventory; a structure page that lists files is a second index.
 
 ## The relationship between the three layers
 

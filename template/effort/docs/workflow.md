@@ -35,20 +35,10 @@ Anything else — a changed goal or acceptance criterion — is a new work packa
 
 ## Closeout — five steps
 
-1. Write `summary.md` (≤3,000 non-ws chars): what was done, what was not, what a future maintainer must know.
+1. Write `summary.md` (budget in `{{NORM_SOURCE}}/docs/norm/rules.md`): what was done, what was not, what a future maintainer must know.
 2. Relocate what outlives the effort: contract → `docs/contracts/`; decision → `docs/decisions/`; method → `docs/knowledge/guides/`; incident → `docs/knowledge/cases/`.
 3. Freeze the package: move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit. Check `rg -l '<slug>'`; every survivor is explained.
 4. Move the row from `work-packages/README.md` to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
 5. Leave a tombstone at the old path only when a frozen record cites it: ≤3 lines, exactly one link, title ending with `— moved`.
 
-## Acceptance checklist
-
-- [ ] `summary.md` exists, inside budget, names what was not done.
-- [ ] Every contract, ADR, or knowledge file has a home and a link from its directory README.
-- [ ] `rg -l '<slug>'` was run; every survivor is explained.
-- [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.
-- [ ] The package is at `work-packages/archive/<slug>/` and read-only.
-- [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
-- [ ] Every done work item cites evidence; every open item is in `Current state`.
-- [ ] The gate is green.
-- [ ] No optional role was created without its trigger.
+The closeout checklist in `work-packages/README.md` verifies these five steps.

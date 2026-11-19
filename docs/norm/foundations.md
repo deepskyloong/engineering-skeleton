@@ -12,9 +12,9 @@ The standard is language-agnostic in its core and language-specific in its overl
 
 **P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this standard exists to prevent.
 
-**P2 — Least per-turn tax.** Only `AGENTS.md` is loaded on every turn. Everything else is read on demand, through a routing table. A rule that costs context on every turn must be a red line, a gate, or a pointer — not an explanation.
+**P2 — Least per-turn tax.** Only `AGENTS.md` is loaded on every turn. Everything else is read on demand, through a routing table. A rule that costs context on every turn must be a red line, a gate, or a pointer — not an explanation. A red line is a pointer summary of its home rule: it may compress the statement for per-turn load, but it does not become a second home. When the two drift, the norm wins.
 
-**P3 — Index autonomy.** Index files state membership, not totals. No "currently 18 documents", no "12 ADRs". The count goes stale and the structure block that carries it rots with it. Each directory's README lists its own children; the parent lists directories, not files. A structure page that lists files is a second index, not structure.
+**P3 — Index autonomy.** Index files state membership, not totals. No "currently 18 documents", no "12 ADRs". The count goes stale and the structure block that carries it rots with it. Each directory's README lists its own children; a parent above a directory lists directories, not files. A structure page that lists files is a second index, not structure.
 
 **P4 — A rule without enforcement is a slogan.** Every rule declares its strength: `strong` (a command or the gate fails), `weak` (a review criterion, checked by a person or an agent), `none` (a recommendation, explicitly labeled). Do not dress a `none` as a `strong`.
 
@@ -35,7 +35,7 @@ Two obligations follow from those names: a pointer must be reasonably available 
 | `core` | Language-agnostic roles, rules, flow, budgets | Every repository has it. No exceptions. |
 | `overlay` | Toolchain, gate command, code layout, dependency policy, writing rules for one language | Exactly one overlay is active. Two overlays in one repository is a monorepo with two languages, which is a special case, not the default. |
 | `adapter` | A registry of third-party suite tracks that own their directories, legacy paths that cannot move yet, plus a compatibility whitelist | Never a physical directory. It is a table in `docs/adapters.md`. |
-| `optional` | Roles that appear only under a trigger: `docs/contracts/`, `docs/architecture/`, `docs/toolchain/`, module-level `AGENTS.md` | Absent by default. An absent optional role is correct, not incomplete. |
+| `optional` | Roles that appear only under a trigger: `docs/contracts/`, `docs/architecture/`, `docs/operations/`, `docs/toolchain/`, `docs/knowledge/`, `docs/status.md`, module-level `AGENTS.md` | Absent by default. An absent optional role is correct, not incomplete. |
 
 The distinction between `adapter` and `optional` matters. `optional` is a role you may add; `adapter` is a foreign system you cannot move and must therefore register.
 
@@ -53,11 +53,12 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   ├── structure.md           # layout, placement rules, artifact tiers
 │   ├── conventions.md         # language, naming, citation, discriminations
 │   ├── committing.md          # commit norm pointer and deviations
-│   ├── governance.md          # provenance, change surface, ownership
+│   ├── governance.md          # provenance, review (with the first work package)
+│   ├── status.md              # current phase, what works, next action (optional)
 │   ├── adapters.md            # adapter registry (when a foreign suite exists)
 │   ├── contracts/             # durable contracts (optional)
 │   ├── architecture/          # system organization (optional)
-│   ├── operations/            # runbooks, status (optional)
+│   ├── operations/            # runbooks (optional)
 │   ├── decisions/             # ADRs (from the first real decision)
 │   ├── backlog/               # B-<nnnn> items (from the first deferred item)
 │   ├── toolchain/             # reproducible traps only (optional)

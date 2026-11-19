@@ -25,6 +25,8 @@ Closed packages move to `work-packages/archive/<slug>/`; `work-packages/archive/
 
 ## Closeout checklist
 
+The five closeout steps are in `docs/norm/flow.md`; this checklist verifies them.
+
 - [ ] `summary.md` names what was not done.
 - [ ] `summary.md` names every evidence directory; none is empty.
 - [ ] Contracts, ADRs, and knowledge files have homes and index links.

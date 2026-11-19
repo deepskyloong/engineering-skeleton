@@ -4,15 +4,15 @@
 
 - **What goes here**: documents whose reader is a maintainer of this project. A document whose reader is a user belongs in the root `README.md`.
 - **What does not go here**: generated files, toolchain configuration (it lives beside the code it configures), or a copy of a value owned elsewhere.
-- **Structure**: each topic gets its own file. A new subdirectory gets its own `README.md` before it gets a second file.
-- **Naming**: `kebab-case.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
-- **Optional roles**: `contracts/`, `architecture/`, `operations/`, `toolchain/`, `knowledge/`, and `adapters.md` appear when their trigger does. Their absence is correct.
+- **Structure**: each topic gets its own file. A new subdirectory gets its own `README.md` before it gets a second file. The index lists direct children in one row each and does not repeat a subdirectory's file list.
+- **Naming**: follows `conventions.md`; this page does not restate the naming rules.
+- **Optional roles**: `contracts/`, `architecture/`, `operations/`, `toolchain/`, `knowledge/`, `status.md`, and `adapters.md` appear when their trigger does. Their absence is correct.
 
 ## Index
 
-| File | Content |
+| Child | Content |
 | --- | --- |
 | [charter.md](charter.md) | Scope, non-goals, constraints, success criteria |
 | [structure.md](structure.md) | Levels, placement rules, artifact tiers |
-| [conventions.md](conventions.md) | Language, naming, citation, five discriminators |
+| [conventions.md](conventions.md) | Language, naming, citation, five discriminations |
 | [committing.md](committing.md) | A base pointer to the committing norm plus this repository's deviations |
