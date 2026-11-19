@@ -16,9 +16,9 @@ After merging, add the three pages to the tree in `docs/structure.md`.
 | `docs/workflow.md` | The lifecycle norm's base pointer, plus this repository's deviations |
 | `docs/adapters.md` | Suite tracks and legacy paths, as a registry |
 | `work-packages/README.md` | Work package governance, the open table, and the archive pointer |
-| `work-packages/_template.md` | The four ledger files, as one copyable scaffold |
+| `work-packages/_template.md` | The four ledger files and the item shape, as one copyable scaffold |
 
-`work-packages/_template.md` is not a role. Split it into the four ledger files (`spec.md`, `plan.md`, `todo.md`, and `summary.md`, written at closeout), then delete it.
+`work-packages/_template.md` is not a role. Split it into the four ledger files (`spec.md`, `plan.md`, `board.md`, and `summary.md`, written at closeout), create `items/` with the first work item, then delete it.
 
 A package may also carry evidence directories it creates — a report, an inventory, or a reproduction script. `summary.md` names each one, and closeout archives it with the package. Do not create an empty one.
 

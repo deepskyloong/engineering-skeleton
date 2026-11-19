@@ -1,6 +1,6 @@
 # Work package template
 
-Copy this file into `work-packages/<slug>/` and split it into the four ledger files at the headings; `summary.md` is written at closeout. Delete the section that does not apply; never keep an empty heading.
+Copy this file into `work-packages/<slug>/` and split it into the four ledger files at the headings; `summary.md` is written at closeout, and `items/` starts with the first work item. Delete the section that does not apply; never keep an empty heading.
 
 ## spec.md
 
@@ -32,7 +32,7 @@ How the goal is reached, in steps. Name the files and the roles they land in.
 | --- | --- | --- |
 | P0 — <phase> | W01–W0n | <observable exit> |
 
-The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `todo.md`.
+The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `items/<ID>.md`.
 
 ## Risks
 
@@ -44,10 +44,10 @@ The table names the phases and their exit conditions; each item's description, a
 What this plan deliberately does not touch.
 ```
 
-## todo.md
+## board.md
 
 ```markdown
-# Todo
+# Board
 
 ## Current state
 
@@ -63,15 +63,24 @@ What this plan deliberately does not touch.
 - Next: W01 — <one action>
 - Blocked: <list or "none">
 - Open decisions: <list or "none">
-- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
+- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this board (state and index), `items/<ID>.md` (the item you are on)
 
 ## Work items
 
 ### P0 — <phase>
 
-#### W01 — <title>
+| Item | Title | Status |
+| --- | --- | --- |
+| W01 | <title> | todo |
+```
 
-**Status**: todo
+The Item cell carries a relative link to the item's file, `items/<ID>.md`; the row is how a reader reaches it.
+
+## items/W01.md
+
+```markdown
+# W01 — <title>
+
 **Depends on**: none
 
 <prose description: what, why, constraints, files, sequence>
