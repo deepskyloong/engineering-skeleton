@@ -5,11 +5,11 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W07c closed — the document-version rule is gone from conventions §8.1 and §7 and from the docs, scripts and web READMEs, because the norm keeps no changelog and no version number (oshi `f90b44e`); W07a and W07b preceded it (`166cab9` → `edcfe25`)
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 278 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
+- Last done: W07e closed — twelve directory READMEs point at the norm's role rows instead of restating them, and the three that had drifted (backlog statuses, ADR naming width, the version wording) now match the rows they cite (oshi `c430dad`, `f02544c`, `9edbea9`); W07c preceded it (`f90b44e`), with W07a and W07b before that (`166cab9` → `edcfe25`)
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 278 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed); W07e re-ran the text path green on its own commits
 - Phase: P2 — page repairs and audit closeout
 - Focus: W06 — re-measure every role page, then split by topic
-- Progress: 15 done / 4 todo / 0 blocked
+- Progress: 16 done / 4 todo / 0 blocked
 - Todo: W06–W09
 - Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
@@ -251,7 +251,7 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. A second joins with W07c: `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; W07c joined them once the §8-versus-base audit was settled. W07d carries the one audit item that needs a ruling rather than a repair: the retired-path citations in five open backlog items and ADR-0010.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. A second joins with W07c: `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; W07c joined them once the §8-versus-base audit was settled. W07d carries the one audit item that needs a ruling rather than a repair: the retired-path citations in five open backlog items and ADR-0010. W07e joined after W07c: twelve directory READMEs repeated the norm's role rows, most with no pointer, and three had already drifted from them.
 
 **Done when**:
 
@@ -323,6 +323,25 @@ Seven citations survive in five open backlog items (`B-2`, `B-3`, `B-4`, `B-12`,
 - oshi's gate is green
 
 **Evidence**: pending
+
+#### W07e — Directory READMEs point at the norm instead of restating it
+
+**Status**: done
+**Depends on**: W07c
+
+Twelve directory READMEs under `docs/` and `archived/` still carried wording the norm already binds, and most carried no pointer to the row they were copying. The audit's own test — one rule, one home — fails as soon as the copies disagree, and three had already drifted: `docs/backlog/README.md` walked `open` → `active` → `closed` and called the close words "not extra statuses", dropping the norm's `paused` state outright; `docs/decisions/README.md` said "Naming and versioning: `ADR-NN-<slug>.md`" in its body while its header said four digits; `docs/architecture/README.md` restated the two §8.1 bookkeeping steps, and `docs/agents/README.md` still declared "no version header" after W07c removed the rule it answered.
+
+The shape applied: a `Norm` header row naming the norm's role row, the admission and discrimination sentences deleted, and only directory-local content kept — membership, index shape, the repository's own vocabulary. The standard's own first-use page already demonstrates it: `template/first-use/docs/backlog/README.md` sends the four states to `docs/norm/roles.md` instead of listing them. A directory README is not a deviation page, so it takes a `Norm` row, not a `Base` row — `Base` is W07b's shape for the three general-norm copies.
+
+Two pages needed repair rather than trimming. `docs/operations/README.md` had no header table and no governance block at all, so no reader could learn how a page enters; §8.1 requires both. `archived/README.md` still sent a reader to four retired paths that resolve only through tombstones — the index is live, so its pointers move, and the archived records keep their own conclusions; this does not decide W07d, which is about citations inside frozen records.
+
+**Done when**:
+
+- every directory README either names the norm row it applies or carries no norm wording at all
+- no directory README contradicts a norm role row (statuses, naming widths)
+- oshi's gate is green
+
+**Evidence**: oshi `c430dad` (eight READMEs: `Norm` rows, the backlog status pointer, the two-digit ADR naming line gone), `f02544c` (operations governance block; architecture and agents bookkeeping), `9edbea9` (archive index repointed at `docs/architecture/`, `docs/decisions/ADR-0010-per-work-db.md` and `docs/architecture/db-topology.md`). Text gate green: ruff check and format, prose 278 files with 0 wrapped blocks. The shape follows `template/first-use/docs/backlog/README.md` and `docs/norm/roles.md`, "Directory index", so no page enters the standard.
 
 ### P3 — Closeout
 
