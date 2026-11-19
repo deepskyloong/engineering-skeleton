@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """Gate for the repository-standard repository.
 
-Checks what can be checked mechanically. Prose quality and cross-file
-semantic duplication are review criteria, not a gate.
+Checks what can be checked mechanically. Prose *quality* and cross-file semantic
+duplication are review criteria, not a gate; prose *form* is one, and the stage below
+delegates it to the `md-tools` CLI so the block model has one implementation.
 """
 
 from __future__ import annotations
 
+import json
+import os
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -467,6 +472,72 @@ def check_packages() -> None:
                 fail(f"evidence directory not named in summary: {rel(child)}/")
 
 
+def check_prose(files: list[Path]) -> None:
+    """Every paragraph is one line. The rule lives in `md-tools`; this stage calls it.
+
+    The project root comes from `MD_TOOLS_PROJECT` because a machine-local path does not
+    belong in a file. A missing project, a code outside 0/1/2, or a report that did not
+    get written is a failure, never a skip: a prose check that passes because the tool
+    was absent is the failure this stage exists to catch (`docs/norm/rules.md`, the prose
+    bullet under "Naming and citation").
+    """
+    project = os.environ.get("MD_TOOLS_PROJECT", "").strip()
+    if not project:
+        fail("prose check: MD_TOOLS_PROJECT is not set to the python-toolkit checkout")
+        return
+    with tempfile.TemporaryDirectory() as directory:
+        listing = Path(directory) / "files.txt"
+        report = Path(directory) / "report.json"
+        listing.write_text("\n".join(str(path) for path in files) + "\n", encoding="utf-8")
+        command = [
+            "uv",
+            "run",
+            "--project",
+            project,
+            "--package",
+            "md-tools",
+            "md-reflow",
+            "--check",
+            "--quiet",
+            "--list-file",
+            str(listing),
+            "--json",
+            str(report),
+        ]
+        environment = {
+            k: v for k, v in os.environ.items() if k not in ("VIRTUAL_ENV", "PYTHONHOME")
+        }
+        try:
+            completed = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                check=False,
+                env=environment,
+            )
+        except OSError as exc:
+            fail(f"prose check: md-reflow could not run: {exc}")
+            return
+        if completed.returncode not in (0, 1, 2) or not report.exists():
+            detail = (completed.stderr or completed.stdout or "").strip().splitlines()
+            tail = detail[-1] if detail else "no output"
+            fail(f"prose check: md-reflow failed (exit {completed.returncode}): {tail}")
+            return
+        payload = json.loads(report.read_text(encoding="utf-8"))
+        for row in payload.get("files", []):
+            name = Path(str(row["path"]))
+            try:
+                key = name.relative_to(ROOT).as_posix()
+            except ValueError:
+                key = name.as_posix()
+            fail(f"prose is hard-wrapped: {key} — {row['blocks']} block(s), run md-reflow --apply")
+        skipped = int(payload.get("files_skipped", 0))
+        if skipped:
+            fail(f"prose check: {skipped} file(s) could not be read (mixed line endings)")
+
+
 def main() -> int:
     files = markdown_files()
     check_required_files()
@@ -485,6 +556,7 @@ def main() -> int:
     check_tables(files)
     check_backlog_status(files)
     check_generated(files)
+    check_prose(files)
 
     if WARNINGS:
         print(f"WARN — {len(WARNINGS)} file(s) over the soft volume budget\n")
@@ -500,7 +572,7 @@ def main() -> int:
 
     print(
         f"PASS — {len(files)} markdown files, roles, links, budgets, entries, "
-        "naming, tables, statuses, packages"
+        "naming, tables, statuses, packages, prose"
     )
     return 0
 
