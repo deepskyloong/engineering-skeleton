@@ -70,7 +70,7 @@ P1's exit condition named four roles — charter, contracts, knowledge, toolchai
 
 **6 Decision**
 
-- `Status` — R1 accepted 2026-11-19 as option 4: a new role, Suite tracks, at `/docs/suite-tracks.md`, recorded in `docs/norm/roles.md` and ADR-0026. R2 pending.
+- `Status` — R1 accepted 2026-11-19 as option 4: a new role, Suite tracks, at `/docs/suite-tracks.md`, recorded in `docs/norm/roles.md` and ADR-0026. R2 settled 2026-11-19: no replacement; the repository states the base rule, the suite track records only deviations, and the repository's page is a base pointer to the norm source (standard `06aeb6d`).
 - Applied — C4 in oshi `0e57e99`; the measurements, pointer proof and gate are under "Applied results".
 
 ## Applied results
@@ -88,6 +88,21 @@ C4 — the suite map's role, oshi `0e57e99` (2026-11-19), standard `0d3a5a1`:
 - Pointer proof — `git grep -n 'development-workflows' -- '*.md'` survivors are the four closed packages (`tasks/manual-character-registration`, `docs/superpowers/b13-*`, `docs/superpowers/b16-*`), `docs/backlog/B-12`'s dated measurement, the CE plan, and the closed `.scratch/embedding-coverage` effort. Each is a frozen citation that resolves through the tombstone. No non-markdown reference remains.
 - Gate — text-only path, as the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock` or `.python-version`: `ruff check` clean, `ruff format --check` 230 files, prose 272 files, 0 wrapped blocks. Every relative link under `docs/` resolves. The first gate run re-locked `uv.lock` to a mirror through an inherited `UV_DEFAULT_INDEX` (the trap in `docs/toolchain/python.md`); the lock was reverted, not committed.
 - Standard gate after the role was admitted: `bun run gate` PASS, 112 markdown files, 66 tests, one soft `roles.md` warning.
+
+### R2 — the repository owns the base rule, the suite track carries deviations
+
+Ruling 2026-11-19: suite tracks do **not** replace Operating modes or Governance. The repository states the base rule; a suite track records only what it layers on its own artifacts; and the repository's page points at the norm source instead of restating it — the `docs/committing.md` shape, B-0005 Plan item 7. Standard `06aeb6d`:
+
+| Page | Before | After | Why |
+| --- | --: | --: | --- |
+| `docs/norm/flow.md` | 7,558 | 8,273 | Gains "Who decides and how a change is reviewed": ownership, the ADR requirement, budget-change evidence, the adversarial review format and its adjudication. Governance had no norm source; only the template stated them |
+| `template/effort/docs/workflow.md` | 3,328 | 993 | Base pointer to `docs/norm/flow.md` plus a deviations table |
+| `template/effort/docs/governance.md` | 1,537 | 826 | Base pointer to `docs/norm/flow.md` (ownership, review) and `docs/norm/rules.md` (change surface, retirement), plus a deviations table |
+| `docs/norm/roles.md` | 13,267 | 13,533 | Discrimination pair `Operating modes, Governance / Suite tracks`: a rule that binds every effort belongs to the repository; a suite may narrow only its own artifacts below it |
+
+`docs/workflow.md` gains three mapping rows — a copied lifecycle page, a copied governance page, and a suite track's rule layered on the lifecycle. `docs/norm/README.md` states the pointer model in its status and extends the `flow` question to who decides and review. Gate: PASS, 112 markdown files, 66 tests, one soft `roles.md` warning.
+
+Consequence for W05c: `docs/workflow.md` and `docs/governance.md` are short pointer pages — a `Norm source:` line, then a deviations table. oshi has no `Norm source:` line yet, so its pages carry the absolute path to the standard until that line exists; both land with `docs/committing.md` in C6.
 
 ## Role pass
 
