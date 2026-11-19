@@ -7,14 +7,14 @@
 - Branch: `feature/b0005-rollout-oshi`
 - Last done: W05 — `docs/stack.md` split into the toolchain page, two ADRs, two backlog items and one charter non-goal; its path is a tombstone (`9c27e08`)
 - Gate: `bun run gate` PASS 2026-11-19 (109 markdown files, 65 tests; one soft `roles.md` warning)
-- Phase: P2 — page repairs and audit closeout
-- Focus: W06 — fit oshi's role pages to their budgets (four contracts pages and one architecture page remain over soft)
-- Progress: 9 done / 3 todo / 0 blocked
-- Todo: W06–W09
-- Next: W06 — re-measure every role page, then split by topic
-- Blocked: none
-- Open decisions: none — the W03, W04, W04b, W04c and W05 rulings are settled and recorded in `maps/w03-role-map.md`, `maps/w04-role-map.md`, `maps/w04b-role-map.md`, `maps/w04c-explainer-role.md` and `maps/w05-toolchain-role.md`; starting W06 is a confirmation, not a decision
-- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
+- Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
+- Focus: W05b — place the four live pages no work item owned; two rulings gate the parts that change the standard
+- Progress: 9 done / 6 todo / 0 blocked
+- Todo: W05b–W09
+- Next: W05b C1 — `docs/testing.md` (red lines to `AGENTS.md`, method to a guide, tombstone); C4 waits on R1
+- Blocked: none; C4 and W05c C6–C7 wait on rulings, not on a blocker
+- Open decisions: R1 — where the per-suite map lives (ADR-0010 keeps it; `docs/norm/roles.md` does not admit it); R2 — whether suite tracks replace the workflow and governance roles. Both are stated in `maps/w05b-residual-role-pass.md`
+- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
 
 ## Work items
 
@@ -167,14 +167,51 @@ The maintainer's ruling was to dissolve the five pages into a new form, then let
 
 **Evidence**: `maps/w05-toolchain-role.md` (role pass, six-field report, applied section). oshi `50d2eb3` — `docs/toolchain/README.md` (1,136) and `python.md` (4,008) with three traps that reproduce on 2026-11-19, the `docs/README.md` row, and `AGENTS.md`'s package-index paragraph reduced to a gate clause; `d6a11e5` — `ADR-0014-runtime-stack.md` (5,250) and `ADR-0015-dev-toolchain.md` (5,167) plus two index rows; `720b83b` — `B-26-ci-service.md` (1,393), `B-27-packaging-release.md` (1,305), two index rows; `9f519dc` — the container non-goal in `docs/charter.md` (3,935); `9c27e08` — tombstone (55, one link to `docs/README.md`) and the three living pointers (`docs/development-workflows.md`, `docs/operations/works.md`, `web/README.md`). Gate: C1–C4 text-only green; C5 full — 658 passed / 1 skipped, `ty` clean, prose 270 files with 0 wrapped blocks, frontend `bun run validate` 86 tests. Pointer proof: `git grep 'docs/stack.md'` returns B-12's dated measurement, the compound-engineering plan, and the two new records' `Status` rows — frozen citations and provenance, all resolving.
 
+### P1b — The role set completed
+
+#### W05b — Place the four pages no work item owned, and remove the one over a hard line
+
+**Status**: todo
+**Depends on**: W05; C4 on R1
+
+P1's exit condition named charter, contracts, knowledge and toolchain, and all four reached their homes. The migrate protocol's last step — list what is left — was never run, so four live pages with consumers still hold no role: `docs/testing.md` (7,500), `docs/mutation-testing.md` (9,311), `docs/language-policy.md` (2,965), and `docs/development-workflows.md` (16,611, over the 16,000 hard line). The role pass is `maps/w05b-residual-role-pass.md`: testing splits into `AGENTS.md` red lines plus a guide, mutation into ADR-0015's rejected table, a guide and a case, language folds into `docs/conventions.md`, and the suite map goes to `docs/adapters.md`, `docs/structure.md` and a guide once R1 decides the map's home. One role per commit; a closed package's citation is answered by a tombstone, an open package's pointer is repointed.
+
+**Done when**:
+
+- each job is at an admitted home, or has a disposition recorded in the map
+- `AGENTS.md` carries the test red lines; no second decision page restates ADR-0015's tool choice
+- `docs/development-workflows.md` is gone and its three jobs sit with their roles (pending R1)
+- the four old paths are tombstones; every living pointer is repointed and every frozen citer resolves
+- the page over a hard line is removed rather than carried into W06
+- oshi's gate is green
+
+**Evidence**: pending — per-commit shas, measured volumes, the pointer proof per path, and the gate results go into the map's "Applied results" section once the moves land.
+
+#### W05c — Give the three required roles a home or a recorded disposition
+
+**Status**: todo
+**Depends on**: W05b; C6–C7 on R2
+
+Three roles the standard calls always-present or first-use have no page: `docs/committing.md` (no commit-message rule exists anywhere), `docs/workflow.md` (its lifecycle job is split between `tasks/README.md` and `docs/development-workflows.md`), and `docs/governance.md` (seven closed packages, no page). Committing is admitted unconditionally and gets a base pointer plus deviations. The other two are a standard question: if a suite track owns the lifecycle, the ruling is recorded in the standard, not as a local exception. The work-package index at `tasks/README.md` gets its reason recorded in `docs/adapters.md` in the same pass.
+
+**Done when**:
+
+- `docs/committing.md` exists as a base pointer plus deviations and is inside its 5,000 line
+- the workflow and governance question has either two pages or a standard backlog item that records why a suite track replaces them
+- the work-package index's placement inside a suite track has a recorded disposition
+- `docs/README.md` indexes whatever exists and states no counts
+- oshi's gate is green
+
+**Evidence**: pending — the ruling's location, the commits, and the gate results.
+
 ### P2 — Page repairs and audit closeout
 
 #### W06 — Fit oshi's role pages to their budgets
 
 **Status**: todo
-**Depends on**: W05
+**Depends on**: W05c
 
-Re-measure every role page after the moves; the audit's 29 breaches were a 2026-11-16 snapshot. After C4 four pages sit over soft: `contracts/schema.md` (12,261), `contracts/ui-label.md` (12,188), `contracts/ui-audit.md` (12,104), `architecture/components-decision.md` (10,883); `contracts/data-rules-ingest.md` (9,988) and `docs/conventions.md` (10,959) are inside the line. Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md` 11,708, `docs/backlog/README.md` 5,524, `docs/README.md` 3,044), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
+Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 2026-11-16 snapshot, and the C4 list was a snapshot of a smaller tree. Measured 2026-11-19 at oshi `9c27e08`, three pages are over their hard line and none was in W06's scope: `docs/reviews/README.md` (13,323 / 12,000 index line), `docs/backlog/B-13-degenerate-crops.md` (13,875 / 8,000 item line), and `docs/development-workflows.md` (16,611 / 16,000), which W05b removes rather than this split. Over soft: `contracts/schema.md` (12,273), `contracts/ui-label.md` (12,251), `contracts/ui-audit.md` (12,185), `architecture/components-decision.md` (10,911), `contracts/data-rules-ingest.md` (10,009), `docs/conventions.md` (11,760 before the language fold), `knowledge/guides/pitfalls.md` (15,341), `knowledge/explainers/reading-the-numbers.md` (15,023), `knowledge/explainers/recognition-pipeline.md` (11,614), and the storefront `README.md` (10,564). Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md`, `docs/backlog/README.md`, `docs/README.md`), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
 
 **Done when**:
 

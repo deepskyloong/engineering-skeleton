@@ -4,7 +4,7 @@
 
 1. This package is the oshi step of `B-0005`; the programme's order and its one-package-per-repository rule live there. The next repository's package opens only after this one closes.
 2. The audit is done (`audits/oshi.md`, measured 2026-11-16) and reviewed (`audits/README.md`). Re-measure before each budget step; the report is a dated snapshot, not a budget.
-3. Move one role per commit, following the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain. W08a (package evidence) is a standard change before contracts; it is not a role move.
+3. Move one role per commit, following the migrate mode of `docs/workflow.md`, smallest complete role first: charter, then contracts, knowledge, and toolchain. W08a (package evidence) is a standard change before contracts; it is not a role move. W05's closeout left four live pages without a role and three required roles without a page, which is why the migrate protocol's last step matters: W05b and W05c complete the role set before P2 measures a single page.
 4. Register what cannot move in oshi's `docs/adapters.md`; never force a suite track or a frozen record to accept a new path.
 5. Evolve the standard when a move exposes a wrong placement, a missing rule, a wrong format, a budget with no sample, or a source rule oshi's working practice contradicts. The change follows the change surface in `AGENTS.md`: spec first, then `template/`, then the skill, then `scripts/check.py`; oshi follows the evolved spec afterwards.
 6. Close when every audit finding has a disposition — resolved, withdrawn, or filed as a backlog item — and `B-0005` carries oshi's disposition.
@@ -14,7 +14,7 @@
 | Phase | Work items | Exit condition |
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
-| P1 — Package rule and role moves | W08a, W02–W05 | The package evidence category is defined; charter, contracts, knowledge, and toolchain at their canonical paths; old paths are tombstones or adapter rows; both gates green |
+| P1 — Package rule and role moves | W08a, W02–W05, W05b–W05c | The package evidence category is defined; charter, contracts, knowledge and toolchain at their canonical paths; every remaining live page at an admitted home or a recorded disposition; the roles the standard calls always-present or first-use in place or ruled out in the standard; old paths are tombstones or adapter rows; both gates green |
 | P2 — Page repairs and audit closeout | W06–W07 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08–W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
