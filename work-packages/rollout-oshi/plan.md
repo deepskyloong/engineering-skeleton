@@ -15,7 +15,7 @@
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
 | P1 — Package rule and role moves | W08a, W02–W05, W05b–W05c | The package evidence category is defined; charter, contracts, knowledge and toolchain at their canonical paths; every remaining live page at an admitted home or a recorded disposition; the roles the standard calls always-present or first-use in place or ruled out in the standard; old paths are tombstones or adapter rows; both gates green |
-| P2 — Page repairs and audit closeout | W06–W07 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
+| P2 — Page repairs and audit closeout | W06a–W07 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08–W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
 The table names the phases and their exit conditions; each item's description, acceptance, and evidence live in `todo.md`.
