@@ -5,7 +5,7 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit
+- Last done: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit. Follow-ups: `739af32` unwrapped the prose in 27 pages; `2ea92a9` added `scripts/check_prose.py` as the fifth gate stage (calls the `md-tools` app, needs `MD_TOOLS_PROJECT`, excludes the three suite tracks)
 - Phase: P1 — package rule and role moves
 - Focus: W04 — knowledge role
 - Progress: 4 done / 6 todo / 0 blocked
@@ -86,7 +86,7 @@ Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 file
 - the old paths are tombstones or registered legacy paths
 - oshi's gate is green
 
-**Evidence**: oshi `6d6033a` (contracts, 26 files), `b7efaec` (architecture, 23 files), `5bfb3de` (operations, 56 files), `5f9df75` (conventions and the shelf retirement, 27 files); `uv run pytest -q -n auto` 658 passed / 1 skipped, `ruff check`, `ruff format --check`, `ty check src/oshi`, `cd web && bun run validate` 86 tests, green at every commit. Measured after C4: 20 contracts files (max `schema.md` 12,261), 7 architecture files (max `components-decision.md` 10,883), 4 operations pages (max `ui-checks.md` 8,852), `conventions.md` 10,959. Pointer proof: `git grep -n 'docs/designs/\|docs/specs/'` survivors are the two adapter legacy rows, frozen citers, and new pages' `Source` headers. Deviations and the five corrections to the accepted map: `maps/w03-role-map.md` "Applied results".
+**Evidence**: oshi `6d6033a` (contracts, 26 files), `b7efaec` (architecture, 23 files), `5bfb3de` (operations, 56 files), `5f9df75` (conventions and the shelf retirement, 27 files); `uv run pytest -q -n auto` 658 passed / 1 skipped, `ruff check`, `ruff format --check`, `ty check src/oshi`, `cd web && bun run validate` 86 tests, green at every commit. Measured after C4: 20 contracts files (max `schema.md` 12,261), 7 architecture files (max `components-decision.md` 10,883), 4 operations pages (max `ui-checks.md` 8,852), `conventions.md` 10,959. Pointer proof: `git grep -n 'docs/designs/\|docs/specs/'` survivors are the two adapter legacy rows, frozen citers, and new pages' `Source` headers. Deviations and the five corrections to the accepted map: `maps/w03-role-map.md` "Applied results". Prose: `739af32` (2,707 -> 2,300 lines, whitespace-only) and the gate stage `2ea92a9`.
 
 #### W04 — Move the knowledge role
 
