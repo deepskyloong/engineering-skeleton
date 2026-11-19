@@ -2,7 +2,7 @@
 
 - Date: 2026-11-19
 - Source: oshi `9c27e08` (clean tree), worktree `E:\Projects\oshi\.worktrees\skeleton-migration` on `feature/skeleton-migration`; standard `2819ab8`
-- Status: open — the role pass is complete; two rulings block the parts that change the norm (R1, R2)
+- Status: open — R1 accepted 2026-11-19 (ADR-0026) and C4 applied (`0e57e99`); C1–C3 and W05c remain; R2 open
 - Role basis: `docs/norm/roles.md`, "Always present", "Present from the first real use", "Optional, admitted by trigger", "Five discriminations"; `docs/decisions/ADR-0010-suite-tracks-are-adapters.md`
 - Measure: non-whitespace characters, table delimiter rows excluded (`docs/norm/rules.md`, "Measuring"), taken 2026-11-19 on the worktree above
 
@@ -70,7 +70,24 @@ P1's exit condition named four roles — charter, contracts, knowledge, toolchai
 
 **6 Decision**
 
-- `Status` — pending; R1 and R2 await the maintainer.
+- `Status` — R1 accepted 2026-11-19 as option 4: a new role, Suite tracks, at `/docs/suite-tracks.md`, recorded in `docs/norm/roles.md` and ADR-0026. R2 pending.
+- Applied — C4 in oshi `0e57e99`; the measurements, pointer proof and gate are under "Applied results".
+
+## Applied results
+
+C4 — the suite map's role, oshi `0e57e99` (2026-11-19), standard `0d3a5a1`:
+
+| Page | Volume before | Volume after | Role |
+| --- | --: | --: | --- |
+| `docs/development-workflows.md` | 16,611 | 54 (tombstone) | removed; tombstone links `docs/README.md` |
+| `docs/suite-tracks.md` | — | 8,864 | Suite tracks |
+| `docs/structure.md` | 4,369 | 7,439 | Structure, plus "Suite-owned paths" |
+| `docs/knowledge/guides/isolated-checkouts.md` | — | 4,687 | Knowledge guide |
+
+- Repointed in the same commit: `AGENTS.md` "Workflow tracks", `docs/README.md`, `docs/adapters.md`, `docs/agents/README.md`, `docs/backlog/README.md` (two lines), `docs/backlog/B-26-ci-service.md`, `docs/structure.md`'s `tasks/` row, `tasks/README.md`, `tasks/head-kind-experiment/spec.md` (open package), and `.gitignore`'s comment.
+- Pointer proof — `git grep -n 'development-workflows' -- '*.md'` survivors are the four closed packages (`tasks/manual-character-registration`, `docs/superpowers/b13-*`, `docs/superpowers/b16-*`), `docs/backlog/B-12`'s dated measurement, the CE plan, and the closed `.scratch/embedding-coverage` effort. Each is a frozen citation that resolves through the tombstone. No non-markdown reference remains.
+- Gate — text-only path, as the diff touches no `src/`, `tests/`, `scripts/`, `config/`, `web/`, `pyproject.toml`, `uv.lock` or `.python-version`: `ruff check` clean, `ruff format --check` 230 files, prose 272 files, 0 wrapped blocks. Every relative link under `docs/` resolves. The first gate run re-locked `uv.lock` to a mirror through an inherited `UV_DEFAULT_INDEX` (the trap in `docs/toolchain/python.md`); the lock was reverted, not committed.
+- Standard gate after the role was admitted: `bun run gate` PASS, 112 markdown files, 66 tests, one soft `roles.md` warning.
 
 ## Role pass
 
@@ -101,7 +118,7 @@ Measured 2026-11-19 at `9c27e08`; the C4 list in W06 was a smaller tree.
 
 | Page | Role | Measured | Hard | Verdict |
 | --- | --- | --: | --: | --- |
-| `docs/development-workflows.md` | none | 16,611 | 16,000 | over hard; W05b removes it |
+| `docs/development-workflows.md` | none | 16,611 | 16,000 | over hard; removed by W05b C4 (`0e57e99`), no longer a W06 page |
 | `docs/reviews/README.md` | directory index | 13,323 | 12,000 | over hard |
 | `docs/backlog/B-13-degenerate-crops.md` | backlog item | 13,875 | 8,000 | over hard |
 | `docs/knowledge/guides/pitfalls.md` | guide | 15,341 | 16,000 | over soft |
