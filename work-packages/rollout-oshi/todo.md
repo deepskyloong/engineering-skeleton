@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05c closed — C7 records the governance disposition as one line on the docs index, so no page was created (oshi `8e16fe5`); the two required roles now have pages and the third has a recorded retirement
+- Last done: W06a closed — `docs/status.md` gives back the instruction layer, the contract and the done-list it was holding (oshi `13c060f` → `3b66d71`); the page is 3,840 non-whitespace against 5,000 raw, and the budget unit is now stated in §8.6
 - Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 277 files, 0 wrapped)
-- Phase: P1 — package rule and role moves, closed 2026-11-19; next is P2
-- Focus: W06a — the status page serves three roles that are not its own; the queue is reopened before the budget pass measures it
-- Progress: 11 done / 5 todo / 0 blocked
-- Todo: W06a, W06–W09
-- Next: W06a — move the instruction layer, the contract and the record off `docs/status.md`, then W06 measures a page that is already smaller
+- Phase: P2 — page repairs and audit closeout
+- Focus: W06 — re-measure every role page, then split by topic
+- Progress: 12 done / 4 todo / 0 blocked
+- Todo: W06–W09
+- Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep, now that `docs/conventions.md` sits at 14,441 of 16,000
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
@@ -210,12 +210,12 @@ Three roles the standard called always-present or first-use had no page: `docs/c
 
 #### W06a — Give the status page back to its role
 
-**Status**: todo
+**Status**: done
 **Depends on**: W05c
 
 `docs/status.md` passes the Status admission — current phase, what works, what does not, next action, links to packages — and fails three discriminations. It also serves as the instruction layer (§7 "Red lines", 514 characters), as a contract (§4 "Storage", 442), and as a record (§5 "Known gaps (as of M6 G1)", 199), and its next-action section carries a "Done (11-15)" block of finished work (~390) that the role's own exit forbids: rewritten in place, never accumulating history. Measured 2026-11-19 at `8e16fe5`: 4,093 non-whitespace characters, of which roughly 1,900 belong to a role that is not this one.
 
-Three of the four red lines already have a rule elsewhere (`docs/contracts/data-rules-decisions.md` for provenance, `docs/conventions.md` §9 for the write boundary, §2.1 with `docs/plans/m1-plan.md` §2 for the one-shot pool), so what is left is a second statement that can drift; the fourth, the M7 freeze, has no other home, which is the one that matters — a frozen-record instruction whose only copy sits on the page that gets rewritten. Each item moves to the page that admits it, and status keeps a line pointing there. Storage becomes two links to the config and backup contracts; the known-gaps record becomes a case, since it already says it is kept only because nothing else holds it; the done list collapses into the backlog items and packages that already carry those facts and hashes, leaving §6 as a next action and why the alternatives are closed. §1's promise duplicates `AGENTS.md` "What this is" and goes to a pointer. §3 keeps its measurement but the title says the date instead of claiming currency, because a dated snapshot is allowed under R10 and an undated "current" is not.
+Three of the four red lines already have a rule elsewhere (`docs/contracts/data-rules-decisions.md` for provenance, `docs/conventions.md` §9 for the write boundary, §2.1 with `docs/plans/m1-plan.md` §2 for the one-shot pool), so what is left is a second statement that can drift; the fourth, the M7 freeze, has no other home, which is the one that matters — a frozen-record instruction whose only copy sits on the page that gets rewritten. Each item moves to the page that admits it, and status keeps a line pointing there. Storage becomes two links to the config and backup contracts; the done list collapses into the backlog items and packages that already carry those facts and hashes, leaving §6 as a next action and why the alternatives are closed. The known-gaps list **stays** on the page: "what does not work" is the role's own wording, so the review's recommendation to move it out was withdrawn at implementation — the list dropped the milestone stamp's claim of currency and the sentence that made it a record ("sole written record — keep until a census replaces it"), and now says which measurement it reports and that nothing has re-run it. §1's promise duplicates `AGENTS.md` "What this is" and goes to a pointer. §3 keeps its measurement but the title says the date instead of claiming currency, because a dated snapshot is allowed under R10 and an undated "current" is not.
 
 One decision rides with this item: the budget unit. `docs/conventions.md` §8.6 and `tests/test_status_cap.py` count raw characters (4,825 against a 5,000 cap), while the norm counts non-whitespace and gives an EN page 10,000. The 5,000 line reads like the norm's ZH line applied to an English page, and the page's density is what that costs. Either the local line stays as a deliberate tightening and says so in §8.6, or the test moves to the norm's unit and line.
 
@@ -224,12 +224,12 @@ One decision rides with this item: the budget unit. `docs/conventions.md` §8.6 
 - every block on the page serves the Status admission; red lines are in the instruction layer and the page points at them
 - no rule is stated twice (`rg` on each moved rule returns the owning page only)
 - storage resolves through `docs/contracts/`, with no restatement on status
-- the known-gaps record has a home outside status, and status links it
+- the gap list states which measurement it reports, and no longer claims to be a record
 - §6 states a next action and a closure reason, with no list of finished work
 - the budget unit is stated, and `docs/conventions.md` §8.6 and `tests/test_status_cap.py` agree with it
 - oshi's gate is green
 
-**Evidence**: pending — findings with severities in this item's review, the commit per moved job, and the measured volume drop.
+**Evidence**: five commits, one per job. `13c060f` — three red lines were already in `AGENTS.md` "Hard invariants" and the fourth (the M7 freeze) had no other home, so it moved there; §7 stays as a pointer because the embedding-coverage tracker cites it in eight places. `2923344` — §4 names the config and backup contracts. `1a6c232` — the gap list keeps its role and loses its record claim; the done paragraph keeps its pointers and drops the retelling. `259b3fa` — §1 becomes a pointer, §3's title carries its dates. `3b66d71` — §8.6 and the test state the unit and the tightening's reason, and the slot test matches section numbers rather than titles. Status 4,093 → 3,840 non-whitespace, 4,825 → 4,548 raw against the 5,000 cap; gate green on every commit (ruff, prose 277 files, the cap and pointer tests).
 
 #### W06 — Fit oshi's role pages to their budgets
 
