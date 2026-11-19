@@ -119,6 +119,18 @@ Gate: PASS, 111 markdown files, 66 tests, one soft `roles.md` warning (13,257).
 
 Consequence for oshi: its one governance-class rule — review reports are local archives kept out of git, append-only, index-only in git — already lives in `docs/reviews/README.md` "Governance and maintenance". That is where C7 points; no new page. The residual question, whether an index page may carry rules at all, belongs to W06's page repairs, not here.
 
+### C1 — testing, oshi `55e6b0c`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/testing.md` | 7,500 | 41 (tombstone) | removed; tombstone links `docs/README.md` |
+| `docs/knowledge/guides/testing.md` | — | 7,191 | Knowledge guide (method) |
+| `AGENTS.md` | 6,746 | 7,562 | Instruction layer, new "Tests" section |
+
+The page served three jobs. The rules — two invariants and the four zeros — became an `AGENTS.md` section, because they change behavior every time a test is written. The method (layering, data isolation, naming, assertions, determinism, the coverage command, the change flow, the test-layer checklist) became the guide. The known-gaps list stayed with the method: it says where not to look for coverage, which is stable, not a phase fact, so it did not move to `docs/status.md`.
+
+Tombstone rather than a bare delete: seven frozen citations (`tasks/manual-character-registration` ×4, `ADR-0015` ×2, `B-12`'s dated measurement) land in two homes, so the single link points at `docs/README.md`. Living pointers repointed in the same commit: `docs/README.md`, `docs/knowledge/guides/README.md`, `docs/mutation-testing.md` (four citations), `docs/operations/works.md`, `docs/backlog/B-26-ci-service.md` (two). Gate: text-only path — ruff check and format clean, prose 273 files, 0 wrapped; every relative link under `docs/` resolves; `uv.lock` untouched (`--frozen` with the index override cleared).
+
 ## Role pass
 
 | Page | Job | Admission | Trigger | Volume |

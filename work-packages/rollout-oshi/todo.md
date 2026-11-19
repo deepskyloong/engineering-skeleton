@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05b C4 — the suite map's role admitted in the standard (`0d3a5a1`) and applied in oshi (`0e57e99`): `docs/suite-tracks.md` 8,864, the ownership boundary in `docs/structure.md` "Suite-owned paths", the checkout procedure in `docs/knowledge/guides/isolated-checkouts.md`, the old path a tombstone
-- Gate: standard `bun run gate` PASS 2026-11-19 (112 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 272 files, 0 wrapped)
+- Last done: W05b C1 — `docs/testing.md` split by admission (oshi `55e6b0c`): the red lines into `AGENTS.md` "Tests", the method into `docs/knowledge/guides/testing.md` (7,191), the old path a tombstone
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 273 files, 0 wrapped)
 - Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
 - Focus: W05b — place the three remaining live pages no work item owned
 - Progress: 9 done / 6 todo / 0 blocked
 - Todo: W05b–W09
-- Next: W05b C1 — `docs/testing.md` (red lines to `AGENTS.md`, method to a guide, tombstone)
+- Next: W05b C2 — `docs/mutation-testing.md` (tool rejections into ADR-0015's table, method into a guide, the first round into a case, tombstone)
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
