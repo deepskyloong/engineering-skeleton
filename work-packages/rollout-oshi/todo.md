@@ -5,15 +5,15 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W04c — the explainer form in the standard (`13ed7ae`) and its first application (`c30d17f`); report in `maps/w04c-explainer-role.md`
-- Gate: `bun run gate` PASS 2026-11-19 (108 markdown files, 65 tests; one soft `roles.md` warning)
-- Phase: P1 — package rule and role moves
-- Focus: W05 — the toolchain role (`docs/stack.md`, 10,524)
-- Progress: 8 done / 4 todo / 0 blocked
-- Todo: W05–W09
-- Next: W05 — `docs/stack.md` splits into traps, runtime choices and deferred items
+- Last done: W05 — `docs/stack.md` split into the toolchain page, two ADRs, two backlog items and one charter non-goal; its path is a tombstone (`9c27e08`)
+- Gate: `bun run gate` PASS 2026-11-19 (109 markdown files, 65 tests; one soft `roles.md` warning)
+- Phase: P2 — page repairs and audit closeout
+- Focus: W06 — fit oshi's role pages to their budgets (four contracts pages and one architecture page remain over soft)
+- Progress: 9 done / 3 todo / 0 blocked
+- Todo: W06–W09
+- Next: W06 — re-measure every role page, then split by topic
 - Blocked: none
-- Open decisions: none — the W03, W04, W04b and W04c rulings are settled and recorded in `maps/w03-role-map.md`, `maps/w04-role-map.md`, `maps/w04b-role-map.md` and `maps/w04c-explainer-role.md`; starting W05 is a confirmation, not a decision
+- Open decisions: none — the W03, W04, W04b, W04c and W05 rulings are settled and recorded in `maps/w03-role-map.md`, `maps/w04-role-map.md`, `maps/w04b-role-map.md`, `maps/w04c-explainer-role.md` and `maps/w05-toolchain-role.md`; starting W06 is a confirmation, not a decision
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -154,7 +154,7 @@ The maintainer's ruling was to dissolve the five pages into a new form, then let
 
 #### W05 — Place the toolchain role
 
-**Status**: todo
+**Status**: done
 **Depends on**: W04
 
 `docs/stack.md` (10,524) mixes toolchain traps, runtime choices, and deferred items. Split it: traps with the command that shows them to `docs/toolchain/python.md` if the toolchain admission holds — the second environment-specific trap — the choices to an ADR with their rejected alternatives, and the deferred items to oshi's backlog. If only one trap reproduces, the traps stay in `AGENTS.md` and no toolchain page is created.
@@ -165,7 +165,7 @@ The maintainer's ruling was to dissolve the five pages into a new form, then let
 - the toolchain page exists or its absence is recorded
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: `maps/w05-toolchain-role.md` (role pass, six-field report, applied section). oshi `50d2eb3` — `docs/toolchain/README.md` (1,136) and `python.md` (4,008) with three traps that reproduce on 2026-11-19, the `docs/README.md` row, and `AGENTS.md`'s package-index paragraph reduced to a gate clause; `d6a11e5` — `ADR-0014-runtime-stack.md` (5,250) and `ADR-0015-dev-toolchain.md` (5,167) plus two index rows; `720b83b` — `B-26-ci-service.md` (1,393), `B-27-packaging-release.md` (1,305), two index rows; `9f519dc` — the container non-goal in `docs/charter.md` (3,935); `9c27e08` — tombstone (55, one link to `docs/README.md`) and the three living pointers (`docs/development-workflows.md`, `docs/operations/works.md`, `web/README.md`). Gate: C1–C4 text-only green; C5 full — 658 passed / 1 skipped, `ty` clean, prose 270 files with 0 wrapped blocks, frontend `bun run validate` 86 tests. Pointer proof: `git grep 'docs/stack.md'` returns B-12's dated measurement, the compound-engineering plan, and the two new records' `Status` rows — frozen citations and provenance, all resolving.
 
 ### P2 — Page repairs and audit closeout
 

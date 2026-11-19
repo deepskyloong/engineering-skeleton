@@ -2,7 +2,7 @@
 
 - Date: 2026-11-19
 - Source: oshi `ec4a852`, worktree `E:\Projects\oshi\.worktrees\skeleton-migration`; standard `7c4e782`
-- Status: pending — nothing applied
+- Status: accepted 2026-11-19; applied 2026-11-19 as C1 `50d2eb3`, C2 `d6a11e5`, C3 `720b83b`, C4 `9f519dc`, C5 `9c27e08`, oshi gate green at every commit
 - Role basis: `docs/norm/roles.md` "Optional, admitted by trigger" (toolchain traps), "Always present" (directory index, charter), "Present from the first real use" (ADR, backlog item), "Five discriminations", and `rules.md` R13. The section's content decides the home, not its title.
 - Measure: non-whitespace characters, table delimiter rows excluded (`docs/norm/rules.md` "Measuring"). New pages are estimated from the source sections plus a header allowance; the two ADRs and the traps page carry a measured source, not a snapshot of versions.
 
@@ -57,9 +57,9 @@
 
 **6 Decision**
 
-- `Status` — pending.
-- `Route` — not yet set.
-- `Record` — this page for the ruling; the applied commits and their gate results are appended here; `audits/move-records.md` takes the dated move; finding 12 in `audits/README.md` closes on the applied commit.
+- `Status` — accepted 2026-11-19.
+- `Route` — on recommendation.
+- `Record` — this page for the ruling; the applied commits and their gate results are appended here; `audits/move-records.md` takes the dated move; finding 12 in `audits/README.md` closes on C5.
 
 ## The three traps, reproduced 2026-11-19
 
@@ -111,21 +111,35 @@ Discriminations applied: Tombstone / Adapter — "Forwarding a moved path (tombs
 | §3.1 "Tests", "Coverage", "Mutation testing" | choice, already stated | pointed, not restated: `docs/testing.md` and `docs/mutation-testing.md` own the definitions; the ADR records only the tool choice and its rejected alternative |
 | §2 / §3.1 version numbers | measurement | dropped from the records: `pyproject.toml` and `uv.lock` are already the authoritative snapshot, and a version copied into prose goes stale (R10) |
 
-## Applied plan
+## Applied
 
-Per commit, on `feature/skeleton-migration`:
+Measured after the moves, non-whitespace characters:
 
-| Commit | Files | Gate |
+| Page | Volume | Line |
 | --- | --- | --- |
-| C1 toolchain | `docs/toolchain/README.md`, `docs/toolchain/python.md`, `docs/README.md` row, `AGENTS.md` pointer | text-only: two `ruff` commands + prose |
-| C2 decisions | `docs/decisions/ADR-0014-runtime-stack.md`, `ADR-0015-dev-toolchain.md`, `docs/decisions/README.md` ×2 rows, `web/README.md` pointer | text-only (the `web/README.md` pointer is held to C5 instead, so C2 stays docs) |
-| C3 backlog | `docs/backlog/B-26-ci-service.md`, `B-27-packaging-release.md`, `docs/backlog/README.md` ×2 rows | text-only |
-| C4 charter | `docs/charter.md` | text-only |
-| C5 retire | `docs/stack.md` tombstone, `docs/development-workflows.md` pointer, `web/README.md` pointer | full five + frontend gate |
+| `docs/toolchain/README.md` | 1,136 | inside soft |
+| `docs/toolchain/python.md` | 4,008 | inside soft |
+| `docs/decisions/ADR-0014-runtime-stack.md` | 5,250 | inside soft (ADR 7,500 / 12,000) |
+| `docs/decisions/ADR-0015-dev-toolchain.md` | 5,167 | inside soft |
+| `docs/decisions/README.md` | 4,921 | inside soft, 7 rows |
+| `docs/backlog/B-26-ci-service.md` | 1,393 | inside soft (item 5,000 / 8,000) |
+| `docs/backlog/B-27-packaging-release.md` | 1,305 | inside soft |
+| `docs/backlog/README.md` | 5,820 | inside soft, 26 rows |
+| `docs/charter.md` | 3,935 | up from 3,732; inside soft |
+| `docs/README.md` | 3,910 | inside soft, 23 rows |
+| `AGENTS.md` | 6,764 | down from 7,031 |
+| `docs/stack.md` (tombstone) | 55 | ≤400, one link |
 
-Pointer proof after C5: `git grep -n 'docs/stack.md'` survivors are B-12's dated measurement and the compound-engineering plan; both are frozen citations the tombstone resolves. Every living pointer names a new home.
+Commits, `feature/skeleton-migration`: C1 `50d2eb3` (toolchain page, `docs/README.md` row, `AGENTS.md` gate clause), C2 `d6a11e5` (ADR-0014, ADR-0015, two index rows), C3 `720b83b` (B-26, B-27, two index rows), C4 `9f519dc` (the container non-goal), C5 `9c27e08` (tombstone, three living pointers).
 
-## Findings the pass leaves for W07
+Gate: C1–C4 text-only — `ruff check`, `ruff format --check`, prose at 266, 268, 270 and 270 files with 0 wrapped blocks. C5 full: `pytest -q -n auto` 658 passed / 1 skipped, `ruff check` and `ruff format --check` clean, `ty check src/oshi` clean, prose 270 files with 0 wrapped blocks, and `cd web && bun run validate` 86 tests across 8 files. One observation for the record: on C5's first parallel run `tests/test_b16_census.py::test_immutable_read_does_not_touch_sidecars` failed on a `FileNotFoundError` inside `pathlib`; it passed in isolation and on the rerun. The test is unrelated to this diff and the flake predates it.
+
+Pointer proof: `git grep -n 'docs/stack.md'` returns four lines — B-12's dated measurement, the compound-engineering plan, and the two new records' `Status` rows naming the page they replace. The first two are frozen citations the tombstone resolves; the last two are provenance, the shape W03's `Source` headers set.
+
+What C5 changed in `web/README.md`: one row, plus the table re-padding `oxfmt` applies. Proven with `git diff --ignore-all-space --stat`, which reports one file / two lines.
+
+## Findings the pass leaves for W07 and W08
 
 1. `docs/adapters.md` "Registry" carries four `legacy path` rows (`docs/brief.md`, `docs/designs/`, `docs/specs/`, `docs/notes/`) whose only content is a tombstone. The Tombstone / Adapter discrimination says a path takes one, not both, and the tombstone's own exit already states when it retires. W07 decides whether the four rows drop; this unit adds no fifth.
 2. `docs/development-workflows.md` at 16,539 is over the 16,000 hard line, and its `docs/stack.md` sentence is one of the pointers this unit must move. The move does not fix the breach; W06 owns the split.
+3. `web/` formats its own Markdown with oxfmt, which column-aligns tables, while the standard's R12 forbids the padding and its checker fails on it. `web/README.md` cannot satisfy both, and the frontend gate wins today because it runs on every diff under `web/`. This is a standard-versus-target conflict for W08, not a defect in this unit: the alternative is to exempt `web/README.md` from oxfmt, which would put a formatter exception in a member README.
