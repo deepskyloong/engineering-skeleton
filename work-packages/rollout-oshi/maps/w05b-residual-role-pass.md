@@ -192,6 +192,16 @@ The archive row is the judgement worth recording. Norm step 3 freezes a package 
 
 `tasks/README.md` now carries only what no other page can: the slug rule, the track field, the open table and the closed note. Six rules that restated the norm became one pointer, which is the first case in this package of a page shrinking because a role finally had a home. The index's placement inside a track — the open table sitting at the suite's root because that root is where the packages are — is the adapter row's `Disposition` clause, which is what the registry exists to carry. Step 4's backlog rule applies unchanged and is stated once, on the lifecycle page. Gate: text-only path — ruff clean, prose 277 files, 0 wrapped, links resolve.
 
+### C7 — governance disposition, oshi `8e16fe5`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/README.md` | 4,359 | 4,650 | + one line: where governance lives, and that there is no page |
+
+No page was created, and that is the ruling rather than an omission. Four of the role's five subjects were already norm; the fifth — how this repository treats its review archive — was already written in `docs/reviews/README.md`'s governance block: bodies archived locally, only an append-only index in git, never edited. What was missing was the reader's route, so the index page carries one line: those subjects are norm, `docs/workflow.md` points at the page that carries who decides and how a change is reviewed, and the one deviation is the review page's own block.
+
+The line points at `docs/workflow.md` rather than at the norm path directly, which keeps a second `{{NORM_SOURCE}}` reference out of the repository's most-read page: the pointer page is where a reader already lands.
+
 ## Role pass
 
 | Page | Job | Admission | Trigger | Volume |
@@ -212,7 +222,7 @@ The archive row is the judgement worth recording. Norm step 3 freezes a package 
 | --- | --- | --- | --- |
 | Committing | "A base pointer to `docs/norm/committing.md` plus this repository's deviations" | `docs/committing.md` | page landed in C5 (`4b8d53c`), 1,306 |
 | Operating modes | "The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure" | `docs/workflow.md` | page landed in C6 (`4e1da3e`), 2,066 |
-| Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | no page — role retired (ADR-0027) | seven closed packages; job split across `docs/conventions.md`, `AGENTS.md` and directory READMEs; four of its five subjects were already norm, and no target repository ever created it |
+| Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | no page — role retired (ADR-0027) | seven closed packages; four of its five subjects were norm, the fifth was the review page's governance block; disposition recorded in C7 (`8e16fe5`), no target repository ever created the page |
 | Work package index | "Work package governance, the open table, the closeout checklist" | `work-packages/README.md` | kept at `tasks/README.md`, inside a suite track; disposition recorded in `docs/adapters.md` (`4e1da3e`), checklist now a pointer to `docs/workflow.md` |
 
 ## W06 scope correction

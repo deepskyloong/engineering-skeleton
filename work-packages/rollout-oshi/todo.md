@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05c C6 — `docs/workflow.md` lands as a base pointer with the three deviations the suite track forces, and `tasks/README.md` loses its six restated rules and its checklist to pointers (oshi `4e1da3e`)
+- Last done: W05c closed — C7 records the governance disposition as one line on the docs index, so no page was created (oshi `8e16fe5`); the two required roles now have pages and the third has a recorded retirement
 - Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 277 files, 0 wrapped)
-- Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
-- Focus: W05c — the governance disposition is the last step
-- Progress: 10 done / 5 todo / 0 blocked
-- Todo: W05c–W09
-- Next: W05c C7 — record where the retired Governance role's two jobs land, and leave the one-line pointer a reader would look for
+- Phase: P1 — package rule and role moves, closed 2026-11-19; next is P2
+- Focus: W06 — budget repair, with two measured breaches and one page inside a sixth of its hard line
+- Progress: 11 done / 4 todo / 0 blocked
+- Todo: W06–W09
+- Next: W06 — `docs/reviews/README.md` 13,323 against 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 against 8,000 are over their hard lines; `docs/conventions.md` is at 14,092 of 16,000
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
@@ -189,7 +189,7 @@ P1's exit condition named charter, contracts, knowledge and toolchain, and all f
 
 #### W05c — Give the two required roles a home, and record the third's retirement
 
-**Status**: todo — C5–C6 done 2026-11-19; C7 open
+**Status**: done
 **Depends on**: W05b
 
 Three roles the standard called always-present or first-use had no page: `docs/committing.md` (no commit-message rule exists anywhere), `docs/workflow.md` (its lifecycle job is split between `tasks/README.md` and the suite map), and `docs/governance.md` (seven closed packages, no page). R2 settled on 2026-11-19: a suite track does not replace either role — the repository states the base rule, the page is a base pointer to the norm source plus this repository's deviations, and a suite track records only what it layers on its own artifacts (the `docs/committing.md` shape, B-0005 Plan item 7). R3 settled the same day: Governance is retired as a role (ADR-0027), so its subjects live in `docs/norm/flow.md`, `docs/norm/rules.md`, `AGENTS.md` and, for oshi, the review archive rule already in `docs/reviews/README.md`. So two pages get written and one disposition gets recorded; `tasks/README.md` keeps the suite's package shape while pointing at `docs/workflow.md` for the lifecycle. The work-package index at `tasks/README.md` gets its reason recorded in `docs/adapters.md` in the same pass.
@@ -204,7 +204,7 @@ Three roles the standard called always-present or first-use had no page: `docs/c
 - `docs/README.md` indexes whatever exists and states no counts
 - oshi's gate is green
 
-**Evidence**: C5 — oshi `4b8d53c`: `docs/committing.md` 1,306 as a base pointer, one deviation (scope vocabulary, with the clause that a new topic is added in the commit introducing it); `AGENTS.md` 7,561 → 7,796 with the `Norm source:` line; `docs/README.md` + row. C6 — oshi `4e1da3e`: `docs/workflow.md` 2,066 as a base pointer, three deviations from one cause (packages in a suite track, so no `work-packages/` and no archive); `tasks/README.md` 1,113 → 936 with its six restated rules and its checklist replaced by pointers; `docs/adapters.md` records the index's placement. Both commits: text-only gate green, prose 277 files. C7 pending.
+**Evidence**: C5 — oshi `4b8d53c`: `docs/committing.md` 1,306 as a base pointer, one deviation (scope vocabulary, with the clause that a new topic is added in the commit introducing it); `AGENTS.md` 7,561 → 7,796 with the `Norm source:` line; `docs/README.md` + row. C6 — oshi `4e1da3e`: `docs/workflow.md` 2,066 as a base pointer, three deviations from one cause (packages in a suite track, so no `work-packages/` and no archive); `tasks/README.md` 1,113 → 936 with its six restated rules and its checklist replaced by pointers; `docs/adapters.md` records the index's placement. C7 — oshi `8e16fe5`: no governance page; `docs/README.md` 4,359 → 4,650 gains the one line naming where the retired role's subjects live and the single deviation. All three: text-only gate green, prose 277 files.
 
 ### P2 — Page repairs and audit closeout
 
