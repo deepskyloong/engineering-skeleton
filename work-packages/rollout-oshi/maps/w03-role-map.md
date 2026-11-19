@@ -166,6 +166,20 @@ Five places the applied map differs from the accepted one:
 
 C3 also normalised 14 files' docstrings and comments that cited bare `architecture §N` / `data-model §N` into page-name citations; `git grep -c` for the bare forms returns nothing.
 
+Gate at each commit: `uv run pytest -q -n auto` 658 passed / 1 skipped, `uv run ruff check`, `uv run ruff format --check`, `ty check src/oshi`, and `cd web && bun run validate` 86 tests.
+
+## Prose and gate follow-ups
+
+The unwrap `docs/conventions.md` §8 item 10 now requires, and the three defects the check itself hid. They live here because `todo.md` holds pointers, not narrative.
+
+- **Unwrap.** `739af32` unwrapped 27 oshi pages under `docs/` (2,707 → 2,300 lines); `319719c` extended it to every markdown file including suite tracks (10,076 → 8,099 lines). Both diffs were verified whitespace-only. The rule is §8 item 10 with the `docs/adapters.md` carve-out, because an adapter states a freeze in unbroken prose.
+- **Stage.** `2ea92a9` added `scripts/check_prose.py` as the gate's fifth stage; it calls the `md-tools` app and needs `MD_TOOLS_PROJECT`; `df5e4ba` widened it to every markdown file.
+- **Block boundary.** A block never ended at a structural line, so a paragraph above an unspaced heading was neither joined nor reported. `md-tools` `f03dc62` splits the block there, and `4507b6a` unwrapped the 10 blocks it then reported across 4 pages.
+- **Field runs.** Two or more consecutive `Label: value` lines are fields; joining them yields `Type: research Status: resolved Blocked by: None`, and `verify` cannot see the join because the diff is whitespace-only. `319719c` had done exactly that to three embedding-coverage tickets. `md-tools` `36fad3e` treats such a run as one verbatim block (threshold two, one indent), and `6112c2e` restored the original breaks.
+- **Exit codes.** `md-reflow --check` exited 0 with or without findings, so a shell gate passed while both consumers parsed JSON to learn anything. `da678b6` gives one three-code contract in every mode (0 nothing to report, 1 findings or a failed verification, 2 the run could not cover every file); `12739f3` and `i-skill-audit`'s format check adapt in the same pass, because each read a non-zero code as "tool unavailable".
+- **The standard's own files.** 6 of them carried 63 blocks: 40 were ledger work-item fields the tool misread as prose (`739cd70` teaches it the bold label), and 23 were glossary entries whose three lines had always rendered as one paragraph (`6ee600f`). `ffcbade` puts the stage inside `scripts/check.py` so `bun run gate` keeps its five-stage contract; the template's half is deferred in `B-0011` with the installability trigger that would unblock it.
+- **Environment.** `MD_TOOLS_PROJECT` was not in the profile; it is now set there to `E:\Projects\python-toolkit`, so the gate no longer needs a per-shell export.
+
 ## Open items
 
 - W06 names `docs/designs/data-model.md` and `docs/specs/audit-ui-spec.md`; measured after C4 it must name four soft pages — `contracts/schema.md` (12,261), `contracts/ui-audit.md` (12,104), `contracts/ui-label.md` (12,188), `architecture/components-decision.md` (10,883). `contracts/data-rules-ingest.md` landed at 9,988 and `docs/conventions.md` at 10,959, both inside the line; `contracts/ui-audit-navigation.md` sits at 9,770. W03 owns the hard line, W06 the soft ones.
