@@ -236,7 +236,7 @@ One decision rides with this item: the budget unit. `docs/conventions.md` §8.6 
 **Status**: todo
 **Depends on**: W05c; W06a for the status row
 
-Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 2026-11-16 snapshot, and the C4 list was a snapshot of a smaller tree. Measured 2026-11-19 at oshi `9c27e08`, three pages are over their hard line and none was in W06's scope: `docs/reviews/README.md` (13,323 / 12,000 index line), `docs/backlog/B-13-degenerate-crops.md` (13,875 / 8,000 item line), and `docs/development-workflows.md` (16,611 / 16,000), which W05b removes rather than this split. Over soft: `contracts/schema.md` (12,273), `contracts/ui-label.md` (12,251), `contracts/ui-audit.md` (12,185), `architecture/components-decision.md` (10,911), `contracts/data-rules-ingest.md` (10,009), `docs/conventions.md` (12,056 after W07b's conversion, from 14,441; over the 10,000 soft line, clear of the 16,000 hard one), `knowledge/guides/pitfalls.md` (15,341), `knowledge/explainers/reading-the-numbers.md` (15,023), `knowledge/explainers/recognition-pipeline.md` (11,614), and the storefront `README.md` (10,564). Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md`, `docs/backlog/README.md`, `docs/README.md`), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
+Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 2026-11-16 snapshot, and the C4 list was a snapshot of a smaller tree. Measured 2026-11-19, four pages are over their hard line and none was in W06's scope: `docs/reviews/README.md` (13,323 / 12,000 index line), `docs/backlog/B-13-degenerate-crops.md` (13,875 / 8,000 item line), `docs/development-workflows.md` (16,611 / 16,000), which W05b removes rather than this split, and `experiments/README.md` (21,457 / 12,000 directory-README line) — the third was missing from the earlier list, and it is also the page finding 9 names for its counts. Over soft: `contracts/schema.md` (12,273), `contracts/ui-label.md` (12,251), `contracts/ui-audit.md` (12,185), `architecture/components-decision.md` (10,911), `contracts/data-rules-ingest.md` (10,009), `docs/conventions.md` (12,056 after W07b's conversion, from 14,441; over the 10,000 soft line, clear of the 16,000 hard one), `knowledge/guides/pitfalls.md` (15,341), `knowledge/explainers/reading-the-numbers.md` (15,023), `knowledge/explainers/recognition-pipeline.md` (11,614), and the storefront `README.md` (10,564). Split by topic, not by length. Trim each index to one line per child (`docs/reviews/README.md`, `docs/backlog/README.md`, `docs/README.md`), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
 
 **Done when**:
 
@@ -251,7 +251,7 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. A second joins with W07c: `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; W07c joined them once the §8-versus-base audit was settled.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. A second joins with W07c: `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; W07c joined them once the §8-versus-base audit was settled. W07d carries the one audit item that needs a ruling rather than a repair: the retired-path citations in five open backlog items and ADR-0010.
 
 **Done when**:
 
@@ -308,6 +308,21 @@ The same audit found the rest of §8 consistent: two declared deviations (the st
 - oshi's gate is green
 
 **Evidence**: oshi `f90b44e` (four files: conventions §8.1 and §7, `docs/README.md`, `scripts/README.md`, `web/README.md`). §8.1 loses the `Version` bullet and the word versioning; §7 records the round in the frozen plan log or the final report; §8 item 8's commit sentence becomes a pointer; the three README rows are gone. `docs/plans/README.md`'s row stays, because it describes the frozen plans truthfully. Full gate: ruff check and format, `ty` clean, prose 278 files with 0 wrapped blocks, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed.
+
+#### W07d — Decide the retired-path citations in open backlog items and ADRs
+
+**Status**: todo
+**Depends on**: W07c
+
+Seven citations survive in five open backlog items (`B-2`, `B-3`, `B-4`, `B-12`, `B-22`) and `ADR-0010`: `docs/designs/architecture-v2.md`, `docs/designs/data-model.md`, `docs/designs/per-work-db.md`, `docs/specs/backup-spec.md`, `docs/specs/label-ui-spec.md`, and `docs/notes/*`. Nothing is broken — the tombstones resolve every link — and that is exactly why the item stalled: what has to be decided is whether a citation is a measurement or a present-tense claim. `ADR-0010`'s "The current topology and lifecycle rules are in `docs/designs/per-work-db.md`" asserts where the rule lives today and must move to `docs/architecture/db-topology.md`; `B-3`'s "re-mapped 2026-10-29" reports what a page said on a date, and rewriting it would alter the record. The working rule this item proposes: a citation that asserts where a rule lives now is repointed, a citation that reports a dated state keeps its path. The ruling it needs is whether that is the right line, and whether an open backlog item — open, but frozen at filing — may be edited at all under ADR-0015's "never renumbered" clause.
+
+**Done when**:
+
+- the policy is written, with the split's boundary stated
+- every surviving retired-path citation is classified under it, and the repointed ones are changed
+- oshi's gate is green
+
+**Evidence**: pending
 
 ### P3 — Closeout
 
