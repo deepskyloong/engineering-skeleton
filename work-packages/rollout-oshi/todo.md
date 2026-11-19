@@ -5,14 +5,15 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W04c applied 2026-11-19 — standard `13ed7ae` admits the `Knowledge explainer` form with one checker rule and two tests; oshi `c30d17f` lands `docs/knowledge/explainers/` with three pages from the five retired ones; report in `maps/w04c-explainer-role.md`. Before it: W04b-ii applied 2026-11-19 — `c4e0a93` (dependency method → guide), `869e762` (vocabulary → `GLOSSARY.md`; two pages retired), `ac68abe` (`knowledge.md` retired), `6205394` (last two retired, shelf closed with 10 tombstones), `0defea1` (last index row); the closure stood where it routed a job and was reversed where it dropped the teaching register. Before it: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → guide), `adbebc5` (identity choice → ADR-0013). Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`
+- Last done: W04c — the explainer form in the standard (`13ed7ae`) and its first application (`c30d17f`); report in `maps/w04c-explainer-role.md`
+- Gate: `bun run gate` PASS 2026-11-19 (108 markdown files, 65 tests; one soft `roles.md` warning)
 - Phase: P1 — package rule and role moves
 - Focus: W05 — the toolchain role (`docs/stack.md`, 10,524)
 - Progress: 8 done / 4 todo / 0 blocked
 - Todo: W05–W09
 - Next: W05 — `docs/stack.md` splits into traps, runtime choices and deferred items
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; W04b-i settled 2026-11-19: the method and the decision had homes, `data-integrity.md` had none to gain, so it was parked; **W04c settled 2026-11-19**: the explanation register is a fourth knowledge form, not an absorption — the five pages routed to three explainers, the form's restraint is normative, and W04b-ii's "no role admitted" record is corrected rather than rewritten
+- Open decisions: none — the W03, W04, W04b and W04c rulings are settled and recorded in `maps/w03-role-map.md`, `maps/w04-role-map.md`, `maps/w04b-role-map.md` and `maps/w04c-explainer-role.md`; starting W05 is a confirmation, not a decision
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
