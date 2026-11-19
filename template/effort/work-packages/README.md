@@ -8,7 +8,7 @@ One directory per effort that needs a ledger: `work-packages/<slug>/`, holding f
 - Four ledger files: `spec.md` (what), `plan.md` (how), `todo.md` (work items and current state), `summary.md` (result, written at closeout). Split `_template.md` into these four, then delete `_template.md`.
 - Evidence the effort produces lives in a named directory beside the ledger — a report, an inventory, or a reproduction script. It stays in git, `summary.md` names it, and closeout archives it with the package. Never create an empty evidence directory.
 - The first thing in `todo.md` is a `Current state` block; see `docs/workflow.md` for its fields and the same-commit update rule. It is a snapshot, not a log.
-- Work items are `W<n>` blocks under phase headings; each carries status, dependencies, a prose description, done-when criteria, and evidence. `done` requires evidence; `plan.md` carries the phase breakdown.
+- Work items are `W<n>` blocks under phase headings; each carries status, dependencies, a prose description, done-when criteria, and evidence. `done` requires evidence, and the evidence field cites artifacts and what each proves rather than restating them; `plan.md` carries the phase breakdown.
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
 - On closeout: write `summary.md`, take the four ledger files and the evidence directories it names, move the package to `work-packages/archive/<slug>/`, and move the row to the archive index.

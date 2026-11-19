@@ -52,6 +52,8 @@ If this effort answers a backlog item, set that row's `Status` to `active` in `d
 
 The unit of work in `todo.md` is a work item: a stable `W<n>` ID, a status (`todo`, `doing`, `blocked`, `done`), its dependencies, a prose description of the work, one or more observable done-when criteria, and evidence. `done` requires evidence — a commit, a command, a file, or a decision; an item without evidence stays open. The description is prose, not a bullet list; the done-when criteria are bullets because each is a separate check. One work item is one reviewable commit or one primary outcome; if it needs more, split it.
 
+`Evidence` cites artifacts and names what each proves. Detail the artifact carries, the ledger does not: an item that produced a report, a map, or a measurement cites it by path and one clause, never by recital. `todo.md` is working state and carries no volume budget, so nothing else stops a narrative from growing there.
+
 `plan.md` groups the work items into phases, names the IDs in each phase, and states each phase's exit condition; it does not restate the item detail. `todo.md` keeps the item detail under `## Work items`, below the `Current state` dashboard.
 
 ## Runtime — the three permitted compromises
