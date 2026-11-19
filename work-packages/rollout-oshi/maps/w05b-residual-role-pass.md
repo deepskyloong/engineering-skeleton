@@ -2,7 +2,7 @@
 
 - Date: 2026-11-19
 - Source: oshi `9c27e08` (clean tree), worktree `E:\Projects\oshi\.worktrees\skeleton-migration` on `feature/skeleton-migration`; standard `2819ab8`
-- Status: open — R1 accepted 2026-11-19 (ADR-0026) and C4 applied (`0e57e99`); C1–C3 and W05c remain; R2 open
+- Status: open — R1 accepted 2026-11-19 (ADR-0026) and C4 applied (`0e57e99`); R2 settled as the base-rule-plus-deviation model (`06aeb6d`); R3 settled, the Governance role retired (`a241462`, ADR-0027), so C7 is a recorded disposition rather than a page; C1–C3 and C6 remain
 - Role basis: `docs/norm/roles.md`, "Always present", "Present from the first real use", "Optional, admitted by trigger", "Five discriminations"; `docs/decisions/ADR-0010-suite-tracks-are-adapters.md`
 - Measure: non-whitespace characters, table delimiter rows excluded (`docs/norm/rules.md`, "Measuring"), taken 2026-11-19 on the worktree above
 
@@ -34,7 +34,7 @@ P1's exit condition named four roles — charter, contracts, knowledge, toolchai
 - `docs/mutation-testing.md` (9,311) serves three jobs. The tool choice is already decided in ADR-0015; only the three rejected candidates are missing from its rejected table, so a second decision page would split one choice across two records.
 - `docs/language-policy.md` (2,965) restates the conventions role at a second path. `docs/conventions.md` (11,760) carries no language section, so the role is split, not duplicated.
 - `docs/development-workflows.md` (16,611, over the 16,000 hard line) serves three jobs and one of them has no admitted role. Its Principle restates `docs/adapters.md` "Rules" items 1 and 2 verbatim in substance, so one rule already has two homes.
-- Missing roles: `docs/committing.md` (always present; the repository has no commit-message rule anywhere), `docs/workflow.md` (its job is split between `tasks/README.md` "Closeout checklist" and `docs/development-workflows.md` "Tracks"), `docs/governance.md` (seven closed packages exist; the job is scattered across `docs/conventions.md` "Review cycle", `AGENTS.md`, and each directory README's governance block).
+- Missing roles: `docs/committing.md` (always present; the repository has no commit-message rule anywhere), `docs/workflow.md` (its job is split between `tasks/README.md` "Closeout checklist" and `docs/development-workflows.md` "Tracks"), `docs/governance.md` (seven closed packages exist; the job is scattered across `docs/conventions.md` "Review cycle", `AGENTS.md`, and each directory README's governance block) — the third was retired as a role in R3 (ADR-0027).
 - Placement deviation: the work-package index role sits at `tasks/README.md`, inside the `addyosmani/agent-skills` track. The whitelist tolerates the file; no row says the role lives there.
 - Registry defects: `docs/adapters.md` "Legacy designs home" says all four tracked files are tombstones, and only three exist (`README.md` was deleted in `5f9df75`); `docs/README.md` "What goes here" still says the notes explainers "await their role (W04b)", which W04c settled on 2026-11-19.
 - Coherent — each page is internally consistent and has consumers; the incoherence is placement, not content. Baseline: oshi `9c27e08`, standard `2819ab8`.
@@ -47,7 +47,7 @@ P1's exit condition named four roles — charter, contracts, knowledge, toolchai
   - **C3 language** — the language rule and the CJK matrix join `docs/conventions.md`; `docs/language-policy.md` becomes a tombstone linking that page.
   - **C4 suite map** — after R1: the track map joins `docs/adapters.md` (widened admission) or a named role; "Boundary with repo-owned docs" joins `docs/structure.md`; "Isolated checkouts" becomes `docs/knowledge/guides/isolated-checkouts.md`; `docs/development-workflows.md` becomes a tombstone linking `docs/README.md`.
   - **W05c C5 committing** — `docs/committing.md` as a base pointer plus this repository's deviations (none today); no commit-message norm is restated.
-  - **C6 workflow, C7 governance** — after R2: one page each, or a standard backlog item that records why a suite track replaces the role. Not both.
+  - **C6 workflow, C7 governance** — after R2 the workflow page is a base pointer plus deviations; after R3 (ADR-0027) governance has no page, so C7 records where its two jobs land instead.
 - Check — oshi's gate per commit; C1–C4 and C6–C7 are text-only unless a page under `web/` or `docs/status.md` changes. Pointer proof per path with `git grep -n 'docs/<path>'`; every survivor named as a frozen citer or repointed in the same commit.
 - Stop — a page that fails its admission after the split; a citer that is neither frozen nor repointable; R1 or R2 unresolved when its commit comes up.
 - Expected — no live `docs/` page is outside the role table; three required roles have a home or a recorded standard disposition; both gates green.
@@ -70,7 +70,7 @@ P1's exit condition named four roles — charter, contracts, knowledge, toolchai
 
 **6 Decision**
 
-- `Status` — R1 accepted 2026-11-19 as option 4: a new role, Suite tracks, at `/docs/suite-tracks.md`, recorded in `docs/norm/roles.md` and ADR-0026. R2 settled 2026-11-19: no replacement; the repository states the base rule, the suite track records only deviations, and the repository's page is a base pointer to the norm source (standard `06aeb6d`).
+- `Status` — R1 accepted 2026-11-19 as option 4: a new role, Suite tracks, at `/docs/suite-tracks.md`, recorded in `docs/norm/roles.md` and ADR-0026. R2 settled 2026-11-19: no replacement; the repository states the base rule, the suite track records only deviations, and the repository's page is a base pointer to the norm source (standard `06aeb6d`). R3 settled the same day: Governance is retired as a role, its subjects distributed to the norm and `AGENTS.md` (standard `a241462`, ADR-0027).
 - Applied — C4 in oshi `0e57e99`; the measurements, pointer proof and gate are under "Applied results".
 
 ## Applied results
@@ -102,7 +102,22 @@ Ruling 2026-11-19: suite tracks do **not** replace Operating modes or Governance
 
 `docs/workflow.md` gains three mapping rows — a copied lifecycle page, a copied governance page, and a suite track's rule layered on the lifecycle. `docs/norm/README.md` states the pointer model in its status and extends the `flow` question to who decides and review. Gate: PASS, 112 markdown files, 66 tests, one soft `roles.md` warning.
 
-Consequence for W05c: `docs/workflow.md` and `docs/governance.md` are short pointer pages — a `Norm source:` line, then a deviations table. oshi has no `Norm source:` line yet, so its pages carry the absolute path to the standard until that line exists; both land with `docs/committing.md` in C6.
+Consequence for W05c: `docs/workflow.md` is a short pointer page — a `Norm source:` line, then a deviations table. oshi has no `Norm source:` line yet, so it carries the absolute path to the standard until that line exists; the page lands with `docs/committing.md` in C6. Governance has no page after R3, so C7 records the disposition instead.
+
+### R3 — Governance retired as a role, standard `a241462`
+
+Ruling 2026-11-19, recorded as ADR-0027: no repository carries an authorization page. The role listed five subjects; four were already norm after `06aeb6d`, and the fifth was provenance plus this standard's distribution model. No target repository ever created it, and the one instance restated four norm sections.
+
+| Change | Page |
+| --- | --- |
+| deleted | `docs/governance.md` (2,266) and `template/effort/docs/governance.md` (826) |
+| moved | provenance and distribution → `docs/norm/foundations.md`; a repository's authorization deviation → a red line or a gate in `AGENTS.md`; ownership and review were already in `docs/norm/flow.md` |
+| removed from the role table | the Governance row; the `Conventions / Governance` boundary pair; Governance from the `Operating modes` pair, which becomes `Operating modes / Suite tracks`; the architecture pair becomes `Architecture / Instruction layer` |
+| repointed | `AGENTS.md` routing row, `README.md` and `docs/README.md` index rows, `docs/workflow.md` mapping row (target is now "no page"), `template/effort/docs/README.md` (four pages, three), `template/effort/README.md`, `scripts/docs-model.ts`, this package's `audits/README.md` and `tools/audit_repo.py` |
+
+Gate: PASS, 111 markdown files, 66 tests, one soft `roles.md` warning (13,257).
+
+Consequence for oshi: its one governance-class rule — review reports are local archives kept out of git, append-only, index-only in git — already lives in `docs/reviews/README.md` "Governance and maintenance". That is where C7 points; no new page. The residual question, whether an index page may carry rules at all, belongs to W06's page repairs, not here.
 
 ## Role pass
 
@@ -124,7 +139,7 @@ Consequence for W05c: `docs/workflow.md` and `docs/governance.md` are short poin
 | --- | --- | --- | --- |
 | Committing | "A base pointer to `docs/norm/committing.md` plus this repository's deviations" | `docs/committing.md` | no page; `git grep 'commit message'` returns nothing |
 | Operating modes | "The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure" | `docs/workflow.md` | job split between `tasks/README.md` and `docs/development-workflows.md` |
-| Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | `docs/governance.md` | seven closed packages; job split across `docs/conventions.md`, `AGENTS.md` and directory READMEs |
+| Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | no page — role retired (ADR-0027) | seven closed packages; job split across `docs/conventions.md`, `AGENTS.md` and directory READMEs; four of its five subjects were already norm, and no target repository ever created it |
 | Work package index | "Work package governance, the open table, the closeout checklist" | `work-packages/README.md` | kept at `tasks/README.md`, inside a suite track, tolerated by the whitelist with no recorded reason |
 
 ## W06 scope correction

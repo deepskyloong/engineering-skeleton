@@ -13,7 +13,7 @@
 - Todo: W05b–W09
 - Next: W05b C1 — `docs/testing.md` (red lines to `AGENTS.md`, method to a guide, tombstone)
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
-- Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`)
+- Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
 
 ## Work items
@@ -187,18 +187,19 @@ P1's exit condition named charter, contracts, knowledge and toolchain, and all f
 
 **Evidence**: C4 — standard `0d3a5a1` (role admitted, gate PASS 112 files / 66 tests) and oshi `0e57e99` (suite-tracks 8,864, structure 7,439, guide 4,687, tombstone 54; text-only gate green, prose 272 files, links resolve; a mirror re-lock of `uv.lock` reverted). C1–C3 per-commit shas, measured volumes and the pointer proof still go into the map's "Applied results" as they land.
 
-#### W05c — Give the three required roles a home or a recorded disposition
+#### W05c — Give the two required roles a home, and record the third's retirement
 
-**Status**: todo — unblocked 2026-11-19 (R2 settled)
+**Status**: todo — unblocked 2026-11-19 (R2 and R3 settled)
 **Depends on**: W05b
 
-Three roles the standard calls always-present or first-use have no page: `docs/committing.md` (no commit-message rule exists anywhere), `docs/workflow.md` (its lifecycle job is split between `tasks/README.md` and the suite map), and `docs/governance.md` (seven closed packages, no page). R2 settled on 2026-11-19: a suite track does not replace either role. The repository states the base rule, the page is a base pointer to the norm source plus this repository's deviations, and a suite track records only what it layers on its own artifacts — the `docs/committing.md` shape, B-0005 Plan item 7. So all three pages get written, and `tasks/README.md` keeps the suite's package shape while pointing at `docs/workflow.md` for the lifecycle. The work-package index at `tasks/README.md` gets its reason recorded in `docs/adapters.md` in the same pass.
+Three roles the standard called always-present or first-use had no page: `docs/committing.md` (no commit-message rule exists anywhere), `docs/workflow.md` (its lifecycle job is split between `tasks/README.md` and the suite map), and `docs/governance.md` (seven closed packages, no page). R2 settled on 2026-11-19: a suite track does not replace either role — the repository states the base rule, the page is a base pointer to the norm source plus this repository's deviations, and a suite track records only what it layers on its own artifacts (the `docs/committing.md` shape, B-0005 Plan item 7). R3 settled the same day: Governance is retired as a role (ADR-0027), so its subjects live in `docs/norm/flow.md`, `docs/norm/rules.md`, `AGENTS.md` and, for oshi, the review archive rule already in `docs/reviews/README.md`. So two pages get written and one disposition gets recorded; `tasks/README.md` keeps the suite's package shape while pointing at `docs/workflow.md` for the lifecycle. The work-package index at `tasks/README.md` gets its reason recorded in `docs/adapters.md` in the same pass.
 
 **Done when**:
 
 - `docs/committing.md` exists as a base pointer plus deviations and is inside its 5,000 line
-- `docs/workflow.md` and `docs/governance.md` exist as base pointers to the norm source plus deviations, restating nothing the norm states
+- `docs/workflow.md` exists as a base pointer to the norm source plus deviations, restating nothing the norm states
 - `AGENTS.md` carries the `Norm source:` line the pointers resolve against
+- no `docs/governance.md` is created; the oshi-specific authorization deviation is recorded where it lives, with a one-line pointer from wherever a reader would look
 - the work-package index's placement inside a suite track has a recorded disposition
 - `docs/README.md` indexes whatever exists and states no counts
 - oshi's gate is green
