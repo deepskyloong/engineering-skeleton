@@ -5,11 +5,11 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W07b closed — `docs/conventions.md` is a base pointer plus three deviations and forwarding sections, 14,441 → 12,056 non-whitespace (oshi `c34f501` → `edcfe25`); W07a's seven pointer and index repairs preceded it (`166cab9` → `f8f1f70`)
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 278 files, 0 wrapped)
+- Last done: W07c closed — the document-version rule is gone from conventions §8.1 and §7 and from the docs, scripts and web READMEs, because the norm keeps no changelog and no version number (oshi `f90b44e`); W07a and W07b preceded it (`166cab9` → `edcfe25`)
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 278 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
 - Phase: P2 — page repairs and audit closeout
 - Focus: W06 — re-measure every role page, then split by topic
-- Progress: 14 done / 4 todo / 0 blocked
+- Progress: 15 done / 4 todo / 0 blocked
 - Todo: W06–W09
 - Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
@@ -251,7 +251,7 @@ Re-measure every role page after W05b–W05c; the audit's 29 breaches were a 202
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; what they leave behind stays in this item's finding list.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead. A second joins with W07c: `web/README.md`'s table is padded by the frontend `oxfmt` invoked from `format:check`, which puts R12's no-padding rule out of reach there without a toolchain change. Two batches of residue the audit turned up needed no ruling, so they landed under this item before it opened as W07a and W07b; W07c joined them once the §8-versus-base audit was settled.
 
 **Done when**:
 
@@ -291,6 +291,23 @@ Numbered headings and titles survive on purpose: roughly forty citations in froz
 - the oshi text-only gate is green
 
 **Evidence**: oshi `c34f501` (norm-source token defined), `4ceef45` (`knowledge/guides/locked-definitions.md` and its index row), `d563883` (`data-rules-decisions.md` §4.8), `5e3938f` (reviews governance records the skipped round), `1a85f34` (the conversion), `22f84a1` (five circular pointers), `edcfe25` (§1 and §3 leave their text to the guide). Page 14,441 → 12,056 non-whitespace: over the 10,000 soft line, clear of the 16,000 hard one, and the remainder is W06's to split. Each commit: ruff check and format green, prose 277 → 278 files with 0 wrapped blocks, every relative link and cited path resolving. Known residue: three `.scratch/embedding-coverage` tickets cite `docs/conventions.md:11-13`, a line range that now lands in the deviations table — the §1 heading resolves the intent, the line numbers cannot.
+
+#### W07c — Drop the document-version rule the standard declines
+
+**Status**: done
+**Depends on**: W07b
+
+An audit of §8 against the base found one real conflict and one second home. The conflict: §8.1 required "version numbers live in each document's header", its README governance block required "versioning", §7 sent a round's trace to "each design doc's header revision table", and the docs, scripts and web READMEs carried `Version` rows. The base keeps no changelog — `docs/norm/roles.md`, "Roles that are deliberately absent", has `git log` as the changelog and calls a `CHANGELOG.md` a duplicate — and no version number (`docs/norm/foundations.md`). Nothing enforced the rule either: every surviving version table belongs to a frozen plan, experiment or effort spec, which §8.7 already allows. The second home: §8 item 8 repeated `docs/committing.md`'s commit cadence word for word; it is a pointer now.
+
+The same audit found the rest of §8 consistent: two declared deviations (the status cap the standard's `ADR-0006` explicitly permits, and the language matrix), one declared citation deviation, and local discipline the base is silent on. What it also exposed is that `web/README.md`'s table is padded by the frontend `oxfmt` covered by `format:check`, so R12 cannot hold there without excluding markdown from the formatter; that is filed as a finding, not settled here.
+
+**Done when**:
+
+- no living page requires or claims a document version table
+- frozen records keep theirs
+- oshi's gate is green
+
+**Evidence**: oshi `f90b44e` (four files: conventions §8.1 and §7, `docs/README.md`, `scripts/README.md`, `web/README.md`). §8.1 loses the `Version` bullet and the word versioning; §7 records the round in the frozen plan log or the final report; §8 item 8's commit sentence becomes a pointer; the three README rows are gone. `docs/plans/README.md`'s row stays, because it describes the frozen plans truthfully. Full gate: ruff check and format, `ty` clean, prose 278 files with 0 wrapped blocks, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed.
 
 ### P3 — Closeout
 
