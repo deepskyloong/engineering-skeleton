@@ -6,7 +6,7 @@ The binding text of the repository standard. Read by question, not in order.
 | --- | --- |
 | [foundations](foundations.md) | What the standard is, which principles bind it, which layers exist |
 | [roles](roles.md) | Which document roles exist, where each lives, what may enter and leave |
-| [flow](flow.md) | Which level owns a file, how work moves from idea to closeout |
+| [flow](flow.md) | Which level owns a file, how work moves from idea to closeout, who decides and how a change is reviewed |
 | [rules](rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
 | [overlays](overlays.md) | What the language-agnostic core promises, what each overlay supplies |
 | [committing](committing.md) | What every commit message must state, and which parts a repository may override |
@@ -23,7 +23,7 @@ The file names carry the subject; the order lives here. Adding a page does not r
 
 ## Status
 
-The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug.
+The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug. A target repository's page for a role is a base pointer to the page named here plus its own deviations; a page that restates the norm is a finding, not a copy.
 
 ## Reading rule
 

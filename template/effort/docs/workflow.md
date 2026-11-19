@@ -1,44 +1,22 @@
 # Workflow
 
-## Tracks
+|  |  |
+| --- | --- |
+| Norm source | `{{NORM_SOURCE}}/docs/norm/flow.md` |
+| This page | A base pointer, plus only what this repository does differently from the norm |
 
-A work package records `track:` in its `spec.md`: which workflow suite the effort runs on (`default`, `spec-flow`, `superpowers`, `none`). The field is mandatory; the value is free-form. The track is never a directory root: a repository does not get a `docs/<suite>/` because one effort used that suite.
+## Deviations
 
-## t0 — create a work package
+The lifecycle is normative in the page named above: when a package exists, the four fields it carries before work starts, the `Current state` block, the work-item form, the three permitted compromises, the five closeout steps, and the acceptance checklist. This page states a difference and the constraint that forces it; it never restates the norm, because a restatement goes stale without anyone noticing, and a base pointer needs no edit when the norm changes.
 
-A package carries state a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and record the choice in an ADR when the change is a decision.
-
-Create `work-packages/<slug>/` with the four ledger files from `_template.md`, and fill in four fields before any work:
-
-1. **Goal** — one sentence, testable.
-2. **Non-goal** — at least one thing this effort will not do.
-3. **Acceptance** — one command or one observable state.
-4. **`track:`** — see above.
-
-Before the first step, initialize `todo.md` with a `## Current state` block: updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and read-first pointers. The work items follow it. Rewrite the block in the same commit as any change to a work item, a decision, a branch, or the gate; it is a snapshot, not a log, and a stale block is a defect. The block lives inside `todo.md`; it is not a fifth file.
-
-Evidence the effort produces — a measurement report, an inventory, or a reproduction script — lives in a named directory beside the ledger. It stays in git, `summary.md` names each directory and what it answers, and closeout archives them with the package. Create the directory only when the first item exists; never an empty one.
-
-The unit of work is a `W<n>` block: status, dependencies, a prose description, one or more observable done-when criteria, and evidence. `done` requires evidence; an item without evidence stays open. `plan.md` groups the items into phases with an exit condition; the item detail stays in `todo.md`. One item is one reviewable commit or one primary outcome; split it when it needs more.
-
-Add a row to `work-packages/README.md`. If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md`. Slug rules: kebab-case, describes the outcome, not the ticket number. Closeout moves the whole package to `work-packages/archive/<slug>/`; `summary.md` is the entry point a reader opens first.
-
-## Runtime — three permitted compromises
-
-| Compromise | Allowed when | Record in `summary.md` |
+| Norm clause | This repository | Why |
 | --- | --- | --- |
-| Scope reduction | The acceptance criterion is still met | Which goal dropped, where it moved |
-| Track switch | The chosen suite cannot express the work | Old track, new track, why |
-| Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
+| `<the clause that differs>` | `<what this repository does instead>` | `<the constraint that forces the difference>` |
 
-Anything else — a changed goal or acceptance criterion — is a new work package.
+A repository that follows the norm deletes the table and keeps the pointer.
 
-## Closeout — five steps
+## Where this repository's mechanics live
 
-1. Write `summary.md` (budget in `{{NORM_SOURCE}}/docs/norm/rules.md`): what was done, what was not, what a future maintainer must know.
-2. Relocate what outlives the effort: contract → `docs/contracts/`; decision → `docs/decisions/`; method → `docs/knowledge/guides/`; incident → `docs/knowledge/cases/`.
-3. Freeze the package: move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit. Check `rg -l '<slug>'`; every survivor is explained.
-4. Move the row from `work-packages/README.md` to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set its row to `closed` in `docs/backlog/README.md`.
-5. Leave a tombstone at the old path only when a frozen record cites it: ≤3 lines, exactly one link, title ending with `— moved`.
+The norm names steps, not paths. This repository's own paths — the package root, the open table, the closeout checklist, the archive — are stated once, in the page this line points at: `<link>`.
 
-The closeout checklist in `work-packages/README.md` verifies these five steps.
+Delete this section when the paths match the norm.

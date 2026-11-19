@@ -76,6 +76,12 @@ Anything else — a changed goal, a changed acceptance criterion — is a new wo
 4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
 5. **Leave a tombstone if a frozen record cites the old path.** ≤3 lines, exactly one link, no explanation. A tombstone is a forwarding stub, not a summary; it points into the archived package. If no frozen record cites the path, skip it and stop.
 
+## Who decides and how a change is reviewed
+
+The owner decides a package's scope and non-goals, and any change to a role's home. An agent may write prose, templates, and the gate within the rules this standard states; the red lines it must respect every turn live in `AGENTS.md`. Removing or moving a role needs an ADR with the rejected alternatives; a budget change needs the old value, the new value, and one measured sample.
+
+A review is adversarial by default: the reviewer tries to break the structure rather than praise it, and the output format is fixed — `[blocker|major|minor|nit] section — problem / why / minimal fix`. A finding without a section reference cannot be adjudicated. Every finding is accepted, accepted with a different fix and the reason recorded, or deferred to the backlog with a revisit trigger; a deferred finding does not disappear.
+
 ## Acceptance checklist
 
 Run before declaring a work package closed:

@@ -83,6 +83,7 @@ Two roles can seem to admit the same sentence. Apply the pair's test, then state
 | Charter / Instruction layer | Does it define what the project accepts or refuses (charter), or what every turn must do (`AGENTS.md`)? |
 | Status / Work package | Cross-package snapshot (status) versus one effort's state (work package); status links, the package owns the detail |
 | Suite tracks / Adapter registry | Does it record the artifact shape a suite writes at its roots and the rules layered on its defaults (suite tracks), or the roots with their tolerated files and disposition (adapter registry)? |
+| Operating modes, Governance / Suite tracks | Does the rule bind every effort in the repository, whatever suite runs it (operating modes, governance), or the artifacts one suite writes at its roots (suite tracks)? A suite never owns the lifecycle or the authorization; it may only narrow its own artifacts below them |
 | Tombstone / Adapter | Forwarding a moved path (tombstone) versus registering a foreign suite's path (adapter); a path takes one, not both |
 | Conventions / Governance | Does it change how a document reads (conventions) or how a change is approved (governance)? |
 | Architecture, Contracts / Operations | Does it describe a system response or format (architecture, contracts), or steps a person runs (operations)? |
