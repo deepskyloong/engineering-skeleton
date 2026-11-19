@@ -176,6 +176,22 @@ One deviation, and it is the one the norm delegates: the scope vocabulary. Scope
 
 `AGENTS.md` gains the `Norm source:` line, which is what `{{NORM_SOURCE}}` resolves against, and it names `docs/committing.md` on the commit path — both obligations the norm places on the project. Not a second document: the page points, `AGENTS.md` routes. Gate: text-only path — ruff clean, prose 276 files, 0 wrapped, links resolve.
 
+### C6 — workflow, oshi `4e1da3e`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/workflow.md` | — | 2,066 | Operating modes, base pointer + deviations |
+| `tasks/README.md` | 1,113 | 936 | the suite track's index; its rules and checklist became pointers |
+| `docs/README.md` | 4,221 | 4,359 | + index row |
+| `docs/adapters.md` | 5,524 | 5,684 | + the index's placement disposition |
+| `docs/structure.md` | 7,430 | 7,460 | `tasks/` row points at the lifecycle page |
+
+The lifecycle had two partial homes and no role: `tasks/README.md` carried six rules and a four-item checklist, `docs/suite-tracks.md` carried the track shape, and the norm's five steps had no landing page. The page is a base pointer with three deviations, and all three come from one fact — the packages live inside a suite track, so there is no `work-packages/` and no `archive/` to close into.
+
+The archive row is the judgement worth recording. Norm step 3 freezes a package at `work-packages/archive/<slug>/`, read-only; oshi deletes a closed package unless a frozen record cites its path. The reason is not laziness: the track has no archive root, a suite that never wrote `archive/` would read it as a package, and a tombstone would point into a path its own tooling does not look for. A cited package therefore stays in place so the citation keeps resolving, and its row leaves the open table. Nothing is lost but the ledger, because step 2 has already moved everything that outlives the effort into `docs/`.
+
+`tasks/README.md` now carries only what no other page can: the slug rule, the track field, the open table and the closed note. Six rules that restated the norm became one pointer, which is the first case in this package of a page shrinking because a role finally had a home. The index's placement inside a track — the open table sitting at the suite's root because that root is where the packages are — is the adapter row's `Disposition` clause, which is what the registry exists to carry. Step 4's backlog rule applies unchanged and is stated once, on the lifecycle page. Gate: text-only path — ruff clean, prose 277 files, 0 wrapped, links resolve.
+
 ## Role pass
 
 | Page | Job | Admission | Trigger | Volume |
@@ -195,9 +211,9 @@ One deviation, and it is the one the norm delegates: the scope vocabulary. Scope
 | Role | Admission | Home | Measured state |
 | --- | --- | --- | --- |
 | Committing | "A base pointer to `docs/norm/committing.md` plus this repository's deviations" | `docs/committing.md` | page landed in C5 (`4b8d53c`), 1,306 |
-| Operating modes | "The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure" | `docs/workflow.md` | job split between `tasks/README.md` and `docs/development-workflows.md` |
+| Operating modes | "The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure" | `docs/workflow.md` | page landed in C6 (`4e1da3e`), 2,066 |
 | Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | no page — role retired (ADR-0027) | seven closed packages; job split across `docs/conventions.md`, `AGENTS.md` and directory READMEs; four of its five subjects were already norm, and no target repository ever created it |
-| Work package index | "Work package governance, the open table, the closeout checklist" | `work-packages/README.md` | kept at `tasks/README.md`, inside a suite track, tolerated by the whitelist with no recorded reason |
+| Work package index | "Work package governance, the open table, the closeout checklist" | `work-packages/README.md` | kept at `tasks/README.md`, inside a suite track; disposition recorded in `docs/adapters.md` (`4e1da3e`), checklist now a pointer to `docs/workflow.md` |
 
 ## W06 scope correction
 
