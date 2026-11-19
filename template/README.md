@@ -51,6 +51,6 @@ A value left unreplaced is a failure; a notation left in place is correct. `{{NO
 ## What not to copy
 
 - Do not copy `AGENTS.md` routing rows for pages that do not exist. The template marks optional pages with "(when present)"; delete the row when the page is absent.
-- Do not copy optional roles. `docs/contracts/`, `docs/operations/`, `docs/toolchain/`, `docs/knowledge/`, and `docs/adapters.md` appear when their trigger does.
+- Do not copy optional roles. `docs/contracts/`, `docs/operations/`, `docs/toolchain/`, `docs/knowledge/`, `docs/suite-tracks.md`, and `docs/adapters.md` appear when their trigger does.
 - Do not copy a budget number without its unit and its command.
 - Do not copy the norm pages themselves into a repository. A repository carries its own charter, structure, and conventions, which point back when they need the rationale.

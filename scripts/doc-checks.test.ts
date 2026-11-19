@@ -218,6 +218,10 @@ describe('rolePaths', () => {
   test('an admitted page passes', () => {
     expect(rolePaths(createContext(fixture({ 'docs/charter.md': '# C\n' })))).toEqual([])
   })
+
+  test('the suite-track map is an admitted page', () => {
+    expect(rolePaths(createContext(fixture({ 'docs/suite-tracks.md': '# S\n' })))).toEqual([])
+  })
 })
 
 describe('tombstones', () => {

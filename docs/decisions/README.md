@@ -31,6 +31,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0023](ADR-0023-role-table-boundaries.md) | The role table describes a generated repository; a directory index lists direct children | Accepted |
 | [ADR-0024](ADR-0024-checker-runtime-and-tests.md) | The document checker is TypeScript, split by responsibility, and tested | Accepted |
 | [ADR-0025](ADR-0025-ci-omits-prose.md) | CI runs every gate stage but the prose one, and names the omission | Accepted |
+| [ADR-0026](ADR-0026-per-suite-map-role.md) | The per-suite map is a role, not the adapter registry | Accepted |
 
 ## Format
 

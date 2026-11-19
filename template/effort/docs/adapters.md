@@ -1,6 +1,6 @@
 # Adapters
 
-Third-party suites that own directories in this repository, and legacy paths that cannot move yet. This is a registry, not a directory layer.
+Third-party suites that own directories in this repository, and legacy paths that cannot move yet. This is a registry, not a directory layer. The per-suite artifact shape lives in `docs/suite-tracks.md`; this page carries the tolerance and the disposition.
 
 ## Registry
 

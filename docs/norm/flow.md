@@ -95,6 +95,8 @@ Run before declaring a work package closed:
 
 A third-party suite that writes into the repository is not migrated; it is registered. `docs/adapters.md` carries one row per suite track: its roots, what reads it, the compatibility whitelist, and the disposition — the track is permanent, and no closeout step relocates it. The suite keeps writing where it writes; the standard stops pretending that path is its own.
 
+The artifact shape a suite writes at those roots, and every repository rule layered on the suite's default, live in `docs/suite-tracks.md`; the registry carries the tolerance and the disposition, the map carries the shape. Splitting them keeps a tolerant row from becoming a directory layer.
+
 A suite's closed packages stay in the track. A repository does not fold them into `work-packages/<slug>/`: the suite loads its path by name, so a move changes nothing on disk and leaves two layouts behind.
 
 A legacy path that survives migration follows the other row kind: it appears in `docs/adapters.md`, and it is removed only when its last consumer is gone. Forcing a foreign tool to accept a new path costs more than one line in a registry.

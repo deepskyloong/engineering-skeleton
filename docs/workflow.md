@@ -78,7 +78,8 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | `specs/` in four places | `work-packages/<slug>/spec.md`, `docs/contracts/`, `docs/operations/`, `docs/architecture/` | Split by admission: a promise a consumer may rely on is a contract; a procedure under pressure is operations; how the system is organized is architecture. A directory named `specs/` is not a role match. |
 | A single backlog file, or `backlog/B-<nnnn>` | `docs/backlog/B-<nnnn>-slug.md` + index | New repositories use four digits; existing numbering is kept and never renumbered |
 | `status.md` at the root | `docs/status.md` | Rewritten in place, no history |
-| A tracker suite's hidden directory | `docs/adapters.md` row | The suite keeps its path; the registry explains it |
+| A tracker suite's hidden directory | `docs/adapters.md` row, plus the suite's shape in `docs/suite-tracks.md` | The suite keeps its path; the map records what it writes, the registry records the tolerance and the disposition |
+| A page recording which suite writes where, with its artifact shape and a worktree procedure | `docs/suite-tracks.md`; the worktree procedure in `docs/knowledge/guides/`; the registry row in `docs/adapters.md` | Split by admission: the map records shape, the guide records a method, the registry records tolerance; a page serving all three has no role |
 | Per-module `README.md` + `docs/` + `AGENTS.md` | Module `README.md`; module `AGENTS.md` deferred | Module docs fold into the member unless a module is a real boundary |
 | A generated `AGENTS.md` from source rules | Keep the generator; mark the output | The source rules stay authoritative; the generated file carries the header |
 | A README change-surface table | Keep it | It is a real mechanism, not a violation of the standard |
