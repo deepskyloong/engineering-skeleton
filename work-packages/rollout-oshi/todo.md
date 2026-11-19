@@ -2,18 +2,17 @@
 
 ## Current state
 
-- Updated: 2026-11-18
+- Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
-- Branch: `feature/b0005-rollout-oshi`; ahead of `main` at `bd5b6f2`; re-check `git status`
-- Gate: `PASS — 102 markdown files` (2026-11-18)
-- Last done: standard change — optional architecture role; ADR-0022; commit `16dd9ff`; W08a `a2848c8`
+- Branch: `feature/b0005-rollout-oshi`
+- Last done: W03 map reviewed and rewritten 2026-11-19 after four accepted rulings — UI design content moved to contracts, adapter rows are directory-level, `annotation §9`/`§11` disposed, frozen section citations recorded as exceptions
 - Phase: P1 — package rule and role moves
-- Focus: W03 — role-first map re-cut; review pending
+- Focus: W03 — C1 contracts
 - Progress: 3 done / 7 todo / 0 blocked
 - Todo: W03–W09
-- Next: W03 — review `maps/w03-role-map.md`; then C1 contracts
+- Next: C1 — create `docs/contracts/` (19 pages and their index), the two adapter legacy rows, the `docs/README.md` row, and the C1 pointer edits
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture home settled (A, ADR-0022); W03 review pending — revision records
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -77,7 +76,7 @@ Define the work package container in the standard: four ledger files by closeout
 **Status**: todo
 **Depends on**: W02; W08a
 
-Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by admission: contracts (one page per interface promise), architecture (system organization), operations (the existing `docs/operations/` pages), conventions (`docs/conventions.md`). A source directory maps no role; the section decides. Leave tombstones for cited paths and register both old directories as frozen paths in `docs/adapters.md`.
+Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 files, 88,581) and `docs/specs/` (7 files, 146,716) by admission: contracts (a fact a consumer may rely on, including all four UI specifications), architecture (system organization only), operations (the existing `docs/operations/` pages), conventions (`docs/conventions.md`). A source directory maps no role; the section decides. The map is `maps/w03-role-map.md`, accepted 2026-11-19: 19 contract pages, 6 architecture pages, 4 operations pages, 10 tombstones. Leave tombstones for cited paths, forward cross-role splits to `docs/README.md`, and register both old directories as `legacy path` rows in `docs/adapters.md` "Registry"; the four frozen citations the drops degrade are recorded in the map and carried by W08.
 
 **Done when**:
 
@@ -127,7 +126,7 @@ Split `docs/notes/` (11 files, 90,429) into `docs/knowledge/guides/` for methods
 **Status**: todo
 **Depends on**: W05
 
-Re-measure every role page after the moves; the audit's 29 breaches were a 2026-11-16 snapshot. Split by topic, not by length: `docs/designs/data-model.md` (45,276) and `docs/specs/audit-ui-spec.md` (36,017) are the largest. Trim each index to one line per child (`docs/reviews/README.md` 11,708, `docs/backlog/README.md` 5,524, `docs/README.md` 3,044), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
+Re-measure every role page after the moves; the audit's 29 breaches were a 2026-11-16 snapshot. Split by topic, not by length: `contracts/schema.md` (11,725), `contracts/ui-audit.md` (11,811), `contracts/ui-label.md` (11,998), `contracts/data-rules-ingest.md` (10,028), and `architecture/components-decision.md` (10,758) are the hard-path pages; `docs/conventions.md` (~12,800) is the soft one. Trim each index to one line per child (`docs/reviews/README.md` 11,708, `docs/backlog/README.md` 5,524, `docs/README.md` 3,044), keep the storefront README to what, install, and prove, and link the history. Split a page after its role is at home, never in the same commit as a move.
 
 **Done when**:
 
@@ -142,7 +141,7 @@ Re-measure every role page after the moves; the audit's 29 breaches were a 2026-
 **Status**: todo
 **Depends on**: W06
 
-Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`.
+Give every finding in `audits/oshi.md` a disposition; the ledger is the findings table in `audits/README.md`. The ones the moves do not carry: index autonomy in `experiments/README.md`, `docs/plans/README.md`, and `docs/reviews/README.md` (finding 9; the `docs/adrs/` README went with the decisions move); `tests/test_status_cap.py` measuring total characters against a non-whitespace budget (11); `archived/` as a fifth deletion exception with its 20 citations (6). Finding 17 is resolved (`fb6701e`). A finding that needs a rule in the standard goes to W08 instead of being fixed locally; finding 1 stays with `B-0007`. One new finding joins here: `docs/adapters.md` "Freeze" states where new files may go, and the adapter registry's admission (suite tracks, legacy paths, whitelist, disposition) does not name it; W03 deliberately added its two directory rows to "Registry" instead.
 
 **Done when**:
 
@@ -159,7 +158,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. The package evidence category and the `work-packages` checker coverage are W08a, before W03.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03.
 
 **Done when**:
 

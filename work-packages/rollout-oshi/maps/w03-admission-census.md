@@ -4,7 +4,7 @@
 - Source: oshi `28c8bc4`, worktree `E:\Projects\oshi\.worktrees\skeleton-migration`
 - Test: `docs/norm/roles.md` "Five discriminations" and `rules.md` R13; the section's content decides, not its title or directory.
 - Method: one row per section range; a range that spans roles is split. `Target` is a proposal for the map re-cut, not a move.
-- Status: census; the map is re-cut from this table.
+- Status: census (2026-11-18); its targets are superseded by `w03-role-map.md`, which re-cut them on 2026-11-19
 
 ## `docs/designs/architecture-v2.md`
 
