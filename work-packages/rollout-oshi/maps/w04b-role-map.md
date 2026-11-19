@@ -2,7 +2,7 @@
 
 - Date: 2026-11-19
 - Source: oshi `55cea2d`, worktree `E:\Projects\oshi\.worktrees\skeleton-migration`; standard `42a5eca`
-- Status: accepted 2026-11-19 (the admitted jobs move first, the explanation question waits); applied as `a9300cc` and `adbebc5`, oshi gate green at both
+- Status: accepted 2026-11-19 (first half: the admitted jobs move, the explanation question waits; second half: dissolve, no new role); applied as `a9300cc`, `adbebc5` (first half) and `c4e0a93`, `869e762`, `ac68abe`, `6205394` (second half), oshi gate green after each
 - Role basis: `docs/norm/roles.md` — Knowledge guide "A method that changes what a maintainer does next time"; Architecture "How the system is organized and what a change must respect ... invariants"; the ADR role's admission is discrimination 1, "a choice with rejected alternatives is an ADR". Measure: non-whitespace characters, 2026-11-19.
 
 The six residue pages were carried by W04 as one unit. Reading them page by page, two of them hold no job that is not already at a home, and the third holds one job plus a teaching narrative. So this half moves what is admitted and parks the rest: one guide, one ADR, one path retired with a tombstone, two pages left for the role question.
@@ -85,6 +85,12 @@ Nothing on the page is un-homed. Its remaining job is the teaching register — 
 - **Gate.** prose 260 files with 0 wrapped blocks, `ruff check` and `ruff format --check` green.
 - **Deviation.** The W04 map proposed merging `data-integrity.md` into architecture; the read found nothing to merge (trace above), so it is parked instead of merged. That is the second deviation this package records against its own proposal, and both point the same way: the residue's problem is a missing role, not a missing home.
 
-## W04b-ii — what is left
+## W04b-ii applied — the shelf is closed
 
-Five live pages: `knowledge.md` (5 jobs), `data-integrity.md` (homed claims, teaching register), `recognition-pipeline.md` (teaching register), `annotation-eval-terms.md` (vocabulary plus method, 15,338, over soft), `recall-vs-coverage.md` (metric vocabulary). The maintainer's ruling is one question: does a page whose job is to teach a zero-background reader a role, or do these pages dissolve into architecture, `GLOSSARY.md`, `docs/operations/` and a tombstone? The trace and the volumes above are the evidence; W08 carries the standard-side question.
+- **Ruling.** Dissolve, no new role (maintainer, 2026-11-19). The five pages were each treated as: extract a job a role admits, or drop with the pointer fixes that keep every living reader resolving.
+- **Commits.** `c4e0a93` moves the dependency method to `docs/knowledge/guides/choosing-a-dependency.md` (1,099); `869e762` takes the annotation and metric vocabulary into `GLOSSARY.md` (2,226 → 3,577) and retires `annotation-eval-terms.md` to a tombstone while deleting `recall-vs-coverage.md`, which had no citer; `ac68abe` retires `knowledge.md`; `6205394` retires `data-integrity.md` and `recognition-pipeline.md`, repoints every living reader, and turns the shelf's README into the tombstone index.
+- **Dispositions.** `knowledge.md` → guide (`choosing-a-dependency.md`), glossary, ADR-0013's background, with the general-model teaching dropped; `annotation-eval-terms.md` → glossary, with the verification queries left where they already were, in `docs/operations/annotation.md`; `recall-vs-coverage.md` → one entry, then deleted; `data-integrity.md` → tombstone pointing at `components-decision.md` §4.13/§4.14; `recognition-pipeline.md` → tombstone pointing at §4.8.
+- **No ADR-0014.** The route comparison would have restated ADR-0013's background, which already carries "no corpus, no training budget, a combination of released weights". One decision, one record.
+- **Proof.** `git grep` over the five retired paths returns frozen records only — `docs/plans/m2-plan.md`, `experiments/m1`/`m3`/`m5`, the closed registration suite — plus the two `Source` lines that record where the new guides were split from; every survivor resolves through a tombstone. Every relative link under `docs/` resolves.
+- **State.** `docs/notes/` holds ten tombstones and a README that indexes them; `docs/knowledge/` holds 5 guides and 2 cases with their indexes; `GLOSSARY.md` covers three domains. Gate: prose 260 files with 0 wrapped blocks, `ruff check` and `ruff format --check` green.
+- **Registered.** The adapter row changed from "frozen, pending a role" to "closed": delete the directory when the last frozen citer is gone. The finding 13 row closes.

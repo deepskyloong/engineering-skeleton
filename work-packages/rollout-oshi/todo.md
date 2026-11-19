@@ -5,14 +5,14 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → `knowledge/guides/`), `adbebc5` (identity choice → `ADR-0013`, old path tombstoned); details and the duplicate trace in `maps/w04b-role-map.md`. Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`. Follow-ups — the prose unwrap, the three `md-tools` defects, and the gate's fifth stage — are that map's "Prose and gate follow-ups"
+- Last done: W04b-ii applied 2026-11-19 — `c4e0a93` (dependency method → guide), `869e762` (vocabulary → `GLOSSARY.md`; two pages retired), `ac68abe` (`knowledge.md` retired), `6205394` (last two retired, shelf closed with 10 tombstones); details in `maps/w04b-role-map.md`. Before it: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → `knowledge/guides/`), `adbebc5` (identity choice → `ADR-0013`); the trace and per-page pass are in `maps/w04b-role-map.md`. Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`
 - Phase: P1 — package rule and role moves
-- Focus: W04b-ii — the explanation-role ruling, then the five remaining pages
-- Progress: 6 done / 6 todo / 0 blocked
-- Todo: W04b-ii, W05–W09
-- Next: the maintainer's ruling on whether a zero-background explanation page has a role; W04b-ii cannot route without it
+- Focus: W05 — the toolchain role (`docs/stack.md`, 10,524)
+- Progress: 7 done / 5 todo / 0 blocked
+- Todo: W05–W09
+- Next: W05 — `docs/stack.md` splits into traps, runtime choices and deferred items
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; **W04b-i settled 2026-11-19**: the method and the decision had homes, `data-integrity.md` had none to gain (its claims are already stated verbatim in `components-decision.md` §4.13/§4.14, FM-09, FM-16 and `data-layers.md`), so it is parked rather than merged; **open**: does the explanation job hold a role, and do the five pages dissolve or stay?
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; W04b-i settled 2026-11-19: the method and the decision had homes, `data-integrity.md` had none to gain, so it was parked; **W04b-ii settled 2026-11-19**: no explanation role — the five pages dissolved, `docs/notes/` closed with ten tombstones, and the standard-side question closes with it
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -121,10 +121,10 @@ Two of the six pages hold a job that is admitted and homeless: `recognition-pipe
 
 #### W04b-ii — Decide whether explanation is a role, then route the five pages
 
-**Status**: todo
+**Status**: done
 **Depends on**: W04b-i
 
-One ruling opens this unit: does a page whose job is to teach a system to a zero-background reader hold a role, or do those pages dissolve into architecture, `GLOSSARY.md`, `docs/operations/`, with a tombstone where nothing survives? After the ruling, route each of the five: `knowledge.md` (§3 → a guide, §1 → an ADR, §2 → `GLOSSARY.md`, §4 → the guides index, §5 drops), `data-integrity.md`, `recognition-pipeline.md`, `annotation-eval-terms.md` (15,338, over soft), `recall-vs-coverage.md`. `maps/w04b-role-map.md` carries the duplicate trace, the volumes, and the argument for each recommendation.
+One ruling opened this unit, and the maintainer made it on 2026-11-19: no new role — the explanation register dissolves into architecture, `GLOSSARY.md`, `docs/operations/` and tombstones. Each of the five pages was then either extracted into a role that admits its job or dropped with the pointer fixes a living reader needs.
 
 **Done when**:
 
@@ -133,7 +133,7 @@ One ruling opens this unit: does a page whose job is to teach a system to a zero
 - `docs/notes/` holds no live page; the adapter row retires when the last tombstone does
 - oshi's gate is green
 
-**Evidence**: pending
+**Evidence**: oshi `c4e0a93` (`knowledge/guides/choosing-a-dependency.md`, 1,099), `869e762` (`GLOSSARY.md` 2,226 → 3,577 with identity/decisioning plus GT, burst and coverage; `annotation-eval-terms.md` → tombstone, `recall-vs-coverage.md` deleted for having no citer), `ac68abe` (`knowledge.md` → tombstone), `6205394` (`data-integrity.md` and `recognition-pipeline.md` → tombstones; `README.md` ×2, `embedding-fundamentals.md` ×2, `pitfalls.md` ×3 and the pose probe's comment repointed). `docs/notes/` now holds 10 tombstones and a README that indexes them; the adapter row says "closed". `git grep` over the five retired paths returns frozen records and the two `Source` lines only; every relative link resolves; prose 260 files with 0 wrapped blocks, ruff green. No ADR-0014: ADR-0013's background already carries the zero-training rationale. Report in `maps/w04b-role-map.md`.
 
 #### W05 — Place the toolchain role
 
@@ -189,7 +189,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 adds the explanation-home question: a zero-background system explanation has no admitted role, five residue pages carry that register, and `AGENTS.md` norm 3 used to send every recurring concept to `docs/notes/`; decide whether a role is admitted (with its template, checker pattern, and skill step) or the pages are absorbed into architecture and vocabulary, then let W04b-ii route them.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 raised the explanation-home question — a zero-background system explanation had no admitted role, five residue pages carried that register, and `AGENTS.md` norm 3 sent every recurring concept to `docs/notes/` — and W04b-ii settled it on 2026-11-19: no role is admitted, the pages dissolved into architecture, `GLOSSARY.md` and tombstones, and norm 3 now points at the guide and case homes. The standard still has no place for a teaching page; if a second target produces the same pressure, that is the evidence this ruling lacked.
 
 **Done when**:
 

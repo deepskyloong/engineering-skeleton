@@ -6,7 +6,7 @@ A report is package evidence for the work package; a finding that changes the sp
 
 | Repository | Report | Status |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a package evidence defined (ADR-0021); contracts, architecture, operations and conventions at their homes (`6d6033a`, `b7efaec`, `5bfb3de`, `5f9df75`); knowledge guides and cases at `docs/knowledge/` (`e4b96c8`, `55cea2d`); threshold method and identity decision routed (`a9300cc`, `adbebc5`); five `docs/notes/` pages and the explanation-role ruling open in W04b-ii; vocabulary `GLOSSARY.md` (ADR-0007) |
+| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a package evidence defined (ADR-0021); contracts, architecture, operations and conventions at their homes (`6d6033a`, `b7efaec`, `5bfb3de`, `5f9df75`); knowledge guides and cases at `docs/knowledge/` (`e4b96c8`, `55cea2d`, `c4e0a93`); threshold method and identity decision routed (`a9300cc`, `adbebc5`); `GLOSSARY.md` covers three domains (`869e762`); `docs/notes/` closed with ten tombstones (`ac68abe`, `6205394`); next toolchain (W05) |
 
 Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s2-legacy-review` only; its merge base with `main` is `37781fa`. `main` at `1b52545` differs by 35 files / +3,323 / −752. The inventory and pointer counts describe that tree, not `main`; re-measure before a budget or pointer step. The report stays frozen.
 
@@ -26,7 +26,7 @@ Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s
 | 10 | major | resolved | `ADR-0009…0012` at `docs/decisions/`; the cited two-digit names keep tombstones | `610f1e9`, `7a988f4` |
 | 11 | minor | open (W07) | `tests/test_status_cap.py` still measures total characters against a non-whitespace budget | `tests/test_status_cap.py` |
 | 12 | minor | open (W05) | `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows if the admission holds | W05 |
-| 13 | minor | open (W04b-ii) | `docs/notes/` served four jobs, not the audit's two: 3 method pages and 2 incident pages took knowledge roles (`e4b96c8`, `55cea2d`), §3 of the pipeline page became a guide (`a9300cc`), the classifier page became ADR-0013 (`adbebc5`), five pages stay on a frozen legacy path, and the zero-background explanation job still has no admitted role | `maps/w04-role-map.md`, `maps/w04b-role-map.md`; `docs/adapters.md` "Legacy notes shelf" |
+| 13 | minor | resolved 2026-11-19 (W04b-ii) | `docs/notes/` served four jobs, not the audit's two, and the audit's "guides and notes" split would have relabelled six pages. Routed by job instead: 3 method pages and 2 incident pages to knowledge (`e4b96c8`, `55cea2d`), the tuning method to a guide (`a9300cc`), the classifier choice to ADR-0013 (`adbebc5`), vocabulary to `GLOSSARY.md`, the dependency method to a guide, and the remaining teaching pages dissolved — the shelf is closed with ten tombstones (`ac68abe`, `6205394`); no explanation role was admitted | `maps/w04-role-map.md`, `maps/w04b-role-map.md`; `docs/adapters.md` "Closed notes shelf" |
 | 14 | minor | open (W06) | `docs/reviews/README.md` describes every report; trim to one line per child | `docs/reviews/README.md`; W06 |
 | 15 | nit | open (W06) | `README.md` keeps the milestone history; keep one paragraph and link it | `README.md`; W06 |
 | 16 | nit | withdrawn | A suite package may stay spec-only | ADR-0010; `tasks/head-kind-experiment/spec.md` |
