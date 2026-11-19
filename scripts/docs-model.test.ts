@@ -90,8 +90,9 @@ describe('budgetFor', () => {
     expect(budgetFor('work-packages/x/summary.md', 'summary.md')).toEqual([3_750, 6_000])
   })
 
-  test('package ledger files carry no budget', () => {
-    expect(budgetFor('work-packages/x/todo.md', 'todo.md')).toBeNull()
+  test('package ledger files and item files carry no budget', () => {
+    expect(budgetFor('work-packages/x/board.md', 'board.md')).toBeNull()
+    expect(budgetFor('work-packages/x/items/W01.md', 'W01.md')).toBeNull()
   })
 
   test('an overlay guide is not an index', () => {
@@ -128,6 +129,14 @@ describe('namingPattern', () => {
   test('an ordinary page is lowercase and hyphenated', () => {
     expect(namingPattern('docs/norm/roles.md').test('roles.md')).toBe(true)
     expect(namingPattern('docs/norm/roles.md').test('Roles_File.md')).toBe(false)
+  })
+
+  test('a work item file is named by its ID alone', () => {
+    expect(namingPattern('work-packages/x/items/W01.md').test('W01.md')).toBe(true)
+    expect(namingPattern('work-packages/x/items/W01.md').test('W04b-i.md')).toBe(true)
+    expect(namingPattern('work-packages/x/items/W01.md').test('W07g.md')).toBe(true)
+    expect(namingPattern('work-packages/x/items/W01.md').test('W07g-dispose.md')).toBe(false)
+    expect(namingPattern('work-packages/x/items/W01.md').test('w07g.md')).toBe(false)
   })
 })
 

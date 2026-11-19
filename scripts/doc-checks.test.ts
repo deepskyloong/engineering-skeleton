@@ -275,18 +275,33 @@ describe('backlogStatus', () => {
 })
 
 describe('packages', () => {
+  const boardWithItem =
+    '# Board\n\n| Item | Title | Status |\n| --- | --- | --- |\n| [W01](items/W01.md) | One | todo |\n'
+
   test('an open package carries three ledger files and nothing else', () => {
     const findings = packages(
       createContext(
         fixture({
           'work-packages/x/spec.md': '# S\n',
           'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/todo.md': '# T\n',
+          'work-packages/x/board.md': '# Board\n',
           'work-packages/x/stray.md': '# X\n',
         }),
       ),
     )
     expect(messages(findings)).toEqual(['unexpected package file: work-packages/x/stray.md'])
+  })
+
+  test('an open package without a board is a finding', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual(['missing package file: work-packages/x/board.md'])
   })
 
   test('an archived package needs its summary', () => {
@@ -304,13 +319,27 @@ describe('packages', () => {
     ])
   })
 
+  test('an archived package may keep the pre-board shape', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/archive/y/spec.md': '# S\n',
+          'work-packages/archive/y/plan.md': '# P\n',
+          'work-packages/archive/y/todo.md': '# T\n',
+          'work-packages/archive/y/summary.md': '# Summary\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([])
+  })
+
   test('evidence has to be named in the summary', () => {
     const findings = packages(
       createContext(
         fixture({
           'work-packages/x/spec.md': '# S\n',
           'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/todo.md': '# T\n',
+          'work-packages/x/board.md': '# Board\n',
           'work-packages/x/summary.md': '# Summary\n',
           'work-packages/x/audits/report.md': '# Audit\n',
         }),
@@ -318,6 +347,85 @@ describe('packages', () => {
     )
     expect(messages(findings)).toEqual([
       'evidence directory not named in summary: work-packages/x/audits/',
+    ])
+  })
+
+  test('items/ is not evidence and needs no summary row', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': boardWithItem,
+          'work-packages/x/summary.md': '# Summary\n',
+          'work-packages/x/items/W01.md': '# W01 — One\n\n**Depends on**: none\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([])
+  })
+
+  test('an item file must be linked from the board', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': '# Board\n',
+          'work-packages/x/items/W01.md': '# W01 — One\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([
+      'package item not linked from board: work-packages/x/items/W01.md',
+    ])
+  })
+
+  test('a board link without a file is a finding', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': boardWithItem,
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([
+      'board links a missing package item: work-packages/x/items/W01.md',
+    ])
+  })
+
+  test('an item heading must start with its ID', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': boardWithItem,
+          'work-packages/x/items/W01.md': '# One\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([
+      'package item heading does not start with its ID: work-packages/x/items/W01.md',
+    ])
+  })
+
+  test('items/ holds only markdown item files', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': boardWithItem,
+          'work-packages/x/items/W01.md': '# W01 — One\n',
+          'work-packages/x/items/notes.txt': 'x\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([
+      'unexpected entry in package items: work-packages/x/items/notes.txt',
     ])
   })
 })

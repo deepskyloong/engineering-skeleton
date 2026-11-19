@@ -177,39 +177,93 @@ function packageDirs(context: Context): Array<{ key: string; archived: boolean }
 }
 
 /**
- * A package carries its ledger files and names the evidence directories it owns.
+ * A package carries its ledger files, one file per work item, and names the evidence
+ * directories it owns.
  *
- * ADR-0021: four ledger files by closeout, evidence directories on demand. `summary.md`
- * is written at closeout, so it is required only in the archive; an open package may
- * carry three ledger files. Every top-level directory is evidence and must be named in
- * the summary once one exists. A file beside the ledger is a fifth file, not evidence.
+ * ADR-0021 and ADR-0029: four ledger files by closeout — spec, plan, board, summary —
+ * and one `items/<ID>.md` per work item. `summary.md` is written at closeout, so it is
+ * required only in the archive. `items/` is reserved, not evidence: it is never named in
+ * the summary and archives with the package. Archived packages written before ADR-0029
+ * keep `todo.md` and their item blocks; an open package uses `board.md`.
  */
 export function packages(context: Context): Finding[] {
   const findings: Finding[] = []
-  const ledger = new Set(['spec.md', 'plan.md', 'todo.md', 'summary.md'])
   for (const { key, archived } of packageDirs(context)) {
-    for (const name of ['spec.md', 'plan.md', 'todo.md']) {
+    const board = `${key}/board.md`
+    const ledger = new Set(
+      archived
+        ? ['spec.md', 'plan.md', 'board.md', 'todo.md', 'summary.md']
+        : ['spec.md', 'plan.md', 'board.md', 'summary.md'],
+    )
+    for (const name of ['spec.md', 'plan.md']) {
       if (!context.isFile(`${key}/${name}`)) {
         findings.push(fail(`missing package file: ${key}/${name}`))
       }
     }
-    const summary = `${key}/summary.md`
-    if (archived && !context.isFile(summary)) {
-      findings.push(fail(`missing package summary: ${summary}`))
+    if (archived) {
+      if (!context.isFile(`${key}/summary.md`)) {
+        findings.push(fail(`missing package summary: ${key}/summary.md`))
+      }
+      if (!context.isFile(board) && !context.isFile(`${key}/todo.md`)) {
+        findings.push(fail(`missing package file: ${board}`))
+      }
+    } else if (!context.isFile(board)) {
+      findings.push(fail(`missing package file: ${board}`))
     }
     for (const child of context.readDir(key)) {
       if (child.isFile && !ledger.has(child.name)) {
         findings.push(fail(`unexpected package file: ${key}/${child.name}`))
       }
     }
-    if (!context.isFile(summary)) {
-      continue
-    }
-    const text = context.readText(summary)
-    for (const child of context.readDir(key)) {
-      if (child.isDirectory && !text.includes(child.name)) {
-        findings.push(fail(`evidence directory not named in summary: ${key}/${child.name}/`))
+    const summary = `${key}/summary.md`
+    if (context.isFile(summary)) {
+      const text = context.readText(summary)
+      for (const child of context.readDir(key)) {
+        if (child.isDirectory && child.name !== 'items' && !text.includes(child.name)) {
+          findings.push(fail(`evidence directory not named in summary: ${key}/${child.name}/`))
+        }
       }
+    }
+    findings.push(...packageItems(context, key, context.isFile(board)))
+  }
+  return findings
+}
+
+/** Every item file starts with its ID, and the board links exactly the files that exist. */
+function packageItems(context: Context, key: string, hasBoard: boolean): Finding[] {
+  const directory = `${key}/items`
+  const findings: Finding[] = []
+  const names: string[] = []
+  if (context.exists(directory)) {
+    for (const child of context.readDir(directory)) {
+      if (!child.isFile || !child.name.endsWith('.md')) {
+        findings.push(fail(`unexpected entry in package items: ${directory}/${child.name}`))
+        continue
+      }
+      names.push(child.name)
+      const id = child.name.slice(0, -3)
+      if (!context.readText(`${directory}/${child.name}`).startsWith(`# ${id} — `)) {
+        findings.push(
+          fail(`package item heading does not start with its ID: ${directory}/${child.name}`),
+        )
+      }
+    }
+  }
+  if (!hasBoard) {
+    return findings
+  }
+  const links = new Set<string>()
+  for (const match of context.readText(`${key}/board.md`).matchAll(/\]\(items\/([^)]+\.md)\)/g)) {
+    links.add(match[1])
+  }
+  for (const name of names) {
+    if (!links.has(name)) {
+      findings.push(fail(`package item not linked from board: ${directory}/${name}`))
+    }
+  }
+  for (const link of links) {
+    if (!names.includes(link)) {
+      findings.push(fail(`board links a missing package item: ${key}/items/${link}`))
     }
   }
   return findings

@@ -15,10 +15,10 @@
 | --- | --- | --- |
 | P0 — Package split | W01 | One package per repository; oshi's audit and tool moved with it; standard gate green |
 | P1 — Package rule and role moves | W08a, W02, W03, W04, W04b-i, W04b-ii, W04c, W05, W05b, W05c | The package evidence category is defined; charter, contracts, knowledge and toolchain at their canonical paths; every remaining live page at an admitted home or a recorded disposition; the roles the standard calls always-present or first-use in place or ruled out in the standard; old paths are tombstones or adapter rows; both gates green |
-| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07g | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
+| P2 — Page repairs and audit closeout | W06a, W06, W07, W07a–W07g, W10 | Every role page inside its volume budget; every audit finding resolved, withdrawn, or filed |
 | P3 — Closeout | W08, W09 | Standard gaps have ADR, spec, or backlog homes; the summary is written; `B-0005` records oshi's disposition; standard gate green |
 
-The table names every ID and each phase's exit condition; the item detail lives in `todo.md`. IDs are identifiers, not a sequence: row order is the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it; that parent then carries no work of its own, stays `doing` until every child closes, and its done-when names the set.
+The table names every ID and each phase's exit condition; the item detail lives in `items/<ID>.md`. IDs are identifiers, not a sequence: row order is the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it; that parent then carries no work of its own, stays `doing` until every child closes, and its done-when names the set.
 
 ## Review discipline
 
@@ -68,7 +68,8 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 - Markdown formatting is not a migration step, and no target gets it by default: neither overlay ships a Markdown stage today (`B-0011`), so oshi adopts the formatter only when that item lands; a page the formatter would re-pad records the exception instead.
 - Oshi's `docs/conventions.md` consumes general norms by pointer: `Base: {{NORM_SOURCE}}/docs/conventions.md` plus deviations with a last-read date, never a restated copy (ADR-0016); a norm with no page at the source is recorded as an exception, not forked.
 - A requirements brief becomes the charter: scope and rulings move with the page, the user profile and communication conventions go to `docs/conventions.md` "Human labor and communication", and material or environment pointers stay in `docs/status.md` and `docs/operations/setup.md`; a dated history row is dropped rather than carried (2026-11-18 ruling, oshi `28c8bc4`).
-- A work package carries the evidence it owns (ADR-0021, 2026-11-18): four ledger files by closeout, plus named evidence directories created on demand. Evidence stays in git, `summary.md` names each directory, closeout archives it with the package, and it carries no docs-page volume budget. Oshi's `audits/` and `tools/` are legal without a move; `scripts/check.py` checks the package shape.
+- A work package carries the evidence it owns (ADR-0021, 2026-11-18): four ledger files by closeout, a file per work item under `items/`, plus named evidence directories created on demand. Evidence stays in git, `summary.md` names each directory, closeout archives it with the package, and it carries no docs-page volume budget. Oshi's `audits/` and `tools/` are legal without a move; `scripts/check.ts` checks the package shape.
+- A work item is one file (ADR-0029, 2026-11-19): `items/<ID>.md` carries its dependencies, description, done-when criteria and evidence, and `board.md` carries the current state and the index. `todo.md` is retired as a ledger name and status lives only in the board; the three archived packages keep their block shape.
 
 ## Check-in points
 

@@ -251,5 +251,8 @@ export function namingPattern(key: string): RegExp {
   if (route.includes('/docs/backlog/')) {
     return /^B-\d{4}-[a-z0-9-]+\.md$/
   }
+  if (route.includes('/items/')) {
+    return /^W\d{2}[a-z]*(?:-[ivx]+)?\.md$/
+  }
   return /^[a-z0-9][a-z0-9-]*\.md$/
 }
