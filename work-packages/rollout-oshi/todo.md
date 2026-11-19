@@ -5,14 +5,14 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit. Follow-ups: `739af32` unwrapped the prose in 27 pages; `2ea92a9` added `scripts/check_prose.py` as the fifth gate stage (calls the `md-tools` app, needs `MD_TOOLS_PROJECT`); `319719c` extended the unwrap to every markdown file including suite tracks and `df5e4ba` widened the stage to all 250 files
+- Last done: W04 applied 2026-11-19 — C1 `e4b96c8` (guides), C2 `55cea2d` (cases); 5 pages at `docs/knowledge/`, 5 tombstones, `docs/notes/` registered as a legacy path frozen against new pages; prose 258 files clean, ruff green. Before it: W03 applied 2026-11-19 — C1 `6d6033a`, C2 `b7efaec`, C3 `5bfb3de`, C4 `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted, oshi gate green at every commit. Follow-ups: `739af32` unwrapped the prose in 27 pages; `2ea92a9` added `scripts/check_prose.py` as the fifth gate stage (calls the `md-tools` app, needs `MD_TOOLS_PROJECT`); `319719c` extended the unwrap to every markdown file including suite tracks and `df5e4ba` widened the stage to all 250 files
 - Phase: P1 — package rule and role moves
-- Focus: W04 — knowledge role
-- Progress: 4 done / 6 todo / 0 blocked
-- Todo: W04–W09
-- Next: W04 — split `docs/notes/` into `docs/knowledge/guides/` and `docs/knowledge/notes/`
+- Focus: W04b — route the `docs/notes/` residue by job
+- Progress: 5 done / 6 todo / 0 blocked
+- Todo: W04b–W09
+- Next: W04b — the six residue pages take their roles; `docs/notes/` retires
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; **W04 role pass settled 2026-11-19 (A, on recommendation)**: `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages route through W04b, and the zero-background explanation job has no admitted role (W08 evidence)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -90,16 +90,32 @@ Create `docs/contracts/` and `docs/architecture/`; split `docs/designs/` (4 file
 
 #### W04 — Move the knowledge role
 
-**Status**: todo
+**Status**: done
 **Depends on**: W03
 
 Split `docs/notes/` (11 files, 90,429) into `docs/knowledge/guides/` for methods that change what a maintainer does and `docs/knowledge/notes/` for observations that do not yet justify a guide. `pitfalls.md`, `knowledge.md`, and `python-env-convention.md` are guides by the audit's reading. Add `docs/knowledge/README.md`; leave tombstones for cited files.
 
 **Done when**:
 
-- each note is a guide or a note by admission
-- every page is inside its volume budget
-- no living pointer resolves to `docs/notes/`
+- each note is a guide or a case by admission, or it stays with a recorded disposition
+- every page is inside its hard line; `pitfalls.md` at 15,283 is above soft, and its split is W06's per the plan's "split after the role is at home"
+- no living pointer resolves to the five moved paths; every survivor is explained
+- oshi's gate is green
+
+**Evidence**: oshi `e4b96c8` (guides: 3 pages, 2 indexes, `docs/knowledge/README.md`), `55cea2d` (cases: 2 pages, 1 index); five tombstones, each three content lines and ≤129 non-whitespace; `docs/notes/` registered in `docs/adapters.md` as a legacy path with its Freeze sentence; measured after C2: `pitfalls.md` 15,283 (soft), `python-env-convention.md` 7,691, `embedding-fundamentals.md` 7,370, `gt-error-audit.md` 4,329, `prototype-curve-reading.md` 5,762; pointer proof: `git grep` survivors are `docs/plans/m5-plan.md`, `m8-plan.md`, `experiments/m1` (report, README, `build_kit.py`), `experiments/m3/results/g2b-apply-probe.json`, `experiments/m3b` (README, `build_kit.py`), `experiments/m5/results/coldstart.md`, and the closed `tasks/manual-character-registration` package — frozen or citing only the live shelf; prose 258 files with 0 wrapped blocks, `ruff check` and `ruff format --check` green; full report in `maps/w04-role-map.md`. Acceptance amended 2026-11-19 (A): the split is guides and cases, not guides and notes, and six pages stay as a registered legacy path.
+
+#### W04b — Route the six `docs/notes/` residue pages
+
+**Status**: todo
+**Depends on**: W04
+
+Each page takes the role its job admits, and `docs/notes/` retires when the last one leaves. `maps/w04-role-map.md` fixes the target per page: `knowledge.md` splits into a guide, an ADR, `GLOSSARY.md` entries, and a dropped history table; `data-integrity.md` and `recognition-pipeline.md` merge the load-bearing why into architecture and drop what architecture already states; `annotation-eval-terms.md` becomes glossary entries plus an operations pointer; `recall-vs-coverage.md` becomes one glossary entry per term; `classifier-vs-prototype.md` becomes `ADR-0013`. A page that duplicates a contract or architecture page without carrying a load-bearing why is retired with a tombstone, not routed. The freeze holds while this runs: no new page enters the shelf.
+
+**Done when**:
+
+- every page has a recorded disposition — move, merge, or drop plus tombstone
+- the architecture, vocabulary, ADR and operations pages it lands in pass their admissions and hard lines
+- `docs/notes/` holds no live page; the adapter row retires when the last tombstone does
 - oshi's gate is green
 
 **Evidence**: pending
@@ -158,7 +174,7 @@ Give every finding in `audits/oshi.md` a disposition; the ledger is the findings
 **Status**: todo
 **Depends on**: W07
 
-Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03.
+Fix the standard gaps oshi exposed. Each gap becomes an ADR, a spec change, or a backlog item; no one-off role or budget for one repository. Two remain after W08a: ADR-0011's cited sample (`docs/backlog.md`) ends `(moved)`, not `— moved`, and carries an explanation line, so the evidence it names fails the admission it documents; `scripts/check.py` accepts `ADR-\d{4}` and `B-\d{4}` only, while ADR-0015 keeps a migrated backlog's width, so the portable checker (`B-0002`) must accept `B-<n>` as well. W03 adds four records here: the drops degrade the frozen citations of `architecture §7`, `annotation §12`, `annotation §8.1`, and `Q3`'s landing point; each needs a written disposition (exception, pointer, or backlog item), and Q3 must name where the milestone re-sequencing now lives. W03 also moved the design system back to contracts, which leaves the standard's architecture admission narrower than the earlier cut assumed — W08 checks it against the remaining four repositories' design docs before the role is declared settled. The package evidence category and the `work-packages` checker coverage are W08a, before W03. W04 adds the explanation-home question: a zero-background system explanation has no admitted role, three residue pages carry one, and `AGENTS.md` norm 3 used to send every recurring concept to `docs/notes/`; decide whether a role is admitted (with its template, checker pattern, and skill step) or the pages are absorbed into architecture and vocabulary, then let W04b route them.
 
 **Done when**:
 

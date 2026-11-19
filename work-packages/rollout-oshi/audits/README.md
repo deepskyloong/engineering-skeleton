@@ -6,7 +6,7 @@ A report is package evidence for the work package; a finding that changes the sp
 
 | Repository | Report | Status |
 | --- | --- | --- |
-| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a package evidence defined (ADR-0021); next contracts (W03); knowledge pending; vocabulary `GLOSSARY.md` (ADR-0007) |
+| oshi | [oshi.md](oshi.md) | migration in progress — charter at `docs/charter.md` (`28c8bc4`); W08a package evidence defined (ADR-0021); contracts, architecture, operations and conventions at their homes (`6d6033a`, `b7efaec`, `5bfb3de`, `5f9df75`); knowledge guides and cases at `docs/knowledge/` (`e4b96c8`, `55cea2d`); six residue pages and the explanation-home gap open in W04b/W08; vocabulary `GLOSSARY.md` (ADR-0007) |
 
 Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s2-legacy-review` only; its merge base with `main` is `37781fa`. `main` at `1b52545` differs by 35 files / +3,323 / −752. The inventory and pointer counts describe that tree, not `main`; re-measure before a budget or pointer step. The report stays frozen.
 
@@ -26,7 +26,7 @@ Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s
 | 10 | major | resolved | `ADR-0009…0012` at `docs/decisions/`; the cited two-digit names keep tombstones | `610f1e9`, `7a988f4` |
 | 11 | minor | open (W07) | `tests/test_status_cap.py` still measures total characters against a non-whitespace budget | `tests/test_status_cap.py` |
 | 12 | minor | open (W05) | `docs/stack.md` splits into a toolchain page, an ADR, and backlog rows if the admission holds | W05 |
-| 13 | minor | open (W04) | `docs/notes/` splits into `docs/knowledge/{guides,notes}/` | W04 |
+| 13 | minor | open (W04b) | `docs/notes/` served four jobs, not the audit's two: three method pages and two incident pages took knowledge roles (`e4b96c8`, `55cea2d`), six pages stay on a frozen legacy path for W04b, and the zero-background explanation job, which the audit folded into "notes", has no admitted role (W08) | `maps/w04-role-map.md`; `docs/adapters.md` "Legacy notes shelf" |
 | 14 | minor | open (W06) | `docs/reviews/README.md` describes every report; trim to one line per child | `docs/reviews/README.md`; W06 |
 | 15 | nit | open (W06) | `README.md` keeps the milestone history; keep one paragraph and link it | `README.md`; W06 |
 | 16 | nit | withdrawn | A suite package may stay spec-only | ADR-0010; `tasks/head-kind-experiment/spec.md` |
