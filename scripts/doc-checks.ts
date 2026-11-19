@@ -527,6 +527,15 @@ export interface ProseOptions {
   run?: Runner
 }
 
+export interface RunOptions extends ProseOptions {
+  /**
+   * Leave the prose stage out. Only CI passes this, because `md-tools` lives outside
+   * this repository; the flag is explicit in the workflow so the omission is visible
+   * where it happens, and the pass line names it (ADR-0025).
+   */
+  skipProse?: boolean
+}
+
 const runProcess: Runner = (command, args, env) => {
   const completed = spawnSync(command, args, { encoding: 'utf8', env })
   return {
@@ -620,7 +629,7 @@ export function prose(context: Context, options: ProseOptions = {}): Finding[] {
 }
 
 /** Run every check in the order `docs/norm/rules.md` lists them. */
-export function runChecks(context: Context, proseOptions: ProseOptions = {}): Finding[] {
+export function runChecks(context: Context, options: RunOptions = {}): Finding[] {
   return [
     ...requiredFiles(context),
     ...packages(context),
@@ -638,6 +647,6 @@ export function runChecks(context: Context, proseOptions: ProseOptions = {}): Fi
     ...tables(context),
     ...backlogStatus(context),
     ...generated(context),
-    ...prose(context, proseOptions),
+    ...(options.skipProse ? [] : prose(context, options)),
   ]
 }

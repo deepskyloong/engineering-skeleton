@@ -26,6 +26,7 @@ import {
   requiredFiles,
   roleCoverage,
   rolePaths,
+  runChecks,
   tables,
   tombstones,
   type Runner,
@@ -372,5 +373,21 @@ describe('prose', () => {
       'prose is hard-wrapped: docs/norm/roles.md — 3 block(s), run md-reflow --apply',
       'prose check: 2 file(s) could not be read (mixed line endings)',
     ])
+  })
+})
+
+describe('runChecks', () => {
+  const missingProject = 'prose check: MD_TOOLS_PROJECT is not set to the python-toolkit checkout'
+
+  test('runs the prose stage by default', () => {
+    const context = createContext(fixture({ 'docs/norm/roles.md': '# Roles\n' }))
+    expect(messages(runChecks(context, { project: '' }))).toContain(missingProject)
+  })
+
+  test('leaves it out only when the caller asks', () => {
+    const context = createContext(fixture({ 'docs/norm/roles.md': '# Roles\n' }))
+    expect(messages(runChecks(context, { project: '', skipProse: true }))).not.toContain(
+      missingProject,
+    )
   })
 })

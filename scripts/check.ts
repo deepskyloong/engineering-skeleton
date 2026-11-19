@@ -16,9 +16,27 @@ import { createContext, runChecks } from './doc-checks.ts'
 
 const ROOT = path.resolve(import.meta.dir, '..')
 
-function main(): number {
+const USAGE = [
+  'Usage: bun scripts/check.ts [--no-prose]',
+  '',
+  '  --no-prose   leave the prose stage out; it needs md-tools through MD_TOOLS_PROJECT,',
+  '               which CI cannot reach (ADR-0025). The pass line names the omission.',
+].join('\n')
+
+function main(args: string[]): number {
+  if (args.includes('--help') || args.includes('-h')) {
+    console.log(USAGE)
+    return 0
+  }
+  const unknown = args.filter(arg => arg !== '--no-prose')
+  if (unknown.length > 0) {
+    console.error(`unknown argument: ${unknown[0]}\n\n${USAGE}`)
+    return 2
+  }
+
+  const skipProse = args.includes('--no-prose')
   const context = createContext(ROOT)
-  const findings = runChecks(context)
+  const findings = runChecks(context, { skipProse })
   const warnings = findings.filter(finding => finding.level === 'warn')
   const failures = findings.filter(finding => finding.level === 'fail')
 
@@ -39,13 +57,12 @@ function main(): number {
     return 1
   }
 
-  console.log(
-    `PASS — ${context.files.length} markdown files, roles, links, budgets, entries, ` +
-      'naming, tables, statuses, packages, prose',
-  )
+  const scope = 'roles, links, budgets, entries, naming, tables, statuses, packages'
+  const tail = skipProse ? ' (prose stage skipped by --no-prose)' : ', prose'
+  console.log(`PASS — ${context.files.length} markdown files, ${scope}${tail}`)
   return 0
 }
 
 if (import.meta.main) {
-  process.exit(main())
+  process.exit(main(process.argv.slice(2)))
 }

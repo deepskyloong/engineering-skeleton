@@ -12,15 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: '3.15'
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - uses: astral-sh/setup-uv@v6
-        with:
-          version: 0.13.1
-          enable-cache: true
       - run: bun install --frozen-lockfile
-      - run: bun run gate
+      # Every stage but the prose one. That stage runs md-tools out of the python-toolkit
+      # checkout named by MD_TOOLS_PROJECT, which CI cannot reach; the omission is named
+      # here and in the pass line of `bun run gate:ci` (ADR-0025).
+      - run: bun run gate:ci
