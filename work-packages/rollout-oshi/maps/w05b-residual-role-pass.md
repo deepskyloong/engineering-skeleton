@@ -162,6 +162,20 @@ The tombstone links `conventions.md` directly, unlike C1 and C2: every frozen ci
 
 Two pointer decisions worth recording: `docs/README.md` gained compatibility-redirect rows for all four tombstones (`development-workflows.md`, `testing.md`, `mutation-testing.md`, `language-policy.md`), because that page lists its own children and the earlier removals left four files unindexed; and `docs/README.md`'s description of `conventions.md` now names the language section. Repointed from a living page: `AGENTS.md`, `web/README.md`, `B-12`, `tasks/head-kind-experiment/spec.md` (two). Gate: text-only path — ruff clean, prose 275 files, 0 wrapped, links resolve.
 
+### C5 — committing, oshi `4b8d53c`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/committing.md` | — | 1,306 | Committing, base pointer + deviations |
+| `AGENTS.md` | 7,561 | 7,796 | +`Norm source:` line, + the page on the commit path |
+| `docs/README.md` | 4,099 | 4,221 | + index row |
+
+The role is always present and oshi had no commit-message rule anywhere — `git grep 'commit message'` returned nothing — so the convention existed only as the practice of whoever wrote the last message. The page is a base pointer, not a copy: the norm owns the header, the seven types, the subject and body rules, the footers and the one-logical-change unit.
+
+One deviation, and it is the one the norm delegates: the scope vocabulary. Scopes are the topic spelled as the repository names it on disk — module or package (`fuser`, `holdout`, `store`, `cli`), area (`web`, `scripts`, `experiments`), docs page family (`conventions`, `decisions`, `knowledge`, `reviews`, `tasks`). The table says a topic outside the list is added in the commit that introduces it; without that clause the scope list becomes the drift the page exists to stop.
+
+`AGENTS.md` gains the `Norm source:` line, which is what `{{NORM_SOURCE}}` resolves against, and it names `docs/committing.md` on the commit path — both obligations the norm places on the project. Not a second document: the page points, `AGENTS.md` routes. Gate: text-only path — ruff clean, prose 276 files, 0 wrapped, links resolve.
+
 ## Role pass
 
 | Page | Job | Admission | Trigger | Volume |
@@ -180,7 +194,7 @@ Two pointer decisions worth recording: `docs/README.md` gained compatibility-red
 
 | Role | Admission | Home | Measured state |
 | --- | --- | --- | --- |
-| Committing | "A base pointer to `docs/norm/committing.md` plus this repository's deviations" | `docs/committing.md` | no page; `git grep 'commit message'` returns nothing |
+| Committing | "A base pointer to `docs/norm/committing.md` plus this repository's deviations" | `docs/committing.md` | page landed in C5 (`4b8d53c`), 1,306 |
 | Operating modes | "The effort lifecycle: tracks, t0 fields, permitted compromises, and the closeout procedure" | `docs/workflow.md` | job split between `tasks/README.md` and `docs/development-workflows.md` |
 | Governance | "Versioning, change surface, ownership, review, retirement; joins with the first work package" | no page — role retired (ADR-0027) | seven closed packages; job split across `docs/conventions.md`, `AGENTS.md` and directory READMEs; four of its five subjects were already norm, and no target repository ever created it |
 | Work package index | "Work package governance, the open table, the closeout checklist" | `work-packages/README.md` | kept at `tasks/README.md`, inside a suite track, tolerated by the whitelist with no recorded reason |

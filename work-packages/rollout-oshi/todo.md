@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05b closed — C3 `docs/language-policy.md` folded into `docs/conventions.md` §11 (oshi `fc17b18`); the four unplaced pages are at admitted homes
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 275 files, 0 wrapped)
+- Last done: W05c C5 — `docs/committing.md` lands as a base pointer with the scope vocabulary as its one deviation, and `AGENTS.md` gains the `Norm source:` line (oshi `4b8d53c`)
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 276 files, 0 wrapped)
 - Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
-- Focus: W05c — the two required pages, with the `.gitignore`-level `Norm source:` line they resolve against
+- Focus: W05c — the effort lifecycle page, then the governance disposition
 - Progress: 10 done / 5 todo / 0 blocked
 - Todo: W05c–W09
-- Next: W05c C6 — `docs/committing.md` plus the `Norm source:` line in `AGENTS.md`; C7 is the governance disposition
+- Next: W05c C6 — `docs/workflow.md` as a pointer to `docs/norm/flow.md` plus this repository's deviations, now that the `Norm source:` line exists
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c
@@ -189,7 +189,7 @@ P1's exit condition named charter, contracts, knowledge and toolchain, and all f
 
 #### W05c — Give the two required roles a home, and record the third's retirement
 
-**Status**: todo — unblocked 2026-11-19 (R2 and R3 settled)
+**Status**: todo — C5 done 2026-11-19; C6–C7 open
 **Depends on**: W05b
 
 Three roles the standard called always-present or first-use had no page: `docs/committing.md` (no commit-message rule exists anywhere), `docs/workflow.md` (its lifecycle job is split between `tasks/README.md` and the suite map), and `docs/governance.md` (seven closed packages, no page). R2 settled on 2026-11-19: a suite track does not replace either role — the repository states the base rule, the page is a base pointer to the norm source plus this repository's deviations, and a suite track records only what it layers on its own artifacts (the `docs/committing.md` shape, B-0005 Plan item 7). R3 settled the same day: Governance is retired as a role (ADR-0027), so its subjects live in `docs/norm/flow.md`, `docs/norm/rules.md`, `AGENTS.md` and, for oshi, the review archive rule already in `docs/reviews/README.md`. So two pages get written and one disposition gets recorded; `tasks/README.md` keeps the suite's package shape while pointing at `docs/workflow.md` for the lifecycle. The work-package index at `tasks/README.md` gets its reason recorded in `docs/adapters.md` in the same pass.
@@ -204,7 +204,7 @@ Three roles the standard called always-present or first-use had no page: `docs/c
 - `docs/README.md` indexes whatever exists and states no counts
 - oshi's gate is green
 
-**Evidence**: pending — the ruling's location, the commits, and the gate results.
+**Evidence**: C5 — oshi `4b8d53c`: `docs/committing.md` 1,306 as a base pointer, one deviation (scope vocabulary, with the clause that a new topic is added in the commit introducing it); `AGENTS.md` 7,561 → 7,796 with the `Norm source:` line; `docs/README.md` + row. Text-only gate green, prose 276 files. C6–C7 pending.
 
 ### P2 — Page repairs and audit closeout
 
