@@ -6,6 +6,6 @@ The vocabulary of this repository: terms with a fixed meaning, so a document, a 
 
 ### Example
 
-**example-term**:
-One sentence a new maintainer can act on.
+**example-term**: One sentence a new maintainer can act on.
+
 _Avoid_: the synonym that would mislead
