@@ -76,7 +76,7 @@ export const DOC_ROLE_PATHS = [
   'docs/architecture/(README|[a-z0-9-]+)\\.md',
   'docs/operations/(README|[a-z0-9-]+)\\.md',
   'docs/toolchain/(README|[a-z0-9-]+)\\.md',
-  'docs/knowledge/(README|(guides|cases|notes)/(README|[a-z0-9-]+))\\.md',
+  'docs/knowledge/(README|(guides|cases|notes|explainers)/(README|[a-z0-9-]+))\\.md',
 ].map(source => new RegExp(`^(?:${source})$`))
 
 /** Soft and hard volume lines, in non-whitespace characters. */

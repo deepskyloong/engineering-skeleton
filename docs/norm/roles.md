@@ -46,12 +46,15 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 | Knowledge guide | `/docs/knowledge/guides/<topic>.md` | A method that changes what a maintainer does next time | Deleted when it stops being true | — | The same mistake is about to be made twice |
 | Knowledge case | `/docs/knowledge/cases/<topic>.md` | One incident, with the evidence that settled it | Deleted when the evidence is no longer citable | Binds the evidence it records; a later decision may cite it, not restate it | An incident worth citing in a review |
 | Knowledge note | `/docs/knowledge/notes/<topic>.md` | A short observation that does not yet justify a guide | Promoted or deleted | — | A thought worth keeping but not yet proven |
+| Knowledge explainer | `/docs/knowledge/explainers/<topic>.md` | A subsystem explained from zero, in the order it runs, for a reader who does not yet have its vocabulary | Deleted when a guide, a contract, or an architecture page covers the same ground | Binds no rule; each section ends at the page that owns the fact | A new maintainer must reach operability without reading the architecture page |
 | Adapter registry | `/docs/adapters.md` | Foreign suites' owned track roots (permanent) and legacy paths (retirable), the whitelist, and the disposition | Entry removed when the suite is uninstalled or the legacy path retires | Binds where a path may be written | A third-party suite writes into the repository, or a frozen record blocks a path move |
 | Tombstone | The old path being forwarded | A forwarding stub for a moved file: at most 3 lines, exactly one link, no explanation; the title ends with `— moved` | Deleted when the last frozen record citing the old path is deleted | — | A frozen record cites a path that has moved |
 | Module rules | `<member>/src/<module>/AGENTS.md` | Rules that differ from the member's and would be wrong at member level | Deleted when the module stops being a boundary | Binds the module | Deferred: see the threshold note below |
 | Member README | `<member>/README.md` | What the member is for, its direct children, how to run its tests, where its own docs start | Deleted when the member is removed | — | The repository has more than one member |
 
 A trigger is an admission condition, not a rule; it carries no `strong` / `weak` label. Countable triggers (`a second effort`, `the second trap`, `more than one open front`) are observable; judgment triggers (`the first change that must respect a boundary`, `an incident worth citing`) are review decisions, not gate conditions.
+
+An explainer is narrative, not a rule: it walks a subsystem in the order it runs and says a term once, pointing at `GLOSSARY.md` for the definition. Every `##` section ends at the page that owns the fact it used — the first section, which says why the page exists, is exempt — so the reader can stop reading the explainer at any point and still be on owned ground. A page that would mostly link instead of explain is an index, not an explainer.
 
 ## Five discriminations
 
@@ -81,6 +84,7 @@ Two roles can seem to admit the same sentence. Apply the pair's test, then state
 | Tombstone / Adapter | Forwarding a moved path (tombstone) versus registering a foreign suite's path (adapter); a path takes one, not both |
 | Conventions / Governance | Does it change how a document reads (conventions) or how a change is approved (governance)? |
 | Architecture, Contracts / Operations | Does it describe a system response or format (architecture, contracts), or steps a person runs (operations)? |
+| Explainer / Architecture, Guide, Glossary | Does it walk a newcomer through how the subsystem works (explainer), state what a change must respect (architecture), a method a maintainer applies next time (guide), or what a term means (glossary)? |
 
 When both still admit it, the narrower exit owns it: artifact (contracts), system shape (architecture), scope (charter). The other page links; it does not restate.
 

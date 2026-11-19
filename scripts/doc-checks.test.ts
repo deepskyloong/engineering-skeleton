@@ -16,6 +16,7 @@ import {
   emptyDirectories,
   english,
   entries,
+  explainerSections,
   generated,
   indexAutonomy,
   links,
@@ -389,5 +390,26 @@ describe('runChecks', () => {
     expect(messages(runChecks(context, { project: '', skipProse: true }))).not.toContain(
       missingProject,
     )
+  })
+})
+
+describe('explainerSections', () => {
+  test('a section that links nothing is a finding, and the first section is exempt', () => {
+    const root = fixture({
+      'docs/knowledge/explainers/tour.md':
+        '# Tour\n\n| | |\n|---|---|\n| Role | explainer |\n\n## Why read this\n\nNo link here.\n\n## The first stage\n\nThe fact lives in the page that owns it.\n',
+    })
+    expect(messages(explainerSections(createContext(root)))).toEqual([
+      'explainer section links nothing: docs/knowledge/explainers/tour.md: ## The first stage',
+    ])
+  })
+
+  test('a section that ends at its owner passes, and a guide is not held to the rule', () => {
+    const root = fixture({
+      'docs/knowledge/explainers/tour.md':
+        '# Tour\n\n## Why read this\n\nNo link here.\n\n## The first stage\n\nSee [architecture](../../architecture/system.md).\n',
+      'docs/knowledge/guides/method.md': '# Method\n\n## Steps\n\nNo link here.\n',
+    })
+    expect(messages(explainerSections(createContext(root)))).toEqual([])
   })
 })

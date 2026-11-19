@@ -87,7 +87,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 | A root glossary or a pile of jargon | Root `GLOSSARY.md`; member terms move down | A term used by one member does not belong at the root; a legacy `CONTEXT.md` takes the `GLOSSARY` name, not a second home |
 | A legacy `CONTEXT.md` / `CONTEXT-MAP.md` | `GLOSSARY.md` / `GLOSSARY-MAP.md` | Rename; leave a tombstone only when a frozen record cites the old path; never keep both names |
 | An existing `tasks/` with ad-hoc folders | `work-packages/README.md` plus one package at a time | Do not bulk-move; close or freeze an old package before converting it |
-| A `notes/` or `knowledge/` pile | `docs/knowledge/{guides,cases,notes}/` | A note that cannot state its evidence stays a note; it does not become a guide |
+| A `notes/` or `knowledge/` pile | `docs/knowledge/{guides,cases,notes,explainers}/` | A note that cannot state its evidence stays a note; it does not become a guide. A page that teaches a subsystem from zero is an explainer and ends every section at the page that owns the fact; a page that would mostly link is an index |
 
 ### Source observations
 

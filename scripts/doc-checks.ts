@@ -392,6 +392,33 @@ export function tombstones(context: Context): Finding[] {
 }
 
 /**
+ * An explainer ends each section at the page that owns its fact.
+ *
+ * A section with no link states something nobody owns, which is how a teaching page turns
+ * into a second home (`docs/norm/roles.md`, the explainer row). The front matter and the
+ * first section are exempt: the first says why the page exists, not a fact.
+ */
+export function explainerSections(context: Context): Finding[] {
+  const findings: Finding[] = []
+  for (const key of context.files) {
+    if (!key.startsWith('docs/knowledge/explainers/') || baseName(key) === 'README.md') {
+      continue
+    }
+    if (tombstoneShape(context.readText(key)).isTombstone) {
+      continue
+    }
+    const sections = context.readText(key).split('\n## ').slice(2)
+    for (const section of sections) {
+      const heading = section.split('\n')[0].trim()
+      if (!/\[[^\]]*\]\([^)]+\)/.test(section)) {
+        findings.push(fail(`explainer section links nothing: ${key}: ## ${heading}`))
+      }
+    }
+  }
+  return findings
+}
+
+/**
  * A table row carries one space per cell; column padding is a finding.
  *
  * Padding is a formatting decision that hides the changed row in a diff and hands every
@@ -644,6 +671,7 @@ export function runChecks(context: Context, options: RunOptions = {}): Finding[]
     ...naming(context),
     ...rolePaths(context),
     ...tombstones(context),
+    ...explainerSections(context),
     ...tables(context),
     ...backlogStatus(context),
     ...generated(context),
