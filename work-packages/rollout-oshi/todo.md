@@ -5,14 +5,14 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W04b-ii applied 2026-11-19 — `c4e0a93` (dependency method → guide), `869e762` (vocabulary → `GLOSSARY.md`; two pages retired), `ac68abe` (`knowledge.md` retired), `6205394` (last two retired, shelf closed with 10 tombstones); details in `maps/w04b-role-map.md`. Before it: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → `knowledge/guides/`), `adbebc5` (identity choice → `ADR-0013`); the trace and per-page pass are in `maps/w04b-role-map.md`. Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`
+- Last done: W04c applied 2026-11-19 — standard `13ed7ae` admits the `Knowledge explainer` form with one checker rule and two tests; oshi `c30d17f` lands `docs/knowledge/explainers/` with three pages from the five retired ones; report in `maps/w04c-explainer-role.md`. Before it: W04b-ii applied 2026-11-19 — `c4e0a93` (dependency method → guide), `869e762` (vocabulary → `GLOSSARY.md`; two pages retired), `ac68abe` (`knowledge.md` retired), `6205394` (last two retired, shelf closed with 10 tombstones), `0defea1` (last index row); the closure stood where it routed a job and was reversed where it dropped the teaching register. Before it: W04b-i applied 2026-11-19 — `a9300cc` (threshold method → guide), `adbebc5` (identity choice → ADR-0013). Before it: W04 applied 2026-11-19 — C1 `e4b96c8`, C2 `55cea2d`; 5 knowledge pages, 5 tombstones, `docs/notes/` registered as a frozen legacy path; details in `maps/w04-role-map.md`. Before it: W03 applied 2026-11-19 — C1–C4 `6d6033a` `b7efaec` `5bfb3de` `5f9df75`; 31 role files, 10 tombstones, `docs/designs/README.md` deleted; details in `maps/w03-role-map.md`
 - Phase: P1 — package rule and role moves
 - Focus: W05 — the toolchain role (`docs/stack.md`, 10,524)
-- Progress: 7 done / 5 todo / 0 blocked
+- Progress: 8 done / 4 todo / 0 blocked
 - Todo: W05–W09
 - Next: W05 — `docs/stack.md` splits into traps, runtime choices and deferred items
 - Blocked: none
-- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; W04b-i settled 2026-11-19: the method and the decision had homes, `data-integrity.md` had none to gain, so it was parked; **W04b-ii settled 2026-11-19**: no explanation role — the five pages dissolved, `docs/notes/` closed with ten tombstones, and the standard-side question closes with it
+- Open decisions: charter disposition settled (C: §2 → conventions, §3 dropped); package evidence settled (ADR-0021); architecture role settled (ADR-0022), and the W03 review re-cut put the four UI specifications in contracts — a page author is their consumer; W03 review closed 2026-11-19 with rulings on §9/§11, frozen citations, the adapter unit, and the UI role; W04 role pass settled 2026-11-19 (A): `docs/notes/` served four jobs, not the audit's two — 3 guides + 2 cases moved, six pages to W04b; W04b-i settled 2026-11-19: the method and the decision had homes, `data-integrity.md` had none to gain, so it was parked; **W04c settled 2026-11-19**: the explanation register is a fourth knowledge form, not an absorption — the five pages routed to three explainers, the form's restraint is normative, and W04b-ii's "no role admitted" record is corrected rather than rewritten
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger)
 
 ## Work items
@@ -134,6 +134,22 @@ One ruling opened this unit, and the maintainer made it on 2026-11-19: no new ro
 - oshi's gate is green
 
 **Evidence**: oshi `c4e0a93` (`knowledge/guides/choosing-a-dependency.md`, 1,099), `869e762` (`GLOSSARY.md` 2,226 → 3,577 with identity/decisioning plus GT, burst and coverage; `annotation-eval-terms.md` → tombstone, `recall-vs-coverage.md` deleted for having no citer), `ac68abe` (`knowledge.md` → tombstone), `6205394` (`data-integrity.md` and `recognition-pipeline.md` → tombstones; `README.md` ×2, `embedding-fundamentals.md` ×2, `pitfalls.md` ×3 and the pose probe's comment repointed). `docs/notes/` now holds 10 tombstones and a README that indexes them; the adapter row says "closed". `git grep` over the five retired paths returns frozen records and the two `Source` lines only; every relative link resolves; prose 260 files with 0 wrapped blocks, ruff green. No ADR-0014: ADR-0013's background already carries the zero-training rationale. Report in `maps/w04b-role-map.md`.
+
+#### W04c — Admit the explanation form the five pages needed
+
+**Status**: done
+**Depends on**: W04b-ii
+
+The maintainer's ruling was to dissolve the five pages into a new form, then let that practice justify a standard change. The unit was therefore a standard refinement: the knowledge role gains a fourth form, and oshi is its first application.
+
+**Done when**:
+
+- the rule is in `docs/norm/roles.md` with its places that must move with it, and the gate is green
+- the form's restraint is normative, not advice: every section ends at its owner, a needed definition is one line, a mostly-link page is an index
+- the target page set passes the form's own check, and every relative link resolves
+- the record names what the form costs
+
+**Evidence**: standard `13ed7ae` — fourth knowledge form in `docs/norm/roles.md`, role-boundary test, `DOC_ROLE_PATHS`, `explainerSections` with two tests, `docs/workflow.md` mapping row; `bun run gate` PASS (107 markdown files, 65 tests). oshi `c30d17f` — `docs/knowledge/explainers/` README plus `recognition-pipeline.md` (11,614), `data-and-filesystem.md` (6,644), `reading-the-numbers.md` (14,835); three blocks stayed at their owners (threshold guide, glossary, annotation operations); `docs/notes/` keeps ten tombstones, three forwarding into `explainers/`; every `##` section carries a link, every relative link resolves, prose 264 files with 0 wrapped blocks, ruff green. Report in `maps/w04c-explainer-role.md`; correction entry in `audits/move-records.md`.
 
 #### W05 — Place the toolchain role
 
