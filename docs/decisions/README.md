@@ -33,6 +33,8 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0025](ADR-0025-ci-omits-prose.md) | CI runs every gate stage but the prose one, and names the omission | Accepted |
 | [ADR-0026](ADR-0026-per-suite-map-role.md) | The per-suite map is a role, not the adapter registry | Accepted |
 | [ADR-0027](ADR-0027-retire-governance-role.md) | Governance is not a role; the norm and the red lines carry it | Accepted |
+| [ADR-0028](ADR-0028-a-moved-path-is-a-row.md) | A moved path is one registry row; no file is left at the old path | Accepted |
+| [ADR-0029](ADR-0029-work-item-files.md) | A work item is a file under `items/`; `board.md` carries the snapshot and its index | Accepted |
 
 ## Format
 

@@ -66,7 +66,7 @@ The distinction between `adapter` and `optional` matters. `optional` is a role y
 │   └── knowledge/             # guides / cases / notes (optional)
 ├── work-packages/
 │   ├── README.md              # work package governance + index
-│   └── <slug>/                # spec.md, plan.md, todo.md, summary.md
+│   └── <slug>/                # spec.md, plan.md, board.md, summary.md; items/<ID>.md
 ├── src/                       # source, single-package form
 ├── tests/                     # tests, single-package form
 └── <overlay files>            # package.json, pyproject.toml, gate config

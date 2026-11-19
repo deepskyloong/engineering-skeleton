@@ -52,9 +52,21 @@ _Avoid_: adapter folder, foreign dir
 
 _Avoid_: pipeline, flow
 
-**work package**: One effort's four ledger artifacts under `work-packages/<slug>/` — spec, plan, todo, and summary — plus the package evidence it owns.
+**work package**: One effort's four ledger artifacts under `work-packages/<slug>/` — spec, plan, board, and summary — plus its `items/` files and the package evidence it owns.
 
 _Avoid_: task, ticket
+
+**board (work package)**: `work-packages/<slug>/board.md`: the package's current-state snapshot and the index of its work items, one row per item linking to `items/<ID>.md`; it is the only place a status lives.
+
+_Avoid_: todo, tracker
+
+**work item**: One reviewable unit of a work package — a stable `W<n>` ID (a letter suffix when it decomposes a parent item), the status its board records, and a file at `items/<ID>.md` carrying dependencies, the description, done-when criteria, and evidence.
+
+_Avoid_: task, ticket, job, step
+
+**parent item**: A work item whose lettered children carry its work; it holds none of its own, stays `doing` until the last child closes, and its done-when names the set.
+
+_Avoid_: epic, umbrella
 
 **package evidence**: A report, inventory, or reproduction script a work package owns and cites; it lives beside the four ledger files, is named in `summary.md`, and archives with the package.
 
