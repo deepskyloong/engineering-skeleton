@@ -5,13 +5,13 @@
 - Updated: 2026-11-19
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W05b C1 — `docs/testing.md` split by admission (oshi `55e6b0c`): the red lines into `AGENTS.md` "Tests", the method into `docs/knowledge/guides/testing.md` (7,191), the old path a tombstone
-- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 273 files, 0 wrapped)
+- Last done: W05b C2 — `docs/mutation-testing.md` split by admission (oshi `410fb16`): tool rejections into ADR-0015's table, method into `docs/knowledge/guides/mutation-testing.md` (7,008), the probe into `docs/knowledge/cases/mutation-first-round.md` (2,878), old path a tombstone
+- Gate: standard `bun run gate` PASS 2026-11-19 (111 markdown files, 66 tests; one soft `roles.md` warning); oshi text-only path green the same day (ruff check / format, prose 275 files, 0 wrapped)
 - Phase: P1 — package rule and role moves, reopened: listing the four roles at their homes did not complete the role set
 - Focus: W05b — place the three remaining live pages no work item owned
 - Progress: 9 done / 6 todo / 0 blocked
 - Todo: W05b–W09
-- Next: W05b C2 — `docs/mutation-testing.md` (tool rejections into ADR-0015's table, method into a guide, the first round into a case, tombstone)
+- Next: W05b C3 — `docs/language-policy.md` folds into `docs/conventions.md`, tombstone at the old path
 - Blocked: none; W05c C6–C7 wait on a ruling, not on a blocker
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this file (state/ledger), and `maps/w05b-residual-role-pass.md` before W05b or W05c

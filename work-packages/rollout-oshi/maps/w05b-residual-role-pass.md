@@ -131,6 +131,21 @@ The page served three jobs. The rules — two invariants and the four zeros — 
 
 Tombstone rather than a bare delete: seven frozen citations (`tasks/manual-character-registration` ×4, `ADR-0015` ×2, `B-12`'s dated measurement) land in two homes, so the single link points at `docs/README.md`. Living pointers repointed in the same commit: `docs/README.md`, `docs/knowledge/guides/README.md`, `docs/mutation-testing.md` (four citations), `docs/operations/works.md`, `docs/backlog/B-26-ci-service.md` (two). Gate: text-only path — ruff check and format clean, prose 273 files, 0 wrapped; every relative link under `docs/` resolves; `uv.lock` untouched (`--frozen` with the index override cleared).
 
+### C2 — mutation testing, oshi `410fb16`
+
+| Page | Before | After | Role |
+| --- | --: | --: | --- |
+| `docs/mutation-testing.md` | 9,343 | 49 (tombstone) | removed; tombstone links `docs/README.md` |
+| `docs/knowledge/guides/mutation-testing.md` | — | 7,008 | Knowledge guide (method) |
+| `docs/knowledge/cases/mutation-first-round.md` | — | 2,878 | Knowledge case (one probe, with its evidence) |
+| `docs/decisions/ADR-0015-dev-toolchain.md` | 5,167 | 5,677 | +3 rows in "Rejected alternatives": mutmut, cosmic-ray, mutatest |
+
+The tool choice had an admitted home already — ADR-0015's rejected table recorded "mutation testing over the whole package" but not the three candidate tools the page rejected. The rows were appended, each carrying the sibling project's provenance and the 2026-10-28 date, because the retired page's table was the only surviving evidence for them; ADR-0015's existing citations were left untouched, which is why the tombstone exists. The method became the guide, the probe and the candidate set recorded with it became the case.
+
+The candidate list (`gate.py`, `fuser.py`, `holdout.py`, `diff.py`, `output.py`, `repair.py`, `scan.py`; `assign.py` and `review/apply.py` below the bar) did **not** stay in the guide: it is a dated snapshot of branch coverage, and the guide carries the criteria it is recomputed from.
+
+Pointer proof: `git grep 'mutation-testing.md'` survivors are ADR-0015's two citations, both answered by the tombstone; the sibling references inside `docs/knowledge/guides/testing.md` resolve within the same directory. Living pointers repointed in the commit: `docs/README.md`, both knowledge indexes, `docs/operations/works.md`. Gate: text-only path — ruff clean, prose 275 files, 0 wrapped, every relative link under `docs/` resolves.
+
 ## Role pass
 
 | Page | Job | Admission | Trigger | Volume |
