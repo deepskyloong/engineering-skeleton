@@ -9,7 +9,8 @@
     "fmt:md": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --write \"**/*.md\"",
     "fmt:md:check": "prettier --plugin=prettier-plugin-markdown-compact-tables --print-width=100 --check \"**/*.md\"",
     "check": "bun scripts/check.ts",
-    "gate": "bun run fmt:check && bun run check"
+    "test": "bun test scripts",
+    "gate": "bun run fmt:check && bun run test && bun run check"
   },
   "devDependencies": {
     "prettier": "^3.10.1",

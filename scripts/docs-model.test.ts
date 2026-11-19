@@ -1,0 +1,168 @@
+/**
+ * Tests for the measurement and budget layer. These are the numbers a volume finding
+ * stands on, so each case pins a boundary rather than a sample.
+ */
+
+import { describe, expect, test } from 'bun:test'
+
+import {
+  budgetFor,
+  entryLimit,
+  namingPattern,
+  pyRepr,
+  splitCells,
+  splitLines,
+  tableEntries,
+  tombstoneShape,
+  volume,
+} from './docs-model.ts'
+
+describe('splitLines', () => {
+  test('a trailing break adds no empty line', () => {
+    expect(splitLines('a\nb\n')).toEqual(['a', 'b'])
+  })
+
+  test('splits on every boundary Python recognises', () => {
+    expect(splitLines('a\r\nb\vc\fd\u2028e')).toEqual(['a', 'b', 'c', 'd', 'e'])
+  })
+
+  test('empty text has no lines', () => {
+    expect(splitLines('')).toEqual([])
+  })
+
+  test('a lone break is one empty line', () => {
+    expect(splitLines('\n')).toEqual([''])
+  })
+})
+
+describe('volume', () => {
+  test('counts non-whitespace characters and drops the delimiter row', () => {
+    const text = '# T\n\n| a | b |\n| --- | --- |\n| 1 | 2 |\n'
+    expect(volume(text)).toBe(12)
+  })
+
+  test('a wide delimiter row spends nothing', () => {
+    const narrow = '| a |\n| --- |\n'
+    const wide = '| a |\n| ------------------------- |\n'
+    expect(volume(wide)).toBe(volume(narrow))
+  })
+
+  test('whitespace never counts, including a no-break space', () => {
+    expect(volume('a\u00a0b')).toBe(2)
+  })
+})
+
+describe('tableEntries', () => {
+  test('counts rows and excludes the header and the delimiter', () => {
+    expect(tableEntries('| A | B |\n| --- | --- |\n| 1 | 2 |\n| 3 | 4 |\n')).toBe(2)
+  })
+
+  test('a file with no table has no entries', () => {
+    expect(tableEntries('# Title\n\nprose\n')).toBe(0)
+  })
+})
+
+describe('splitCells', () => {
+  test('keeps padding and honours an escaped pipe', () => {
+    expect(splitCells('| a \\| b | c |')).toEqual([' a \\| b ', ' c '])
+  })
+
+  test('a row with empty cells keeps them', () => {
+    expect(splitCells('| a |  | c |')).toEqual([' a ', '  ', ' c '])
+  })
+})
+
+describe('tombstoneShape', () => {
+  const good = '# Old page — moved\n\nSee [the new home](new.md).\n'
+
+  test('a stub at the old path holds its shape', () => {
+    expect(tombstoneShape(good)).toEqual({ isTombstone: true, issue: null })
+  })
+
+  test('a fourth non-empty line is a finding', () => {
+    expect(tombstoneShape(`${good}one\ntwo\n`).issue).toBe('4 non-empty lines, max 3')
+  })
+
+  test('no link is a finding', () => {
+    expect(tombstoneShape('# Old page — moved\n\nnothing here\n').issue).toBe('0 links, expected 1')
+  })
+
+  test('over 400 non-whitespace characters is a finding', () => {
+    const long = `# Old — moved\n\n[New](new.md) ${'x'.repeat(500)}\n`
+    expect(tombstoneShape(long).issue).toMatch(/^volume \d+ > 400$/)
+  })
+
+  test('a page without the title suffix is not a tombstone', () => {
+    expect(tombstoneShape('# A live page\n\n[x](y.md)\n')).toEqual({
+      isTombstone: false,
+      issue: null,
+    })
+  })
+})
+
+describe('budgetFor', () => {
+  test('an exact key wins', () => {
+    expect(budgetFor('AGENTS.md', 'AGENTS.md')).toEqual([20_000, 32_000])
+    expect(budgetFor('docs/norm/README.md', 'README.md')).toEqual([6_000, 12_000])
+  })
+
+  test('a docs page takes the page budget', () => {
+    expect(budgetFor('docs/norm/roles.md', 'roles.md')).toEqual([10_000, 16_000])
+  })
+
+  test('an ADR and a backlog item take their series budget', () => {
+    expect(budgetFor('docs/decisions/ADR-0001-x.md', 'ADR-0001-x.md')).toEqual([7_500, 12_000])
+    expect(budgetFor('docs/backlog/B-0001-x.md', 'B-0001-x.md')).toEqual([5_000, 8_000])
+  })
+
+  test('a work package summary takes its closeout budget', () => {
+    expect(budgetFor('work-packages/x/summary.md', 'summary.md')).toEqual([3_750, 6_000])
+  })
+
+  test('package ledger files carry no budget', () => {
+    expect(budgetFor('work-packages/x/todo.md', 'todo.md')).toBeNull()
+  })
+
+  test('an overlay guide is not an index', () => {
+    expect(budgetFor('template/overlays/python/README.md', 'README.md')).toEqual([10_000, 16_000])
+  })
+})
+
+describe('entryLimit', () => {
+  test('the backlog index gets 60 rows', () => {
+    expect(entryLimit('docs/backlog/README.md')).toBe(60)
+    expect(entryLimit('template/first-use/docs/backlog/README.md')).toBe(60)
+  })
+
+  test('a directory README gets 40', () => {
+    expect(entryLimit('docs/norm/README.md')).toBe(40)
+  })
+
+  test('an overlay README carries no row limit', () => {
+    expect(entryLimit('template/overlays/python/README.md')).toBeNull()
+  })
+
+  test('a page that is not an index carries none', () => {
+    expect(entryLimit('docs/norm/roles.md')).toBeNull()
+  })
+})
+
+describe('namingPattern', () => {
+  test('a record series owns its width', () => {
+    expect(namingPattern('docs/decisions/ADR-0001-x.md').test('ADR-0001-x.md')).toBe(true)
+    expect(namingPattern('docs/decisions/ADR-1-x.md').test('ADR-1-x.md')).toBe(false)
+    expect(namingPattern('docs/backlog/B-0001-x.md').test('B-0002-y.md')).toBe(true)
+  })
+
+  test('an ordinary page is lowercase and hyphenated', () => {
+    expect(namingPattern('docs/norm/roles.md').test('roles.md')).toBe(true)
+    expect(namingPattern('docs/norm/roles.md').test('Roles_File.md')).toBe(false)
+  })
+})
+
+describe('pyRepr', () => {
+  test('quotes the way Python does', () => {
+    expect(pyRepr('14 pages')).toBe("'14 pages'")
+    expect(pyRepr("it's")).toBe('"it\'s"')
+  })
+})

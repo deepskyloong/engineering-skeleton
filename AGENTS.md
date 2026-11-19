@@ -19,7 +19,7 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 bun run gate
 ```
 
-It runs the Bun format check over code, the Prettier check over Markdown, and the document checks. The document checks cover every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its hard budget (a soft breach prints a warning), index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, every work package has its ledger files and every summary names its evidence, no unfinished marker survives, and no paragraph is hard-wrapped. The prose stage calls the `md-tools` CLI in the python-toolkit checkout named by `MD_TOOLS_PROJECT`; an unset variable fails the gate rather than skipping the stage. CI runs the same command on push and pull request; it adds no stage. Run it after any norm or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
+It runs the Bun format check over code, the Prettier check over Markdown, the checker's tests, and the document checks. The document checks cover every `docs/` and `template/` directory that contains markdown has a README, every `docs/` page maps to a declared role, every internal markdown link resolves, every markdown file's volume is inside its hard budget (a soft breach prints a warning), index tables are inside their row limit, file names follow the naming convention, indexes carry no totals, every work package has its ledger files and every summary names its evidence, no unfinished marker survives, and no paragraph is hard-wrapped. The prose stage calls the `md-tools` CLI in the python-toolkit checkout named by `MD_TOOLS_PROJECT`; an unset variable fails the gate rather than skipping the stage. CI runs the same command on push and pull request; it adds no stage. Run it after any norm or template edit. A green run is the minimum for a commit, not evidence that the prose is right.
 
 ## Which file answers which question
 
@@ -43,17 +43,17 @@ It runs the Bun format check over code, the Prettier check over Markdown, and th
 
 | Change | Also update |
 | --- | --- |
-| Add / rename / remove a role | `docs/norm/roles.md`, the matching `template/` file, the skill's mode steps, `scripts/check.ts` expectations |
-| Change a budget or its unit | `docs/norm/rules.md`, `docs/norm/roles.md`, this file, `scripts/check.ts` budget tables, the portable checker's copy (`B-0002`) |
+| Add / rename / remove a role | `docs/norm/roles.md`, the matching `template/` file, the skill's mode steps, `scripts/docs-model.ts` role patterns |
+| Change a budget or its unit | `docs/norm/rules.md`, `docs/norm/roles.md`, this file, `scripts/docs-model.ts` budget tables, the portable checker's copy (`B-0002`) |
 | Change a level or a placement rule | `docs/norm/roles.md`, `docs/norm/foundations.md`, `docs/structure.md`, `template/core/docs/structure.md` |
 | Add / remove an overlay | `docs/norm/overlays.md`, `template/overlays/`, the compatibility table |
 | Change a gate command | `docs/norm/overlays.md`, this file, every overlay README, `package.json`, `.github/workflows/gate.yml` |
 | Move or rename a directory | every pointer, proven by `rg -l '<old-path>'` returning nothing |
 | Change a placeholder value or notation | `template/README.md` |
-| Change naming or citation rules | `docs/norm/rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/check.ts` naming patterns |
+| Change naming or citation rules | `docs/norm/rules.md`, `docs/conventions.md`, `template/core/docs/conventions.md`, `docs/README.md`, `template/core/docs/README.md`, `scripts/docs-model.ts` naming patterns |
 | Change the commit convention | `docs/norm/committing.md`, `docs/committing.md`, `template/core/docs/committing.md` |
 | Change the skill's modes or steps | `SKILL.md`, `docs/norm/roles.md` when a mode reads a new role |
-| Change a generated path | `docs/norm/rules.md`, `scripts/check.ts` `GENERATED_DIRS` |
+| Change a generated path | `docs/norm/rules.md`, `scripts/docs-model.ts` `GENERATED_DIRS` |
 
 ## Anti-regrowth
 

@@ -29,6 +29,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0021](ADR-0021-package-evidence.md) | A work package carries the evidence it owns | Accepted |
 | [ADR-0022](ADR-0022-architecture-role.md) | Architecture is a role, not a contract or a structure section | Accepted |
 | [ADR-0023](ADR-0023-role-table-boundaries.md) | The role table describes a generated repository; a directory index lists direct children | Accepted |
+| [ADR-0024](ADR-0024-checker-runtime-and-tests.md) | The document checker is TypeScript, split by responsibility, and tested | Accepted |
 
 ## Format
 
