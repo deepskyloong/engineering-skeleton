@@ -20,7 +20,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0012](ADR-0012-markdown-tables-are-not-aligned.md) | Markdown tables are not column-aligned; a compact-table formatter owns the shape | Accepted |
 | [ADR-0013](ADR-0013-two-tier-volume-budgets.md) | Volume budgets carry a soft judgment line and a hard failure line | Accepted |
 | [ADR-0014](ADR-0014-backlog-carries-no-priority.md) | The backlog carries no priority field | Accepted |
-| [ADR-0015](ADR-0015-migrated-adr-series-zero-padded.md) | A migrated ADR series is zero-padded to four digits; a migrated backlog series keeps its width | Accepted |
+| [ADR-0015](ADR-0015-migrated-adr-series-zero-padded.md) | A migrated ADR series is zero-padded to four digits; a migrated backlog series keeps its width | Superseded in part by ADR-0031 |
 | [ADR-0016](ADR-0016-norm-source-pointer.md) | General norms are consumed by pointer, not copy | Accepted |
 | [ADR-0017](ADR-0017-closed-work-packages-archive.md) | Closed work packages move to `tasks/archive/`; the open table lists only open packages | Superseded in part by ADR-0020 |
 | [ADR-0018](ADR-0018-repository-standard-rename.md) | The repository and its artifact are named the repository standard | Accepted |
@@ -36,6 +36,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0028](ADR-0028-a-moved-path-is-a-row.md) | A moved path is one registry row; no file is left at the old path | Accepted |
 | [ADR-0029](ADR-0029-work-item-files.md) | A work item is a file under `items/`; `board.md` carries the snapshot and its index | Accepted |
 | [ADR-0030](ADR-0030-board-is-a-handoff-card.md) | The board's `Current state` is a nine-field handoff card; the index is the only list | Accepted |
+| [ADR-0031](ADR-0031-backlog-series-is-four-digits.md) | Every backlog series is four digits; a migrated one is padded at migration and never renumbered | Accepted |
 
 ## Format
 

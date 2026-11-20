@@ -6,7 +6,7 @@
 - Status: open
 - Phase: P3 — closeout
 - Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
-- Next: W08 — fix the standard gaps
+- Next: W11 — pad oshi's backlog to four digits
 - Blocked: none
 - Last done: W07g — four findings disposed (oshi `e4d10d0`, `e1ec739`, `9ac5815`, `5e4a208`)
 - Open decisions: none
@@ -68,4 +68,5 @@
 | Item | Title | Status |
 | --- | --- | --- |
 | [W08](items/W08.md) | Fix the standard gaps the rollout exposed | todo |
+| [W11](items/W11.md) | Pad oshi's backlog series to four digits | todo |
 | [W09](items/W09.md) | Close the package and record oshi's disposition | todo |

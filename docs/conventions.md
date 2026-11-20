@@ -7,7 +7,7 @@ English for every file this repository maintains: prose, templates, commit messa
 ## Naming
 
 - Files: `kebab-case.md`; ADRs use `ADR-<nnnn>-slug.md`; backlog items use `B-<nnnn>-slug.md`.
-- Numbered records use four digits: ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series keeps its width and is never renumbered.
+- Numbered records use four digits: ADR `ADR-0001`, backlog `B-0001`. New repositories start at `0001`; a migrated ADR series is zero-padded to four digits and never renumbered; a migrated backlog series is zero-padded to four digits at migration and is never renumbered.
 - All-caps names are reserved for roles: `README.md`, `AGENTS.md`, `GLOSSARY.md`, `GLOSSARY-MAP.md`.
 - Template placeholders: `<angle-bracket>` values replaced at forge, and `{{NORM_SOURCE}}`, a token resolved from the target's `Norm source:` line and never replaced; both are listed in `template/README.md`.
 - Prose is not hard-wrapped. A paragraph is one line; the editor soft-wraps. Code fences, tables, and YAML keep their line breaks.
