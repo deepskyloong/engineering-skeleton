@@ -5,8 +5,8 @@
 - Updated: 2026-11-20
 - Status: open
 - Phase: P3 — closeout
-- Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
-- Next: W08 — fix the standard gaps the rollout exposed
+- Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
+- Next: W08b — dispose of the four degraded frozen citations
 - Last done: W12 — the template's structure page links the norm (standard `c5d4994`)
 - Blocked: none
 - Open decisions: none
@@ -66,7 +66,10 @@
 
 | Item | Title | Status |
 | --- | --- | --- |
-| [W08](items/W08.md) | Fix the standard gaps the rollout exposed | todo |
+| [W08](items/W08.md) | Fix the standard gaps the rollout exposed | doing |
+| [W08b](items/W08b.md) | Dispose of the four degraded frozen citations | todo |
+| [W08c](items/W08c.md) | Re-check the architecture admission against the remaining four repositories | todo |
+| [W08d](items/W08d.md) | Decide how R12 is verified on Python targets | todo |
 | [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |
 | [W12](items/W12.md) | Point `template/core/docs/structure.md` at the norm instead of copying it | done |
 | [W13](items/W13.md) | Let the item description take the form its content needs | done |
