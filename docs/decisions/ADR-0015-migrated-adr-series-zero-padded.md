@@ -1,6 +1,6 @@
 # ADR-0015 — A migrated ADR series is zero-padded to four digits
 
-Status: Accepted (2026-11-17)
+Status: Superseded in part by [ADR-0031](ADR-0031-backlog-series-is-four-digits.md) (2026-11-20); the ADR zero-padding rule still holds.
 
 ## Context
 
