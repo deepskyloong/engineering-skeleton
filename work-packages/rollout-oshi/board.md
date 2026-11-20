@@ -6,8 +6,8 @@
 - Status: open
 - Phase: P3 — closeout
 - Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
-- Next: W08c — re-check the architecture admission against the remaining four repositories
-- Last done: W08b — the four dropped-section citations are disposed (rows 22–25)
+- Next: W08d — decide how R12 is verified on Python targets
+- Last done: W08c — the architecture admission stands against the four repositories
 - Blocked: none
 - Open decisions: none
 
@@ -15,7 +15,7 @@
 
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
-| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (151 markdown files, 87 tests; one soft `roles.md` warning) |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (155 markdown files, 87 tests, 0 fail; two soft warnings) |
 | oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2a7ff38` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; `bun run validate` 86 tests) |
 
 ## Work items
@@ -68,7 +68,7 @@
 | --- | --- | --- |
 | [W08](items/W08.md) | Fix the standard gaps the rollout exposed | doing |
 | [W08b](items/W08b.md) | Dispose of the four degraded frozen citations | done |
-| [W08c](items/W08c.md) | Re-check the architecture admission against the remaining four repositories | todo |
+| [W08c](items/W08c.md) | Re-check the architecture admission against the remaining four repositories | done |
 | [W08d](items/W08d.md) | Decide how R12 is verified on Python targets | todo |
 | [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |
 | [W12](items/W12.md) | Point `template/core/docs/structure.md` at the norm instead of copying it | done |
