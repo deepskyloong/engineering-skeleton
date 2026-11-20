@@ -5,9 +5,9 @@
 - Updated: 2026-11-20
 - Status: open
 - Phase: P3 — closeout
-- Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
-- Next: W08d — decide how R12 is verified on Python targets
-- Last done: W08c — the architecture admission stands against the four repositories
+- Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
+- Next: W09 — close the package and record oshi's disposition
+- Last done: W08d — the R12 stage ships in the Python overlay
 - Blocked: none
 - Open decisions: none
 
@@ -15,7 +15,7 @@
 
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
-| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (155 markdown files, 87 tests, 0 fail; one soft `roles.md` warning) |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (156 markdown files, 87 tests, 0 fail; two soft warnings (`flow.md`, `roles.md`)) |
 | oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2a7ff38` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; `bun run validate` 86 tests) |
 
 ## Work items
@@ -66,10 +66,10 @@
 
 | Item | Title | Status |
 | --- | --- | --- |
-| [W08](items/W08.md) | Fix the standard gaps the rollout exposed | doing |
+| [W08](items/W08.md) | Fix the standard gaps the rollout exposed | done |
 | [W08b](items/W08b.md) | Dispose of the four degraded frozen citations | done |
 | [W08c](items/W08c.md) | Re-check the architecture admission against the remaining four repositories | done |
-| [W08d](items/W08d.md) | Decide how R12 is verified on Python targets | todo |
+| [W08d](items/W08d.md) | Decide how R12 is verified on Python targets | done |
 | [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |
 | [W12](items/W12.md) | Point `template/core/docs/structure.md` at the norm instead of copying it | done |
 | [W13](items/W13.md) | Let the item description take the form its content needs | done |
