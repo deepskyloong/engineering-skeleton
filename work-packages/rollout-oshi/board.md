@@ -16,7 +16,7 @@
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
 | repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (156 markdown files, 87 tests, 0 fail; two soft warnings (`flow.md`, `roles.md`)) |
-| oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2a7ff38` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; `bun run validate` 86 tests) |
+| oshi | `feature/standard-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2cb1380` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; tables 144 files; `bun run validate` 86 tests) |
 
 ## Work items
 

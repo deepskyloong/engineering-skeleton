@@ -33,7 +33,7 @@ This page records the operating sequence on top of the migrate mode in `docs/wor
 ### Workspace
 
 1. Standard work happens on `feature/b0005-rollout-oshi` in `E:\Projects\repository-standard`; one branch per target migration, so the next repository's package opens `feature/b0005-rollout-<target>` (the checkout move is the maintainer's action; resolve the root from the skill if the path is not there yet). Run `bun run gate` before every commit.
-2. Oshi's migration checkout is the worktree `E:\Projects\oshi\.worktrees\skeleton-migration` on `feature/skeleton-migration`; the worktree and branch names predate the rename and stay as they are. It was rebased onto `main` before the first move with `git rebase --onto main d990a58 feature/skeleton-migration`, which kept the s2 work off the branch.
+2. Oshi's migration checkout is the worktree `E:\Projects\oshi\.worktrees\standard-migration` on `feature/standard-migration`; the branch and the worktree were renamed from `skeleton-migration` on 2026-11-20, because that name was the last live one carrying the retired term. A moved worktree breaks the venv's console-script trampolines: `uv sync --reinstall` rebuilds them, and `uv run python scripts/setup_ml_deps.py` restores the ML set `uv sync` prunes. It was rebased onto `main` before the first move with `git rebase --onto main d990a58 feature/skeleton-migration`, which kept the s2 work off the branch.
 3. Run `git status --short` before the first move; a dirty file the move touches is a stop condition. `docs/reviews/README.md` was modified and uncommitted at audit time.
 
 ### Oshi's sequence
