@@ -39,6 +39,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0031](ADR-0031-backlog-series-is-four-digits.md) | Every backlog series is four digits; a migrated one is padded at migration and never renumbered | Accepted |
 | [ADR-0032](ADR-0032-role-page-pointer.md) | A role page links the norm it relies on; only a general-norm page is a base pointer | Accepted |
 | [ADR-0033](ADR-0033-item-description-form.md) | An item description takes the form its content needs and stays one screen | Accepted |
+| [ADR-0034](ADR-0034-evidence-one-entry-per-artifact.md) | Evidence gives each artifact one entry and names what it proves | Accepted |
 
 ## Format
 
