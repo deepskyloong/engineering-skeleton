@@ -20,30 +20,15 @@
 
 The table names every ID and each phase's exit condition; the item detail lives in `items/<ID>.md`. Numbering and late-discovery placement follow `docs/norm/flow.md` "Work items"; this package applied the letter rule when W07 became a container over W07a–W07g.
 
-## Review discipline
+## Protocol
 
-The standard is a draft, not a validated one. The rollout exists to find its errors, not to prove it right. A migration step reviews two things in the same pass: oshi's compliance and the rule's correctness; a step that only applies the rule is incomplete. A target more coherent than the standard is a finding, not a failure — the glossary sequence is the sample: ADR-0007 gave the role the right name, but the body was still a three-column table, and oshi's own `GLOSSARY.md` plus the `domain-modeling` `GLOSSARY-FORMAT` exposed the error that ADR-0008 corrected.
+Every unit is one pass of `i-draft-standard-rollout`: the rule and its source, the target's shape, one change with its check, the risks, the alternatives, and the ask. The protocol and its report format live there; this page does not restate them.
 
-Before any role move or change to the standard, report:
-
-1. **The rule and its source.** Name the page in the standard and the evidence or sample behind it. "The standard says so" is not evidence.
-2. **Oshi's current shape.** Compare it with the rule. A coherent existing form is evidence, not a deviation to erase; a foreign suite's path is an adapter, not a role of the standard.
-3. **Proposed action and expected result.** One role, one commit, one observable gate.
-4. **Risks and controversy.** Frozen citations, foreign suites, over-budget pages, second homes, irreversible moves, and any point where the rule conflicts with oshi or with another page of the standard.
-5. **Alternatives and recommendation.** What was rejected and why, what you recommend, and what the maintainer must decide.
-
-Stop for the maintainer before acting when the source is ambiguous, oshi's form is better, the move is irreversible, a frozen record is involved, or the rule has no sample. After the decision, record it: a spec change and an ADR if the standard was wrong; an adapter row if oshi cannot move or has moved; a backlog item if the question remains open. Do not silently normalize oshi to a draft rule.
+This page records only what is oshi's: the workspace, the role order, the rulings already made, and the check-ins.
 
 ## Migration guide
 
-This page records the operating sequence on top of the migrate mode in `docs/workflow.md`; it does not replace it. The six execution rules apply:
-
-1. Freeze the old home before moving anything.
-2. One role per commit.
-3. Prove the pointer migration with `rg -l '<old-path>'`; every survivor is explained.
-4. `git mv` file by file; never a recursive move.
-5. A frozen record keeps its citation; the old path is a registry row.
-6. A path that cannot move is a legacy path in `docs/adapters.md`; a path that moved is a moved-path row there (ADR-0028).
+This page records the operating sequence on top of the migrate mode in `docs/workflow.md`; it does not replace it. The six execution rules are M1–M6 there and are not restated here.
 
 ### Workspace
 
@@ -77,7 +62,7 @@ Stop and confirm with the maintainer at each of these, rather than at every comm
 
 - After the audit of a repository, before the first move.
 - After the freeze and adapter-registry commit, before any deletion.
-- Before a role move when the rule in the standard is ambiguous, has no sample, or conflicts with oshi's working practice.
+- Before a role move when the rule in the standard is ambiguous or conflicts with oshi's working practice.
 - Before changing the standard's spec in response to a migration finding; oshi waits for the standard gate.
 - After the docs roles are in place, before the budget splits.
 - Before deleting an archive or a directory.
@@ -90,7 +75,7 @@ Stop and confirm with the maintainer at each of these, rather than at every comm
 | A migration rewrites documents that record decisions, losing the reasoning. | One role per commit; a frozen record keeps its citation and the moved path becomes an adapter row. | A move would break a frozen record that cites the old path. |
 | Uncommitted work in oshi is swept into a move. | Run `git status --short` before the first move. | The working tree has changes in a file the move touches. |
 | The spec is bent to fit oshi. | Change the standard first when the gap is a genuine defect; the remaining repositories then follow the same spec. | A move needs a one-off role, budget, or path that no other repo would use. |
-| The standard is a draft and a rule is wrong; oshi gets normalized to it. | Review the rule's source and oshi's existing form; a better target changes the standard first. | A rule has no source or sample, or conflicts with oshi's working practice. |
+| The standard is a draft and a rule is wrong; oshi gets normalized to it. | Review the rule's source and oshi's existing form; a better target changes the standard first. | A rule has no source, or conflicts with oshi's working practice. |
 | Splitting `docs/designs/` and `docs/specs/` turns eleven files into pages that restate each other. | One contract surface per page; a fact used twice is linked, not copied; the contract admission decides what stays. | Two pages state the same fact, or a page has no consumer outside its own effort. |
 
 ## Out of scope
