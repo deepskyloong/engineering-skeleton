@@ -2,16 +2,16 @@
 
 ## Current state
 
-- Updated: 2026-11-19
+- Updated: 2026-11-20
 - Status: open; `B-0005` active (programme); this package is the oshi step
 - Branch: `feature/b0005-rollout-oshi`
-- Last done: W10 — each work item is a file under `items/`, and `board.md` carries the state and the index (ADR-0029)
-- Gate: standard `bun run gate` PASS 2026-11-19 (137 markdown files, 70 tests; one soft `roles.md` warning); oshi full path green the same day (ruff check / format, `ty`, prose 246 files, pytest 658 passed / 1 skipped, frontend `bun run validate` 86 passed)
+- Last done: W06 — the review, backlog and experiments indexes fit their hard lines, the B-13 dossier moved to a knowledge case, and no index states a total (oshi `2f7a8f2`, `be0a4ac`, `3bde9bf`, `04bf196`)
+- Gate: standard `bun run gate` PASS 2026-11-20 (137 markdown files, 70 tests; one soft `roles.md` warning); oshi text-only gate green 2026-11-20 (ruff check, ruff format on 230 files, prose on 247 files; pytest and the frontend gate not re-run because the diff touches no code)
 - Phase: P2 — page repairs and audit closeout
-- Focus: W06 — re-measure every role page, then split by topic
-- Progress: 19 done / 4 todo / 1 umbrella (W07)
-- Todo: W06, W07g, W08, W09; W07 is the container over W07a–W07g
-- Next: W06 — two measured breaches (`docs/reviews/README.md` 13,323 / 12,000 and `docs/backlog/B-13-degenerate-crops.md` 13,875 / 8,000) plus a fresh sweep; the conventions page is now 12,056, still over its 10,000 soft line but clear of the 16,000 hard one
+- Focus: W07g — dispose of the findings the batches did not carry
+- Progress: 20 done / 3 todo / 1 umbrella (W07)
+- Todo: W07g, W08, W09; W07 is the container over W07a–W07g
+- Next: W07g — index autonomy (finding 9) is closed by W06; three remain: `archived/` as a fifth exception, the `docs/adapters.md` Freeze/admission wording, and `web/README.md`'s oxfmt-padded table
 - Blocked: none
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027); R4 settled, the tombstone role retired (`0291824`, ADR-0028)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this board (state and index), `items/<ID>.md` (the item you are on)
@@ -49,7 +49,7 @@
 | Item | Title | Status |
 | --- | --- | --- |
 | [W06a](items/W06a.md) | Give the status page back to its role | done |
-| [W06](items/W06.md) | Fit oshi's role pages to their budgets | todo |
+| [W06](items/W06.md) | Fit oshi's role pages to their budgets | done |
 | [W07](items/W07.md) | Close the audit's remaining findings | doing |
 | [W07a](items/W07a.md) | Repair the pointer and index residue | done |
 | [W07b](items/W07b.md) | Convert `docs/conventions.md` to a base pointer | done |
