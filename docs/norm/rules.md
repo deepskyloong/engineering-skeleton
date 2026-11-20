@@ -4,6 +4,8 @@
 
 This table covers cross-role rules. The steps in `flow.md` and the migrate mode of `workflow.md` are review criteria — `weak` — unless a row below marks them `strong`. `strong` means a command fails. `weak` means a person or an agent must check it and say so. `none` means a recommendation, labeled as such. A rule presented as strong but enforced by nothing is the defect this table prevents.
 
+A rule earns a row only when it cuts across roles. A constraint on one artifact's shape — such as how a work item's done-when criteria are written — belongs in the page that owns that artifact (`flow.md`, "Work items"), not here. This table is a cross-role register, not a home for every review note.
+
 ## Rules
 
 | # | Rule | Strength | Enforcement |
@@ -22,7 +24,6 @@ This table covers cross-role rules. The steps in `flow.md` and the migrate mode 
 | R11 | File naming follows the convention | strong | `scripts/check.ts` naming check, with explicit patterns for ADRs and backlog names |
 | R12 | Markdown tables are not column-aligned: one space around every cell | strong | `scripts/check.ts` table check: cell padding and cell count per row; a Python target runs the same check through the overlay's gate stage (`docs/norm/overlays.md`, Python C1). Markdown is formatted by Prettier with a compact-table plugin; code formatters skip `*.md` |
 | R13 | Admission is a content test: a role takes only the jobs its admission names. Durability is not admission, and a directory name is not a role. A source set that serves more than one job splits before any role move | weak | Review: a role holding a job its admission does not cover is a finding; the migration map carries one row per target page with its job and admission clause |
-| R14 | Done-when criteria are item-specific: a clause true of every item — the gate, the evidence requirement — is a standing condition, not a criterion | weak | Review: a done-when bullet that could be pasted into another item unchanged is a finding |
 
 ## Naming and citation
 
