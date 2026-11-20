@@ -1,6 +1,6 @@
 # ADR-0029 — A work item is a file; the board is its index
 
-Status: Accepted (2026-11-19)
+Status: Accepted (2026-11-19). Superseded in part by [ADR-0033](ADR-0033-item-description-form.md) (2026-11-20); the item-file rule still holds.
 
 ## Context
 

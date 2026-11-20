@@ -14,7 +14,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0006](ADR-0006-status-page-home.md) | Status lives at the docs top level, not inside the operations directory | Accepted |
 | [ADR-0007](ADR-0007-vocabulary-home.md) | The vocabulary home is `GLOSSARY.md`; `CONTEXT.md` is a legacy alias | Accepted |
 | [ADR-0008](ADR-0008-vocabulary-format.md) | The vocabulary body follows the domain-modeling glossary format; the map lists contexts and relationships | Accepted |
-| [ADR-0009](ADR-0009-work-package-ledger.md) | The work package is a work item ledger; the plan carries the phase breakdown | Accepted |
+| [ADR-0009](ADR-0009-work-package-ledger.md) | The work package is a work item ledger; the plan carries the phase breakdown | Superseded in part by ADR-0033 |
 | [ADR-0010](ADR-0010-suite-tracks-are-adapters.md) | Suite tracks are permanent adapters; legacy paths are the retirable kind | Accepted |
 | [ADR-0011](ADR-0011-tombstone-role.md) | A tombstone is a role at the old path; the gate enforces its shape | Accepted |
 | [ADR-0012](ADR-0012-markdown-tables-are-not-aligned.md) | Markdown tables are not column-aligned; a compact-table formatter owns the shape | Accepted |
@@ -34,10 +34,11 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0026](ADR-0026-per-suite-map-role.md) | The per-suite map is a role, not the adapter registry | Accepted |
 | [ADR-0027](ADR-0027-retire-governance-role.md) | Governance is not a role; the norm and the red lines carry it | Accepted |
 | [ADR-0028](ADR-0028-a-moved-path-is-a-row.md) | A moved path is one registry row; no file is left at the old path | Accepted |
-| [ADR-0029](ADR-0029-work-item-files.md) | A work item is a file under `items/`; `board.md` carries the snapshot and its index | Accepted |
+| [ADR-0029](ADR-0029-work-item-files.md) | A work item is a file under `items/`; `board.md` carries the snapshot and its index | Superseded in part by ADR-0033 |
 | [ADR-0030](ADR-0030-board-is-a-handoff-card.md) | The board's `Current state` is an eight-field handoff card; the index is the only list | Accepted |
 | [ADR-0031](ADR-0031-backlog-series-is-four-digits.md) | Every backlog series is four digits; a migrated one is padded at migration and never renumbered | Accepted |
 | [ADR-0032](ADR-0032-role-page-pointer.md) | A role page links the norm it relies on; only a general-norm page is a base pointer | Accepted |
+| [ADR-0033](ADR-0033-item-description-form.md) | An item description takes the form its content needs and stays one screen | Accepted |
 
 ## Format
 

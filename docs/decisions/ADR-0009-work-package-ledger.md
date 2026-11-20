@@ -1,6 +1,6 @@
 # ADR-0009 — The work package is a work item ledger
 
-Status: Accepted (2026-11-16)
+Status: Accepted (2026-11-16). Superseded in part by [ADR-0033](ADR-0033-item-description-form.md) (2026-11-20); the ledger shape still holds.
 
 ## Context
 
