@@ -7,7 +7,7 @@
 - Phase: P3 — closeout
 - Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
 - Next: W12 — convert `template/core/docs/structure.md` to links
-- Last done: W11 — backlog padded to four digits (standard `76cd631`, oshi `2a7ff38`)
+- Last done: W13 — item descriptions take the form their content needs (standard `92633c7`, `01f1773`)
 - Blocked: none
 - Open decisions: none
 
@@ -69,4 +69,5 @@
 | [W08](items/W08.md) | Fix the standard gaps the rollout exposed | todo |
 | [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |
 | [W12](items/W12.md) | Point `template/core/docs/structure.md` at the norm instead of copying it | todo |
+| [W13](items/W13.md) | Let the item description take the form its content needs | done |
 | [W09](items/W09.md) | Close the package and record oshi's disposition | todo |
