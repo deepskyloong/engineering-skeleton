@@ -23,7 +23,7 @@ The file names carry the subject; the order lives here. Adding a page does not r
 
 ## Status
 
-The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug. A target repository's page for a role is a base pointer to the page named here plus its own deviations; a page that restates the norm is a finding, not a copy.
+The template and the skill are downstream of these pages. A statement here that the template contradicts is a template bug; a statement the template cannot express is a norm bug. A target repository's general-norm page — a page that consumes one norm page as a whole — is a base pointer to that page plus its own deviations; every other role page records this repository's own facts and links the norm page and section it relies on instead of copying them. A page that restates the norm is a finding, not a copy.
 
 ## Reading rule
 
