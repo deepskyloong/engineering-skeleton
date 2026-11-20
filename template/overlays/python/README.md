@@ -10,6 +10,7 @@ Applies to a repository managed with `uv`. Copy every file in this directory **e
 | `.python-version` | Interpreter pin read by `uv` |
 | `.gitignore` | Runtime, regenerable, and cache paths |
 | `tools/gate.py` | The gate runner |
+| `tools/check_tables.py` | R12's table stage; a repository that registers a frozen legacy path passes `--exempt` |
 | `.github/workflows/gate.yml` | CI forwarding: frozen install, then the local gate |
 | `src/example_package/__init__.py` | Seed module; rename the directory and replace the code |
 | `tests/test_smoke.py` | Seed test; replace or delete |
@@ -30,7 +31,9 @@ Applies to a repository managed with `uv`. Copy every file in this directory **e
 uv run python tools/gate.py
 ```
 
-Stages, fail-fast: `ruff format --check` → `ruff check` → `pyright` when installed → `pytest` → `python -m build` when the project has a `[build-system]`.
+Stages, fail-fast: `ruff format --check` → `ruff check` → `pyright` when installed → `pytest` → `python -m build` when the project has a `[build-system]` → `tools/check_tables.py` (R12).
+
+The last stage reads every living markdown file and fails a padded table cell; a repository that registers a frozen legacy path passes `--exempt <prefix>` to it in `tools/gate.py`.
 
 The gate is a script, not a `[project.scripts]` entry. A workspace root is not an installable package, so `uv run gate` would fail with `Failed to spawn: gate`. The script form works in both a single-package repository and a workspace root.
 

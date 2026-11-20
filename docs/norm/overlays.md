@@ -6,7 +6,7 @@ The core is language-agnostic. Everything a language decides lives in one overla
 
 | Contract | What the overlay answers |
 | --- | --- |
-| C1 gate | One local command that runs format, lint, typecheck, test, and build in that order; the only command a commit message may cite |
+| C1 gate | One local command that runs format, lint, typecheck, test, and build in that order, then the document stages the overlay ships; the only command a commit message may cite |
 | C2 CI forwarding | A workflow file (`.github/workflows/gate.yml`) calls the same gate with the same options; CI adds no rule the local gate does not enforce |
 | C3 Code layout and boundaries | Where source, tests, and fixtures live; which imports cross which boundary; what the single-package form looks like |
 | C4 Dependency and lockfile policy | The package manager, the lockfile, the frozen-install command, the rule for adding or upgrading a dependency |
@@ -36,7 +36,7 @@ An overlay that states a core rule is a bug. An overlay that omits a contract is
 | Contract | Default |
 | --- | --- |
 | Runtime and package manager | `uv`; Python version pinned in `.python-version` |
-| C1 gate | `uv run python tools/gate.py` = `ruff format --check` → `ruff check` → `pyright` (when installed) → `pytest` → build (when a `[build-system]` exists) |
+| C1 gate | `uv run python tools/gate.py` = `ruff format --check` → `ruff check` → `pyright` (when installed) → `pytest` → build (when a `[build-system]` exists) → `tools/check_tables.py` (R12) |
 | C2 CI | `.github/workflows/gate.yml`: `uv sync --frozen` then the same gate command; the lockfile is committed before CI runs |
 | C3 layout | `src/<package>/`; tests in `tests/`; workspace members under `packages/*`, each with its own `pyproject.toml` |
 | C4 dependencies | `uv.lock`; `uv add` / `uv remove`; no unpinned direct dependencies in a library |

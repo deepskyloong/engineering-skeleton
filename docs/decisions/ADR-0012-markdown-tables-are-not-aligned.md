@@ -1,6 +1,6 @@
 # ADR-0012 — Markdown tables are not column-aligned
 
-Status: Accepted (2026-11-17)
+Status: Accepted (2026-11-17). Superseded in part by [ADR-0035](ADR-0035-python-overlay-r12-stage.md); the conditional clause is narrowed, the formatting decision stands.
 
 ## Context
 

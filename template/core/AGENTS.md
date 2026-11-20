@@ -29,7 +29,7 @@ This file is the per-turn rule layer: red lines, the gate, and the routing table
 <gate-command>
 ```
 
-It runs format check, lint, typecheck, test, and build. CI runs the same command with the same options; CI adds no rule this command does not enforce.
+It runs the stages its overlay's README names: format check, lint, typecheck, test, build, and any document stage it ships. CI runs the same command with the same options; CI adds no rule this command does not enforce.
 
 ## Routing table
 

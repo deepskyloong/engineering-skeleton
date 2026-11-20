@@ -17,7 +17,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0009](ADR-0009-work-package-ledger.md) | The work package is a work item ledger; the plan carries the phase breakdown | Superseded in part by ADR-0033 |
 | [ADR-0010](ADR-0010-suite-tracks-are-adapters.md) | Suite tracks are permanent adapters; legacy paths are the retirable kind | Accepted |
 | [ADR-0011](ADR-0011-tombstone-role.md) | A tombstone is a role at the old path; the gate enforces its shape | Accepted |
-| [ADR-0012](ADR-0012-markdown-tables-are-not-aligned.md) | Markdown tables are not column-aligned; a compact-table formatter owns the shape | Accepted |
+| [ADR-0012](ADR-0012-markdown-tables-are-not-aligned.md) | Markdown tables are not column-aligned; a compact-table formatter owns the shape | Superseded in part by ADR-0035 |
 | [ADR-0013](ADR-0013-two-tier-volume-budgets.md) | Volume budgets carry a soft judgment line and a hard failure line | Accepted |
 | [ADR-0014](ADR-0014-backlog-carries-no-priority.md) | The backlog carries no priority field | Accepted |
 | [ADR-0015](ADR-0015-migrated-adr-series-zero-padded.md) | A migrated ADR series is zero-padded to four digits; a migrated backlog series keeps its width | Superseded in part by ADR-0031 |
@@ -40,6 +40,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0032](ADR-0032-role-page-pointer.md) | A role page links the norm it relies on; only a general-norm page is a base pointer | Accepted |
 | [ADR-0033](ADR-0033-item-description-form.md) | An item description takes the form its content needs and stays one screen | Accepted |
 | [ADR-0034](ADR-0034-evidence-one-entry-per-artifact.md) | Evidence gives each artifact one entry and names what it proves | Accepted |
+| [ADR-0035](ADR-0035-python-overlay-r12-stage.md) | The Python overlay ships R12's table stage | Accepted |
 
 ## Format
 

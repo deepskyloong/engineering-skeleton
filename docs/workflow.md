@@ -112,7 +112,7 @@ The notes below are observations from 2026-11-14, for-the-record; they describe 
 1. Freeze additions to the old homes.
 2. Move `docs/` roles into the canonical tree, one role per commit. A general-norm page becomes a base pointer plus its deviations (`Base: {{NORM_SOURCE}}/...`), never a restated copy.
 3. Split `AGENTS.md` last, after the docs exist — the routing table cannot point at pages that are not there yet.
-4. Add the gate — including the overlay's Markdown stage when it ships one (`B-0011`) — and prove it green before touching `work-packages/`.
+4. Add the gate — including each document stage the overlay ships (`docs/norm/overlays.md`; the Markdown formatting stage stays `B-0011`) — and prove it green before touching `work-packages/`.
 5. Migrate the backlog and status.
 6. Register adapters and legacy paths.
 7. Delete empty directories only after their last file has moved.

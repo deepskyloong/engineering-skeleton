@@ -23,6 +23,7 @@ def main() -> int:
     run("pytest", "-q")
     if "build-system" in config:
         run(sys.executable, "-m", "build")
+    run(sys.executable, "tools/check_tables.py")
     return 0
 
 
