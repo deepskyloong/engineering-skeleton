@@ -51,7 +51,7 @@ If this effort answers a backlog item, set that row's `Status` to `active` in `d
 
 ## Work items
 
-Each item has a stable `W<n>` ID, one file at `items/<ID>.md`, its dependencies, a description, observable done-when criteria, and evidence. `done` requires evidence — a commit, a command, a file, or a decision; without one it stays open. Describe it in the form the content needs — prose, a list, a table, or a small fenced diagram — one screen carrying what the item is and must hold, not the story. Done-when criteria are bullets, each a separate check; needing a heading per concern means it is two items. One item is one reviewable commit or one primary outcome; if it needs more, split it.
+Each item has a stable `W<n>` ID, one file at `items/<ID>.md`, its dependencies, a description, observable done-when criteria, and evidence. `done` requires evidence — a commit, a command, a file, or a decision; without one it stays open. Describe it in the form the content needs — prose, list, table, or small diagram — one screen: what the item is and must hold, not the story. Done-when criteria are item-specific bullets, each a separate check (R14); one item is one reviewable commit or one outcome; a heading per concern splits it.
 
 `Evidence` gives each artifact one entry, naming what it proves: bullets when several, a table when one carries several facts, one sentence when one. Detail stays in the artifact: cite a report, a map or a measurement by path and one clause, not by recital. The item file is working state with no volume budget; the board carries no item prose: neither grows a narrative the other duplicates.
 

@@ -5,7 +5,7 @@
 - Updated: 2026-11-20
 - Status: open
 - Phase: P3 — closeout
-- Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
+- Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
 - Next: W08d — decide how R12 is verified on Python targets
 - Last done: W08c — the architecture admission stands against the four repositories
 - Blocked: none
@@ -15,7 +15,7 @@
 
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
-| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (155 markdown files, 87 tests, 0 fail; two soft warnings) |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (155 markdown files, 87 tests, 0 fail; one soft `roles.md` warning) |
 | oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2a7ff38` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; `bun run validate` 86 tests) |
 
 ## Work items

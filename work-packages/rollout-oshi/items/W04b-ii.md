@@ -9,7 +9,6 @@ One ruling opened this unit, and the maintainer made it on 2026-11-19: no new ro
 - the ruling is recorded, and every page has a disposition that follows from it
 - the pages it lands in pass their admissions and hard lines
 - `docs/notes/` holds no live page; the adapter row retires when the last tombstone does
-- oshi's gate is green
 
 **Evidence**:
 

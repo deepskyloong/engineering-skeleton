@@ -8,7 +8,6 @@ Two of the six pages hold a job that is admitted and homeless: `recognition-pipe
 
 - the method and the decision each have one home, and no page states the same rule twice
 - the retired path is a tombstone and its frozen citers resolve
-- oshi's gate is green
 
 **Evidence**:
 
