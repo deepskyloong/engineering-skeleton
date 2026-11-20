@@ -11,7 +11,7 @@
 - Focus: W08 — the standard gaps the rollout exposed
 - Progress: 22 done / 2 todo; W07 closed
 - Todo: W08, W09
-- Next: W08 — decide the standard gaps, starting with the template's missing `Norm` rows and the checker's backlog width
+- Next: W08 — decide the standard gaps, starting with the template's missing `Norm` rows, the R12 stage for Python targets, and the checker's backlog width
 - Blocked: none
 - Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027); R4 settled, the tombstone role retired (`0291824`, ADR-0028)
 - Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this board (state and index), `items/<ID>.md` (the item you are on)
