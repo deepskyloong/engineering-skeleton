@@ -1,10 +1,11 @@
 /**
- * The checks themselves: one function per rule, each a pure function of a `Context`
+ * The generic document checks: one function per rule, each a pure function of a `Context`
  * and each returning findings instead of writing into shared state. The caller decides
  * what a finding becomes — a line on stdout here, an expectation in a test elsewhere.
  *
- * A check never reads a file twice: `Context` parses once and caches, which is why the
- * Python original's five reads per markdown file are now one.
+ * The work-package checks live in `package-checks.ts`; the repository read model in
+ * `check-context.ts`. A check never reads a file twice: `Context` parses once and caches,
+ * which is why the Python original's five reads per markdown file are now one.
  */
 
 import { spawnSync } from 'node:child_process'
@@ -41,24 +42,8 @@ import {
   warn,
 } from './docs-model.ts'
 
-export interface DirEntry {
-  name: string
-  isFile: boolean
-  isDirectory: boolean
-}
-
-export interface Context {
-  root: string
-  /** Markdown keys, repository-relative, posix, sorted. */
-  files: string[]
-  /** Every directory key, repository-relative, posix, sorted. */
-  directories: string[]
-  absolute(key: string): string
-  exists(key: string): boolean
-  isFile(key: string): boolean
-  readText(key: string): string
-  readDir(key: string): DirEntry[]
-}
+import type { Context } from './check-context.ts'
+import { boardDashboard, packages } from './package-checks.ts'
 
 const MARKER = /\b(TODO|TBD|FIXME)\b/
 const BACKLOG_INDEXES = new Set([
@@ -66,71 +51,7 @@ const BACKLOG_INDEXES = new Set([
   'template/first-use/docs/backlog/README.md',
 ])
 
-/** A repository, read once. The only place in the branch where the filesystem is touched. */
-export function createContext(root: string): Context {
-  const absolute = (key: string): string => path.resolve(root, key)
-  const toKey = (target: string): string => path.relative(root, target).split(path.sep).join('/')
-
-  const files: string[] = []
-  const directories: string[] = []
-  const walk = (directory: string): void => {
-    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-      const child = path.join(directory, entry.name)
-      if (entry.isDirectory()) {
-        directories.push(toKey(child))
-        walk(child)
-      } else if (entry.isFile() && entry.name.endsWith('.md')) {
-        const key = toKey(child)
-        if (!key.split('/').some(part => SKIP_PARTS.has(part))) {
-          files.push(key)
-        }
-      }
-    }
-  }
-  walk(root)
-
-  const byKey = (left: string, right: string): number => (left < right ? -1 : left > right ? 1 : 0)
-  files.sort(byKey)
-  directories.sort(byKey)
-
-  const texts = new Map<string, string>()
-  const listings = new Map<string, DirEntry[]>()
-
-  return {
-    root,
-    files,
-    directories,
-    absolute,
-    exists: key => fs.existsSync(absolute(key)),
-    isFile: key => fs.statSync(absolute(key), { throwIfNoEntry: false })?.isFile() === true,
-    readText: key => {
-      const cached = texts.get(key)
-      if (cached !== undefined) {
-        return cached
-      }
-      const text = fs.readFileSync(absolute(key), 'utf8')
-      texts.set(key, text)
-      return text
-    },
-    readDir: key => {
-      const cached = listings.get(key)
-      if (cached !== undefined) {
-        return cached
-      }
-      const entries = fs
-        .readdirSync(absolute(key), { withFileTypes: true })
-        .map(entry => ({
-          name: entry.name,
-          isFile: entry.isFile(),
-          isDirectory: entry.isDirectory(),
-        }))
-        .sort((left, right) => byKey(left.name, right.name))
-      listings.set(key, entries)
-      return entries
-    },
-  }
-}
-
+/** The last path segment. */
 function baseName(key: string): string {
   return key.slice(key.lastIndexOf('/') + 1)
 }
@@ -153,117 +74,6 @@ export function requiredFiles(context: Context): Finding[] {
   ]) {
     if (!context.exists(page)) {
       findings.push(fail(`missing norm page: ${page}`))
-    }
-  }
-  return findings
-}
-
-/** Every live and archived package, with archived as the flag. */
-function packageDirs(context: Context): Array<{ key: string; archived: boolean }> {
-  if (!context.exists('work-packages')) {
-    return []
-  }
-  const live = context
-    .readDir('work-packages')
-    .filter(entry => entry.isDirectory && entry.name !== 'archive')
-    .map(entry => ({ key: `work-packages/${entry.name}`, archived: false }))
-  const archived = context.exists('work-packages/archive')
-    ? context
-        .readDir('work-packages/archive')
-        .filter(entry => entry.isDirectory)
-        .map(entry => ({ key: `work-packages/archive/${entry.name}`, archived: true }))
-    : []
-  return [...live, ...archived]
-}
-
-/**
- * A package carries its ledger files, one file per work item, and names the evidence
- * directories it owns.
- *
- * ADR-0021 and ADR-0029: four ledger files by closeout — spec, plan, board, summary —
- * and one `items/<ID>.md` per work item. `summary.md` is written at closeout, so it is
- * required only in the archive. `items/` is reserved, not evidence: it is never named in
- * the summary and archives with the package. Archived packages written before ADR-0029
- * keep `todo.md` and their item blocks; an open package uses `board.md`.
- */
-export function packages(context: Context): Finding[] {
-  const findings: Finding[] = []
-  for (const { key, archived } of packageDirs(context)) {
-    const board = `${key}/board.md`
-    const ledger = new Set(
-      archived
-        ? ['spec.md', 'plan.md', 'board.md', 'todo.md', 'summary.md']
-        : ['spec.md', 'plan.md', 'board.md', 'summary.md'],
-    )
-    for (const name of ['spec.md', 'plan.md']) {
-      if (!context.isFile(`${key}/${name}`)) {
-        findings.push(fail(`missing package file: ${key}/${name}`))
-      }
-    }
-    if (archived) {
-      if (!context.isFile(`${key}/summary.md`)) {
-        findings.push(fail(`missing package summary: ${key}/summary.md`))
-      }
-      if (!context.isFile(board) && !context.isFile(`${key}/todo.md`)) {
-        findings.push(fail(`missing package file: ${board}`))
-      }
-    } else if (!context.isFile(board)) {
-      findings.push(fail(`missing package file: ${board}`))
-    }
-    for (const child of context.readDir(key)) {
-      if (child.isFile && !ledger.has(child.name)) {
-        findings.push(fail(`unexpected package file: ${key}/${child.name}`))
-      }
-    }
-    const summary = `${key}/summary.md`
-    if (context.isFile(summary)) {
-      const text = context.readText(summary)
-      for (const child of context.readDir(key)) {
-        if (child.isDirectory && child.name !== 'items' && !text.includes(child.name)) {
-          findings.push(fail(`evidence directory not named in summary: ${key}/${child.name}/`))
-        }
-      }
-    }
-    findings.push(...packageItems(context, key, context.isFile(board)))
-  }
-  return findings
-}
-
-/** Every item file starts with its ID, and the board links exactly the files that exist. */
-function packageItems(context: Context, key: string, hasBoard: boolean): Finding[] {
-  const directory = `${key}/items`
-  const findings: Finding[] = []
-  const names: string[] = []
-  if (context.exists(directory)) {
-    for (const child of context.readDir(directory)) {
-      if (!child.isFile || !child.name.endsWith('.md')) {
-        findings.push(fail(`unexpected entry in package items: ${directory}/${child.name}`))
-        continue
-      }
-      names.push(child.name)
-      const id = child.name.slice(0, -3)
-      if (!context.readText(`${directory}/${child.name}`).startsWith(`# ${id} — `)) {
-        findings.push(
-          fail(`package item heading does not start with its ID: ${directory}/${child.name}`),
-        )
-      }
-    }
-  }
-  if (!hasBoard) {
-    return findings
-  }
-  const links = new Set<string>()
-  for (const match of context.readText(`${key}/board.md`).matchAll(/\]\(items\/([^)]+\.md)\)/g)) {
-    links.add(match[1])
-  }
-  for (const name of names) {
-    if (!links.has(name)) {
-      findings.push(fail(`package item not linked from board: ${directory}/${name}`))
-    }
-  }
-  for (const link of links) {
-    if (!names.includes(link)) {
-      findings.push(fail(`board links a missing package item: ${key}/items/${link}`))
     }
   }
   return findings
@@ -712,6 +522,7 @@ export function runChecks(context: Context, options: RunOptions = {}): Finding[]
   return [
     ...requiredFiles(context),
     ...packages(context),
+    ...boardDashboard(context),
     ...roleCoverage(context),
     ...emptyDirectories(context),
     ...english(context),

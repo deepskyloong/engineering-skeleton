@@ -3,18 +3,21 @@
 ## Current state
 
 - Updated: 2026-11-20
-- Status: open; `B-0005` active (programme); this package is the oshi step
-- Branch: `feature/b0005-rollout-oshi`
-- Last done: W07g — `archived/` retired, the `docs/adapters.md` Freeze folded into the plans row, the frontend formatter told to skip markdown, and the storefront history trimmed (oshi `e4d10d0`, `e1ec739`, `9ac5815`, `5e4a208`); W07 closed with every finding disposed
-- Gate: standard `bun run gate` PASS 2026-11-20 (137 markdown files, 70 tests; one soft `roles.md` warning); oshi full gate green at `5e4a208` (pytest 658 passed / 1 skipped, `ty`, ruff on 230 files, prose on 244 files, `bun run validate` 86 tests)
+- Status: open
 - Phase: P3 — closeout
-- Focus: W08 — the standard gaps the rollout exposed
-- Progress: 22 done / 2 todo; W07 closed
-- Todo: W08, W09
-- Next: W08 — decide the standard gaps, starting with the template's missing `Norm` rows, the R12 stage for Python targets, and the checker's backlog width
+- Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
+- Next: W08 — fix the standard gaps
 - Blocked: none
-- Open decisions: none — R1 settled as a new role (`docs/decisions/ADR-0026-per-suite-map-role.md`); R2 settled as no replacement, repository owns the base rule and the page points at the norm source (`06aeb6d`); R3 settled, Governance retired (`a241462`, ADR-0027); R4 settled, the tombstone role retired (`0291824`, ADR-0028)
-- Read first: `spec.md` (goal/acceptance), `plan.md` (work breakdown/decisions/check-in), this board (state and index), `items/<ID>.md` (the item you are on)
+- Last done: W07g — four findings disposed (oshi `e4d10d0`, `e1ec739`, `9ac5815`, `5e4a208`)
+- Open decisions: none
+- Read first: `spec.md` (goal, non-goal, acceptance), `plan.md` (approach, phases, risks, check-ins), this board (state and index), `items/<ID>.md` (the item you are on)
+
+## Repositories
+
+| Repository | Branch | Gate command | Last result |
+| --- | --- | --- | --- |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (143 markdown files, 86 tests; one soft `roles.md` warning) |
+| oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `5e4a208` (pytest 658 passed / 1 skipped; `ty` clean; ruff 230 files; prose 244 files; `bun run validate` 86 tests) |
 
 ## Work items
 

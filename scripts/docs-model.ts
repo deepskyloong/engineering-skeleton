@@ -47,13 +47,7 @@ export const LINK = /\[[^\]]*\]\(([^)]+)\)/g
 export const MOVED_MARKER = '— moved'
 export const COUNT_NOUN =
   /\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(pages?|documents?|files?|entries|items|adrs?)\b/gi
-export const ROLE_NAMES = new Set([
-  'README.md',
-  'AGENTS.md',
-  'GLOSSARY.md',
-  'GLOSSARY-MAP.md',
-  '_template.md',
-])
+export const ROLE_NAMES = new Set(['README.md', 'AGENTS.md', 'GLOSSARY.md', 'GLOSSARY-MAP.md'])
 export const GENERATED_DIRS = ['dist']
 
 export const INDEX_PAGES = [

@@ -1,0 +1,416 @@
+/**
+ * The work-package checks: the ledger shape and the board as a handoff card.
+ * ADR-0021, ADR-0029, and ADR-0030 define the package and its board.
+ */
+
+import type { Context } from './check-context.ts'
+import {
+  fail,
+  matchesFully,
+  pyRepr,
+  pyStrip,
+  splitCells,
+  splitLines,
+  TABLE_DELIMITER,
+  TABLE_ROW,
+  type Finding,
+} from './docs-model.ts'
+
+/** Every live and archived package, with archived as the flag. */
+function packageDirs(context: Context): Array<{ key: string; archived: boolean }> {
+  if (!context.exists('work-packages')) {
+    return []
+  }
+  const live = context
+    .readDir('work-packages')
+    .filter(entry => entry.isDirectory && entry.name !== 'archive')
+    .map(entry => ({ key: `work-packages/${entry.name}`, archived: false }))
+  const archived = context.exists('work-packages/archive')
+    ? context
+        .readDir('work-packages/archive')
+        .filter(entry => entry.isDirectory)
+        .map(entry => ({ key: `work-packages/archive/${entry.name}`, archived: true }))
+    : []
+  return [...live, ...archived]
+}
+
+/**
+ * A package carries its ledger files, one file per work item, and names the evidence
+ * directories it owns.
+ *
+ * ADR-0021 and ADR-0029: four ledger files by closeout — spec, plan, board, summary —
+ * and one `items/<ID>.md` per work item. `summary.md` is written at closeout, so it is
+ * required only in the archive. `items/` is reserved, not evidence: it is never named in
+ * the summary and archives with the package. Archived packages written before ADR-0029
+ * keep `todo.md` and their item blocks; an open package uses `board.md`.
+ */
+export function packages(context: Context): Finding[] {
+  const findings: Finding[] = []
+  for (const { key, archived } of packageDirs(context)) {
+    const board = `${key}/board.md`
+    const ledger = new Set(
+      archived
+        ? ['spec.md', 'plan.md', 'board.md', 'todo.md', 'summary.md']
+        : ['spec.md', 'plan.md', 'board.md', 'summary.md'],
+    )
+    for (const name of ['spec.md', 'plan.md']) {
+      if (!context.isFile(`${key}/${name}`)) {
+        findings.push(fail(`missing package file: ${key}/${name}`))
+      }
+    }
+    if (archived) {
+      if (!context.isFile(`${key}/summary.md`)) {
+        findings.push(fail(`missing package summary: ${key}/summary.md`))
+      }
+      if (!context.isFile(board) && !context.isFile(`${key}/todo.md`)) {
+        findings.push(fail(`missing package file: ${board}`))
+      }
+    } else if (!context.isFile(board)) {
+      findings.push(fail(`missing package file: ${board}`))
+    }
+    for (const child of context.readDir(key)) {
+      if (child.isFile && !ledger.has(child.name)) {
+        findings.push(fail(`unexpected package file: ${key}/${child.name}`))
+      }
+    }
+    const summary = `${key}/summary.md`
+    if (context.isFile(summary)) {
+      const text = context.readText(summary)
+      for (const child of context.readDir(key)) {
+        if (child.isDirectory && child.name !== 'items' && !text.includes(child.name)) {
+          findings.push(fail(`evidence directory not named in summary: ${key}/${child.name}/`))
+        }
+      }
+    }
+    findings.push(...packageItems(context, key, context.isFile(board)))
+  }
+  return findings
+}
+
+/** Every item file starts with its ID, and the board links exactly the files that exist. */
+function packageItems(context: Context, key: string, hasBoard: boolean): Finding[] {
+  const directory = `${key}/items`
+  const findings: Finding[] = []
+  const names: string[] = []
+  if (context.exists(directory)) {
+    for (const child of context.readDir(directory)) {
+      if (!child.isFile || !child.name.endsWith('.md')) {
+        findings.push(fail(`unexpected entry in package items: ${directory}/${child.name}`))
+        continue
+      }
+      names.push(child.name)
+      const id = child.name.slice(0, -3)
+      if (!context.readText(`${directory}/${child.name}`).startsWith(`# ${id} — `)) {
+        findings.push(
+          fail(`package item heading does not start with its ID: ${directory}/${child.name}`),
+        )
+      }
+    }
+  }
+  if (!hasBoard) {
+    return findings
+  }
+  const links = new Set<string>()
+  for (const match of context.readText(`${key}/board.md`).matchAll(/\]\(items\/([^)]+\.md)\)/g)) {
+    links.add(match[1])
+  }
+  for (const name of names) {
+    if (!links.has(name)) {
+      findings.push(fail(`package item not linked from board: ${directory}/${name}`))
+    }
+  }
+  for (const link of links) {
+    if (!names.includes(link)) {
+      findings.push(fail(`board links a missing package item: ${key}/items/${link}`))
+    }
+  }
+  return findings
+}
+
+const BOARD_FIELDS = [
+  'Updated',
+  'Status',
+  'Phase',
+  'Gate',
+  'Next',
+  'Blocked',
+  'Last done',
+  'Open decisions',
+  'Read first',
+] as const
+
+const BOARD_STATUSES = new Set(['todo', 'doing', 'blocked', 'done', 'dropped'])
+const REPOSITORY_HEADER = ['Repository', 'Branch', 'Gate command', 'Last result']
+const ITEM_ID = /W\d{2}[a-z]*(?:-[ivx]+)?/
+
+/** Every work-item ID named in a value. */
+function itemIds(value: string): string[] {
+  return [...value.matchAll(new RegExp(ITEM_ID.source, 'g'))].map(match => match[0])
+}
+
+/** The `- Field: value` lines of `## Current state`, stopping at the next heading. */
+function dashboardFields(text: string): Map<string, string> {
+  const fields = new Map<string, string>()
+  let inState = false
+  for (const line of splitLines(text)) {
+    const stripped = pyStrip(line)
+    if (stripped === '## Current state') {
+      inState = true
+      continue
+    }
+    if (inState && stripped.startsWith('## ')) {
+      break
+    }
+    if (!inState || !stripped.startsWith('- ')) {
+      continue
+    }
+    const match = stripped.slice(2).match(/^([A-Za-z][A-Za-z ]*):\s*(.*)$/)
+    if (match) {
+      fields.set(match[1], pyStrip(match[2]))
+    }
+  }
+  return fields
+}
+
+interface BoardItem {
+  id: string
+  file: string
+  status: string
+}
+
+/** The index rows: one linked item per row, with its status. */
+function indexItems(text: string): BoardItem[] {
+  const items: BoardItem[] = []
+  for (const line of splitLines(text)) {
+    const stripped = pyStrip(line)
+    if (!TABLE_ROW.test(stripped) || matchesFully(TABLE_DELIMITER, stripped)) {
+      continue
+    }
+    const cells = splitCells(stripped).map(cell => pyStrip(cell))
+    if (cells.length < 3 || !cells[0].startsWith('[')) {
+      continue
+    }
+    const match = cells[0].match(/\[([^\]]+)\]\(items\/([^)]+\.md)\)/)
+    if (match) {
+      items.push({ id: match[1], file: match[2], status: cells[2] })
+    }
+  }
+  return items
+}
+
+interface RepositoryTable {
+  header: string[]
+  rows: string[][]
+}
+
+/** The `## Repositories` table, or null when the section has none. */
+function repositoryTable(text: string): RepositoryTable | null {
+  let inSection = false
+  let header: string[] | null = null
+  const rows: string[][] = []
+  for (const line of splitLines(text)) {
+    const stripped = pyStrip(line)
+    if (stripped === '## Repositories') {
+      inSection = true
+      continue
+    }
+    if (inSection && stripped.startsWith('## ')) {
+      break
+    }
+    if (!inSection || !TABLE_ROW.test(stripped) || matchesFully(TABLE_DELIMITER, stripped)) {
+      continue
+    }
+    const cells = splitCells(stripped).map(cell => pyStrip(cell))
+    if (header === null) {
+      header = cells
+    } else {
+      rows.push(cells)
+    }
+  }
+  return header === null ? null : { header, rows }
+}
+
+interface BlockedClause {
+  id: string
+  hasReason: boolean
+}
+
+/** The clauses of a `Blocked` line: a leading item ID and whether a parenthesized reason follows. */
+function blockedClauses(value: string): BlockedClause[] {
+  const clauses: BlockedClause[] = []
+  for (const clause of value.split(';')) {
+    const trimmed = clause.trim()
+    const match = trimmed.match(ITEM_ID)
+    if (!match || match.index !== 0) {
+      continue
+    }
+    const after = trimmed.slice(match[0].length).trimStart()
+    clauses.push({ id: match[0], hasReason: after.startsWith('(') })
+  }
+  return clauses
+}
+
+/**
+ * The board's `Current state` is a handoff card, not a report (`docs/norm/flow.md`).
+ *
+ * A projection check: `Next` must point at a doing or todo item (or closeout/none),
+ * `Blocked` must name exactly the blocked rows, and `Last done` must be a done item.
+ * Counts and prose are not recomputed; the index is the only list.
+ */
+export function boardDashboard(context: Context): Finding[] {
+  const findings: Finding[] = []
+  for (const { key, archived } of packageDirs(context)) {
+    const board = `${key}/board.md`
+    if (!context.isFile(board)) {
+      continue
+    }
+    const text = context.readText(board)
+    const fields = dashboardFields(text)
+    for (const name of BOARD_FIELDS) {
+      if (!fields.has(name)) {
+        findings.push(fail(`board field missing: ${board}: ${name}`))
+      } else if (fields.get(name) === '') {
+        findings.push(fail(`board field is empty: ${board}: ${name}`))
+      }
+    }
+
+    const status = fields.get('Status') ?? ''
+    if (status !== 'open' && status !== 'closed') {
+      findings.push(fail(`board Status must be open or closed: ${board}`))
+    } else if (!archived && status !== 'open') {
+      findings.push(fail(`open package board says closed: ${board}`))
+    } else if (archived && status !== 'closed') {
+      findings.push(fail(`archived package board says open: ${board}`))
+    }
+
+    const updated = fields.get('Updated') ?? ''
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(updated)) {
+      findings.push(fail(`board Updated is not YYYY-MM-DD: ${board}`))
+    }
+
+    const phase = fields.get('Phase') ?? ''
+    if (!/^P\d+ — /.test(phase)) {
+      findings.push(fail(`board Phase is not P<n> — focus: ${board}`))
+    }
+
+    const repositories = repositoryTable(text)
+    if (repositories === null) {
+      findings.push(fail(`board has no Repositories table: ${board}`))
+    } else {
+      if (repositories.header.join('|') !== REPOSITORY_HEADER.join('|')) {
+        findings.push(
+          fail(
+            `board Repositories header is not Repository | Branch | Gate command | Last result: ${board}`,
+          ),
+        )
+      }
+      if (repositories.rows.length === 0) {
+        findings.push(fail(`board Repositories table has no rows: ${board}`))
+      }
+      for (const row of repositories.rows) {
+        if (row.length !== REPOSITORY_HEADER.length) {
+          findings.push(fail(`board Repositories row has ${row.length} cells: ${board}`))
+        } else if (row.some(cell => cell === '')) {
+          findings.push(fail(`board Repositories row has an empty cell: ${board}`))
+        }
+      }
+    }
+
+    const items = indexItems(text)
+    const byId = new Map(items.map(item => [item.id, item]))
+    const blocked = new Set(items.filter(item => item.status === 'blocked').map(item => item.id))
+    for (const item of items) {
+      if (!BOARD_STATUSES.has(item.status)) {
+        findings.push(fail(`board status ${pyRepr(item.status)} is unknown: ${board}: ${item.id}`))
+      }
+      if (item.status === 'dropped') {
+        const file = `${key}/items/${item.file}`
+        if (!context.isFile(file) || !context.readText(file).includes('**Disposition**:')) {
+          findings.push(fail(`dropped item has no Disposition: ${file}`))
+        }
+      }
+    }
+
+    const next = fields.get('Next') ?? ''
+    const nextIds = itemIds(next)
+    if (nextIds.length > 1) {
+      findings.push(fail(`board Next names more than one item: ${board}`))
+    }
+    const nextKind = next.split(' — ')[0].trim()
+    if (nextKind === 'none') {
+      if (items.some(item => item.status === 'todo' || item.status === 'doing')) {
+        findings.push(fail(`board Next is none but an item is todo/doing: ${board}`))
+      }
+    } else if (nextKind === 'closeout') {
+      if (
+        items.some(
+          item => item.status === 'todo' || item.status === 'doing' || item.status === 'blocked',
+        )
+      ) {
+        findings.push(fail(`board Next is closeout but work remains: ${board}`))
+      }
+    } else {
+      const id = next.match(ITEM_ID)?.[0]
+      if (!id) {
+        findings.push(fail(`board Next is not an item, closeout, or none: ${board}`))
+      } else {
+        const item = byId.get(id)
+        if (!item) {
+          findings.push(fail(`board Next points at a missing item: ${board}: ${id}`))
+        } else if (item.status !== 'doing' && item.status !== 'todo') {
+          findings.push(fail(`board Next points at ${item.status} item: ${board}: ${id}`))
+        }
+      }
+    }
+
+    const blockedLine = fields.get('Blocked') ?? ''
+    if (blockedLine === 'none') {
+      if (blocked.size > 0) {
+        findings.push(fail(`board Blocked is none but an item is blocked: ${board}`))
+      }
+    } else {
+      const clauses = blockedClauses(blockedLine)
+      const named = new Set(clauses.map(clause => clause.id))
+      for (const clause of clauses) {
+        if (!clause.hasReason) {
+          findings.push(fail(`board Blocked has no reason: ${board}: ${clause.id}`))
+        }
+        const item = byId.get(clause.id)
+        if (!item) {
+          findings.push(fail(`board Blocked names a missing item: ${board}: ${clause.id}`))
+        } else if (item.status !== 'blocked') {
+          findings.push(fail(`board Blocked names ${item.status} item: ${board}: ${clause.id}`))
+        }
+      }
+      for (const id of blocked) {
+        if (!named.has(id)) {
+          findings.push(fail(`board Blocked omits blocked item: ${board}: ${id}`))
+        }
+      }
+    }
+
+    const lastDone = fields.get('Last done') ?? ''
+    const lastDoneIds = itemIds(lastDone)
+    if (lastDoneIds.length > 1) {
+      findings.push(fail(`board Last done names more than one item: ${board}`))
+    }
+    if (lastDone === 'none') {
+      if (items.some(item => item.status === 'done')) {
+        findings.push(fail(`board Last done is none but an item is done: ${board}`))
+      }
+    } else {
+      const id = lastDone.match(ITEM_ID)?.[0]
+      if (!id) {
+        findings.push(fail(`board Last done is not an item or none: ${board}`))
+      } else {
+        const item = byId.get(id)
+        if (!item) {
+          findings.push(fail(`board Last done points at a missing item: ${board}: ${id}`))
+        } else if (item.status !== 'done') {
+          findings.push(fail(`board Last done points at ${item.status} item: ${board}: ${id}`))
+        }
+      }
+    }
+  }
+  return findings
+}

@@ -6,13 +6,14 @@
  * delegates it to the `md-tools` CLI so the block model has one implementation.
  *
  * Everything below is reporting: which findings fail, which warn, and what the run
- * summarizes. The rules live in `docs-model.ts` and `doc-checks.ts`, with a test beside
- * each.
+ * summarizes. The rules live in `docs-model.ts`, `doc-checks.ts`, and `package-checks.ts`;
+ * `check-context.ts` reads the repository, with a test beside each check.
  */
 
 import * as path from 'node:path'
 
-import { createContext, runChecks } from './doc-checks.ts'
+import { createContext } from './check-context.ts'
+import { runChecks } from './doc-checks.ts'
 
 const ROOT = path.resolve(import.meta.dir, '..')
 

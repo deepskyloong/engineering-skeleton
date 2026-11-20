@@ -10,7 +10,7 @@
 - Four of the twelve rules in `docs/norm/rules.md` are `weak` and would remain weak even with a checker; the strong rules are only enforced inside this repository.
 - A portable checker needs a small config: repository root, overlay, optional roles present, language.
 - The rollout order is tracked in `B-0005`; a checker is worth extracting only after the second repository exists.
-- The local checker is now TypeScript with a test per rule (`scripts/docs-model.ts`, `scripts/doc-checks.ts`), so the TypeScript half of the candidate set is a copy and a trim rather than a reimplementation.
+- The local checker is now TypeScript with a test per rule (`scripts/docs-model.ts`, `scripts/check-context.ts`, `scripts/doc-checks.ts`, `scripts/package-checks.ts`), so the TypeScript half of the candidate set is a copy and a trim rather than a reimplementation.
 
 ## Candidate check set
 

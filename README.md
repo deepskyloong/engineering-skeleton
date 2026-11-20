@@ -19,9 +19,9 @@ This repository makes the roles normative and keeps the layout as small as it ca
 | `docs/workflow.md` | The three operating modes: forge, audit, migrate, and the migration mapping table. |
 | `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
 | `docs/backlog/` | Deferred items with a revisit trigger. |
-| `work-packages/` | Work packages: spec, plan, todo, and the closeout summary. |
+| `work-packages/` | Work packages: spec, plan, board, and the closeout summary. |
 | `template/` | Copyable starting points: day-one files, first-effort files, language overlays. |
-| `scripts/` | The gate: `check.ts` reports, `docs-model.ts` measures text and budgets, `doc-checks.ts` holds one rule per function, and each has a test beside it. |
+| `scripts/` | The gate: `check.ts` reports, `docs-model.ts` measures text and budgets, `check-context.ts` reads the repository, `doc-checks.ts` holds the generic rules, `package-checks.ts` holds the work-package and board rules, and each check has a test beside it. |
 | `package.json`, `.oxfmtrc.json` | Root tooling for the gate: Bun format for code, Prettier for Markdown, and command wiring. |
 | `.github/workflows/gate.yml` | CI forwarding: runs `bun run gate:ci`, every stage but prose, on push and pull request. |
 

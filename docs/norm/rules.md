@@ -62,7 +62,7 @@ Lines are not a volume unit: the same budget expressed in lines gives opposite v
 | `status.md` | ≤10,000 / ≤16,000 EN; ≤5,000 / ≤8,000 ZH | — |
 | `GLOSSARY.md` | ≤7,500 / ≤12,000 | — |
 | `GLOSSARY-MAP.md` | ≤2,500 / ≤4,000 | — |
-| `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 3 sections |
+| `work-packages/<slug>/summary.md`, `work-packages/archive/<slug>/summary.md` | ≤3,750 / ≤6,000 | 4 sections (structural, not table rows; a frozen summary keeps the shape it was written with) |
 
 Package evidence — a report, inventory, or reproduction script a work package owns — carries no volume budget; `summary.md` names it, and the evidence's own structure governs its length. `work-packages/<slug>/spec.md`, `plan.md`, `board.md`, and its `items/<ID>.md` files are working state, not durable reading artifacts; they carry no volume budget. `summary.md` is the closeout reading artifact and carries the budget above.
 

@@ -35,6 +35,7 @@ Each choice with rejected alternatives gets its own file. An ADR is never delete
 | [ADR-0027](ADR-0027-retire-governance-role.md) | Governance is not a role; the norm and the red lines carry it | Accepted |
 | [ADR-0028](ADR-0028-a-moved-path-is-a-row.md) | A moved path is one registry row; no file is left at the old path | Accepted |
 | [ADR-0029](ADR-0029-work-item-files.md) | A work item is a file under `items/`; `board.md` carries the snapshot and its index | Accepted |
+| [ADR-0030](ADR-0030-board-is-a-handoff-card.md) | The board's `Current state` is a nine-field handoff card; the index is the only list | Accepted |
 
 ## Format
 

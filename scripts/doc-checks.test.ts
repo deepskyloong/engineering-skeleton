@@ -1,18 +1,17 @@
 /**
- * Tests for the checks. Each case builds the smallest repository the rule can be
- * violated in, so a rule that stops firing shows up as a failing expectation instead
+ * Tests for the generic checks. Each case builds the smallest repository the rule can
+ * be violated in, so a rule that stops firing shows up as a failing expectation instead
  * of a quiet green gate.
  */
 
 import { afterEach, describe, expect, test } from 'bun:test'
 import * as fs from 'node:fs'
-import * as os from 'node:os'
 import * as path from 'node:path'
 
+import { createContext } from './check-context.ts'
 import {
   backlogStatus,
   budgets,
-  createContext,
   emptyDirectories,
   english,
   entries,
@@ -23,7 +22,6 @@ import {
   markers,
   movedStubs,
   naming,
-  packages,
   prose,
   requiredFiles,
   roleCoverage,
@@ -32,35 +30,9 @@ import {
   tables,
   type Runner,
 } from './doc-checks.ts'
+import { cleanupFixtures, fixture, messages } from './test-fixtures.ts'
 
-const roots: string[] = []
-
-/** A key ending in `/` creates a directory, so an empty one can be seeded. */
-function fixture(files: Record<string, string>): string {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'doc-check-'))
-  roots.push(root)
-  for (const [key, text] of Object.entries(files)) {
-    const target = path.join(root, ...key.split('/'))
-    fs.mkdirSync(path.dirname(target), { recursive: true })
-    if (key.endsWith('/')) {
-      fs.mkdirSync(target, { recursive: true })
-    } else {
-      fs.writeFileSync(target, text, 'utf8')
-    }
-  }
-  return root
-}
-
-function messages(findings: Array<{ message: string }>): string[] {
-  return findings.map(finding => finding.message)
-}
-
-afterEach(() => {
-  for (const root of roots.splice(0)) {
-    fs.rmSync(root, { recursive: true, force: true })
-  }
-})
-
+afterEach(cleanupFixtures)
 describe('requiredFiles', () => {
   test('names the file that is missing', () => {
     const findings = requiredFiles(createContext(fixture({ 'README.md': '# R\n' })))
@@ -271,162 +243,6 @@ describe('backlogStatus', () => {
   test('a spelled status passes', () => {
     const text = '| # | Item | Status |\n| --- | --- | --- |\n| B-0001 | x | paused |\n'
     expect(backlogStatus(createContext(fixture({ 'docs/backlog/README.md': text })))).toEqual([])
-  })
-})
-
-describe('packages', () => {
-  const boardWithItem =
-    '# Board\n\n| Item | Title | Status |\n| --- | --- | --- |\n| [W01](items/W01.md) | One | todo |\n'
-
-  test('an open package carries three ledger files and nothing else', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': '# Board\n',
-          'work-packages/x/stray.md': '# X\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual(['unexpected package file: work-packages/x/stray.md'])
-  })
-
-  test('an open package without a board is a finding', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual(['missing package file: work-packages/x/board.md'])
-  })
-
-  test('an archived package needs its summary', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/archive/y/spec.md': '# S\n',
-          'work-packages/archive/y/plan.md': '# P\n',
-          'work-packages/archive/y/todo.md': '# T\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'missing package summary: work-packages/archive/y/summary.md',
-    ])
-  })
-
-  test('an archived package may keep the pre-board shape', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/archive/y/spec.md': '# S\n',
-          'work-packages/archive/y/plan.md': '# P\n',
-          'work-packages/archive/y/todo.md': '# T\n',
-          'work-packages/archive/y/summary.md': '# Summary\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([])
-  })
-
-  test('evidence has to be named in the summary', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': '# Board\n',
-          'work-packages/x/summary.md': '# Summary\n',
-          'work-packages/x/audits/report.md': '# Audit\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'evidence directory not named in summary: work-packages/x/audits/',
-    ])
-  })
-
-  test('items/ is not evidence and needs no summary row', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': boardWithItem,
-          'work-packages/x/summary.md': '# Summary\n',
-          'work-packages/x/items/W01.md': '# W01 — One\n\n**Depends on**: none\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([])
-  })
-
-  test('an item file must be linked from the board', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': '# Board\n',
-          'work-packages/x/items/W01.md': '# W01 — One\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'package item not linked from board: work-packages/x/items/W01.md',
-    ])
-  })
-
-  test('a board link without a file is a finding', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': boardWithItem,
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'board links a missing package item: work-packages/x/items/W01.md',
-    ])
-  })
-
-  test('an item heading must start with its ID', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': boardWithItem,
-          'work-packages/x/items/W01.md': '# One\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'package item heading does not start with its ID: work-packages/x/items/W01.md',
-    ])
-  })
-
-  test('items/ holds only markdown item files', () => {
-    const findings = packages(
-      createContext(
-        fixture({
-          'work-packages/x/spec.md': '# S\n',
-          'work-packages/x/plan.md': '# P\n',
-          'work-packages/x/board.md': boardWithItem,
-          'work-packages/x/items/W01.md': '# W01 — One\n',
-          'work-packages/x/items/notes.txt': 'x\n',
-        }),
-      ),
-    )
-    expect(messages(findings)).toEqual([
-      'unexpected entry in package items: work-packages/x/items/notes.txt',
-    ])
   })
 })
 

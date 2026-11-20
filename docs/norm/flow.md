@@ -21,7 +21,7 @@ idea
             ├─ plan.md                    (how, with risks and stop conditions)
             ├─ board.md                   (current state, and the index of work items)
             ├─ items/<ID>.md              (one work item: description, done-when, evidence)
-            └─ summary.md                 (what happened; 3 sections)
+            └─ summary.md                 (acceptance, then what happened; 4 sections)
                  ├─ docs/contracts/<topic>.md   (a fact consumers may rely on)
                  ├─ docs/decisions/ADR-<nnnn>-*.md   (a choice with rejected alternatives)
                  ├─ docs/knowledge/guides|cases|notes
@@ -36,7 +36,7 @@ Most work packages produce only `summary.md` and disappear. That is the normal c
 
 A package carries state that a single commit cannot: a phase boundary, an open decision, a blocked item, a hand-off, or work that spans more than one working session. Open one when at least one of those exists. A change that ends in one commit takes no package: edit, run the gate, commit, and write the ADR when the change is a decision.
 
-Create `work-packages/<slug>/` from `_template.md`, split it into the four ledger files (`spec.md`, `plan.md`, `board.md`, and `summary.md`, written at closeout), and create `items/` when the first work item starts; then delete `_template.md`; it is a scaffold, not a role. Create an evidence directory only when the first item exists; never an empty one.
+Create `work-packages/<slug>/` by copying `spec.md`, `plan.md`, and `board.md` from `template/effort/work-packages/`; copy `items/W01.md` to `items/<ID>.md` when the first work item starts, and `summary.md` only at closeout. The template's `README.md` is the work-package index, not a package file. Create an evidence directory only when the first item exists; never an empty one.
 
 Four fields before any work starts:
 
@@ -45,7 +45,7 @@ Four fields before any work starts:
 3. **Acceptance**: how a reader will know it is done, in one command or one observable state.
 4. **`track:`**: which workflow suite this effort runs on, as a field in `spec.md`. Values are free-form (`default`, `spec-flow`, `superpowers`, `none`), but the field is mandatory. The track is never a directory root: a repository does not get a `docs/superpowers/` just because one effort used that suite.
 
-Before the first step, initialize `board.md` with a `## Current state` block. It carries the updated date, status, branch, last gate result with its date, phase, focus, progress (done / todo / blocked), todo items, last completed work item, next work item, blocked items, open decisions, and the read-first pointers; the work-item index follows it. The block is a snapshot, not a log, and lives inside `board.md`: it is not a fifth ledger file. Rewrite it in the same commit as any change to a work item, a decision, a branch, or the gate. A stale block is a defect.
+Before the first step, initialize `board.md` with a `## Current state` block: updated date, status (`open` / `closed`), phase, last gate summary with its date and a pointer to the per-repository detail, the next action, blocked items, the last completed item, open decisions, and the read-first pointers. A `## Repositories` table follows it with each repository's branch, gate command, and last result; the work-item index follows. `Next` names a `doing` or `todo` item, the closeout action, or `none`; `Blocked` names every blocked item with its reason; `Last done` names one done item, one clause, and its commit(s). An open decision is one question and its owner; a settled decision belongs in the ADR or the item's evidence, not in the block. The block is a snapshot, not a log, and lives inside `board.md`: it is not a fifth ledger file. Rewrite it in the same commit as any change to a work item, a decision, a branch, or the gate. A stale block is a defect.
 
 If this effort answers a backlog item, set that row's `Status` to `active` in `docs/backlog/README.md` before work starts.
 
@@ -55,7 +55,7 @@ The package's work is carried by work items. Each has a stable `W<n>` ID, one fi
 
 `Evidence` cites artifacts and names what each proves. Detail the artifact carries, the ledger does not: an item that produced a report, a map, or a measurement cites it by path and one clause, never by recital. The item file is working state and carries no volume budget; the board carries no item prose, so neither place can grow a narrative the other duplicates.
 
-`plan.md` groups the work items into phases, names the IDs in each phase, and states each phase's exit condition; it does not restate the item detail. `board.md` carries the current state and the index: one row per item, its status, and a link to `items/<ID>.md`, grouped under the plan's phase headings. It is the only place a status lives; an item file never states one.
+`plan.md` groups the work items into phases, names the IDs in each phase, and states each phase's exit condition; it does not restate the item detail. `board.md` carries the current state and the index: one row per item, its status (`todo`, `doing`, `blocked`, `done`, or `dropped`), and a link to `items/<ID>.md`, grouped under the plan's phase headings. It is the only place a status lives; an item file never states one. A dropped item keeps its file and a `Disposition` naming where the work went — a backlog item, a successor, or `dropped, no successor`.
 
 IDs are identifiers, not a sequence: `plan.md`'s row order and the board's index carry the order, and a phase may hold numbers issued later. A discovery unrelated to an open item takes the next free `W<n>` and joins the phase in which it was found. A discovery that decomposes an open item's outcome takes the next letter under it — `W07g` under `W07` — and the parent becomes a container: the work it still carried moves into its children, it carries none of its own, stays `doing` until the last child closes, and its done-when names the child set. A closed item is not reopened; a later discovery gets a new ID.
 
@@ -69,11 +69,11 @@ An effort may deviate from its plan in exactly three ways, each recorded in `sum
 | Track switch | The chosen suite cannot express the work | Old track, new track, why |
 | Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
 
-Anything else — a changed goal, a changed acceptance criterion — is a new work package, not a compromise.
+All three are recorded under `## Compromises` in `summary.md`; a summary without that section is incomplete. Anything else — a changed goal, a changed acceptance criterion — is a new work package, not a compromise.
 
 ## Closeout — five steps, in order
 
-1. **Write `summary.md`.** Three sections: what was done, what was not, what a future maintainer must know. It sits inside the summary budget in `rules.md`. A summary that restates the diff is noise.
+1. **Write `summary.md`.** It opens with `Acceptance: met / not met — <command or output>`, then four sections: what was done, what was not, what was compromised, and what a future maintainer must know. It sits inside the summary budget in `rules.md`. A summary that restates the diff is noise.
 2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
 3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four ledger files, `items/`, and the evidence directories `summary.md` names; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
 4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
@@ -89,14 +89,14 @@ A review is adversarial by default: the reviewer tries to break the structure ra
 
 Run before declaring a work package closed:
 
-- [ ] `summary.md` exists, is inside budget, and names what was not done.
+- [ ] `summary.md` exists, is inside budget, opens with `Acceptance:`, and names what was not done and what was compromised.
 - [ ] `summary.md` names every evidence directory, and no evidence directory is empty.
 - [ ] Every contract, ADR, or knowledge file produced by the effort has a home and a link from its directory README.
 - [ ] `rg -l '<slug>'` was run; every surviving pointer is explained.
 - [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.
 - [ ] The package is at `work-packages/archive/<slug>/` and read-only.
 - [ ] A backlog item this effort answered is marked `closed` in `docs/backlog/README.md`.
-- [ ] Every done work item cites evidence; every open item is in `Current state`.
+- [ ] Every done work item cites evidence; every open item is in the board's index, and the dashboard's `Next` and `Blocked` point at the right rows.
 - [ ] Every work item has one file under `items/` and one row in the board's index.
 - [ ] The gate is green.
 - [ ] No new optional role was created without its trigger.

@@ -10,7 +10,7 @@ The standard is language-agnostic in its core and language-specific in its overl
 
 This repository keeps no changelog: `git log` is it, and the decisions hold the reasoning. The standard is never published as a package; it is consumed by copying, so backward compatibility is a courtesy rather than a constraint, and a breaking change states the migration step in the same commit. There is no version number either: a repository records where it read the standard — the `Norm source:` line in `AGENTS.md`, and a `Last read` marker on each page it points at.
 
-## Six principles
+## Seven principles
 
 **P1 — One role, one home.** A fact that a reader may rely on has exactly one authoritative location. Every other mention is a link or a regenerated copy with a header saying so. Two homes for one rule is the failure mode this standard exists to prevent.
 
@@ -23,6 +23,8 @@ This repository keeps no changelog: `git log` is it, and the decisions hold the 
 **P5 — Structure over convention.** A path beats a promise. If a document must exist, it has a home; if it has no home, it does not exist and nobody will maintain it. "Please remember to write an ADR" is not a structure.
 
 **P6 — One authority, many pointers.** A general norm is written once at its source; a consumer points at it and records only deviations, never a copied restatement. Template and skill are derivatives of the norm for the same reason: when they drift, the norm wins; when the norm is wrong, the norm changes first and the derivative follows in the same or the next commit.
+
+**P7 — Design against use.** A design is not proved by its schema. A field, section, or step earns its place only when it changes a decision or answers "where did I leave off"; a structure that only restates another home is ceremony. Question the brief itself, not only the values it asks for: a complete-looking schema can be the wrong shape. Test the design on a live package rather than a hypothetical one; a template that has never carried a package is a proposal, a rule that has never been applied is a guess. Refine until the live use is shorter and clearer than the design it replaced; that is the practical design, not the one that reads best on paper. P7 is a review criterion (`weak`): the gate can test a projection, not whether a field changes a decision.
 
 ## Lineage
 
