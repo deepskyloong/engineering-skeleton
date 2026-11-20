@@ -6,8 +6,8 @@
 - Status: open
 - Phase: P3 — closeout
 - Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
-- Next: W08b — dispose of the four degraded frozen citations
-- Last done: W12 — the template's structure page links the norm (standard `c5d4994`)
+- Next: W08c — re-check the architecture admission against the remaining four repositories
+- Last done: W08b — the four dropped-section citations are disposed (rows 22–25)
 - Blocked: none
 - Open decisions: none
 
@@ -67,7 +67,7 @@
 | Item | Title | Status |
 | --- | --- | --- |
 | [W08](items/W08.md) | Fix the standard gaps the rollout exposed | doing |
-| [W08b](items/W08b.md) | Dispose of the four degraded frozen citations | todo |
+| [W08b](items/W08b.md) | Dispose of the four degraded frozen citations | done |
 | [W08c](items/W08c.md) | Re-check the architecture admission against the remaining four repositories | todo |
 | [W08d](items/W08d.md) | Decide how R12 is verified on Python targets | todo |
 | [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |

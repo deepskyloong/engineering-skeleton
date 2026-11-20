@@ -32,7 +32,7 @@ Baseline note (2026-11-18): `oshi.md` measured `57e3d0a`, a commit on `feature/s
 | 16 | nit | withdrawn | A suite package may stay spec-only | ADR-0010; `tasks/head-kind-experiment/spec.md` |
 | 17 | nit | resolved | Working tree clean; the review-index change landed | `fb6701e` |
 
-`open` is tracked by the named work item; `resolved` names the commit; `withdrawn` means the finding no longer holds; `superseded` means a later decision replaces it; `filed` means a backlog item or ADR owns it.
+`open` is tracked by the named work item; `resolved` names the commit; `withdrawn` means the finding no longer holds; `superseded` means a later decision replaces it; `filed` means a backlog item or ADR owns it; `exception` and `pointer` name a deliberate drop's disposal — `exception` resolves through the old path's registry row and `git log` and names where the fact lives, `pointer` names the page it lands on.
 
 ## Follow-up findings
 
@@ -44,6 +44,10 @@ Findings noticed while executing the repairs, numbered after the frozen report. 
 | 19 | 2026-11-20 (W07g) | resolved | `web/README.md`'s tables were re-padded by the frontend `oxfmt`, which put R12 out of reach; `**/*.md` joins `web/.oxfmtrc.json` `ignorePatterns` and the three tables are compact | `5e4a208` |
 | 20 | 2026-11-20 (W07e) | resolved | `docs/status.md` and `docs/suite-tracks.md` still lacked their `Norm` row; the concurrent norm-declaration pass added them | `e81cdee` |
 | 21 | 2026-11-20 (W06) | resolved | `tests/test_s2_prereg.py` asserted the ten result files `3bde9bf` had replaced with directory rows; the test now guards the package row and its index link | `2cabed8` |
+| 22 | 2026-11-20 (W08b) | exception | `docs/designs/architecture-v2.md` §7 "Milestones" is retired: the sequence and outcomes are `docs/plans/README.md`, the 2026-10-29 label re-map is `docs/plans/m3-plan.md` "Milestone-label note", and the table's text is `git show b7efaec^:docs/designs/architecture-v2.md`; the seven frozen lines keep their citation under M5, and `B-0004` stays the dated survey record W07d kept | `docs/plans/README.md`; `docs/plans/m3-plan.md`; `b7efaec` |
+| 23 | 2026-11-20 (W08b) | exception | `docs/specs/annotation-spec.md` §12 "Revision record" is retired by R9: its text is `git show 6d6033a^:docs/specs/annotation-spec.md`; the two frozen `import_gt.py` copies keep the citation, and the living citer now points at `docs/contracts/annotation-definition.md` | `6d6033a`; `docs/knowledge/guides/pitfalls.md` |
+| 24 | 2026-11-20 (W08b) | exception | `docs/specs/annotation-spec.md` §8.1 "M3-B tier-B GT (2026-10-30; closed)" is retired with its closed pool: the pool and its numbers are `docs/plans/m3b-plan.md`, the outcomes are `experiments/m3b/results/`, and `docs/contracts/annotation-acceptance.md`'s `Source` row records §8 "except §8.1" | `docs/plans/m3b-plan.md`; `experiments/m3b/results/tierb-acceptance.md` |
+| 25 | 2026-11-20 (W08b) | pointer | Q3 (milestone re-sequencing) lands on `docs/plans/README.md` for the sequence and `docs/plans/m3-plan.md` "Milestone-label note" for the 2026-10-29 re-map; `docs/conventions.md` "Decision hierarchy" states the home | `docs/conventions.md`; `docs/plans/README.md`; `docs/plans/m3-plan.md` |
 
 ## Move records
 
