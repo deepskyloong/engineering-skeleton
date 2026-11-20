@@ -21,7 +21,7 @@ Three modes. Every mode names its inputs, its steps, its output, and the conditi
 - [ ] `AGENTS.md` has invariants, the gate, and a routing table.
 - [ ] `docs/README.md` has governance and index sections.
 - [ ] `docs/charter.md` names at least one non-goal.
-- [ ] `docs/structure.md` carries the tree and the three artifact tiers.
+- [ ] `docs/structure.md` names this repository's layout, carries its artifact tiers, and links the level, index, and placement rules.
 - [ ] `docs/conventions.md` carries the language rule and the five discriminations.
 - [ ] `docs/committing.md` points at the committing norm and records only deviations.
 - [ ] The overlay gate runs green.
