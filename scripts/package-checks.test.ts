@@ -175,10 +175,9 @@ describe('boardDashboard', () => {
 - Phase: P1 — work
 - Gate: all green (2026-11-20); per-repository detail below
 - Next: W02 — start
-- Blocked: none
 - Last done: W01 — done (abc1234)
+- Blocked: none
 - Open decisions: none
-- Read first: \`spec.md\`, \`plan.md\`, this board
 
 ## Repositories
 
@@ -208,6 +207,15 @@ describe('boardDashboard', () => {
   test('a consistent handoff card is silent', () => {
     const findings = boardDashboard(createContext(packageWithBoard(validBoard)))
     expect(messages(findings)).toEqual([])
+  })
+
+  test('Next and Last done stay adjacent', () => {
+    const board = validBoard.replace(
+      '- Last done: W01 — done (abc1234)\n- Blocked: none',
+      '- Blocked: none\n- Last done: W01 — done (abc1234)',
+    )
+    const findings = boardDashboard(createContext(packageWithBoard(board)))
+    expect(messages(findings)).toContain('board fields are out of order: work-packages/x/board.md')
   })
 
   test('an empty field is a finding', () => {

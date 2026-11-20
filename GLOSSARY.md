@@ -56,7 +56,7 @@ _Avoid_: pipeline, flow
 
 _Avoid_: task, ticket
 
-**board (work package)**: `work-packages/<slug>/board.md`: the package's nine-field handoff card and the index of its work items, one row per item linking to `items/<ID>.md`; it is the only place a status lives.
+**board (work package)**: `work-packages/<slug>/board.md`: the package's eight-field handoff card and the index of its work items, one row per item linking to `items/<ID>.md`; it is the only place a status lives.
 
 _Avoid_: todo, tracker
 

@@ -7,10 +7,9 @@
 - Phase: <P<n> — phase focus>
 - Gate: <all green / red / not run> (<date>); per-repository detail below
 - Next: W<nn> — <the action> / closeout — <the action> / none
-- Blocked: W<nn> (<reason>); … / none
 - Last done: W<nn> — <one clause> (<commit>) / none
+- Blocked: W<nn> (<reason>); … / none
 - Open decisions: <question> (owner) / none
-- Read first: `spec.md` (goal, non-goal, acceptance), `plan.md` (approach, phases, risks, check-ins), this board (state and index), `items/<ID>.md` (the item you are on), `summary.md` (closed packages only)
 
 ## Repositories
 

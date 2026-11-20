@@ -133,10 +133,9 @@ const BOARD_FIELDS = [
   'Phase',
   'Gate',
   'Next',
-  'Blocked',
   'Last done',
+  'Blocked',
   'Open decisions',
-  'Read first',
 ] as const
 
 const BOARD_STATUSES = new Set(['todo', 'doing', 'blocked', 'done', 'dropped'])
@@ -251,11 +250,12 @@ function blockedClauses(value: string): BlockedClause[] {
 }
 
 /**
- * The board's `Current state` is a handoff card, not a report (`docs/norm/flow.md`).
+ * The board is a handoff card, not a report (`docs/norm/flow.md`).
  *
- * A projection check: `Next` must point at a doing or todo item (or closeout/none),
- * `Blocked` must name exactly the blocked rows, and `Last done` must be a done item.
- * Counts and prose are not recomputed; the index is the only list.
+ * A projection check: the fields keep their reading order, `Next` must point at a
+ * doing or todo item (or closeout/none), `Blocked` must name exactly the blocked rows,
+ * and `Last done` must be a done item. Counts and prose are not recomputed; the index
+ * is the only list.
  */
 export function boardDashboard(context: Context): Finding[] {
   const findings: Finding[] = []
@@ -272,6 +272,15 @@ export function boardDashboard(context: Context): Finding[] {
       } else if (fields.get(name) === '') {
         findings.push(fail(`board field is empty: ${board}: ${name}`))
       }
+    }
+    const ordered = [...fields.keys()].filter(name =>
+      (BOARD_FIELDS as readonly string[]).includes(name),
+    )
+    if (
+      ordered.length === BOARD_FIELDS.length &&
+      ordered.some((name, index) => name !== BOARD_FIELDS[index])
+    ) {
+      findings.push(fail(`board fields are out of order: ${board}`))
     }
 
     const status = fields.get('Status') ?? ''

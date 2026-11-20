@@ -16,9 +16,9 @@ The first proposal was a larger board: keep `Acceptance`, add `Repositories`, fi
 
 ## Decision
 
-The board's `Current state` is a nine-line handoff card, and the index below it is the only list.
+The board is a handoff card: an eight-field `Current state`; the index below it is the only list.
 
-- **The nine fields.** `Updated`, `Status` (`open` / `closed`), `Phase`, `Gate` (a summary with a date and a pointer to the per-repository detail), `Next`, `Blocked`, `Last done`, `Open decisions`, `Read first`.
+- **The eight fields.** `Updated`, `Status` (`open` / `closed`), `Phase`, `Gate` (a summary with a date and a pointer to the per-repository detail), `Next`, `Last done`, `Blocked`, `Open decisions`. **`Read first` is cut.** It listed the ledger files, the board, and the current item—all adjacent and already named by the package; a preface that only points at its neighbors is ceremony. When a package has a non-obvious entry, `Next` or the item names it.
 - **`Repositories` table.** Each repository's branch, gate command, and last result live below the block; the `Gate` line no longer packs two repositories.
 - **`Acceptance` is not on the board.** It is a closeout material: the spec states how a reader will know the effort is done, and `summary.md` records `Acceptance: met / not met — <command or output>`. The dashboard does not duplicate it. The cost is that a package with a goal gap and an acceptance gap both in `todo` no longer distinguishes them at a glance; the spec and summary do, and the closeout checklist reads them.
 - **`Progress` and `Todo` are cut.** They are projections of the index: the index is the list, `Next` is the first action, `Blocked` is the exception. A count is a derived convenience that drifts on every status flip; the oshi board's `1 umbrella` is the evidence. If a reader needs a count, the index supplies it; the board does not store it.
@@ -27,7 +27,7 @@ The board's `Current state` is a nine-line handoff card, and the index below it 
 - **`Last done` is one item, one clause, and the commit(s) that closed it.** It answers "where did I leave off" without becoming a work log; the item file and `git log` hold the detail.
 - **The template is a directory of files, not one scaffold.** `template/effort/work-packages/` carries `README.md` (the work-package index a target copies), `spec.md`, `plan.md`, `board.md`, `summary.md`, and `items/W01.md` (with `items/README.md`). A package copies the three working files into `work-packages/<slug>/`, copies `items/W01.md` to `items/<ID>.md`, and copies `summary.md` only at closeout. `_template.md` is deleted.
 - **`summary.md` opens with `Acceptance:` and has four sections.** `Done`, `Not done`, `Compromises`, `What a future maintainer must know`; the norm's three permitted compromises now have a home. `rules.md` changes the summary's section count from three to four; a frozen summary keeps the shape it was written with.
-- **The checker validates the projections, not the prose.** `boardDashboard` checks the nine fields are present and non-empty, `Status` against the package's location, `Updated` as a date, `Phase` as `P<n> — <focus>`, the `Repositories` header and its four-cell rows, item statuses in `todo | doing | blocked | done | dropped`, a dropped item's `Disposition`, `Next` against one `doing`/`todo` item or `closeout`/`none`, `Blocked` against exactly the blocked rows, and `Last done` against one done item. It does not recompute counts or compare the gate's measurements.
+- **The checker validates the projections, not the prose.** `boardDashboard` checks the eight fields are present and non-empty, the fields keep their order, `Status` against the package's location, `Updated` as a date, `Phase` as `P<n> — <focus>`, the `Repositories` header and its four-cell rows, item statuses in `todo | doing | blocked | done | dropped`, a dropped item's `Disposition`, `Next` against one `doing`/`todo` item or `closeout`/`none`, `Blocked` against exactly the blocked rows, and `Last done` against one done item. It does not recompute counts or compare the gate's measurements.
 
 ## Options considered
 
@@ -45,5 +45,5 @@ The board's `Current state` is a nine-line handoff card, and the index below it 
 - `docs/norm/rules.md` changes the summary's section count; a frozen summary keeps its old shape, so the archived packages are not rewritten.
 - `template/effort/work-packages/` gains `spec.md`, `plan.md`, `board.md`, `summary.md`, and `items/`; `_template.md` is deleted. `template/effort/README.md`, `template/README.md`, `template/effort/work-packages/README.md`, `work-packages/README.md`, and the skill's forge step copy the files instead of splitting a scaffold.
 - `scripts/package-checks.ts` gains `boardDashboard` (with `packages`); `scripts/doc-checks.ts` keeps the generic checks; `scripts/check-context.ts` holds the read model; `scripts/docs-model.ts` drops `_template.md` from the role names; the tests cover the new checks.
-- `work-packages/rollout-oshi/board.md` migrates to the nine fields and the `Repositories` table in the same change; `items/W09.md` writes the four-section summary.
+- `work-packages/rollout-oshi/board.md` migrates to the eight fields and the `Repositories` table in the same change; `items/W09.md` writes the four-section summary.
 - The board and item files remain working state with no volume budget. The index remains the only list; the board remains the only place a status lives.
