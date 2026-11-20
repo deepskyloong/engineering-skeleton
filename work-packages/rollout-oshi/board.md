@@ -6,9 +6,9 @@
 - Status: open
 - Phase: P3 — closeout
 - Gate: all green (2026-11-20; one soft standard warning); 2/2 repositories
-- Next: W11 — pad oshi's backlog to four digits
+- Next: W08 — the five remaining standard gaps
 - Blocked: none
-- Last done: W07g — four findings disposed (oshi `e4d10d0`, `e1ec739`, `9ac5815`, `5e4a208`)
+- Last done: W11 — backlog padded to four digits (standard `76cd631`, oshi `2a7ff38`)
 - Open decisions: none
 - Read first: `spec.md` (goal, non-goal, acceptance), `plan.md` (approach, phases, risks, check-ins), this board (state and index), `items/<ID>.md` (the item you are on)
 
@@ -16,8 +16,8 @@
 
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
-| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (143 markdown files, 86 tests; one soft `roles.md` warning) |
-| oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `5e4a208` (pytest 658 passed / 1 skipped; `ty` clean; ruff 230 files; prose 244 files; `bun run validate` 86 tests) |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (145 markdown files, 86 tests; one soft `roles.md` warning) |
+| oshi | `feature/skeleton-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2a7ff38` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; `bun run validate` 86 tests) |
 
 ## Work items
 
@@ -68,5 +68,5 @@
 | Item | Title | Status |
 | --- | --- | --- |
 | [W08](items/W08.md) | Fix the standard gaps the rollout exposed | todo |
-| [W11](items/W11.md) | Pad oshi's backlog series to four digits | todo |
+| [W11](items/W11.md) | Pad oshi's backlog series to four digits | done |
 | [W09](items/W09.md) | Close the package and record oshi's disposition | todo |
