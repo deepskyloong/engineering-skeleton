@@ -2,7 +2,7 @@
 
 ## Language
 
-English for every file this repository maintains: prose, templates, commit messages, comments, test names. A document arriving in another language is translated before it lands, not annotated.
+English for every file this repository maintains: prose, templates, commit messages, comments, test names. A document arriving in another language is translated before it lands, not annotated. Spelling is US English in every repository that adopts the standard: `-ize`, `behavior`, `color`, `program`, `judgment`. A British variant is not admitted, and a repository records no deviation for it. A record is evidence, not new text: it keeps the name and the spelling it was created with.
 
 ## Naming
 

@@ -14,7 +14,7 @@
 
 - Target: <what is true now that was not before>
 - Standard: <ADR-nnnn — one clause; or "none">
-- Programme: <backlog item state and what opens next; or "none">
+- Program: <backlog item state and what opens next; or "none">
 
 ## Residuals
 

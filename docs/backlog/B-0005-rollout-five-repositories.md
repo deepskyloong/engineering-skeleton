@@ -12,7 +12,7 @@
 
 ## Plan
 
-1. One work package per repository, in order: oshi, bun-toolkit, python-toolkit, gearset, personal-agent-kit. Open the next package only when the previous closes; the norm it follows is the one the previous migration left. This item keeps its five-repository name because it tracks the programme, while a package is named for the repository it migrates.
+1. One work package per repository, in order: oshi, bun-toolkit, python-toolkit, gearset, personal-agent-kit. Open the next package only when the previous closes; the norm it follows is the one the previous migration left. This item keeps its five-repository name because it tracks the program, while a package is named for the repository it migrates.
 2. Each package audits its repository immediately before the first move, records `audits/<repo>.md`, and stops for the maintainer before touching anything.
 3. Oshi first: its backlog is the reference shape, and the cost of a wrong call is lowest.
 4. Bun-toolkit: the `AGENTS.md` split and the adapter registry get their first real test.

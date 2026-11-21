@@ -21,7 +21,7 @@ describe('splitLines', () => {
     expect(splitLines('a\nb\n')).toEqual(['a', 'b'])
   })
 
-  test('splits on every boundary Python recognises', () => {
+  test('splits on every boundary Python recognizes', () => {
     expect(splitLines('a\r\nb\vc\fd\u2028e')).toEqual(['a', 'b', 'c', 'd', 'e'])
   })
 

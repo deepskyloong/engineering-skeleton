@@ -4,7 +4,7 @@
 
 ## 1. One package per target, or the later targets are planned against a spec the first one rewrites
 
-`B-0005` opened with five repositories, and oshi's audit showed the unit was too large. The larger cost was sequencing: each role oshi moved changed the norm the other four would follow, and ADR-0006 through ADR-0016 are that change (`B-0005`, Evidence). A plan for four untouched repositories would have described a layout oshi was about to leave. The package split, and the programme now opens one package per repository, in order.
+`B-0005` opened with five repositories, and oshi's audit showed the unit was too large. The larger cost was sequencing: each role oshi moved changed the norm the other four would follow, and ADR-0006 through ADR-0016 are that change (`B-0005`, Evidence). A plan for four untouched repositories would have described a layout oshi was about to leave. The package split, and the program now opens one package per repository, in order.
 
 ## 2. A phase closes on the tree's residue, not on the roles the phase chose to move
 
