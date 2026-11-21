@@ -4,7 +4,7 @@ Copyable starting points for a repository that adopts the standard. Read `docs/n
 
 ## Copy order
 
-1. `core/` → repository root. Copy the hidden files `.editorconfig` and `.gitattributes` with the rest; they carry cross-editor defaults. Replace the values in the table below, except the command values, which the overlay decides.
+1. `core/` → repository root. Copy the hidden files `.editorconfig`, `.gitattributes`, and `.githooks/` with the rest; they carry cross-editor defaults and the optional commit check. If you want that check, run `git config core.hooksPath .githooks` after copying; it rejects a hard-wrapped body while no `Body width:` is recorded. Replace the values in the table below, except the command values, which the overlay decides.
 2. `overlays/<language>/` → copy every file except the overlay's `README.md` to the repository root, including `.github/workflows/gate.yml`. Set the gate command in `README.md` and `AGENTS.md`, install dependencies, run the gate until green.
 3. `first-use/` → only when the first ADR, the first backlog item, or the first shared term appears. Copy the matching piece only; its `docs/README.md` is a merge fragment, not a replacement.
 4. `effort/` → only when the first work package starts. Merge `docs/*` into the existing `docs/`; never overwrite `docs/README.md`. Copy the template's `work-packages/README.md` to the target's `work-packages/README.md`; create the first package from `spec.md`, `plan.md`, and `board.md` in `template/effort/work-packages/`; copy `items/W01.md` to `items/<ID>.md` when the first work item starts, and `summary.md` only at closeout; `items/README.md` is the template's note, not a package file.
@@ -53,5 +53,6 @@ A value left unreplaced is a failure; a notation left in place is correct. `{{NO
 - Do not copy `AGENTS.md` routing rows for pages that do not exist. The template marks optional pages with "(when present)"; delete the row when the page is absent.
 - Do not copy optional roles. `docs/contracts/`, `docs/operations/`, `docs/toolchain/`, `docs/knowledge/`, `docs/suite-tracks.md`, and `docs/adapters.md` appear when their trigger does.
 - Do not copy the package files (`spec.md`, `plan.md`, `board.md`, `summary.md`, `items/`) into `work-packages/` root; they are the first package's files, not the governance index.
+- Do not copy the source repository's root `.githooks/commit-msg` wrapper; `core/.githooks/commit-msg` is the full script a target needs.
 - Do not copy a budget number without its unit and its command.
 - Do not copy the norm pages themselves into a repository. A repository carries its own charter, structure, and conventions, which point back when they need the rationale.

@@ -137,7 +137,9 @@ Base: `{{NORM_SOURCE}}/docs/norm/committing.md`. Read it first; this file record
 
 No `commit-msg` hook by default. With one maintainer and an agent writing the messages, a hook costs a dependency to police a rule whose only reader is the next `git log` — and an easily bypassed hook teaches the opposite of what it appears to enforce. This page is the enforcement. Commits made before a project adopted it stay as they are; rewriting history to retro-fit a convention destroys more than it adds.
 
-A project that wants a mechanical check should write a dependency-free `commit-msg` script (`.githooks/commit-msg`, wired with `core.hooksPath`) that checks only the mechanical rules — header shape, type, subject cap and period, the blank line before the body. Do not reach for commitlint: its config-conventional defaults (`subject-case`, `body-max-line-length` 100, a wider `type-enum`) fight this convention, and it cannot check the rules that matter — outcome, why, one logical change.
+The template ships an optional dependency-free hook at `.githooks/commit-msg`; a project that wants the mechanical check copies it with the rest of `template/core/` and enables it with `git config core.hooksPath .githooks`. It checks header shape, type, subject cap and period, the blank line before the body, and rejects a hard-wrapped body while no `Body width:` is recorded. It is a convenience, not a norm obligation: the setting is clone-local and bypassable, so the rule still depends on the writer.
+
+Do not reach for commitlint: its config-conventional defaults (`subject-case`, `body-max-line-length` 100, a wider `type-enum`) fight this convention, and it cannot check the rules that matter — outcome, why, one logical change.
 
 ## Sources
 
