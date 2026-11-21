@@ -22,6 +22,10 @@
 8. Personal-agent-kit: the generated artifact contract and the knowledge split get their test. Its unit of work is a skill, so the work-package flow does not apply.
 9. Close when every repository is migrated or carries a reasoned exception recorded here or in its `docs/adapters.md`.
 
+## Progress
+
+- oshi — merged into `main` at `2cb1380` (local fast-forward from `1b52545`; `origin/main` moved `08a5414..2cb1380`), worktree removed, and archived at `work-packages/archive/rollout-oshi/`: the standard's roles are at their canonical paths, every audit finding has a disposition, and both gates are green. Next repository: bun-toolkit; this item stays active.
+
 ## Revisit when
 
-The first migration (oshi) completes; the next repository's package opens then, not before.
+Bun-toolkit's package is ready to open; audit it and stop for the maintainer before the first move.

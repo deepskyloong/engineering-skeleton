@@ -19,7 +19,6 @@ One directory per effort that needs a ledger: `work-packages/<slug>/`, holding f
 
 | Slug | Goal | Track | Status |
 | --- | --- | --- | --- |
-| rollout-oshi | Adopt the repository standard in oshi | default | open |
 
 ## Archived
 

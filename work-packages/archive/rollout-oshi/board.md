@@ -2,12 +2,12 @@
 
 ## Current state
 
-- Updated: 2026-11-20
-- Status: open
+- Updated: 2026-11-21
+- Status: closed
 - Phase: P3 — closeout
-- Gate: all green (2026-11-20; two soft standard warnings); 2/2 repositories
-- Next: W09 — close the package and record oshi's disposition
-- Last done: W08d — the R12 stage ships in the Python overlay
+- Gate: all green (2026-11-21; two soft standard warnings); 2/2 repositories
+- Next: none
+- Last done: W09 — package archived and disposition recorded
 - Blocked: none
 - Open decisions: none
 
@@ -15,8 +15,8 @@
 
 | Repository | Branch | Gate command | Last result |
 | --- | --- | --- | --- |
-| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-20 (156 markdown files, 87 tests, 0 fail; two soft warnings (`flow.md`, `roles.md`)) |
-| oshi | `feature/standard-migration` | full gate in oshi `AGENTS.md` "Gate" | green at `2cb1380` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; tables 144 files; `bun run validate` 86 tests) |
+| repository-standard | `feature/b0005-rollout-oshi` | `bun run gate` | PASS 2026-11-21 (162 markdown files, 89 tests, 0 fail; two soft warnings (`flow.md`, `roles.md`)) |
+| oshi | `main` | full gate in oshi `AGENTS.md` "Gate" | green at `2cb1380` (pytest 658 passed / 1 skipped; `ty` clean; ruff 231 files; prose 244 files; tables 144 files; `bun run validate` 86 tests) |
 
 ## Work items
 
@@ -74,4 +74,4 @@
 | [W12](items/W12.md) | Point `template/core/docs/structure.md` at the norm instead of copying it | done |
 | [W13](items/W13.md) | Let the item description take the form its content needs | done |
 | [W14](items/W14.md) | Give evidence one entry per artifact | done |
-| [W09](items/W09.md) | Close the package and record oshi's disposition | todo |
+| [W09](items/W09.md) | Close the package, remove the worktree, and record the disposition | done |

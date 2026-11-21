@@ -1,6 +1,6 @@
 # Migrating a repository onto the standard — what the oshi rollout settled
 
-`work-packages/rollout-oshi/` migrated oshi onto the standard on `feature/b0005-rollout-oshi`; its `summary.md` carries the acceptance, the state and what was left. This page keeps only the rules that would change the next migration.
+`work-packages/archive/rollout-oshi/` migrated oshi onto the standard on `feature/b0005-rollout-oshi`; its `summary.md` carries the acceptance, the state and what was left. This page keeps only the rules that would change the next migration.
 
 ## 1. One package per target, or the later targets are planned against a spec the first one rewrites
 
