@@ -1,49 +1,42 @@
 # Repository Standard
 
-A language-agnostic repository standard: which documents a long-lived project needs, where each one lives, how work moves from an idea to a recorded decision, and how the structure stays maintainable.
+A language-agnostic standard for the documents a long-lived project needs: what each document is for, where it lives, and how work moves from an idea to a recorded decision.
 
 ## Why this exists
 
-Five source repositories grew five different documentation systems. They converged on the same roles — rule layer, index, decision record, backlog, work package, knowledge capture — but disagreed on where each role lives, what it is called, and how big it may get. The cost shows up in two places: a new repository has to reinvent the layout, and an agent entering an existing one has to guess where the next document belongs.
+Five source repositories grew five different documentation systems. They converged on the same kinds of document — rules, indexes, decisions, a backlog, work packages, knowledge — but disagreed on where each belonged, what it was called, and how large it could grow. A new repository had to reinvent the layout; an agent entering an existing one had to guess where the next document belonged.
 
-This repository makes the roles normative and keeps the layout as small as it can be while still covering a project that lives for years.
+The standard fixes the roles, the placement rules, and the budgets. It leaves the language, the toolchain, and the project's vocabulary to the project.
 
-## What is here
+## What it asks for
 
-| Path | Role |
-| --- | --- |
-| `docs/norm/` | The binding text of the standard. Read this before changing anything else. |
-| `docs/charter.md` | Scope, non-goals, hard constraints, success criteria. |
-| `docs/structure.md` | This repository's layout and the placement rules for new files. |
-| `docs/conventions.md` | Language, naming, citation, and the five role discriminations. |
-| `docs/committing.md` | This repository's commit deviations; the base is `docs/norm/committing.md`, and the optional hook is enabled here. |
-| `docs/workflow.md` | The source repository's forge / audit / migrate workflow. |
-| `docs/decisions/` | ADRs — the choices that shaped the standard, with rejected options. |
-| `docs/backlog/` | Deferred items with a revisit trigger. |
-| `docs/knowledge/` | Methods, incidents and explanations that change what a maintainer does next time. |
-| `work-packages/` | Work packages: spec, plan, board, items, closeout summary, and the archive. |
-| `template/` | Copyable core, first-use, effort and overlay files; `template/core/.githooks/commit-msg` is the optional commit check. |
-| `scripts/` | The gate: `check.ts` reports, `docs-model.ts` measures text and budgets, `check-context.ts` reads the repository, `doc-checks.ts` holds the generic rules, `package-checks.ts` holds the work-package and board rules, and each check has a test beside it. |
-| `.githooks/` | This checkout's wrapper around the template hook; a repository copied from `template/core/` gets the full script. |
-| `package.json`, `.oxfmtrc.json` | Root tooling for the gate: Bun format for code, Prettier for Markdown, and command wiring. |
-| `.github/workflows/gate.yml` | CI forwarding: runs `bun run gate:ci`, every stage but prose, on push and pull request. |
+The standard separates statements that most repositories blur:
 
-Optional roles — `docs/contracts/`, `docs/operations/`, `docs/toolchain/`, `docs/adapters.md`, and `docs/suite-tracks.md` — appear only when their trigger does. This checkout has not needed them.
+- **What must hold** — the charter says what the project accepts; the instruction layer says what every turn must do; the glossary fixes what words mean.
+- **What was decided** — decision records keep the choice and the alternatives that lost; the backlog keeps deferred work with a revisit trigger.
+- **What is being executed** — work packages carry an effort from spec to closeout.
+- **What was learned** — knowledge pages keep what should change the next attempt.
 
-## Quick start
+Each home has an admission rule, an exit, an authority, and a size budget. A repository adopts only the roles it needs; optional roles appear when their trigger does, and the rest stay absent.
 
-1. Copy `template/core/` into the new repository root, including `.editorconfig`, `.gitattributes`, and `.githooks/`; replace every `<placeholder>`. If you want the optional commit check, run `git config core.hooksPath .githooks`.
+The standard does not prescribe a language, framework, documentation site, or CI provider. It prescribes where a statement belongs and how much it may hold.
+
+## Adopting it
+
+1. Do not copy this repository. Copy `template/core/` into the new repository root, including `.editorconfig`, `.gitattributes`, and `.githooks/`, and replace every `<placeholder>`. If you want the optional commit check, run `git config core.hooksPath .githooks`.
 2. Pick one overlay under `template/overlays/` and follow its README.
 3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
 4. When the first work package starts, copy `template/effort/` and create `work-packages/<slug>/spec.md` with a `track:` line.
-5. Run `bun install && bun run gate` in this repository after changing the norm or a template; a generated repository runs the gate its overlay names.
+5. Run the gate command its overlay names. In this repository, `bun install && bun run gate` checks the standard itself.
 
-## Reading order
+## Reading it
 
 For a person: this file → `docs/charter.md` → `docs/norm/foundations.md` → `docs/norm/roles.md`.
 
 For an agent: `AGENTS.md` → the routing table there → the one norm page the task needs.
 
-## Status
+## Keeping the standard
 
-The gate is green in this checkout. The template and the skill are downstream: a role or budget change lands in the norm, then the template and the skill in the same commit. A portable checker for target repositories remains deferred (`docs/backlog/B-0002`). The optional commit hook is shipped in the template, not a norm requirement.
+`docs/norm/` is the binding text. A role or budget change lands there first, then in `template/` and `AGENTS.md` in the same commit. The gate checks the result: `bun run gate`.
+
+The gate is green in this checkout. The optional commit hook ships in the template; it is a convenience, not a norm requirement. A portable checker for repositories created from the template remains deferred (`docs/backlog/B-0002`).
