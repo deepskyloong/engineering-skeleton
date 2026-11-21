@@ -1,6 +1,6 @@
 /**
  * The work-package checks: the ledger shape and the board as a handoff card.
- * ADR-0021, ADR-0029, and ADR-0030 define the package and its board.
+ * ADR-0021, ADR-0029, ADR-0030, and ADR-0036 define the package and its summary.
  */
 
 import type { Context } from './check-context.ts'
@@ -76,6 +76,9 @@ export function packages(context: Context): Finding[] {
     const summary = `${key}/summary.md`
     if (context.isFile(summary)) {
       const text = context.readText(summary)
+      for (const part of summaryShape(text)) {
+        findings.push(fail(`${summary}: missing ${part}`))
+      }
       for (const child of context.readDir(key)) {
         if (child.isDirectory && child.name !== 'items' && !text.includes(child.name)) {
           findings.push(fail(`evidence directory not named in summary: ${key}/${child.name}/`))
@@ -85,6 +88,41 @@ export function packages(context: Context): Finding[] {
     findings.push(...packageItems(context, key, context.isFile(board)))
   }
   return findings
+}
+
+const SUMMARY_SECTIONS = ['Outcome', 'Residuals', 'Compromises', 'Verification'] as const
+
+/**
+ * ADR-0036: a summary that carries `Date:` uses the closeout shape. A summary
+ * without it is a frozen record written before the change and keeps its shape.
+ */
+function summaryShape(text: string): string[] {
+  const date = text.match(/^\*{0,2}Date:\*{0,2} (.+)$/m)
+  if (!date) {
+    return []
+  }
+  const missing: string[] = []
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date[1].trim())) {
+    missing.push('Date (YYYY-MM-DD)')
+  }
+  if (!/^\*{0,2}Acceptance:\*{0,2} (met|not met) — /m.test(text)) {
+    missing.push('Acceptance:')
+  }
+  if (!/^\*{0,2}Gate:\*{0,2} /m.test(text)) {
+    missing.push('Gate:')
+  }
+  if (!/^\*{0,2}Criteria:\*{0,2}$/m.test(text)) {
+    missing.push('Criteria:')
+  }
+  for (const section of SUMMARY_SECTIONS) {
+    if (!new RegExp(`^## ${section}$`, 'm').test(text)) {
+      missing.push(`## ${section}`)
+    }
+  }
+  if (!/^\*{0,2}Evidence:\*{0,2} /m.test(text)) {
+    missing.push('Evidence:')
+  }
+  return missing
 }
 
 /** Every item file starts with its ID, and the board links exactly the files that exist. */

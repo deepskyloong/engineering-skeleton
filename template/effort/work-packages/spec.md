@@ -2,7 +2,7 @@
 
 - **Goal**: one sentence, testable.
 - **Non-goal**: at least one thing this effort will not do.
-- **Acceptance**: one command or one observable state.
+- **Acceptance**: one or more observable criteria, each a command, a file, or a state.
 - **track**: default | spec-flow | superpowers | none
 
 ## Context

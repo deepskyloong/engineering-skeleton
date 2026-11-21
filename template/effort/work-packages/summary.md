@@ -1,13 +1,32 @@
 # Summary — <slug>
 
-Acceptance: <met / not met> — <command or output>
+**Date:** <YYYY-MM-DD>
 
-## Done
+**Acceptance:** <met / not met> — <one sentence>
 
-## Not done
+**Gate:** `<command>` — <date>, <result>
+
+**Criteria:**
+
+- <spec acceptance clause> — <command, path, or state>
+
+## Outcome
+
+- Target: <what is true now that was not before>
+- Standard: <ADR-nnnn — one clause; or "none">
+- Programme: <backlog item state and what opens next; or "none">
+
+## Residuals
+
+- <what remains> — kind: <known limitation | new finding | deferred work> — destination: <B-nnnn | trigger | nothing, accepted because ...>
 
 ## Compromises
 
-## What a future maintainer must know
+<None. | - <Scope reduction | Track switch | Artifact deferral> — <what changed>; destination or trigger: <...>>
 
-Evidence: <the directories and what each answers; "none" if none>
+## Verification
+
+- Survivors: <the pointers that remain at closeout; use `rg -l '<slug>'`>
+- Reproduce: `<command>`; `<command>`
+
+Evidence: <directory> — <what it answers>; <directory> — <what it answers>; "none" if none

@@ -100,6 +100,87 @@ describe('packages', () => {
     expect(messages(findings)).toEqual([])
   })
 
+  test('a dated summary answers the reader questions', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': '# Board\n',
+          'work-packages/x/summary.md': `# Summary
+
+**Date:** 2026-11-21
+
+**Acceptance:** met — all criteria answered
+
+**Gate:** \`bun run gate\` — 2026-11-21, PASS
+
+**Criteria:**
+
+- one criterion — \`bun run gate\`
+
+## Outcome
+
+None.
+
+## Residuals
+
+None.
+
+## Compromises
+
+None.
+
+## Verification
+
+- Survivors: none
+- Reproduce: none
+
+Evidence: none
+`,
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([])
+  })
+
+  test('a dated summary names every missing part', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': '# Board\n',
+          'work-packages/x/summary.md':
+            '# Summary\n\n**Date:** 2026-11-21\n\n**Acceptance:** met — ok\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([
+      'work-packages/x/summary.md: missing Gate:',
+      'work-packages/x/summary.md: missing Criteria:',
+      'work-packages/x/summary.md: missing ## Outcome',
+      'work-packages/x/summary.md: missing ## Residuals',
+      'work-packages/x/summary.md: missing ## Compromises',
+      'work-packages/x/summary.md: missing ## Verification',
+      'work-packages/x/summary.md: missing Evidence:',
+    ])
+  })
+
+  test('a summary without Date keeps its pre-change shape', () => {
+    const findings = packages(
+      createContext(
+        fixture({
+          'work-packages/x/spec.md': '# S\n',
+          'work-packages/x/plan.md': '# P\n',
+          'work-packages/x/board.md': '# Board\n',
+          'work-packages/x/summary.md': '# Summary\n\n## Done\n\nOld shape.\n',
+        }),
+      ),
+    )
+    expect(messages(findings)).toEqual([])
+  })
+
   test('an item file must be linked from the board', () => {
     const findings = packages(
       createContext(

@@ -21,5 +21,4 @@
 | [norm/](norm/README.md) | The binding text: foundations, roles, flow, rules, overlays, committing |
 | [decisions/](decisions/README.md) | ADRs — choices and rejected alternatives |
 | [backlog/](backlog/README.md) | Deferred items with revisit triggers |
-
-`docs/knowledge/` is an optional role and is absent until the first guide, case, or note exists. Its absence is correct, not incomplete.
+| [knowledge/](knowledge/README.md) | Methods, incidents and explanations that change what a maintainer does next time |

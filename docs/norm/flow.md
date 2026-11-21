@@ -21,7 +21,7 @@ idea
             ├─ plan.md                    (how, with risks and stop conditions)
             ├─ board.md                   (current state, and the index of work items)
             ├─ items/<ID>.md              (one work item: description, done-when, evidence)
-            └─ summary.md                 (acceptance, then what happened; 4 sections)
+            └─ summary.md                 (acceptance, then outcome, residuals, compromises and verification; 4 sections)
                  ├─ docs/contracts/<topic>.md   (a fact consumers may rely on)
                  ├─ docs/decisions/ADR-<nnnn>-*.md   (a choice with rejected alternatives)
                  ├─ docs/knowledge/guides|cases|notes
@@ -42,7 +42,7 @@ Four fields before any work starts:
 
 1. **Goal**: one sentence, testable.
 2. **Non-goal**: at least one thing this effort will not do. A work package without a non-goal expands until it stalls.
-3. **Acceptance**: how a reader will know it is done, in one command or one observable state.
+3. **Acceptance**: how a reader will know it is done — one or more observable criteria, each a command, a file, or a state.
 4. **`track:`**: which workflow suite this effort runs on, as a field in `spec.md`. Values are free-form (`default`, `spec-flow`, `superpowers`, `none`), but the field is mandatory. The track is never a directory root: a repository does not get a `docs/superpowers/` just because one effort used that suite.
 
 Initialize `board.md` with an eight-field `## Current state`: updated date, status (`open` / `closed`), phase, last gate with date and per-repository pointer, next action, last completed item, blocked items, and open decisions. A `## Repositories` table follows it with each repository's branch, gate command, and last result; the work-item index follows. `Next` names a `doing` or `todo` item, the closeout action, or `none`; `Last done` names one done item, one clause, and its commit(s); `Blocked` names every blocked item with its reason. An open decision is one question and its owner; a settled decision belongs in the ADR or the item's evidence, not in the block. The `Current state` block is a snapshot, not a log, and lives inside `board.md`: it is not a fifth ledger file. Rewrite it in the same commit as any change to a work item, a decision, a branch, or the gate. A stale block is a defect.
@@ -69,15 +69,17 @@ An effort may deviate from its plan in exactly three ways, each recorded in `sum
 | Track switch | The chosen suite cannot express the work | Old track, new track, why |
 | Artifact deferral | A contract or ADR is not yet knowable | The trigger that will produce it |
 
-All three are recorded under `## Compromises` in `summary.md`; a summary without that section is incomplete. Anything else — a changed goal, a changed acceptance criterion — is a new work package, not a compromise.
+All three are recorded under `## Compromises` in `summary.md`; a summary without that section is incomplete. A known limitation or a new finding is not a compromise; it goes under `## Residuals` with a destination or trigger. Anything else — a changed goal, a changed acceptance criterion — is a new work package, not a compromise.
 
 ## Closeout — five steps, in order
 
-1. **Write `summary.md`.** It opens with `Acceptance: met / not met — <command or output>`, then four sections: what was done, what was not, what was compromised, and what a future maintainer must know. It sits inside the summary budget in `rules.md`. A summary that restates the diff is noise.
+1. **Write `summary.md`.** It opens with `Date: YYYY-MM-DD`, `Acceptance: met / not met — <one sentence>`, one `Gate:` line per repository (`<command> — <date>, <result>`), and a `Criteria:` block with one line per `spec.md` acceptance clause (`<clause> — <command, path, or state>`). Then four sections: `Outcome` (target, standard, programme), `Residuals` (each with a kind and a destination or trigger), `Compromises` (only the three permitted types; `None.` when none), and `Verification` (the closeout pointer snapshot and the commands that reproduce it). `Verification` serves a reader of the frozen record; the next action stays in `Outcome.Programme` and the live programme item. It sits inside the summary budget in `rules.md`. A summary that restates the diff is noise.
 2. **Relocate what outlives the effort.** A fact consumers rely on → `docs/contracts/`. A choice with rejected alternatives → `docs/decisions/`. A method that changes future behavior → `docs/knowledge/guides/`. An incident worth citing → `docs/knowledge/cases/`.
 3. **Freeze the package.** Move `work-packages/<slug>/` to `work-packages/archive/<slug>/` as a unit, taking the four ledger files, `items/`, and the evidence directories `summary.md` names; a runtime artifact a successor package now owns stays with the successor. Check `rg -l '<slug>'`; a non-empty result means every survivor is explained, not that the directory is kept.
 4. **Update the indexes.** Remove the row from `work-packages/README.md` and add it to `work-packages/archive/README.md`, linking `summary.md`. If the effort answers a backlog item, set that row's `Status` to `closed` in `docs/backlog/README.md`. An index that still calls a closed item `open` is worse than no index.
 5. **Register whatever path a citation leaves behind.** A retired directory or a moved file gets a row in `docs/adapters.md`: the old path, its successor, what still cites it, and the condition that retires the row. Leave no file at the old path; a forwarding stub is not a summary, and it is no longer admitted (ADR-0028). If no record cites the path, skip the row and stop.
+
+An effort that produced rules, not only a result, writes one knowledge guide in step 2; the installed `writing-a-work-package-closeout` skill holds the shape, and a repository without it writes the same page by hand. The page carries the rules that would change the next effort, each with the observation that settled it, and opens with one line naming the effort and pointing at `summary.md`. State, counts and acceptance stay in the summary — a guide that restates them is a second status report — and `summary.md` names the guide. Most packages produce none: a guide exists when a rule outlives the effort, not because the package closed.
 
 ## Who decides and how a change is reviewed
 
@@ -89,9 +91,10 @@ A review is adversarial by default: the reviewer tries to break the structure ra
 
 Run before declaring a work package closed:
 
-- [ ] `summary.md` exists, is inside budget, opens with `Acceptance:`, and names what was not done and what was compromised.
+- [ ] `summary.md` exists, is inside budget, opens with `Date:`, `Acceptance:`, `Gate:`, and `Criteria:`, and has `Outcome`, `Residuals`, `Compromises`, and `Verification`; every residual has a destination, and `Compromises` holds only the three permitted types.
 - [ ] `summary.md` names every evidence directory, and no evidence directory is empty.
 - [ ] Every contract, ADR, or knowledge file produced by the effort has a home and a link from its directory README.
+- [ ] Where the effort produced rules that outlive it, the guide is at `docs/knowledge/guides/`, `summary.md` names it, and it cites the summary instead of restating its state.
 - [ ] `rg -l '<slug>'` was run; every surviving pointer is explained.
 - [ ] The row moved from `work-packages/README.md` to `work-packages/archive/README.md`.
 - [ ] The package is at `work-packages/archive/<slug>/` and read-only.

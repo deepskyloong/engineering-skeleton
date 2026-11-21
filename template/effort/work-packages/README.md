@@ -13,6 +13,7 @@ One directory per effort that needs a ledger: `work-packages/<slug>/`, holding f
 - `spec.md` carries a `track:` field. See `docs/workflow.md`.
 - A work package that changes its goal is a new work package.
 - On closeout: write `summary.md`, take the four ledger files, `items/`, and the evidence directories it names, move the package to `work-packages/archive/<slug>/`, and move the row to the archive index.
+- A closeout that produced rules writes one knowledge guide at `docs/knowledge/guides/` before the freeze; `summary.md` names it, and it cites the summary for state instead of restating it. The package gains no fifth file: an archived package binds nothing, and a live page never cites it for authority (`{{NORM_SOURCE}}/docs/norm/flow.md`, closeout step 2).
 
 ## Open
 
@@ -28,9 +29,10 @@ Closed packages move to `work-packages/archive/<slug>/`; `work-packages/archive/
 
 The five closeout steps are in `docs/workflow.md`; this checklist verifies them.
 
-- [ ] `summary.md` opens with `Acceptance:`, names what was not done, and names what was compromised.
+- [ ] `summary.md` opens with `Date:`, `Acceptance:`, `Gate:`, and `Criteria:`, and has `Outcome`, `Residuals`, `Compromises`, and `Verification`; every residual has a destination, and `Compromises` holds only the three permitted types.
 - [ ] `summary.md` names every evidence directory; none is empty.
 - [ ] Contracts, ADRs, and knowledge files have homes and index links.
+- [ ] Where the effort produced rules that outlive it, `summary.md` names the guide at `docs/knowledge/guides/`, and the guide cites the summary instead of restating state.
 - [ ] `rg -l '<slug>'` was run.
 - [ ] Every done work item cites evidence; every dropped item carries a `Disposition`; every open item is in the board's index, and the dashboard's `Next` and `Blocked` point at the right rows.
 - [ ] Every work item has one file under `items/` and one row in the board's index.
