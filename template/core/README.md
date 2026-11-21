@@ -1,6 +1,6 @@
 # <project-name>
 
-<one-line purpose>
+<one-line purpose and audience>
 
 ## Install
 

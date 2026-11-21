@@ -27,8 +27,10 @@ It runs the Bun format check over code, the Prettier check over Markdown, the ch
 | --- | --- |
 | Understand what the standard is and why it is shaped this way | `docs/norm/foundations.md` |
 | Decide where a new document belongs, or add/remove a role | `docs/norm/roles.md` |
+| Write or review a repository README | `docs/norm/repository-readme.md` |
 | Decide which level (root / member / module) owns a file | `docs/norm/flow.md` |
 | Change a rule, a budget, or a retirement exception | `docs/norm/rules.md` |
+| Change the README contract | `docs/norm/repository-readme.md`, `template/core/README.md` |
 | Change a language overlay or the gate contract | `docs/norm/overlays.md` |
 | Move an existing repository onto this standard | `docs/workflow.md`, Mode 3 |
 | Operate on a target repository (forge / audit / migrate) | `docs/workflow.md` |

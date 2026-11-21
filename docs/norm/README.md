@@ -6,6 +6,7 @@ The binding text of the repository standard. Read by question, not in order.
 | --- | --- |
 | [foundations](foundations.md) | What the standard is, which principles bind it, which layers exist |
 | [roles](roles.md) | Which document roles exist, where each lives, what may enter and leave |
+| [repository-readme](repository-readme.md) | What a repository README must answer, and what it must not become |
 | [flow](flow.md) | Which level owns a file, how work moves from idea to closeout, who decides and how a change is reviewed |
 | [rules](rules.md) | Which rules are enforced, how budgets are measured, what may be retired |
 | [overlays](overlays.md) | What the language-agnostic core promises, what each overlay supplies |
@@ -17,7 +18,7 @@ Migration is an operating mode, not a norm page: see [workflow](../workflow.md),
 
 First pass: [foundations](foundations.md) → [roles](roles.md) → [flow](flow.md) → [rules](rules.md).
 
-Reference: [overlays](overlays.md) when a language overlay is involved; [committing](committing.md) when writing a commit message.
+Reference: [overlays](overlays.md) when a language overlay is involved; [committing](committing.md) when writing a commit message; [repository-readme](repository-readme.md) when writing or reviewing the repository front page.
 
 The file names carry the subject; the order lives here. Adding a page does not renumber the set, and moving a page in a reading path does not break a citation.
 

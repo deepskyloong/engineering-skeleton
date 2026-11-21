@@ -53,6 +53,7 @@ describe('requiredFiles', () => {
               'docs/norm/README.md',
               'docs/norm/foundations.md',
               'docs/norm/roles.md',
+              'docs/norm/repository-readme.md',
               'docs/norm/flow.md',
               'docs/norm/rules.md',
               'docs/norm/overlays.md',

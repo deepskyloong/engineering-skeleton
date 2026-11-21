@@ -10,7 +10,7 @@ When two roles disagree, precedence is **charter > `AGENTS.md` > page-level role
 
 | Role | Home | Admission | Exit | Authority |
 | --- | --- | --- | --- | --- |
-| Storefront README | `/README.md` | What the project is in one sentence, how to install, the shortest command that proves it runs, where to read next | Rewritten when the install path changes | — |
+| Storefront README | `/README.md` | Its reader contract is [repository-readme](repository-readme.md); a storefront for the repository, not an index of it | Rewritten when the install path changes | — |
 | Instruction layer | `/AGENTS.md` | Red lines, exact commands, the gate, the routing table, the anti-regrowth clause | Edited when a rule's strength changes | Binds every turn of every agent and person |
 | Directory index | `<dir>/README.md`, unless another row names it | Direct children membership, subtree placement, and directory-local rules that have no page role: one row per child, no totals | Deleted with the directory | Binds membership, directory-local rules, and where a child may be placed |
 | Charter | `/docs/charter.md` | Scope, non-goals, hard constraints, success criteria | A non-goal is removed only by an ADR | Binds scope; a request outside it is refused |

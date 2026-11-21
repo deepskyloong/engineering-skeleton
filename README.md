@@ -1,6 +1,6 @@
 # Repository Standard
 
-A language-agnostic standard for the documents a long-lived project needs: what each document is for, where it lives, and how work moves from an idea to a recorded decision.
+A language-agnostic standard for maintainers starting a long-lived repository and for readers entering one: what each document is for, where it lives, and how work moves from an idea to a recorded decision.
 
 ## Why this exists
 
@@ -23,11 +23,9 @@ The standard does not prescribe a language, framework, documentation site, or CI
 
 ## Adopting it
 
-1. Do not copy this repository. Copy `template/core/` into the new repository root, including `.editorconfig`, `.gitattributes`, and `.githooks/`, and replace every `<placeholder>`. If you want the optional commit check, run `git config core.hooksPath .githooks`.
-2. Pick one overlay under `template/overlays/` and follow its README.
-3. Run the day-one checklist in `docs/workflow.md` (mode: forge).
-4. When the first work package starts, copy `template/effort/` and create `work-packages/<slug>/spec.md` with a `track:` line.
-5. Run the gate command its overlay names. In this repository, `bun install && bun run gate` checks the standard itself.
+1. Do not copy this repository. Copy `template/core/` into the new repository root, including `.editorconfig`, `.gitattributes`, and `.githooks/`; pick one overlay under `template/overlays/` and follow its README; replace every `<placeholder>`. If you want the optional commit check, run `git config core.hooksPath .githooks`.
+2. Run the day-one checklist in `docs/workflow.md` (mode: forge) and the gate command its overlay names. In this repository, `bun install && bun run gate` checks the standard itself.
+3. When the first work package starts, copy `template/effort/` and create `work-packages/<slug>/spec.md` with a `track:` line.
 
 ## Reading it
 
